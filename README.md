@@ -1,8 +1,8 @@
 # Team THM Submission
 
 <div align="center">
-    <img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" height="25" /> <br />
-    <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" /><br />
+    <img src="backend/vecsim_app/data/redis-logo.png" height="25" /> <br />
+    <img src="backend/vecsim_app/data/artefact-logo.png" height="20" /><br />
     Tom, Henrique, Michel<br />
     Oct. - Nov. 2022
 </div>
@@ -77,7 +77,8 @@ pip install backend/requirements.txt
 ### TODO
 
 - [ ] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
-- [ ] Deploy Backend and Redis somewhere
+- [ ] Setup [Redis Enterprise Cloud](https://redis.com/redis-enterprise-cloud/)
+- [ ] Deploy Backend and Redis somewhere, Netlify [1](https://developer.redis.com/create/netlify/getting-started-with-netlify), [2](https://app.netlify.com/sites/fastapi/deploys) ?
 - [x] Setup Blog page and documentation
 
 ## Running The Application
@@ -97,8 +98,13 @@ docker system prune
 
 ### Backend Application Only
 
+Setup your Redis Enterprise Cloud then,
+
 ```sh
 cd backend/
+./start.sh
+
+open http://0.0.0.0:8080/api/docs
 ```
 
 ### Frontend Application Only
