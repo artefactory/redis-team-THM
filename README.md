@@ -100,6 +100,20 @@ yarn start
 open http://localhost:3000
 ```
 
+### Blog
+
+```sh
+cd blog/
+
+pelican content && pelican --listen
+
+# To publish on GitHub pages
+pelican content -o output -s pelicanconf.py
+ghp-import output -b gh-pages
+git push origin gh-pages
+
+```
+
 ### Machine Learning Model
 
 First, download the data and run the `arXivPrepSubset.ipynb` notebook to generate some embeddings.
