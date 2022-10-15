@@ -48,7 +48,7 @@ pip install backend/requirements.txt
 <details>
 
 ```txt
-                        writes index
+                        writes pickle and loads index
 +-------------------+      +----------------+
 |                   |      |                |
 |  Redis            +<-----+  Jupyter       |
@@ -81,7 +81,7 @@ pip install backend/requirements.txt
 
 ## Running The Application
 
-### Running With Docker
+### Run With Docker
 
 ```sh
 docker compose up
@@ -123,7 +123,7 @@ jupyter run arxiv-embeddings.ipynb
 # input: arxiv-metadata-oai-snapshot.json
 # output: arxiv_embeddings_10000.pkl
 
-jupyter run arxiv-embeddings.ipynb
+jupyter run single-gpu-arxiv-embeddings.ipynb
 
 # Uses RAPIDS (CuDF) and GPU on Saturn Cloud to speed up embedding. Much larger subset (100k).
 # input: arxiv-metadata-oai-snapshot.json
@@ -135,3 +135,11 @@ jupyter run multi-gpu-arxiv-embeddings.ipynb
 # input: arxiv-metadata-oai-snapshot.json
 # output: arxiv_embeddings_300000.pkl
 ```
+
+### Benchmarks
+
+| Model                    | Machine                      | Time   |
+|-------------------------:|------------------------------|-------:|
+|            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
+| `single-gpu-arxiv-embeddings.ipynb` | ... | ... |
+| `multi-gpu-arxiv-embeddings.ipynb` | ... | ... |
