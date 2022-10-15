@@ -20,7 +20,6 @@ This arXiv demo showcases the vector search similarity (VSS) capability within R
 Through the RediSearch module, vector types and indexes can be added to Redis. This turns Redis into
 a highly performant vector database which can be used for all types of applications.
 
-
 ![Screen Shot 2022-09-20 at 12 20 16 PM](https://user-images.githubusercontent.com/13009163/191346916-4b8f648f-7552-4910-ad4e-9cc117230f00.png)
 
 ## Datasets
@@ -51,28 +50,32 @@ and turned into a SPA application instead of a separate front-end server approac
 >Before running locally - you should download the data and run through the `arXivPrepSubset.ipynb` notebook to generate some sample embeddings.
 
 Setup python environment
+
 - If you use conda, take advantage of the Makefile included here: `make env`
 - Otherwise, setup your virtual env however and install python deps in `requirements.txt`
 
 To launch app, run the following
-- ``docker compose up`` in same directory as ``docker-compose.yml``
-- Navigate to ``http://localhost:8888`` in a browser
+
+- `docker compose up` in same directory as `docker-compose.yml`
+- Navigate to `http://localhost:8888` in a browser
 
 ### Building the containers
 
 The first time you run `docker compose up` it will automatically build your Docker images based on the `Dockerfile`. However, in future passes when you need to rebuild, simply run: `docker compose up --build` to force a new build.
 
 ### Using a React development env
+
 It's typically easier to write front end code in an interactive environment (**outside of Docker**)where one can test out code changes in real time. In order to use this approach:
 
 1. Follow steps from previous section with Docker Compose to deploy the backend API.
 2. Skip the step about launching a browser at host/port.
-3. `cd gui/` directory and use `yarn` to install packages: `yarn install --no-optional` (you may need to use `npm` to install `yarn`).
+3. `cd frontend/` directory and use `yarn` to install packages: `yarn install --no-optional` (you may need to use `npm` to install `yarn`).
 4. Use `yarn` to serve the application from your machine: `yarn start`.
 5. Navigate to `http://localhost:3000` in a browser.
 
 ### Troubleshooting
 
 #### Issues building the container
+
 - Sometimes it works if you try again. Or maybe you need to clear out some Docker cache. Run `docker system prune`, restart Docker Desktop, and try again.
 - The generated `node_modules` folder (under `gui/` when running the app outside of Docker) can mess things up when building docker images. Delete that folder (if present) and try rebuilding again.
