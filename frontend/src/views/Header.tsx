@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import { BASE_URL } from "../config";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface Props {
 }
@@ -9,14 +9,14 @@ interface Props {
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export const Header = (props: Props) => {
-  const [searchText, setText] = useState("");
-  const Navigate = useNavigate();
+  // const [_, setText] = useState("");
+  // const Navigate = useNavigate();
 
    // This function is called when the input changes
-   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-     const enteredText = event.target.value;
-     setText(enteredText);
-  };
+  //  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //    const enteredText = event.target.value;
+  //    setText(enteredText);
+  // };
 
   return (
    <header>
