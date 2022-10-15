@@ -22,6 +22,11 @@ a highly performant vector database which can be used for all types of applicati
 
 ![Screen Shot 2022-09-20 at 12 20 16 PM](https://user-images.githubusercontent.com/13009163/191346916-4b8f648f-7552-4910-ad4e-9cc117230f00.png)
 
+## History
+
+- Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
+- Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
+
 ## Datasets
 
 The dataset was taken from the the following [Kaggle link](https://www.kaggle.com/Cornell-University/arxiv).
