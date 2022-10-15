@@ -1,5 +1,6 @@
 import os
 
+# FIXME Pydantic Settings file
 PROJECT_NAME = "vecsim_app"
 API_DOCS = "/api/docs"
 OPENAPI_DOCS = "/api/openapi.json"
