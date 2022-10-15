@@ -21,8 +21,9 @@ jobs:
       with:
         node-version: 18.x
 
-    - run: |
-      cd frontend
-      yarn install --no-optional
-      yarn build
-      yarn test
+    - name: Build
+      run: |
+        cd frontend
+        yarn install --no-optional
+        yarn build
+        yarn test
