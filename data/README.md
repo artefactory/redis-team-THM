@@ -1,4 +1,4 @@
-# Data!
+# Data
 
 Generate data before trying to run this application.
 
@@ -15,5 +15,3 @@ Generate data before trying to run this application.
 3. `multi-gpu-arxiv-embeddings.ipynb`
     - Uses RAPIDS and Dask (Dask CuDF) on Saturn Cloud to parallelize embedding creation. Much much larger subset (700k). Only output 300k to file.
     - Output: `arxiv_embeddings_300000pkl`.
-
-

@@ -1,37 +1,34 @@
 
 <div align="center">
-    <a href="https://github.com/RedisVentures/redis-arXiv-search"><img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" width="30%"><img></a>
-    <br />
-    <br />
-<div display="inline-block">
-    <a href="https://docsearch.redisventures.com"><b>Hosted Demo</b></a>&nbsp;&nbsp;&nbsp;
-    <a href="https://github.com/RedisVentures/redis-arXiv-search"><b>Code</b></a>&nbsp;&nbsp;&nbsp;
-    <a href="https://redis.io/docs/stack/search/reference/vectors/"><b>Redis VSS Documentation</b></a>&nbsp;&nbsp;&nbsp;
-  </div>
-    <br />
-    <br />
+    <img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" height="30" />
+    <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" />
 </div>
 
-# Redis arXiv Search Demo
+## Contents
 
-This repository is the codebase for the arxiv paper search demo hosted at: https://docsearch.redisventures.com
+This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
-This arXiv demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 Through the RediSearch module, vector types and indexes can be added to Redis. This turns Redis into
 a highly performant vector database which can be used for all types of applications.
 
 ![Screen Shot 2022-09-20 at 12 20 16 PM](https://user-images.githubusercontent.com/13009163/191346916-4b8f648f-7552-4910-ad4e-9cc117230f00.png)
+
+## Documentation
+
+- [Basic Demo](https://docsearch.redisventures.com) | [GitHub](https://github.com/RedisVentures/redis-arXiv-search)
+- [Redis Vector Similarity Search](https://redis.io/docs/stack/search/reference/vectors)
+- [Cornell University - arXiv dataset](https://www.kaggle.com/Cornell-University/arxiv), `arxiv-metadata-oai-snapshot.json` file is used
 
 ## History
 
 - Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
 - Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
 
-## Datasets
+## Setup
 
-The dataset was taken from the the following [Kaggle link](https://www.kaggle.com/Cornell-University/arxiv).
-
-Download and extract the zip file and place the json file (`arxiv-metadata-oai-snapshot.json`) in the `data/` directory.
+```sh
+brew install yarn redis
+```
 
 ## Application
 
@@ -52,7 +49,7 @@ and turned into a SPA application instead of a separate front-end server approac
 
 ## Running Locally
 
->Before running locally - you should download the data and run through the `arXivPrepSubset.ipynb` notebook to generate some sample embeddings.
+> Before running locally - you should download the data and run through the `arXivPrepSubset.ipynb` notebook to generate some sample embeddings.
 
 Setup python environment
 
@@ -66,17 +63,21 @@ To launch app, run the following
 
 ### Building the containers
 
-The first time you run `docker compose up` it will automatically build your Docker images based on the `Dockerfile`. However, in future passes when you need to rebuild, simply run: `docker compose up --build` to force a new build.
+```sh
+docker compose up
 
-### Using a React development env
+# To force a new build
+docker compose up --build
+```
 
-It's typically easier to write front end code in an interactive environment (**outside of Docker**)where one can test out code changes in real time. In order to use this approach:
+### Frontend Application
 
-1. Follow steps from previous section with Docker Compose to deploy the backend API.
-2. Skip the step about launching a browser at host/port.
-3. `cd frontend/` directory and use `yarn` to install packages: `yarn install --no-optional` (you may need to use `npm` to install `yarn`).
-4. Use `yarn` to serve the application from your machine: `yarn start`.
-5. Navigate to `http://localhost:3000` in a browser.
+```sh
+cd frontend
+yarn install --no-optional
+yarn start
+open http://localhost:3000
+```
 
 ### Troubleshooting
 
