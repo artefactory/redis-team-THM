@@ -5,11 +5,10 @@
     <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" />
 </div>
 
-## Contents
-
 This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
-Through the RediSearch module, vector types and indexes can be added to Redis. This turns Redis into a highly performant vector database which can be used for all types of applications.
+Through the RediSearch module, vector types and indexes can be added to Redis.
+This turns Redis into a highly performant vector database which can be used for all types of applications.
 
 <details>
 
@@ -43,6 +42,8 @@ pip install backend/requirements.txt
 
 ## Architecture
 
+<details>
+
 ```txt
                         writes index
 +-------------------+      +----------------+
@@ -67,9 +68,11 @@ pip install backend/requirements.txt
             browser use app from here
 ```
 
-## Running Locally
+</details>
 
-### Running the Application
+## Running The Application
+
+### Running With Docker
 
 ```sh
 docker compose up
