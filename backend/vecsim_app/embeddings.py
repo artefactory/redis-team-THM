@@ -35,7 +35,6 @@ class Embeddings:
 
         return description
 
-
     def make(self, sentences: list):
         if isinstance(sentences, list):
             sentences = [self.clean_description(description) for description in sentences]

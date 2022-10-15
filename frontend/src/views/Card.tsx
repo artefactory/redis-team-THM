@@ -4,7 +4,7 @@ import  useCheckMobileScreen  from "../mobile"
 import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
 import { makeStyles } from '@material-ui/core/styles';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 interface Props {
     paperId: string;
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export const Card = (props: Props) => {
     const classes = useStyles();
     const isMobile = useCheckMobileScreen();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const querySemanticallySimilarPapers = async () => {
         try {

@@ -29,6 +29,7 @@ class TokenEscaper:
 
         return self.escaped_chars_re.sub(escape_symbol, value)
 
+
 class SearchIndex:
     """
     SearchIndex is used to wrap and capture all information
@@ -43,7 +44,7 @@ class SearchIndex:
         redis_conn: Redis,
         number_of_vectors: int,
         prefix: str,
-        distance_metric: str='L2'
+        distance_metric: str = 'L2'
     ):
         """
         Create a FLAT aka brute force style index.
@@ -77,7 +78,7 @@ class SearchIndex:
         redis_conn: Redis,
         number_of_vectors: int,
         prefix: str,
-        distance_metric: str='COSINE'
+        distance_metric: str = 'COSINE'
     ):
         """
         Create an approximate NN index via HNSW.
@@ -112,8 +113,8 @@ class SearchIndex:
     ):
         # Create Index
         await redis_conn.ft(INDEX_NAME).create_index(
-            fields = fields,
-            definition= IndexDefinition(prefix=[prefix], index_type=IndexType.HASH)
+            fields=fields,
+            definition=IndexDefinition(prefix=[prefix], index_type=IndexType.HASH)
         )
 
     def process_tags(self, categories: list, years: list) -> str:
@@ -148,8 +149,8 @@ class SearchIndex:
         self,
         categories: list,
         years: list,
-        search_type: str="KNN",
-        number_of_results: int=20
+        search_type: str = "KNN",
+        number_of_results: int = 20
     ) -> Query:
         """
         Create a RediSearch query to perform hybrid vector and tag based searches.
@@ -194,4 +195,3 @@ class SearchIndex:
         return Query(f'{tag_query}')\
             .no_content()\
             .dialect(2)
-

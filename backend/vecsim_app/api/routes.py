@@ -19,12 +19,14 @@ redis_client = redis.from_url(config.REDIS_URL)
 embeddings = Embeddings()
 search_index = SearchIndex()
 
+
 async def process_paper(p, i: int) -> dict:
     paper = await Paper.get(p.paper_pk)
     paper = paper.dict()
     score = 1 - float(p.vector_score)
     paper['similarity_score'] = score
     return paper
+
 
 async def papers_from_results(total, results) -> list:
     # extract papers from VSS results
@@ -45,7 +47,7 @@ async def get_papers(limit: int = 20, skip: int = 0, years: str = "", categories
     categories = [cat for cat in categories.split(",") if cat]
     if years and categories:
         expressions.append(
-            (Paper.year << years) & \
+            (Paper.year << years) &
             (Paper.categories << categories)
         )
     elif years and not categories:

@@ -128,6 +128,7 @@ export const Home = (props: Props) => {
     props.setCategories([]);
     props.setYears([]);
     queryPapers();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -142,7 +143,7 @@ export const Home = (props: Props) => {
            search engine.
        </p>
        <p className="lead text-muted">
-           <strong>Enter a search query below to discover scholarly papers hosted by <a href="https://arxiv.org/" target="_blank">arXiv</a> (Cornell University).</strong>
+           <strong>Enter a search query below to discover scholarly papers hosted by <a href="https://arxiv.org/">arXiv</a> (Cornell University).</strong>
        </p>
        <div className="container">
         <SearchBar
