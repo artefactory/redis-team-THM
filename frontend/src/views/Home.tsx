@@ -128,6 +128,7 @@ export const Home = (props: Props) => {
     props.setCategories([]);
     props.setYears([]);
     queryPapers();
+    // eslint-disable-next-line
   }, []);
 
   return (

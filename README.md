@@ -3,7 +3,8 @@
 <div align="center">
     <img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" height="25" /> <br />
     <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" /><br />
-    October - November 2022
+    Tom, Henrique, Michel<br />
+    Oct. - Nov. 2022
 </div>
 <br />
 
