@@ -32,16 +32,15 @@ export const fetchFromBackend = async (url: string, method: string, body?: any) 
 }
 
 export const getPapers = async (limit=15, skip=0, years: string[] = [], categories: string[] = []) => {
-  var params: string;
   if ( !years.length && !categories.length ) {
     var params = `?limit=${limit}&skip=${skip}`
   } else {
     if ( years.length && categories.length ) {
-      var params = `?limit=${limit}&skip=${skip}&years=${years.join()}&categories=${categories.join()}`
+      params = `?limit=${limit}&skip=${skip}&years=${years.join()}&categories=${categories.join()}`
     } else if ( years.length ) {
-      var params = `?limit=${limit}&skip=${skip}&years=${years.join()}`
+      params = `?limit=${limit}&skip=${skip}&years=${years.join()}`
     } else {
-      var params = `?limit=${limit}&skip=${skip}&categories=${categories.join()}`
+      params = `?limit=${limit}&skip=${skip}&categories=${categories.join()}`
     }
   }
   return fetchFromBackend(`${MASTER_URL}${params}`, 'GET');
