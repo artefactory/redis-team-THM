@@ -1,6 +1,6 @@
 import re
 
-from config import INDEX_NAME
+from vecsim_app.config import INDEX_NAME
 from redis.asyncio import Redis
 from redis.commands.search.query import Query
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType

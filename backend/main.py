@@ -1,9 +1,5 @@
-import uvicorn
 from pathlib import Path
-from aredis_om import (
-    get_redis_connection,
-    Migrator
-)
+from aredis_om import get_redis_connection, Migrator
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
@@ -46,30 +42,10 @@ async def startup():
     await Migrator().run()
 
 # static image files
-app.mount("/data", StaticFiles(directory="data"), name="data")
+app.mount("/data", StaticFiles(directory="vecsim_app/data"), name="data")
 
 # mount the built GUI react files into the static dir to be served.
-current_file = Path(__file__)
-project_root = current_file.parent.resolve()
-gui_build_dir = project_root / "templates" / "build"
-app.mount(
-    path="/", app=SinglePageApplication(directory=gui_build_dir), name="SPA"
-)
-
-if __name__ == "__main__":
-    import os
-    env = os.environ.get("DEPLOYMENT", "prod")
-
-    server_attr = {
-        "host": "0.0.0.0",
-        "reload": True,
-        "port": 8888,
-        "workers": 1
-    }
-    if env == "prod":
-        server_attr.update({"reload": False,
-                            "workers": 2,
-                            "ssl_keyfile": "key.pem",
-                            "ssl_certfile": "full.pem"})
-
-    uvicorn.run("main:app", **server_attr)
+# current_file = Path(__file__)
+# project_root = current_file.parent.resolve()
+# gui_build_dir = project_root / "templates" / "build"
+# app.mount(path="/", app=SinglePageApplication(directory=gui_build_dir), name="SPA")
