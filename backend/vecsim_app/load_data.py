@@ -11,6 +11,7 @@ from vecsim_app.models import Paper
 from vecsim_app.search_index import SearchIndex
 
 
+# FIXME Pydantic Settings file
 def read_paper_df() -> t.List:
     with open(config.DATA_LOCATION + "/arxiv_embeddings_10000.pkl", "rb") as f:
         df = pickle.load(f)
