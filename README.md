@@ -156,5 +156,6 @@ jupyter run multi-gpu-arxiv-embeddings.ipynb
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
 |            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
+|            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
 | `single-gpu-arxiv-embeddings.ipynb` | ... | ... |
 |  `multi-gpu-arxiv-embeddings.ipynb` | ... | ... |
