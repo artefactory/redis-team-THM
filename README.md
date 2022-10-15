@@ -142,4 +142,4 @@ jupyter run multi-gpu-arxiv-embeddings.ipynb
 |-------------------------:|------------------------------|-------:|
 |            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
 | `single-gpu-arxiv-embeddings.ipynb` | ... | ... |
-| `multi-gpu-arxiv-embeddings.ipynb` | ... | ... |
+|  `multi-gpu-arxiv-embeddings.ipynb` | ... | ... |
