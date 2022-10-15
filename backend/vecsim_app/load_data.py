@@ -16,8 +16,10 @@ def read_paper_df() -> t.List:
         df = pickle.load(f)
     return df
 
+
 async def gather_with_concurrency(n, redis_conn, *papers):
     semaphore = asyncio.Semaphore(n)
+
     async def load_paper(paper):
         async with semaphore:
             vector = paper.pop('vector')
@@ -37,9 +39,11 @@ async def gather_with_concurrency(n, redis_conn, *papers):
                     "categories": p.categories,
                     "year": p.year,
                     "vector": np.array(vector, dtype=np.float32).tobytes(),
-            })
+                }
+            )
     # gather with concurrency
     await asyncio.gather(*[load_paper(p) for p in papers])
+
 
 async def load_all_data():
     # TODO use redis-om connection
@@ -55,8 +59,8 @@ async def load_all_data():
         print("Papers loaded!")
 
         print("Creating vector search index")
-        categories_field = TagField("categories", separator = "|")
-        year_field = TagField("year", separator = "|")
+        categories_field = TagField("categories", separator="|")
+        year_field = TagField("year", separator="|")
         # create a search index
         if config.INDEX_TYPE == "HNSW":
             await search_index.create_hnsw(

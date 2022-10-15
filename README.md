@@ -33,8 +33,8 @@ This turns Redis into a highly performant vector database which can be used for 
 ## History
 
 - 15/10 - Added CI/CD script
-- Oct- Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
-- Oct- Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
+- 15/10 - Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
+- 15/10 - Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
 
 ## Machine Setup
 
