@@ -2,8 +2,10 @@
 
 <div align="center">
     <img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" height="25" /> <br />
-    <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" />
+    <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" /><br />
+    October - November 2022
 </div>
+<br />
 
 This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
@@ -30,8 +32,9 @@ This turns Redis into a highly performant vector database which can be used for 
 
 ## History
 
-- Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
-- Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
+- 15/10 - Added CI/CD script
+- Oct- Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
+- Oct- Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
 
 ## Machine Setup
 
