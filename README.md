@@ -8,6 +8,8 @@
 </div>
 <br />
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d2c3e1e1-fbb6-422a-b44c-848f6753a246/deploy-status)](https://app.netlify.com/sites/sweet-piroshki-f2e396/deploys)
+
 This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
 Through the RediSearch module, vector types and indexes can be added to Redis.
@@ -133,6 +135,11 @@ git push origin gh-pages
 ### Deployment
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory-fr/redis-team-thm)
+
+```sh
+netlify build
+netlify deploy --prod
+```
 
 ### Machine Learning Model
 

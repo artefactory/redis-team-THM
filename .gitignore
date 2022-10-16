@@ -6,3 +6,5 @@ arxiv-metadata-oai-snapshot.json
 datascience/*.json
 datascience/*.zip
 blog/output
+# Local Netlify folder
+.netlify
