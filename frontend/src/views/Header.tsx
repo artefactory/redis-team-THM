@@ -42,9 +42,9 @@ export const Header = (props: Props) => {
             navbarScroll
           >
             <NavDropdown title="About" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="https://github.com/Spartee/redis-vector-search">Code</NavDropdown.Item>
-              <NavDropdown.Item href="https://mlops.community/vector-similarity-search-from-basics-to-production/">Blog</NavDropdown.Item>
-              <NavDropdown.Item href="https://forms.gle/ANpHTe2Da5CVGHty7" target="_blank">Talk With Us</NavDropdown.Item>
+              <NavDropdown.Item href="https://github.com/artefactory-fr/redis-team-THM">Code</NavDropdown.Item>
+              <NavDropdown.Item href="https://artefactory-fr.github.io/redis-team-THM">Blog</NavDropdown.Item>
+              <NavDropdown.Item href="https://github.com/artefactory-fr/redis-team-THM/discussions" target="_blank">Talk With Us</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="https://redis.io/docs/stack/search/reference/vectors/">
                 Docs: Redis Vector Search
@@ -52,7 +52,7 @@ export const Header = (props: Props) => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link className="btn btn-primary m-2" href="https://forms.gle/ANpHTe2Da5CVGHty7" target="_blank">
+            <Nav.Link className="btn btn-primary m-2" href="https://github.com/artefactory-fr/redis-team-THM/discussions" target="_blank">
               Talk With Us!
             </Nav.Link>
           </Nav>

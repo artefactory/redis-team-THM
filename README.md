@@ -137,8 +137,15 @@ git push origin gh-pages
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory-fr/redis-team-thm)
 
 ```sh
+yarn global add vercel netlify
+
+# Frontend
 netlify build
 netlify deploy --prod
+
+# Backend
+cd backend
+vercel .
 ```
 
 ### Machine Learning Model
