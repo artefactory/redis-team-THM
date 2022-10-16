@@ -130,6 +130,10 @@ ghp-import output -b gh-pages
 git push origin gh-pages
 ```
 
+### Deployment
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory-fr/redis-team-thm)
+
 ### Machine Learning Model
 
 First, download the data and run the [`arxiv-embeddings.ipynb`](datascience/arxiv-embeddings.ipynb) notebook to generate some embeddings.
