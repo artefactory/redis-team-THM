@@ -1,7 +1,7 @@
 fastapi
 # httpx
 # requests
-# uvicorn
+uvicorn
 # aiofiles
 redis-om
 # pandas

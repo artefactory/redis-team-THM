@@ -1,23 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { getSemanticallySimilarPapers } from "../api"
 import  useCheckMobileScreen  from "../mobile"
-import Tooltip from '@mui/material/Tooltip';
-import Chip from '@mui/material/Chip';
-import { makeStyles } from '@material-ui/core/styles';
-// import { useNavigate } from 'react-router';
+import Tooltip from '@mui/material/Tooltip'
+import Chip from '@mui/material/Chip'
+import { makeStyles } from '@material-ui/core/styles'
+// import { useNavigate } from 'react-router'
 
 interface Props {
-    paperId: string;
-    numPapers: number;
-    title: string;
-    authors: string;
-    paperCat: string;
-    paperYear: number;
-    categories: string[];
-    years: string[];
-    similarity_score: number;
-    setState: (state: any) => void;
-    setTotal: (state: any) => void;
+    paperId: string
+    numPapers: number
+    title: string
+    authors: string
+    paperCat: string
+    paperYear: number
+    categories: string[]
+    years: string[]
+    similarity_score: number
+    setState: (state: any) => void
+    setTotal: (state: any) => void
 }
 
 
@@ -35,12 +35,12 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     fontSize: "14px"
   }
-}));
+}))
 
 export const Card = (props: Props) => {
-    const classes = useStyles();
-    const isMobile = useCheckMobileScreen();
-    // const navigate = useNavigate();
+    const classes = useStyles()
+    const isMobile = useCheckMobileScreen()
+    // const navigate = useNavigate()
 
     const querySemanticallySimilarPapers = async () => {
         try {
@@ -49,28 +49,28 @@ export const Card = (props: Props) => {
               props.years,
               props.categories,
               "KNN",
-              props.numPapers);
+              props.numPapers)
           props.setState(results.papers)
           props.setTotal(results.total)
         } catch (err) {
-          console.log(String(err));
+          console.log(String(err))
         }
-      };
+      }
 
     const getCardSize = () => {
       if (isMobile) {
-        return '50%';
+        return '50%'
       }
       else {
-        return '85%';
+        return '85%'
       }
     }
     const getCardClass = () => {
       if (isMobile) {
-        return classes.btnGroupMobile;
+        return classes.btnGroupMobile
       }
       else {
-        return classes.btnGroup;
+        return classes.btnGroup
       }
     }
     const getButtonSpacing = () => {
@@ -129,5 +129,5 @@ export const Card = (props: Props) => {
        </div>
       </div>
      </div>
-    );
-   };
+    )
+   }

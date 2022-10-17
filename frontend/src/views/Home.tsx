@@ -1,41 +1,41 @@
-import { useState, useEffect } from 'react';
-import { getPapers, getSemanticallySimilarPapersbyText } from '../api';
+import { useState, useEffect } from 'react'
+import { getPapers, getSemanticallySimilarPapersbyText } from '../api'
 import { Card } from "./Card"
-import SearchBar from "material-ui-search-bar";
+import SearchBar from "material-ui-search-bar"
 
 
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
-import Tooltip from '@mui/material/Tooltip';
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import ListItemText from '@mui/material/ListItemText'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Checkbox from '@mui/material/Checkbox'
+import Tooltip from '@mui/material/Tooltip'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 interface Props {
-  papers: any[];
-  setPapers: (state: any) => void;
-  categories: string[];
-  setCategories: (state: any) => void;
-  years: string[];
-  setYears: (state: any) => void;
-  searchState: string;
-  setSearchState: (state: any) => void;
-  total: number;
-  setTotal: (state: any) => void;
+  papers: any[]
+  setPapers: (state: any) => void
+  categories: string[]
+  setCategories: (state: any) => void
+  years: string[]
+  setYears: (state: any) => void
+  searchState: string
+  setSearchState: (state: any) => void
+  total: number
+  setTotal: (state: any) => void
 }
 
 export const Home = (props: Props) => {
-  const [error, setError] = useState<string>('');
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(15);
+  const [error, setError] = useState<string>('')
+  const [skip, setSkip] = useState(0)
+  const [limit, setLimit] = useState(15)
 
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
+  const ITEM_HEIGHT = 48
+  const ITEM_PADDING_TOP = 8
   const MenuProps = {
     PaperProps: {
       style: {
@@ -43,7 +43,7 @@ export const Home = (props: Props) => {
         width: 150,
       },
     },
-  };
+  }
 
   const yearOptions = [
     '2022',
@@ -58,7 +58,7 @@ export const Home = (props: Props) => {
     '2013',
     '2012',
     '2011'
-  ];
+  ]
 
   const categoryOptions = [
     'cs.LG',
@@ -79,31 +79,31 @@ export const Home = (props: Props) => {
   ]
 
   const handleSearchChange = async (newValue: string) => {
-    props.setSearchState(newValue);
+    props.setSearchState(newValue)
   }
 
   const handleYearSelection = (event: SelectChangeEvent<typeof props.years>) => {
     const {
       target: { value },
-    } = event;
+    } = event
     props.setYears(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
-    );
-    setSkip(0);
+    )
+    setSkip(0)
     console.log(props.years)
-  };
+  }
 
   const handleCatSelection = (event: SelectChangeEvent<typeof props.categories>) => {
     const {
       target: { value },
-    } = event;
+    } = event
     props.setCategories(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
-    );
-    setSkip(0);
-  };
+    )
+    setSkip(0)
+  }
 
   const queryPapers = async () => {
     try {
@@ -112,24 +112,24 @@ export const Home = (props: Props) => {
         props.setPapers(result.papers)
         props.setTotal(result.total)
       } else {
-        setSkip(skip + limit);
-        const result = await getPapers(limit, skip, props.years, props.categories);
+        setSkip(skip + limit)
+        const result = await getPapers(limit, skip, props.years, props.categories)
         props.setPapers(result.papers)
         props.setTotal(result.total)
       }
     } catch (err) {
-      setError(String(err));
+      setError(String(err))
     }
-  };
+  }
 
   // Execute this one when the component loads up
   useEffect(() => {
-    props.setPapers([]);
-    props.setCategories([]);
-    props.setYears([]);
-    queryPapers();
+    props.setPapers([])
+    props.setCategories([])
+    props.setYears([])
+    queryPapers()
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   return (
     <>
@@ -233,5 +233,5 @@ export const Home = (props: Props) => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}

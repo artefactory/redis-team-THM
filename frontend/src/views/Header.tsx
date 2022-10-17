@@ -1,7 +1,7 @@
-// import React, { useState } from 'react';
-import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
-import { BASE_URL } from "../config";
-// import { useNavigate } from 'react-router-dom';
+// import React, { useState } from 'react'
+import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap'
+import { BASE_URL } from "../config"
+// import { useNavigate } from 'react-router-dom'
 
 interface Props {
 }
@@ -9,14 +9,14 @@ interface Props {
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export const Header = (props: Props) => {
-  // const [_, setText] = useState("");
-  // const Navigate = useNavigate();
+  // const [_, setText] = useState("")
+  // const Navigate = useNavigate()
 
    // This function is called when the input changes
   //  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //    const enteredText = event.target.value;
-  //    setText(enteredText);
-  // };
+  //    const enteredText = event.target.value
+  //    setText(enteredText)
+  // }
 
   return (
    <header>
@@ -27,8 +27,8 @@ export const Header = (props: Props) => {
               src={BASE_URL + `/data/redis-logo.png`}
               alt="Redis Logo"
               style={{
-                height: '7%',
-                width: '7%',
+                height: '5%',
+                width: '5%',
                 paddingRight: '10px',
                 }}>
             </img>
@@ -60,5 +60,5 @@ export const Header = (props: Props) => {
       </Container>
     </Navbar>
    </header>
-  );
- };
+  )
+ }

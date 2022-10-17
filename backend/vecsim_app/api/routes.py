@@ -45,6 +45,7 @@ async def get_papers(limit: int = 20, skip: int = 0, years: str = "", categories
     expressions = []
     years = [year for year in years.split(",") if year]
     categories = [cat for cat in categories.split(",") if cat]
+
     if years and categories:
         expressions.append(
             (Paper.year << years) &
@@ -54,10 +55,11 @@ async def get_papers(limit: int = 20, skip: int = 0, years: str = "", categories
         expressions.append(Paper.year << years)
     elif categories and not years:
         expressions.append(Paper.categories << categories)
-    # Run query
 
-    papers = await Paper.find(*expressions)\
-        .copy(offset=skip, limit=limit)\
+    # FIXME: redis.exceptions.ResponseError: papers: no such index
+    # Run query
+    papers = await Paper.find(*expressions) \
+        .copy(offset=skip, limit=limit) \
         .execute(exhaust_results=False)
 
     # Get total count
@@ -66,6 +68,8 @@ async def get_papers(limit: int = 20, skip: int = 0, years: str = "", categories
             search_index.count_query(years=years, categories=categories)
         )
     ).total
+
+    total = 9
     return {
         'total': total,
         'papers': papers

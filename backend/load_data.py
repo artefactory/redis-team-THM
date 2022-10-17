@@ -55,7 +55,7 @@ async def load_all_data():
         print("Loading papers into Vecsim App")
         papers = read_paper_df()
         papers = papers.to_dict('records')
-        await gather_with_concurrency(100, redis_conn, *papers)
+        await gather_with_concurrency(2, redis_conn, *papers)
         print("Papers loaded!")
 
         print("Creating vector search index")
