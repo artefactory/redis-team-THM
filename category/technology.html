@@ -12,6 +12,7 @@
         <header id="banner" class="body">
                 <h1><a href="/">Team THM</a></h1>
                 <nav><ul>
+                    <li><a href="/category/mlops.html">MLOps</a></li>
                     <li><a href="/category/team.html">Team</a></li>
                     <li class="active"><a href="/category/technology.html">Technology</a></li>
                 </ul></nav>
@@ -19,54 +20,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/mlops-methodology.html">Using MLOps in our project</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2022-10-30T09:00:00+01:00">
-                Published: Sun 30 October 2022
-        </abbr>
-		<br />
-        <abbr class="modified" title="2022-10-30T09:00:00+01:00">
-                Updated: Sun 30 October 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
-        </address>
-<p>In <a href="/category/technology.html">Technology</a>.</p>
-<p>tags: <a href="/tag/mlops.html">mlops</a> </p>
-</footer><!-- /.post-info --><h2>What is MLOps</h2>
-<h2>Code Best Practices</h2>
-<h3>Building Python and Javascript</h3>
-<p>Using GitHub Actions:</p>
-<ul>
-<li>Linting: https://www.youtube.com/watch?v=uImvWE-iSDQ</li>
-<li>Makefile: https://www.youtube.com/watch?v=F6DZdvbRZQQ</li>
-</ul>
-<h3>Integration tests with Docker</h3>
-<ul>
-<li>https://www.youtube.com/watch?v=lBX0Gl7Z1ck</li>
-</ul>
-<h2>Model Deployment</h2>
-<h3>Ways to deploy a model</h3>
-<ul>
-<li>https://gist.github.com/mycaule/8d87f1c72e25d7bbf7ef252e1b0309cc</li>
-<li>https://www.youtube.com/watch?v=JMGe4yIoBRA</li>
-</ul>
-<h2>References</h2>
-<p><a href="https://github.com/DataTalksClub/mlops-zoomcamp/">MLOps Zoomcamp</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/redis-vss.html" rel="bookmark"
-                           title="Permalink to Redis Vector Similarity Search">Redis Vector Similarity Search</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/redis-vss.html">Redis Vector Similarity Search</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2022-10-28T11:00:00+02:00">
                 Published: Fri 28 October 2022
@@ -83,10 +37,40 @@
         </address>
 <p>In <a href="/category/technology.html">Technology</a>.</p>
 <p>tags: <a href="/tag/redis.html">redis</a> </p>
-</footer><!-- /.post-info -->                <p>Redis Vector Similarity Search</p>
-                <a class="readmore" href="/redis-vss.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+</footer><!-- /.post-info --><h2>About Vector Similarity</h2>
+<p>...</p>
+<h3>Solutions for using it in production</h3>
+<p>In 2015, Spotify was one of the first large Internet company to use these algorithms in production and Erik Bernhardsson open sourced <code>annoy</code> at that time.</p>
+<div class="highlight"><pre><span></span><code>TODO write more about the history and whas Facebook provides with their library
+What are the achievements of Google Cloud Platform.
+</code></pre></div>
+
+<h2>Redis Vector Similarity Search</h2>
+<p>Few words about RedisSearch</p>
+<p><img alt="VSS" src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png?&amp;auto=webp&amp;quality=85,75&amp;width=1200"></p>
+<p>https://gist.github.com/mycaule/fcc307228b3b0bc80ee322949463435b</p>
+<h2>Getting started with Redis Cloud Enterprise</h2>
+<h3>Configure your Account</h3>
+<p>https://gist.github.com/mycaule/7bdb23dbaa63fd7223450332e30a7faa</p>
+<h3>Install Redis Insights</h3>
+<p>...</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://redis.com/blog/rediscover-redis-for-vector-similarity-search/">Rediscover Redis for Vector Similarity Search</a></li>
+<li><a href="https://www.youtube.com/watch?v=_Lrbesg4DhY">RedisDays New York 2022 - Using AI to Reveal Trading Signals Buried in Corporate Filings</a></li>
+<li><a href="www.youtube.com/watch?v=uS9ZGi8RyPM">MLOps Community - e-lab kickoff</a></li>
+<li><a href="https://www.linkedin.com/in/edsandovaluk/">Ed Sandoval LinkedIn page</a></li>
+<li><a href="https://colab.research.google.com/github/tensorflow/hub/blob/master/examples/colab/cross_lingual_similarity_with_tf_hub_multilingual_universal_encoder.ipynb">TFHub - Cross-Lingual Similarity and Semantic Search Engine with TF-Hub Multilingual Universal Encoder</a></li>
+<li><a href="https://cloud.google.com/vertex-ai/docs/matching-engine/ann-service-overview">Vertex AI - Matching Engine ANN service overview</a></li>
+<li><a href="https://www.slideshare.net/erikbern/approximate-nearest-neighbor-methods-and-vector-models-nyc-ml-meetup">Erik Bernahardsson - Approximate nearest neighbors &amp; vector models</a> | <a href="https://github.com/spotify/annoy"><code>spotify/annoy</code></a></li>
+<li><a href="https://engineering.fb.com/data-infrastructure/faiss-a-library-for-efficient-similarity-search/">Faiss: A library for efficient similarity search</a> | <a href="https://github.com/facebookresearch/faiss"><code>facebookresearch/faiss</code></a></li>
+<li><a href="https://github.com/perone/euclidesdb"><code>perone/euclidesdb</code></a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
 
             <li><article class="hentry">
                 <header>
