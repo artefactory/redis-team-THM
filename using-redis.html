@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Using Redis</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="The most common uses of Redis" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Team THM</a></h1>
+                <nav><ul>
+                    <li><a href="/category/team.html">Team</a></li>
+                    <li class="active"><a href="/category/technology.html">Technology</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/using-redis.html" rel="bookmark"
+           title="Permalink to Using Redis">Using Redis</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-10-28T10:20:00+02:00">
+                Published: Fri 28 October 2022
+        </abbr>
+		<br />
+        <abbr class="modified" title="2022-10-28T10:20:00+02:00">
+                Updated: Fri 28 October 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
+        </address>
+<p>In <a href="/category/technology.html">Technology</a>.</p>
+<p>tags: <a href="/tag/redis.html">redis</a> </p>
+</footer><!-- /.post-info -->      <h2>What can I do with Redis?</h2>
+<p>Redis is an open source in memory NoSQL database it was created in 2009.</p>
+<p>Redis primary use is when you have a database like MongoDB, SQL server, MySQL, and parts of your website or your application need to get data more quicker than your database can.</p>
+<p>You can achieve this by hosting part of the data in memory as a cache in Redis.</p>
+<p>Redis can handle data structures such as <code>Strings</code>, <code>Lists</code>, <code>Sets</code>, <code>Sorted Sets</code> and <code>Hashes</code> and also more advanced one.</p>
+<p>Here are some of its use cases:</p>
+<ul>
+<li>storing your sessions in Redis,</li>
+<li>keeping a list of most recent visitors,</li>
+<li>comparing which one of your friends are my friends,</li>
+<li>implementing realtime workflows with the pub/sub pattern.</li>
+</ul>
+<p>Redis enables web developpers to build scalable interactive applications. It is used by large companies such as Twitter, Instagram, Pinterest, StackOverflow or GitHub.</p>
+<p>To get started with Redis,</p>
+<ul>
+<li>https://redis.io/</li>
+<li>https://github.com/redis/redis</li>
+</ul>
+<p>If you prefer managed services, these are some modern solutions for your production application:</p>
+<ul>
+<li><a href="https://redis.com/redis-enterprise-cloud/overview/">Redis Cloud Enterprise</a></li>
+<li><a href="https://aws.amazon.com/redis/">Amazon ElasticCache</a></li>
+<li><a href="https://azure.microsoft.com/en-us/products/cache/">Azure Cache for Redis</a></li>
+<li><a href="https://cloud.google.com/memorystore/">GCP Memorystore</a></li>
+</ul>
+<h2>Redis in Details</h2>
+<p>Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types is can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.</p>
+<p>Redis is very fast for both reads and writes because it runs in memory, while having disk persistence as a backup.
+It can run in clusters of servers with lots of memory available.</p>
+<h2>Using Redis</h2>
+<p>Redis can be used a cache and as a second database. Redis helps you scale while keeping in memory the data retrieved from the database.</p>
+<p>On some cases, it can be used as a primary database, for example in use cases where only the fresh data matters and when it is only necessary to keep it small periods of time as in streaming.</p>
+<p>It can be useful for the Pub/Sub patterns when Internet users have their browsers open, and data is sent automatically without them to refresh the page.</p>
+<p>Because of its single threaded nature, it has no lock, and can respond the load of many requests.</p>
+<h2>Use cases</h2>
+<ul>
+<li>Show the most recent items in your application</li>
+<li>Leaderboards that update in realtime</li>
+<li>Show votes and dates for posts</li>
+<li>Expiration dates for shopping carts</li>
+<li>Real time analysis of online activity</li>
+<li>Job queues</li>
+</ul>
+<p>With high speed data where you're trying to keep your website responding for things that your database wasn't initially designed for.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://www.goodreads.com/book/show/16033444-redis-in-action">Josiah L. Carlson - Redis in Action</a></li>
+<li><a href="https://www.youtube.com/watch?v=jTTlBc2-T9Q">PyData Seattle 2015 - Top 5 uses of Redis as a Database</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://www.artefact.com">Artefact</a></li>
+                            <li><a href="https://redisventures.com">Redis Ventures</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
