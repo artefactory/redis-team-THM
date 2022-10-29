@@ -11,7 +11,7 @@ Summary: The most common uses of Redis
 
 Redis is an open source in memory NoSQL database it was created in 2009.
 
-Redis primary use is when you have a database like MongoDB, SQL server, MySQL, and parts of your website or your application need to get data more quicker than your database can.
+Redis primary use is when you have a database like MongoDB, SQL server, MySQL, and parts of your website or your application need to get data quicker than your database can.
 
 You can achieve this by hosting part of the data in memory as a cache in Redis.
 
@@ -21,10 +21,10 @@ Here are some of its use cases:
 
 - storing your sessions in Redis,
 - keeping a list of most recent visitors,
-- comparing which one of your friends are my friends,
-- implementing realtime workflows with the pub/sub pattern.
+- describing your friends graph,
+- implementing real-time workflows with the pub/sub pattern.
 
-Redis enables web developpers to build scalable interactive applications. It is used by large companies such as Twitter, Instagram, Pinterest, StackOverflow or GitHub.
+Redis enables web developers to build scalable interactive applications. It is used by large companies such as Twitter, Instagram, Pinterest, StackOverflow or GitHub.
 
 To get started with Redis,
 
@@ -40,7 +40,7 @@ If you prefer managed services, these are some modern solutions for your product
 
 ## Redis in Details
 
-Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types is can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.
+Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.
 
 Redis is very fast for both reads and writes because it runs in memory, while having disk persistence as a backup.
 It can run in clusters of servers with lots of memory available.
@@ -53,18 +53,18 @@ On some cases, it can be used as a primary database, for example in use cases wh
 
 It can be useful for the Pub/Sub patterns when Internet users have their browsers open, and data is sent automatically without them to refresh the page.
 
-Because of its single threaded nature, it has no lock, and can respond the load of many requests.
+Because of its single threaded nature, it has no lock, and can respond to the load of many requests.
 
 ## Use cases
 
 - Show the most recent items in your application
-- Leaderboards that update in realtime
+- Leaderboards that update in real-time
 - Show votes and dates for posts
 - Expiration dates for shopping carts
-- Real time analysis of online activity
+- Real-time analysis of online activity
 - Job queues
 
-With high speed data where you're trying to keep your website responding for things that your database wasn't initially designed for.
+With high-speed data, where you're trying to keep your website responding for things that your database wasn't initially designed for.
 
 ## References
 
