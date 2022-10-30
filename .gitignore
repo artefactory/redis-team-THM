@@ -8,4 +8,5 @@ datascience/*.zip
 blog/output
 
 .netlify
-backend/.vercel
+**/config/prod.env
+**/config/dev.env

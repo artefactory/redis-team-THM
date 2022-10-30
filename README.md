@@ -1,12 +1,14 @@
 # Team THM Submission
 
 <div align="center">
-    <img src="https://github.com/RedisVentures/redis-arXiv-search/blob/main/backend/vecsim_app/data/redis-logo.png?raw=true" height="25" /> <br />
-    <img src="https://www.cbnews.fr/sites/cbnews.fr/files/logo-societe/2019-05/Logo%20Artefact.png" height="20" /><br />
+    <img src="backend/vecsim_app/data/redis-logo.png" height="25" /> <br />
+    <img src="backend/vecsim_app/data/artefact-logo.png" height="20" /><br />
     Tom, Henrique, Michel<br />
     Oct. - Nov. 2022
 </div>
 <br />
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d2c3e1e1-fbb6-422a-b44c-848f6753a246/deploy-status)](https://app.netlify.com/sites/sweet-piroshki-f2e396/deploys)
 
 This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
@@ -64,11 +66,11 @@ pip install backend/requirements.txt
 +--------+----------+
          ^
          |  calls backend
-+--------+----------+
-|                   |
-|  React            |
-|                   |
-+-------------------+
++--------+----------+      +----------------+
+|                   |      |                |
+|  React            +----->+  arXiv server  |
+|                   |      |                |
++-------------------+      +----------------+
             browser use app from here
 ```
 
@@ -76,9 +78,10 @@ pip install backend/requirements.txt
 
 ### TODO
 
-- [ ] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
-- [ ] Deploy Backend and Redis somewhere
+- [x] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
+- [x] Setup [Redis Enterprise Cloud](https://redis.com/redis-enterprise-cloud/)
 - [x] Setup Blog page and documentation
+- [ ] Deploy Backend somewhere, Saturn Cloud ?
 
 ## Running The Application
 
@@ -97,8 +100,13 @@ docker system prune
 
 ### Backend Application Only
 
+Setup your Redis Enterprise Cloud then,
+
 ```sh
 cd backend/
+./start.sh
+
+open http://0.0.0.0:8080/api/docs
 ```
 
 ### Frontend Application Only
@@ -110,6 +118,10 @@ yarn start
 open http://localhost:3000
 ```
 
+### Exploration
+
+- Trying out [Docarray](https://docarray.jina.ai)
+
 ### Blog
 
 ```sh
@@ -120,6 +132,22 @@ pelican content && pelican --listen
 
 # To publish on GitHub pages
 make publish_blog
+```
+
+### Deployment
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory/redis-team-thm)
+
+```sh
+yarn global add vercel netlify
+
+# Frontend
+netlify build
+netlify deploy --prod
+
+# Backend
+cd backend
+vercel .
 ```
 
 ### Machine Learning Model

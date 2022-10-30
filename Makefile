@@ -14,11 +14,6 @@ CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activ
 help:
 	@grep "^# help\:" Makefile | grep -v grep | sed 's/\# help\: //' | sed 's/\# help\://'
 
-# help:
-# help: Conda Environment Setup
-# help: -------------
-
-# help: env                   - setup a Python conda env for this application
 .PHONY: env
 env:
 	@conda create -n arXiv python=3.9 -y
@@ -30,5 +25,8 @@ publish_blog:
 	ghp-import blog/output -b gh-pages
 	git push origin gh-pages
 
-download_dataset:
+load_index:
+	python3 backend/load_data.py
+
+download_data:
 	open https://www.kaggle.com/datasets/Cornell-University/arxiv
