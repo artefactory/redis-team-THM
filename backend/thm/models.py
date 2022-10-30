@@ -8,3 +8,11 @@ class Paper(HashModel):
     abstract: str = Field(index=True, full_text_search=True)
     categories: str = Field(index=True)
     year: str = Field(index=True)
+
+
+class Embedding(HashModel):
+    paper_pk: str
+    paper_id: str
+    categories: str
+    year: str
+    vector: bytes

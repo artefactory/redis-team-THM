@@ -82,7 +82,7 @@ async def find_papers_by_text(similarity_request: SimilarityRequest) -> Dict:
     )
 
     # find the vector of the Paper listed in the request
-    paper_vector_key = "paper_vector:" + str(similarity_request.paper_id)
+    paper_vector_key = "THM:Vector:" + str(similarity_request.paper_id)
     vector = await redis_client.hget(paper_vector_key, "vector")
 
     # obtain results of the queries

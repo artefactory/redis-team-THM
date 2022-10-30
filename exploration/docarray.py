@@ -1,13 +1,16 @@
 from docarray import Document, DocumentArray
+from backend.thm.config.settings import get_settings
+
+config = get_settings()
 
 with DocumentArray(
     storage="redis",
     config={
         "n_dim": 128,
-        "index_name": "paper_vector",
-        "host": "redis-13927.c21977.us-east-1-1.ec2.cloud.rlrcp.com",
-        "port": 13927,
-        "redis_config": {"password": "ZbZuFbYa9w3FQaafEU6yTM5fADXBhPS5"},
+        "index_name": "papers",
+        "host": config.redis_host,
+        "port": config.redis_port,
+        "redis_config": {"password": config.redis_password},
     },
 ) as da:
     da.extend([Document() for _ in range(1000)])

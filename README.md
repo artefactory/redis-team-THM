@@ -78,10 +78,10 @@ pip install backend/requirements.txt
 
 ### TODO
 
-- [ ] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
-- [ ] Setup [Redis Enterprise Cloud](https://redis.com/redis-enterprise-cloud/)
-- [ ] Deploy Backend and Redis somewhere, Netlify [1](https://developer.redis.com/create/netlify/getting-started-with-netlify), [2](https://app.netlify.com/sites/fastapi/deploys) ?
+- [x] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
+- [x] Setup [Redis Enterprise Cloud](https://redis.com/redis-enterprise-cloud/)
 - [x] Setup Blog page and documentation
+- [ ] Deploy Backend somewhere, Saturn Cloud ?
 
 ## Running The Application
 
@@ -117,6 +117,10 @@ yarn install --no-optional
 yarn start
 open http://localhost:3000
 ```
+
+### Exploration
+
+- Trying out [Docarray](https://docarray.jina.ai)
 
 ### Blog
 

@@ -8,6 +8,8 @@ from redis.commands.search.query import Query
 
 from thm.config.settings import get_settings
 
+VECTOR_SIZE = 768
+
 
 class TokenEscaper:
     """
@@ -64,7 +66,7 @@ class SearchIndex:
             "FLAT",
             {
                 "TYPE": "FLOAT32",
-                "DIM": 768,
+                "DIM": VECTOR_SIZE,
                 "DISTANCE_METRIC": distance_metric,
                 "INITIAL_CAP": number_of_vectors,
                 "BLOCK_SIZE": number_of_vectors,
@@ -94,7 +96,7 @@ class SearchIndex:
             "HNSW",
             {
                 "TYPE": "FLOAT32",
-                "DIM": 768,
+                "DIM": VECTOR_SIZE,
                 "DISTANCE_METRIC": distance_metric,
                 "INITIAL_CAP": number_of_vectors,
             },
