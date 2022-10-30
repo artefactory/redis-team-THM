@@ -1,8 +1,8 @@
 # Team THM Submission
 
 <div align="center">
-    <img src="backend/vecsim_app/data/redis-logo.png" height="25" /> <br />
-    <img src="backend/vecsim_app/data/artefact-logo.png" height="20" /><br />
+    <img src="backend/thm/data/redis-logo.png" height="25" /> <br />
+    <img src="backend/thm/data/artefact-logo.png" height="20" /><br />
     Tom, Henrique, Michel<br />
     Oct. - Nov. 2022
 </div>

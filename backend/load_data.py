@@ -20,7 +20,7 @@ VECTOR_SIZE = 768
 EMBEDDINGS_FILE = "arxiv_embeddings_10000.pkl"
 
 # TODO can be done faster using pyarrow
-def read_paper_df() -> List:
+def read_paper_df(config) -> List:
     with open(f"{config.data_location}/{EMBEDDINGS_FILE}", "rb") as f:
         df = pickle.load(f)
     return df
@@ -47,16 +47,16 @@ async def gather_with_concurrency(redis_conn, n, separator, *papers):
     await asyncio.gather(*[load_paper(p) for p in papers])
 
 
-async def load_all_data(redis_conn: Redis):
+async def load_all_data(config, redis_conn: Redis, concurrency_level: int, separator: str):
     search_index = SearchIndex()
 
     if await redis_conn.dbsize() > 300:
         logger.info("Papers already loaded")
     else:
         logger.info("Loading papers into Vecsim App")
-        papers = read_paper_df()
+        papers = read_paper_df(config)
         papers = papers.to_dict("records")
-        await gather_with_concurrency(redis_conn, CONCURRENCY_LEVEL, SEPARATOR, *papers)
+        await gather_with_concurrency(redis_conn, concurrency_level, separator, *papers)
         logger.info("Papers loaded!")
 
         logger.info("Creating vector search index")
@@ -84,12 +84,11 @@ async def load_all_data(redis_conn: Redis):
         logger.info("Search index created")
 
 
-if __name__ == "__main__":
-    # TODO CLI arguments --concurrency_level, --separator, --reset-db
-    # https://github.com/tqdm/tqdm
-    # https://github.com/rsalmei/alive-progress
+def run(concurrency_level: int = 2, separator: str = "|", reset_db: bool = False):
+    """Load the Embedding Index to Redis."""
 
     config = get_settings()
+    logger.info(f"TODO {reset_db}")
 
     Paper.Meta.database = get_redis_connection(
         url=config.get_redis_url(), decode_responses=True
@@ -99,4 +98,11 @@ if __name__ == "__main__":
 
     redis_conn = redis.from_url(config.get_redis_url())
 
-    asyncio.run(load_all_data(redis_conn))
+    asyncio.run(load_all_data(config, redis_conn, concurrency_level, separator))
+
+if __name__ == "__main__":
+    fire.Fire(run)
+    # https://github.com/tqdm/tqdm
+    # https://github.com/rsalmei/alive-progress
+
+
