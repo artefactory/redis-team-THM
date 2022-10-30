@@ -8,16 +8,13 @@ import pandas as pd
 from loguru import logger
 from sentence_transformers import SentenceTransformer
 
-DATA_PATH = "arxiv-metadata-oai-snapshot.json"
-YEAR_CUTOFF = 2012
-YEAR_PATTERN = r"(19|20[0-9]{2})"
-ML_CATEGORY = "cs.LG"
-
 
 def process(paper: dict):
+    year_pattern = r"(19|20[0-9]{2})"
+
     paper = json.loads(paper)
     if paper["journal-ref"]:
-        years = [int(year) for year in re.findall(YEAR_PATTERN, paper["journal-ref"])]
+        years = [int(year) for year in re.findall(year_pattern, paper["journal-ref"])]
         years = [year for year in years if (year <= 2022 and year >= 1991)]
         year = min(years) if years else None
     else:
@@ -32,12 +29,12 @@ def process(paper: dict):
     }
 
 
-def papers():
-    with open(DATA_PATH, "r") as f:
+def papers(year_cutoff: int, ml_category: str, data_path: str):
+    with open(data_path, "r") as f:
         for paper in f:
             paper = process(paper)
             if paper["year"]:
-                if paper["year"] >= YEAR_CUTOFF and ML_CATEGORY in paper["categories"]:
+                if paper["year"] >= year_cutoff and ml_category in paper["categories"]:
                     yield paper
 
 
@@ -74,25 +71,26 @@ def clean_description(description: str):
     return description
 
 
-def run():
+def run(year_cutoff = 2012, ml_category = "cs.LG", data_path = "arxiv-metadata-oai-snapshot.json"):
+    logger.info("Reading papers...")
+    df = pd.DataFrame(papers(year_cutoff, ml_category, data_path))
 
-    logger
-    df = pd.DataFrame(papers())
-    len(df)
+    length = len(df)
+    mean = df.abstract.apply(lambda a: len(a.split())).mean()
 
-    # Avg length of the abstracts
-    df.abstract.apply(lambda a: len(a.split())).mean()
+    logger.info(f"Length: {length}")
+    logger.info(f"Mean: {mean}")
 
     model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
 
-    # Create embeddings from the title and abstract
+    logger.info("Creating embeddings from the title and abstract...")
     emb = model.encode(
         df.apply(
             lambda r: clean_description(r["title"] + " " + r["abstract"]), axis=1
         ).tolist()
     )
 
-    # Add embeddings to df
+    logger.info("Adding embeddings...")
     df = df.reset_index().drop("index", axis=1)
     df["vector"] = emb.tolist()
 
