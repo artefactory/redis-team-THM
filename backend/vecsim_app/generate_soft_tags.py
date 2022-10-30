@@ -72,7 +72,7 @@ def main():
     args = TrainingArguments(
     save_strategy="epoch",
     num_train_epochs=1,
-    output_dir = f'{DATA_LOCATION}/model_outputs',
+    output_dir = f'{config.data_location}/model_outputs',
     logging_steps = 10000
 )
     trainer = Trainer(model=model, args=args, train_dataset=df_dataset, tokenizer=tokenizer)
