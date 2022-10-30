@@ -23,18 +23,21 @@ def process(paper: dict):
         "id": paper["id"],
         "title": paper["title"],
         "year": year,
+        "update_date": paper["update_date"],
         "authors": paper["authors"],
         "categories": ",".join(paper["categories"].split(" ")),
         "abstract": paper["abstract"],
     }
 
 
-def papers(year_cutoff: int, ml_category: str, data_path: str):
+def papers(data_path: str, filters: dict):
     with open(data_path, "r") as f:
         for paper in f:
             paper = process(paper)
             if paper["year"]:
-                if paper["year"] >= year_cutoff and ml_category in paper["categories"]:
+                if filters is None:
+                    yield paper
+                elif int(paper["update_date"][:7].replace("-","")) == filters["year_month"]:
                     yield paper
 
 
@@ -71,17 +74,27 @@ def clean_description(description: str):
     return description
 
 
-def run(year_cutoff = 2012, ml_category = "cs.LG", data_path = "arxiv-metadata-oai-snapshot.json"):
-    logger.info("Reading papers...")
-    df = pd.DataFrame(papers(year_cutoff, ml_category, data_path))
+def run(
+    year_month,
+    input_path="arxiv-metadata-oai-snapshot.json",
+    output_path="arxiv_embeddings_10000.pkl",
+    model_name="sentence-transformers/all-mpnet-base-v2",
+):
+    """Generate Embeddings and Create a File Index."""
+
+    filters = {"year_month": year_month}
+    logger.info(f"Reading papers for... {filters}")
+    df = pd.DataFrame(papers(input_path, filters))
 
     length = len(df)
+    logger.info(length)
     mean = df.abstract.apply(lambda a: len(a.split())).mean()
 
-    logger.info(f"Length: {length}")
-    logger.info(f"Mean: {mean}")
+    logger.info(f"NB of Papers: {length}")
+    logger.info(f"Mean Word Count: {mean}")
 
-    model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+    # See https://huggingface.co/spaces/mteb/leaderboard
+    model = SentenceTransformer(model_name)
 
     logger.info("Creating embeddings from the title and abstract...")
     emb = model.encode(
@@ -95,7 +108,7 @@ def run(year_cutoff = 2012, ml_category = "cs.LG", data_path = "arxiv-metadata-o
     df["vector"] = emb.tolist()
 
     logger.info("Exporting to pickle file...")
-    with open("arxiv_embeddings_10000.pkl", "wb") as f:
+    with open(output_path, "wb") as f:
         data = pickle.dumps(df)
         f.write(data)
 
