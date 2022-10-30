@@ -198,4 +198,4 @@ arxiv-metadata-oai-snapshot.json ->
 
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
-|            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
+| `arxiv_embeddings_10000.pkl` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 6min |

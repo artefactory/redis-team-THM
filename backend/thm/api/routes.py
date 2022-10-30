@@ -33,6 +33,8 @@ async def papers_from_results(total, results) -> list:
         "papers": [await process_paper(p) for p in results.docs],
     }
 
+# TODO Read this
+# https://redis.readthedocs.io/en/stable/examples/search_vector_similarity_examples.html#Adding-Vector-Fields
 
 @r.get("/", response_model=Dict)
 async def get_papers(

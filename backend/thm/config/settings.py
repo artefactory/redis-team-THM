@@ -19,5 +19,5 @@ class Settings(BaseSettings):
 
 
 def get_settings():
-    return Settings(_env_file="thm/config/prod.env")
+    return Settings(_env_file="../backend/thm/config/prod.env")
     # contact Michel for the gitignored file
