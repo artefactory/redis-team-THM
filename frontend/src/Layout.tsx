@@ -1,16 +1,16 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react'
 
-import { Header } from './views/Header';
-import { Home } from './views/Home';
-import { Footer } from './views/Footer';
+import { Header } from './views/Header'
+import { Home } from './views/Home'
+import { Footer } from './views/Footer'
 
 
 export const Layout: FC = () => {
-    const [papers, setPapers] = useState<any[]>([]);
-    const [categories, setCategories] = useState<string[]>([]);
-    const [years, setYears] = useState<string[]>([]);
-    const [state, setState] = useState<string>('');
-    const [total, setTotal] = useState<number>(0);
+    const [papers, setPapers] = useState<any[]>([])
+    const [categories, setCategories] = useState<string[]>([])
+    const [years, setYears] = useState<string[]>([])
+    const [state, setState] = useState<string>('')
+    const [total, setTotal] = useState<number>(0)
 
     return (
         <>
@@ -29,7 +29,7 @@ export const Layout: FC = () => {
         />
         <Footer/>
         </>
-    );
-};
+    )
+}
 
-export default Layout;
+export default Layout

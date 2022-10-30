@@ -1,8 +1,10 @@
 fastapi
-httpx
-requests
+# httpx
+# requests
 uvicorn
-aiofiles
+# aiofiles
 redis-om
-pandas
+# pandas
 sentence-transformers
+python-dotenv
+fire

@@ -1,19 +1,19 @@
-import * as React from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import useCheckMobileScreen from './mobile';
+import * as React from 'react'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
+import Popover from '@mui/material/Popover'
+import Typography from '@mui/material/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import useCheckMobileScreen from './mobile'
 
 interface Props {
     gender: string,
     category: string,
-    setGender: (state: any) => void;
-    setCategory: (state: any) => void;
+    setGender: (state: any) => void
+    setCategory: (state: any) => void
 }
 
 
@@ -26,44 +26,44 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     width: "85%"
   }
-}));
+}))
 
 export const TagRadios = (props: Props) => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  const classes = useStyles()
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
 
-  const isMobile = useCheckMobileScreen();
+  const isMobile = useCheckMobileScreen()
   const getPopoverClass = () => {
     if (isMobile) {
-      return classes.popoverMobile;
+      return classes.popoverMobile
     }
     else {
-      return classes.popover;
+      return classes.popover
     }
   }
   const setProductGender = (event: any) => {
     if (event.target.value === props.gender) {
-      props.setGender("");
+      props.setGender("")
     } else {
-      props.setGender(event.target.value);
+      props.setGender(event.target.value)
     }
   }
   const setProductCategory = (event: any) =>{
     if (event.target.value === props.category) {
-      props.setCategory("");
+      props.setCategory("")
     } else {
-      props.setCategory(event.target.value);
+      props.setCategory(event.target.value)
     }
   }
   return (
@@ -117,5 +117,5 @@ export const TagRadios = (props: Props) => {
       </div>
     </Popover>
     </FormControl>
-  );
+  )
 }
