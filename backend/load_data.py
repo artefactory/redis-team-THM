@@ -5,10 +5,11 @@ from typing import List
 import struct
 
 import redis.asyncio as redis
+from redis.asyncio import Redis
 from redis.commands.search.field import TagField
 from redis_om import get_redis_connection
 from thm.config.settings import get_settings
-from thm.models import Paper, Embedding
+from thm.models import Paper
 from thm.search_index import SearchIndex
 
 from loguru import logger
@@ -16,54 +17,37 @@ from loguru import logger
 CONCURRENCY_LEVEL = 2
 SEPARATOR = "|"
 VECTOR_SIZE = 768
+EMBEDDINGS_FILE = "arxiv_embeddings_10000.pkl"
 
+# TODO can be done faster using pyarrow
 def read_paper_df() -> List:
-    with open(f"{config.data_location}/arxiv_embeddings_10000.pkl", "rb") as f:
+    with open(f"{config.data_location}/{EMBEDDINGS_FILE}", "rb") as f:
         df = pickle.load(f)
     return df
 
 
-async def gather_with_concurrency(n, separator, *papers):
+async def gather_with_concurrency(redis_conn, n, separator, *papers):
     semaphore = asyncio.Semaphore(n)
 
     async def load_paper(paper):
         async with semaphore:
-            vector = paper.pop("vector")
-            paper["paper_id"] = paper.pop("id")
-            paper["categories"] = paper["categories"].replace(",", separator)
-            p = Paper(**paper)
-            await p.save()
-            # TypeError: object int can't be used in 'await' expression
-
-            # em = Embedding(
-            #     paper_pk=p.pk,
-            #     paper_id=p.paper_id,
-            #     categories=p.categories,
-            #     year=p.year,
-            #     vector=struct.pack('%sf' % VECTOR_SIZE, *vector)
-            # )
-            # Doesn't work with pydantic
-            # File "pydantic/json.py", line 45, in pydantic.json.lambda
-            # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 0: invalid continuation byte
-
-            # save vector data
-            redis_conn = redis.from_url(config.get_redis_url())
             await redis_conn.hset(
-                f"THM:Vector:{p.paper_id}",
+                f"THM:Paper:{paper['id']}",
                 mapping={
-                    "paper_pk": p.pk,
-                    "paper_id": p.paper_id,
-                    "categories": p.categories,
-                    "year": p.year,
-                    "vector": struct.pack('%sf' % VECTOR_SIZE, *vector),
+                    "paper_id": paper["id"],
+                    "title": paper["title"],
+                    "authors": paper["authors"],
+                    "abstract": paper["abstract"],
+                    "categories": paper["categories"].replace(",", separator),
+                    "year": paper["year"],
+                    "vector": struct.pack('%sf' % VECTOR_SIZE, *paper["vector"]),
                 },
             )
 
     await asyncio.gather(*[load_paper(p) for p in papers])
 
 
-async def load_all_data():
-    redis_conn = redis.from_url(config.get_redis_url())
+async def load_all_data(redis_conn: Redis):
     search_index = SearchIndex()
 
     if await redis_conn.dbsize() > 300:
@@ -72,7 +56,7 @@ async def load_all_data():
         logger.info("Loading papers into Vecsim App")
         papers = read_paper_df()
         papers = papers.to_dict("records")
-        await gather_with_concurrency(CONCURRENCY_LEVEL, SEPARATOR, *papers)
+        await gather_with_concurrency(redis_conn, CONCURRENCY_LEVEL, SEPARATOR, *papers)
         logger.info("Papers loaded!")
 
         logger.info("Creating vector search index")
@@ -85,7 +69,7 @@ async def load_all_data():
                 year_field,
                 redis_conn=redis_conn,
                 number_of_vectors=len(papers),
-                prefix="THM:Vector:",
+                prefix="THM:Paper:",
                 distance_metric="IP",
             )
         else:
@@ -94,7 +78,7 @@ async def load_all_data():
                 year_field,
                 redis_conn=redis_conn,
                 number_of_vectors=len(papers),
-                prefix="THM:Vector:",
+                prefix="THM:Paper:",
                 distance_metric="IP",
             )
         logger.info("Search index created")
@@ -113,10 +97,6 @@ if __name__ == "__main__":
     Paper.Meta.global_key_prefix = "THM"
     Paper.Meta.model_key_prefix = "Paper"
 
-    Embedding.Meta.database = get_redis_connection(
-        url=config.get_redis_url(), decode_responses=True
-    )
-    Embedding.Meta.global_key_prefix = "THM"
-    Embedding.Meta.model_key_prefix = "Embedding"
+    redis_conn = redis.from_url(config.get_redis_url())
 
-    asyncio.run(load_all_data())
+    asyncio.run(load_all_data(redis_conn))

@@ -19,7 +19,7 @@ search_index = SearchIndex()
 
 
 async def process_paper(p) -> Dict:
-    paper = await Paper.get(p.paper_pk)
+    paper = await Paper.get(p.paper_id)
     paper = paper.dict()
     score = 1 - float(p.vector_score)
     paper["similarity_score"] = score
@@ -82,7 +82,7 @@ async def find_papers_by_text(similarity_request: SimilarityRequest) -> Dict:
     )
 
     # find the vector of the Paper listed in the request
-    paper_vector_key = "THM:Vector:" + str(similarity_request.paper_id)
+    paper_vector_key = "THM:Paper:" + str(similarity_request.paper_id)
     vector = await redis_client.hget(paper_vector_key, "vector")
 
     # obtain results of the queries

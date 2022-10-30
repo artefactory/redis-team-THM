@@ -167,7 +167,7 @@ class SearchIndex:
             Query(base_query)
             .sort_by("vector_score")
             .paging(0, number_of_results)
-            .return_fields("paper_id", "paper_pk", "vector_score")
+            .return_fields("paper_id", "vector_score")
             .dialect(2)
         )
 
