@@ -14,3 +14,4 @@ os.environ["REDIS_DATA_URL"] = REDIS_URL
 os.environ["REDIS_OM_URL"] = REDIS_URL
 API_V1_STR = "/api/v1"
 DATA_LOCATION = os.environ.get("DATA_LOCATION", "../../data")
+YEAR_PATTERN = r"(19|20[0-9]{2})"
