@@ -6,3 +6,5 @@ uvicorn
 redis-om
 # pandas
 sentence-transformers
+python-dotenv
+fire

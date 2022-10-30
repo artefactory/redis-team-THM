@@ -8,3 +8,4 @@ datascience/*.zip
 blog/output
 # Local Netlify folder
 .netlify
+**/config/prod.env

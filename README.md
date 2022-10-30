@@ -66,11 +66,11 @@ pip install backend/requirements.txt
 +--------+----------+
          ^
          |  calls backend
-+--------+----------+
-|                   |
-|  React            |
-|                   |
-+-------------------+
++--------+----------+      +----------------+
+|                   |      |                |
+|  React            +----->+  arXiv server  |
+|                   |      |                |
++-------------------+      +----------------+
             browser use app from here
 ```
 

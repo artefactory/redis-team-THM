@@ -1,51 +1,38 @@
-from pathlib import Path
-from aredis_om import get_redis_connection, Migrator
-
+from aredis_om import Migrator, get_redis_connection
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
-from vecsim_app import config
-from vecsim_app.models import Paper
-from vecsim_app.api import routes
-from vecsim_app.spa import SinglePageApplication
+from thm.api import routes
+from thm.config.settings import get_settings
+from thm.models import Paper
 
+config = get_settings()
 
 app = FastAPI(
-    title=config.PROJECT_NAME,
-    docs_url=config.API_DOCS,
-    openapi_url=config.OPENAPI_DOCS
+    title=config.project_name, docs_url=config.api_docs, openapi_url=config.openapi_docs
 )
 
+# TODO https://github.com/redis/redis-om-python/blob/main/docs/fastapi_integration.md
 app.add_middleware(
-        CORSMiddleware,
-        allow_origins="*",
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"]
+    CORSMiddleware,
+    allow_origins="*",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# Routers
 app.include_router(
-    routes.paper_router,
-    prefix=config.API_V1_STR + "/paper",
-    tags=["papers"]
+    routes.paper_router, prefix=f"{config.api_v1_str}/paper", tags=["papers"]
 )
 
 
 @app.on_event("startup")
 async def startup():
-    # You can set the Redis OM URL using the REDIS_OM_URL environment
-    # variable, or by manually creating the connection using your model's
-    # Meta object.
-    Paper.Meta.database = get_redis_connection(url=config.REDIS_URL, decode_responses=True)
+    Paper.Meta.database = get_redis_connection(
+        url=config.get_redis_url(), decode_responses=True
+    )
     await Migrator().run()
 
-# static image files
-app.mount("/data", StaticFiles(directory="vecsim_app/data"), name="data")
 
-# mount the built GUI react files into the static dir to be served.
-# current_file = Path(__file__)
-# project_root = current_file.parent.resolve()
-# gui_build_dir = project_root / "templates" / "build"
-# app.mount(path="/", app=SinglePageApplication(directory=gui_build_dir), name="SPA")
+app.mount("/data", StaticFiles(directory="thm/data"), name="data")
