@@ -181,9 +181,21 @@ jupyter run multi-gpu-arxiv-embeddings.ipynb
 
 ### Benchmarks
 
+```txt
+arxiv-metadata-oai-snapshot.json ->
+```
+
+#### Generating Embeddings
+
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
 |            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
 |            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
 | `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
 |  `multi-gpu-arxiv-embeddings.ipynb` | Dask Cluster, 32 cores | ... |
+
+#### Loading Index on Redis Cloud
+
+| Model                    | Machine                      | Time   |
+|-------------------------:|------------------------------|-------:|
+|            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
