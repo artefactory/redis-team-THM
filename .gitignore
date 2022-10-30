@@ -3,6 +3,7 @@ arxiv-metadata-oai-snapshot.json
 *.DS_STORE
 *.log
 *.outputs
+*.pyc
 **/*.ipynb_checkpoints/
 
 datascience/*.json
