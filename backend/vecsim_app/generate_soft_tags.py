@@ -18,7 +18,6 @@ logging.getLogger().setLevel(logging.INFO)
 def main():
     logging.info('Reading data...')
     df = pd.DataFrame(papers())
-    df = df.sample(100)
     df_with_paper_data = df.copy()
 
     logging.info('Cleaning data...')
