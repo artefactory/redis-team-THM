@@ -134,7 +134,7 @@ git push origin gh-pages
 
 ### Deployment
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory-fr/redis-team-thm)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory/redis-team-thm)
 
 ```sh
 yarn global add vercel netlify

@@ -63,11 +63,11 @@ async def get_papers(limit: int = 20, skip: int = 0, years: str = "", categories
         .execute(exhaust_results=False)
 
     # Get total count
-    total = (
-        await redis_client.ft(config.INDEX_NAME).search(
-            search_index.count_query(years=years, categories=categories)
-        )
-    ).total
+    # total = (
+    #     await redis_client.ft(config.INDEX_NAME).search(
+    #         search_index.count_query(years=years, categories=categories)
+    #     )
+    # ).total
 
     total = 9
     return {
