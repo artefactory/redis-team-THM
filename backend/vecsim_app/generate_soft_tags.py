@@ -10,7 +10,9 @@ import logging
 import pickle
 
 from utils_soft_labels import clean_description, process, papers, get_best_args_and_score, get_category_names
-from config import DATA_LOCATION
+from thm.config.settings import get_settings
+
+config = get_settings()
 
 transformer_logging.set_verbosity_error()
 logging.getLogger().setLevel(logging.INFO)
