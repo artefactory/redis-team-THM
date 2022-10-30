@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { AppRoutes } from './Routes';
+import { FC } from 'react'
+import { AppRoutes } from './Routes'
 
-const App: FC = () => <AppRoutes />;
+const App: FC = () => <AppRoutes />
 
-export default App;
+export default App
