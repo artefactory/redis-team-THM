@@ -1,77 +1,29 @@
-import json
 import pickle
-import re
-import string
-
+from typing import Optional
 import fire
 import pandas as pd
 from loguru import logger
 from sentence_transformers import SentenceTransformer
+from helpers import clean_description, process
+from tqdm import tqdm
+
+tqdm.pandas()
 
 
-def process(paper: dict):
-    year_pattern = r"(19|20[0-9]{2})"
-
-    paper = json.loads(paper)
-    if paper["journal-ref"]:
-        years = [int(year) for year in re.findall(year_pattern, paper["journal-ref"])]
-        years = [year for year in years if (year <= 2022 and year >= 1991)]
-        year = min(years) if years else None
-    else:
-        year = None
-    return {
-        "id": paper["id"],
-        "title": paper["title"],
-        "year": year,
-        "update_date": paper["update_date"],
-        "authors": paper["authors"],
-        "categories": ",".join(paper["categories"].split(" ")),
-        "abstract": paper["abstract"],
-    }
-
-
-def papers(data_path: str, filters: dict):
+def get_papers(data_path: str, year_month: Optional[int] = None):
     with open(data_path, "r") as f:
         for paper in f:
             paper = process(paper)
             if paper["year"]:
-                if filters is None:
+                if year_month is None:
                     yield paper
-                elif int(paper["update_date"][:7].replace("-","")) == filters["year_month"]:
+                elif int(paper["update_date"][:7].replace("-", "")) == year_month:
                     yield paper
 
 
-def clean_description(description: str):
-    if not description:
-        return ""
-    # remove unicode characters
-    description = description.encode("ascii", "ignore").decode()
-
-    # remove punctuation
-    description = re.sub("[%s]" % re.escape(string.punctuation), " ", description)
-
-    # clean up the spacing
-    description = re.sub("\s{2,}", " ", description)
-
-    # remove urls
-    # description = re.sub("https*\S+", " ", description)
-
-    # remove newlines
-    description = description.replace("\n", " ")
-
-    # remove all numbers
-    # description = re.sub('\w*\d+\w*', '', description)
-
-    # split on capitalized words
-    description = " ".join(re.split("(?=[A-Z])", description))
-
-    # clean up the spacing again
-    description = re.sub("\s{2,}", " ", description)
-
-    # make all words lowercase
-    description = description.lower()
-
-    return description
+def _featurize(model, title, abstract):
+    sentence = clean_description(f"{title} {abstract}")
+    return model.encode(sentence).tolist()
 
 
 def run(
@@ -82,30 +34,18 @@ def run(
 ):
     """Generate Embeddings and Create a File Index."""
 
-    filters = {"year_month": year_month}
-    logger.info(f"Reading papers for... {filters}")
-    df = pd.DataFrame(papers(input_path, filters))
+    logger.info(f"Reading papers for {year_month}...")
+    df = pd.DataFrame(get_papers(input_path, year_month))
 
-    length = len(df)
-    logger.info(length)
-    mean = df.abstract.apply(lambda a: len(a.split())).mean()
-
-    logger.info(f"NB of Papers: {length}")
-    logger.info(f"Mean Word Count: {mean}")
-
-    # See https://huggingface.co/spaces/mteb/leaderboard
+    # https://www.sbert.net/docs/usage/semantic_textual_similarity.html
     model = SentenceTransformer(model_name)
 
-    logger.info("Creating embeddings from the title and abstract...")
-    emb = model.encode(
-        df.apply(
-            lambda r: clean_description(r["title"] + " " + r["abstract"]), axis=1
-        ).tolist()
+    logger.info("Creating embeddings from title and abstract...")
+    logger.info(model_name)
+    df["vector"] = df.progress_apply(
+        lambda x: _featurize(model, x["title"], x["abstract"]), axis=1
     )
-
-    logger.info("Adding embeddings...")
     df = df.reset_index().drop("index", axis=1)
-    df["vector"] = emb.tolist()
 
     logger.info("Exporting to pickle file...")
     with open(output_path, "wb") as f:

@@ -36,6 +36,7 @@ async def papers_from_results(total, results) -> list:
 # TODO Read this
 # https://redis.readthedocs.io/en/stable/examples/search_vector_similarity_examples.html#Adding-Vector-Fields
 
+
 @r.get("/", response_model=Dict)
 async def get_papers(
     limit: int = 20, skip: int = 0, years: str = "", categories: str = ""

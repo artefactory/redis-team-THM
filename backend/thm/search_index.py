@@ -8,8 +8,6 @@ from redis.commands.search.query import Query
 
 from thm.config.settings import get_settings
 
-VECTOR_SIZE = 768
-
 
 class TokenEscaper:
     """
@@ -51,6 +49,7 @@ class SearchIndex:
         number_of_vectors: int,
         prefix: str,
         distance_metric: str = "L2",
+        vector_size: int,
     ):
         """
         Create a FLAT aka brute force style index.
@@ -66,7 +65,7 @@ class SearchIndex:
             "FLAT",
             {
                 "TYPE": "FLOAT32",
-                "DIM": VECTOR_SIZE,
+                "DIM": vector_size,
                 "DISTANCE_METRIC": distance_metric,
                 "INITIAL_CAP": number_of_vectors,
                 "BLOCK_SIZE": number_of_vectors,
@@ -81,6 +80,7 @@ class SearchIndex:
         number_of_vectors: int,
         prefix: str,
         distance_metric: str = "COSINE",
+        vector_size: int,
     ):
         """
         Create an approximate NN index via HNSW.
@@ -96,7 +96,7 @@ class SearchIndex:
             "HNSW",
             {
                 "TYPE": "FLOAT32",
-                "DIM": VECTOR_SIZE,
+                "DIM": vector_size,
                 "DISTANCE_METRIC": distance_metric,
                 "INITIAL_CAP": number_of_vectors,
             },
