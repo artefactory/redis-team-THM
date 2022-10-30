@@ -17,11 +17,10 @@ from loguru import logger
 CONCURRENCY_LEVEL = 2
 SEPARATOR = "|"
 VECTOR_SIZE = 768
-EMBEDDINGS_FILE = "arxiv_embeddings_10000.pkl"
 
 # TODO can be done faster using pyarrow
 def read_paper_df(config) -> List:
-    with open(f"{config.data_location}/{EMBEDDINGS_FILE}", "rb") as f:
+    with open(f"{config.embeddings_path}", "rb") as f:
         df = pickle.load(f)
     return df
 
@@ -40,22 +39,26 @@ async def gather_with_concurrency(redis_conn, n, separator, *papers):
                     "abstract": paper["abstract"],
                     "categories": paper["categories"].replace(",", separator),
                     "year": paper["year"],
-                    "vector": struct.pack('%sf' % VECTOR_SIZE, *paper["vector"]),
+                    "vector": struct.pack("%sf" % VECTOR_SIZE, *paper["vector"]),
                 },
             )
 
     await asyncio.gather(*[load_paper(p) for p in papers])
 
 
-async def load_all_data(config, redis_conn: Redis, concurrency_level: int, separator: str):
+async def load_all_data(
+    config, redis_conn: Redis, concurrency_level: int, separator: str
+):
     search_index = SearchIndex()
 
     if await redis_conn.dbsize() > 300:
         logger.info("Papers already loaded")
     else:
-        logger.info("Loading papers into Vecsim App")
+        logger.info("Loading papers...")
         papers = read_paper_df(config)
         papers = papers.to_dict("records")
+
+        logger.info("Writing to Redis...")
         await gather_with_concurrency(redis_conn, concurrency_level, separator, *papers)
         logger.info("Papers loaded!")
 
@@ -84,7 +87,12 @@ async def load_all_data(config, redis_conn: Redis, concurrency_level: int, separ
         logger.info("Search index created")
 
 
-def run(concurrency_level: int = 2, separator: str = "|", reset_db: bool = False):
+def run(
+    concurrency_level: int = 2,
+    separator: str = "|",
+    reset_db: bool = False,
+    filename: str = EMBEDDINGS_FILE,
+):
     """Load the Embedding Index to Redis."""
 
     config = get_settings()
@@ -100,9 +108,9 @@ def run(concurrency_level: int = 2, separator: str = "|", reset_db: bool = False
 
     asyncio.run(load_all_data(config, redis_conn, concurrency_level, separator))
 
+
 if __name__ == "__main__":
     fire.Fire(run)
+
     # https://github.com/tqdm/tqdm
     # https://github.com/rsalmei/alive-progress
-
-

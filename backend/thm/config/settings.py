@@ -7,12 +7,12 @@ class Settings(BaseSettings):
     openapi_docs: str = "/api/openapi.json"
     index_name: str = "papers"
     index_type: str = "HNSW"
+    api_v1_str: str = "/api/v1"
+    embeddings_path: str = "../datascience/arxiv_embeddings_10000.pkl"
     redis_host: str
     redis_port: int
     redis_db: str
     redis_password: str
-    api_v1_str: str = "/api/v1"
-    data_location: str
 
     def get_redis_url(self):
         return f"redis://default:{self.redis_password}@{self.redis_host}:{self.redis_port}/{self.redis_db}"
