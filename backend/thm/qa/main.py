@@ -8,25 +8,25 @@ from thm.models import extract_answer, tokenize_text
 from thm.qa.paper_priority import PriorityPapersManager
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
+DATA_LOCATION = os.environ.get("DATA_LOCATION", '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json')
+DATA_LOCATION = '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json'
+YEAR_CUTOFF = 2012
+ML_CATEGORY = "cs.LG"
 
 def validate_question(question: str) -> str:
     # TODO: implement validation steps of question
     return question
 
+def papers(): # TODO: load directly from redis
+    with open(DATA_LOCATION, 'r') as f:
+        for paper in f:
+            paper = data_load.parse_paper(paper)
+            if paper['year']:
+                if paper['year'] >= YEAR_CUTOFF and ML_CATEGORY in paper['categories']:
+                    yield paper
+
 def get_prioritized_articles(question: str) -> PriorityPapersManager:
     # TODO: implement search of similar articles
-    DATA_LOCATION = os.environ.get("DATA_LOCATION", '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json')
-    DATA_LOCATION = '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json'
-    YEAR_CUTOFF = 2012
-    ML_CATEGORY = "cs.LG"
-    def papers():
-        with open(DATA_LOCATION, 'r') as f:
-            for paper in f:
-                paper = data_load.parse_paper(paper)
-                if paper['year']:
-                    if paper['year'] >= YEAR_CUTOFF and ML_CATEGORY in paper['categories']:
-                        yield paper
-    
     papers_df = pd.DataFrame(papers())
     contexts = papers_df.apply(
         lambda r: data_load.clean_description(r['title'] + ' ' + r['abstract']), axis=1
