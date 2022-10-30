@@ -31,8 +31,8 @@ def extract_answer(tokenized_text: BatchEncoding, model: AutoModelForQuestionAns
     answer_start_scores = answer_scores.start_logits
     answer_end_scores = answer_scores.end_logits
     # compute confidence scores
-    confidence_start = torch.max(softmax(answer_start_scores.flatten()))
-    confidence_end = torch.max(softmax(answer_end_scores.flatten()))
+    confidence_start = torch.max(softmax(answer_start_scores.flatten(), dim=0))
+    confidence_end = torch.max(softmax(answer_end_scores.flatten(), dim=0))
     confidence_score = float(confidence_start * confidence_end)
     
     # extract start and end 

@@ -1,10 +1,14 @@
+import sys
+
+sys.path.append("backend/")
+
 import os
 from argparse import ArgumentParser
 
 import pandas as pd
 import thm.qa.config as cfg
 from arxiv_dataset import data_load
-from thm.models import extract_answer, tokenize_text
+from thm.qa.models import extract_answer, tokenize_text
 from thm.qa.paper_priority import PriorityPapersManager
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
@@ -71,6 +75,7 @@ if __name__ == "__main__":
     parser.add_argument("--question", "-q", type=str, 
                         required=True, help="The question the user has defined")
     args = parser.parse_args()
-    main(**args)
+    print(args)
+    main(question=args.question)
     
     # main(question="What is Machine Learning?")
