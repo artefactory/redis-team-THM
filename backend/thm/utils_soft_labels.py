@@ -1,9 +1,12 @@
 import json
 import re
 import string
+
 import numpy as np
-from config import DATA_LOCATION
-from config import YEAR_PATTERN
+
+from thm.config.settings import get_settings
+
+config = get_settings()
 
 
 def clean_description(description: str):
@@ -39,11 +42,13 @@ def clean_description(description: str):
     return description
 
 # Generator functions that iterate through the file and process/load papers
+
+
 def process(paper: dict):
     paper = json.loads(paper)
     if paper['journal-ref']:
         # Attempt to parse the date using Regex: this could be improved
-        years = [int(year) for year in re.findall(YEAR_PATTERN, paper['journal-ref'])]
+        years = [int(year) for year in re.findall(config.year_pattern, paper['journal-ref'])]
         years = [year for year in years if (year <= 2022 and year >= 1991)]
         year = min(years) if years else None
     else:
@@ -54,10 +59,11 @@ def process(paper: dict):
         'year': year,
         'authors': paper['authors'],
         'categories': ','.join(paper['categories'].split(' ')),
-        'abstract': paper['abstract'],    }
+        'abstract': paper['abstract'], }
+
 
 def papers():
-    with open(f'{DATA_LOCATION}/arxiv-metadata-oai-snapshot.json', 'r') as f:
+    with open(f'{config.data_location}/arxiv-metadata-oai-snapshot.json', 'r') as f:
         for paper in f:
             paper = process(paper)
             # Yield only papers that have a year I could process
