@@ -20,8 +20,11 @@ env:
 	$(CONDA_ACTIVATE) arXiv
 	@cd backend/ && pip install -r requirements.txt
 
+generate_index:
+	python3 scripts/generate_index.py
+
 load_index:
-	python3 backend/load_data.py
+	python3 scripts/load_data.py
 
 download_data:
 	open https://www.kaggle.com/datasets/Cornell-University/arxiv

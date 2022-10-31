@@ -1,8 +1,8 @@
 # Team THM Submission
 
 <div align="center">
-    <img src="backend/vecsim_app/data/redis-logo.png" height="25" /> <br />
-    <img src="backend/vecsim_app/data/artefact-logo.png" height="20" /><br />
+    <img src="backend/thm/data/redis-logo.png" height="25" /> <br />
+    <img src="backend/thm/data/artefact-logo.png" height="20" /><br />
     Tom, Henrique, Michel<br />
     Oct. - Nov. 2022
 </div>
@@ -181,9 +181,21 @@ jupyter run multi-gpu-arxiv-embeddings.ipynb
 
 ### Benchmarks
 
+```txt
+arxiv-metadata-oai-snapshot.json ->
+```
+
+#### Generating Embeddings
+
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
 |            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
 |            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
 | `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
 |  `multi-gpu-arxiv-embeddings.ipynb` | Dask Cluster, 32 cores | ... |
+
+#### Loading Index on Redis Cloud
+
+| Model                    | Machine                      | Time   |
+|-------------------------:|------------------------------|-------:|
+| `arxiv_embeddings_10000.pkl` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 6min |
