@@ -25,8 +25,11 @@ publish_blog:
 	ghp-import blog/output -b gh-pages
 	git push origin gh-pages
 
+generate_index:
+	python3 scripts/generate_index.py
+
 load_index:
-	python3 backend/load_data.py
+	python3 scripts/load_data.py
 
 download_data:
 	open https://www.kaggle.com/datasets/Cornell-University/arxiv

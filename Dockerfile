@@ -29,8 +29,8 @@ COPY ./backend/ .
 RUN pip install -e .
 
 # add static react files to fastapi image
-COPY --from=ReactImage /app/frontend/build /app/backend/vecsim_app/templates/build
+COPY --from=ReactImage /app/frontend/build /app/backend/thm/templates/build
 
-WORKDIR /app/backend/vecsim_app
+WORKDIR /app/backend/thm
 
 CMD ["sh", "./entrypoint.sh"]
