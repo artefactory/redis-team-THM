@@ -1,6 +1,7 @@
+import random
+
 from pydantic import BaseModel
 
-import random
 
 class Quote(BaseModel):
     sentence: str
@@ -23,8 +24,9 @@ QUOTES = [
     Quote(
         sentence="The single most important thing in life is to believe in yourself regardless of what everyone else says.",
         author="Hikaru Nakamura",
-    )
+    ),
 ]
+
 
 def random_quote():
     return random.choice(QUOTES)
