@@ -72,7 +72,7 @@ async def get_papers(
 
 
 @r.post("/vectorsearch/text", response_model=Dict)
-async def find_papers_by_text(similarity_request: SimilarityRequest) -> Dict:
+async def find_papers_by_paper_id(similarity_request: SimilarityRequest) -> Dict:
     # Create query
     query = search_index.vector_query(
         similarity_request.categories,
