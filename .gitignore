@@ -10,7 +10,6 @@ datascience/*.json
 datascience/*.zip
 blog/output
 data/*
-# Local Netlify folder
 .netlify
 **/config/prod.env
 **/config/dev.env

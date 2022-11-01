@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     api_v1_str: str = "/api/v1"
     data_location: str = "../data"
     year_pattern: str = "(19|20[0-9]{2})"
+    embeddings_path: str = "../datascience/arxiv_embeddings_10000.pkl"
     redis_host: str
     redis_port: int
     redis_db: str
@@ -20,5 +21,5 @@ class Settings(BaseSettings):
 
 
 def get_settings():
-    return Settings(_env_file="thm/config/prod.env")
+    return Settings(_env_file="../backend/thm/config/prod.env")
     # contact Michel for the gitignored file
