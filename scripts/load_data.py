@@ -45,7 +45,12 @@ async def gather_with_concurrency(redis_conn, n, separator, vector_size, *papers
 
 
 async def load_all_data(
-    config, redis_conn: Redis, concurrency_level: int, separator: str, embeddings_path: str, vector_size: int,
+    config,
+    redis_conn: Redis,
+    concurrency_level: int,
+    separator: str,
+    embeddings_path: str,
+    vector_size: int,
 ):
     search_index = SearchIndex()
 
@@ -54,7 +59,9 @@ async def load_all_data(
     papers = papers.to_dict("records")
 
     logger.info("Writing to Redis...")
-    await gather_with_concurrency(redis_conn, concurrency_level, separator, vector_size, *papers)
+    await gather_with_concurrency(
+        redis_conn, concurrency_level, separator, vector_size, *papers
+    )
     logger.info("Papers loaded!")
 
     logger.info("Creating vector search index")
@@ -89,7 +96,7 @@ def run(
     separator: str = "|",
     reset_db: bool = False,
     embeddings_path: str = "",
-    vector_size: int = 768
+    vector_size: int = 768,
 ):
     """Load the Embedding Index to Redis."""
 
@@ -104,7 +111,16 @@ def run(
 
     redis_conn = redis.from_url(config.get_redis_url())
 
-    asyncio.run(load_all_data(config, redis_conn, concurrency_level, separator, embeddings_path, vector_size))
+    asyncio.run(
+        load_all_data(
+            config,
+            redis_conn,
+            concurrency_level,
+            separator,
+            embeddings_path,
+            vector_size,
+        )
+    )
 
 
 if __name__ == "__main__":

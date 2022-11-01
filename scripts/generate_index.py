@@ -4,7 +4,7 @@ import fire
 import pandas as pd
 from loguru import logger
 from sentence_transformers import SentenceTransformer
-from helpers import clean_description, process
+from helpers.processors import clean_description, process
 from tqdm import tqdm
 
 tqdm.pandas()
