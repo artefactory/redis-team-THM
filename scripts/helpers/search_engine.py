@@ -1,10 +1,10 @@
 from typing import List, Tuple
 
 import httpx
-
-from helpers.models import Paper
 from loguru import logger
 
+from helpers.models import Paper
+from urllib.parse import quote
 
 class SearchEngine:
     def __init__(self, base_uri: str):
@@ -16,6 +16,8 @@ class SearchEngine:
             key: paper[key]
             for key in ["paper_id", "title", "authors", "categories", "year"]
         }
+        resp["authors"] = resp["authors"].replace("\n", "").replace("  ", " ")
+        resp["title"] = resp["title"].replace("\n", "").replace("  ", " ")
         resp["url"] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"
         return Paper.parse_obj(resp)
 
@@ -61,3 +63,6 @@ class SearchEngine:
 
         if "papers" in resp and resp["papers"][0]["paper_id"] == paper_id:
             return Paper.parse_obj(resp["papers"][0])
+
+    def ask_wolfram(self, query: str) -> str:
+        return f"https://www.wolframalpha.com/input?i={quote(query)}"
