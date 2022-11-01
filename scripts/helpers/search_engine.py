@@ -1,11 +1,11 @@
 from typing import List, Tuple
-from urllib.parse import quote
 
 import httpx
 from loguru import logger
 
 from helpers.models import Paper
 
+from urllib.parse import quote
 
 class SearchEngine:
     def __init__(self, base_uri: str):

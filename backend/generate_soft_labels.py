@@ -10,8 +10,10 @@ from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
 from transformers import logging as transformer_logging
 
 from thm.config.settings import get_settings
-from thm.utils_soft_labels import (clean_description, get_best_args_and_score,
-                                   get_category_names, papers)
+from thm.utils_soft_labels import (apply_tokenenizer, clean_description,
+                                   compute_predictions,
+                                   integrate_soft_labels_back_in_df, papers,
+                                   prepare_labels)
 
 config = get_settings()
 
@@ -20,9 +22,17 @@ logging.getLogger().setLevel(logging.INFO)
 
 
 def main():
+    """
+    This file generates soft labels for all the papers in the dataset.
+    The data is expetected to be at: {config.data_location}/arxiv-metadata-oai-snapshot.json'
+    The soft labels are saved at: {config.data_location}/soft_labels.pkl'
+
+    You can increase the number of epochs to 2 or 3 to obtain better quality soft labels
+    at the risk of overfitting the datatset.
+    """
+
     logging.info('Reading data...')
     df = pd.DataFrame(papers())
-    df = df.sample(10)
     df_with_paper_data = df.copy()
 
     logging.info('Cleaning data...')
@@ -31,16 +41,7 @@ def main():
 
     # concatenate df and dummies (ooe_df will be used to inverse the preds and get category names)
     logging.info('Parsing and creating labels for categories...')
-    ooe_df = df['categories'].str.get_dummies(sep=',')
-    num_classes = ooe_df.shape[1]
-    category_cols = ooe_df.columns.tolist()
-
-    def parse_labels(row):
-        return [row[c] for c in category_cols]
-
-    # parse the labels
-    df['labels'] = ooe_df.apply(parse_labels, axis=1)
-    df = df[['text', 'labels']]
+    df, ooe_df, num_classes = prepare_labels(df)
 
     # Create huggingface dataset object
     logging.info('Converting data to Dataset format')
@@ -55,17 +56,8 @@ def main():
         model_max_length=512
     )
 
-    def tokenize_and_encode(examples):
-        return tokenizer(examples["text"], truncation=True)
-    cols = df_dataset.column_names
-    cols.remove('labels')
-
     logging.info('Applying tokenizer...')
-    df_dataset = df_dataset.map(tokenize_and_encode, batched=True, remove_columns=cols)
-    df_dataset.set_format("torch")
-    df_dataset = (df_dataset
-                  .map(lambda x: {"float_labels": x["labels"].to(torch.float)}, remove_columns=["labels", "token_type_ids"])
-                  .rename_column("float_labels", "labels"))
+    df_dataset = apply_tokenenizer(df_dataset, tokenizer)
 
     # Modeling
     logging.info('Loading model...')
@@ -87,19 +79,10 @@ def main():
     trainer.train()
 
     logging.info('Computing predictions...')
-    preds = trainer.predict(df_dataset)
-    preds = preds.predictions
-    preds = torch.nn.functional.softmax(torch.tensor(preds))
+    preds = compute_predictions(df_dataset, trainer)
 
-    # Add soft labels back into df with papers data
     logging.info('Preparing final output format...')
-    best_args_score_vec = np.apply_along_axis(get_best_args_and_score, 1, preds)
-    categories_vec = np.apply_along_axis(get_category_names, 1, best_args_score_vec, ooe_df)
-    best_score = best_args_score_vec[:, 1]
-    soft_tags = {'category': categories_vec.tolist(), 'score': np.around(best_score, 2).tolist()}
-    df_with_paper_data['category_predicted'] = soft_tags['category']
-    df_with_paper_data['category_predicted'] = df_with_paper_data['category_predicted'].str.join(',')
-    df_with_paper_data['category_score'] = soft_tags['score']
+    df_with_paper_data = integrate_soft_labels_back_in_df(df_with_paper_data, preds, ooe_df)
 
     # Dump these to file with pickle or write them to Redis
     logging.info(f'Saving final output to {config.data_location}')

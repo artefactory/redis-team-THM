@@ -13,7 +13,7 @@ from thm.config.settings import get_settings
 from thm.models import Paper
 from thm.search_index import SearchIndex
 
-from tqdm import tqdm
+# from tqdm import tqdm
 
 
 def read_paper_df(embeddings_path) -> List:
