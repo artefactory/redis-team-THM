@@ -8,8 +8,6 @@
 </div>
 <br />
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d2c3e1e1-fbb6-422a-b44c-848f6753a246/deploy-status)](https://app.netlify.com/sites/sweet-piroshki-f2e396/deploys)
-
 This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
 
 Through the RediSearch module, vector types and indexes can be added to Redis.
@@ -27,9 +25,7 @@ This turns Redis into a highly performant vector database which can be used for 
 - [Redis Vector Similarity Search](https://redis.io/docs/stack/search/reference/vectors)
 - [Huggingface Tokenizers + Models](https://huggingface.co/sentence-transformers)
 - [Cornell University - arXiv dataset](https://www.kaggle.com/Cornell-University/arxiv), `arxiv-metadata-oai-snapshot.json` file is used
-- [`Buuntu/fastapi-react`](https://github.com/Buuntu/fastapi-react)
 - [`FastAPI`](https://fastapi.tiangolo.com/), [`pydantic`](https://pydantic-docs.helpmanual.io/), [`redis-om`](https://redis.io/docs/stack/get-started/tutorials/stack-python/)
-- [`react`](https://reactjs.org/), [`react-bootstrap`](https://react-bootstrap.github.io/), [MaterialUI](https://material-ui.com/)
 - [`redis`](https://redis.io/docs/stack/) see Vector database and JSON storage
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -68,7 +64,7 @@ pip install backend/requirements.txt
          |  calls backend
 +--------+----------+      +----------------+
 |                   |      |                |
-|  React            +----->+  arXiv server  |
+|  THM CLI          +----->+  arXiv server  |
 |                   |      |                |
 +-------------------+      +----------------+
             browser use app from here
@@ -107,15 +103,9 @@ cd backend/
 ./start.sh
 
 open http://0.0.0.0:8080/api/docs
-```
 
-### Frontend Application Only
-
-```sh
-cd frontend/
-yarn install --no-optional
-yarn start
-open http://localhost:3000
+# Deployment
+vercel .
 ```
 
 ### Exploration
@@ -132,22 +122,6 @@ pelican content && pelican --listen
 
 # To publish on GitHub pages
 make publish_blog
-```
-
-### Deployment
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://app.netlify.com/start/deploy?repository=https://github.com/artefactory/redis-team-thm)
-
-```sh
-yarn global add vercel netlify
-
-# Frontend
-netlify build
-netlify deploy --prod
-
-# Backend
-cd backend
-vercel .
 ```
 
 ### Machine Learning Model
