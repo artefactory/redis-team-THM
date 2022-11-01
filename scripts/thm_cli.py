@@ -8,7 +8,6 @@ from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
-from prompt_toolkit.history import FileHistory
 
 from helpers.models import Format, Paper
 from helpers.quotes import random_quote
@@ -194,7 +193,7 @@ print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
 Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-ps = PromptSession(history=FileHistory(".cli_history"))
+ps = PromptSession()
 settings = Settings()
 quote = random_quote()
 
