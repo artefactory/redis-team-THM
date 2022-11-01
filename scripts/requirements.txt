@@ -5,5 +5,6 @@ redis_om
 sentence_transformers
 tqdm
 
+pydantic
 prompt_toolkit
 httpx

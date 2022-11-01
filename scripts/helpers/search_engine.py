@@ -16,6 +16,8 @@ class SearchEngine:
             key: paper[key]
             for key in ["paper_id", "title", "authors", "categories", "year"]
         }
+        resp["authors"] = resp["authors"].replace("\n", "").replace("  ", " ")
+        resp["title"] = resp["title"].replace("\n", "").replace("  ", " ")
         resp["url"] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"
         return Paper.parse_obj(resp)
 
