@@ -2,6 +2,9 @@ arxiv-metadata-oai-snapshot.json
 *.pkl
 *.DS_STORE
 *.log
+*.outputs
+*.pyc
+**/*.ipynb_checkpoints/
 
 datascience/*.json
 datascience/*.zip
@@ -53,3 +56,8 @@ coverage.xml
 
 # Mac OS-specific storage files
 .DS_Store
+
+data/*
+.netlify
+**/config/prod.env
+**/config/dev.env

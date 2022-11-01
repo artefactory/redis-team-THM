@@ -1,0 +1,9 @@
+fire
+pandas
+loguru
+redis_om
+sentence_transformers
+tqdm
+
+prompt_toolkit
+httpx
