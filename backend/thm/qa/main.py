@@ -3,14 +3,12 @@ import sys
 sys.path.append("backend/")
 
 import os
-from argparse import ArgumentParser
-
 import pandas as pd
 import thm.qa.config as cfg
 from arxiv_dataset import data_load
-from thm.qa.models import extract_answer, tokenize_text
 from thm.qa.paper_priority import PriorityPapersManager
-from transformers import AutoModelForQuestionAnswering, AutoTokenizer
+from thm.config.settings import get_settings
+from transformers import pipeline
 
 DATA_LOCATION = os.environ.get("DATA_LOCATION", '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json')
 DATA_LOCATION = '/home/jovyan/arxiv/arxiv-metadata-oai-snapshot.json'
@@ -46,36 +44,23 @@ def get_prioritized_articles(question: str) -> PriorityPapersManager:
 def build_answer(answer):
     raise NotImplementedError
 
-def main(question: str):
+def main(question: str, top_k:int =1):
     validated_question = validate_question(question)
     priority_articles = get_prioritized_articles(validated_question)
     
     # instantiate tokenizer and model
-    tokenizer = AutoTokenizer.from_pretrained(cfg.TOKENIZER_NAME)
-    model = AutoModelForQuestionAnswering.from_pretrained(cfg.MODEL_NAME)
+    model = pipeline(task="question-answering", model=cfg.MODEL_NAME, tokenizer=cfg.TOKENIZER_NAME)
+    model_outputs = model(
+        {
+            "question": validated_question,
+            "context": priority_articles.merged_context
+        },
+        top_k=top_k
+    )
     
-    model_input = tokenize_text(
-        question=validated_question, 
-        priority_articles=priority_articles,
-        tokenizer=tokenizer
-    )
-    model_output = extract_answer(
-        tokenized_text=model_input,
-        model=model,
-        tokenizer=tokenizer
-    )
+    return model_outputs
     
     # answer = build_answer(model_output)
 
 if __name__ == "__main__":
-    parser = ArgumentParser(
-        description="TODO", # TODO: write description
-        
-    ) 
-    parser.add_argument("--question", "-q", type=str, 
-                        required=True, help="The question the user has defined")
-    args = parser.parse_args()
-    print(args)
-    main(question=args.question)
-    
-    # main(question="What is Machine Learning?")
+    main(question="What is Machine Learning?")

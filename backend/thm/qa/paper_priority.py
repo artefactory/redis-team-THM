@@ -2,6 +2,16 @@ from collections import deque
 from dataclasses import dataclass
 from typing import List, Tuple, Union
 
+# from thm.schema import UserTextSimilarityRequest
+from thm.search_index import SearchIndex
+
+
+# def validate_request(
+#     user_question: UserTextSimilarityRequest
+# ) -> UserTextSimilarityRequest:
+#     # TODO: implement validation steps
+#     return user_question
+
 
 @dataclass
 class PriorityPapersManager:
@@ -31,7 +41,7 @@ class PriorityPapersManager:
             starts.append(start)
             ends.append(end)
             
-            start += end
+            start = end
         
         return starts, ends
         
