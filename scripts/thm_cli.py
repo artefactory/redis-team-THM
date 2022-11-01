@@ -1,16 +1,5 @@
 #!/usr/bin/python3
 
-<<<<<<< Updated upstream
-from prompt_toolkit import prompt, print_formatted_text as print
-import httpx
-from helpers.models import Paper
-
-
-def format_response(paper):
-    resp = { your_key: paper[your_key] for your_key in ['title', 'authors', 'categories', 'year'] }
-    resp ['url'] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"
-    return resp
-=======
 import webbrowser
 from typing import List
 
@@ -25,7 +14,6 @@ from helpers.models import Format, Paper
 from helpers.quotes import Quote, random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
->>>>>>> Stashed changes
 
 
 # https://www.bibtex.com/e/article-entry/
@@ -64,11 +52,6 @@ for r in list(map(format_response, resp["papers"])):
     print(bibtex(Paper.parse_obj(r)))
 print("'''")
 
-<<<<<<< Updated upstream
-# 'pk', 'paper_id', 'title', 'authors', 'abstract', 'categories', 'year', 'input', 'similarity_score'
-
-print(f"Total of {resp['total']:,d} searchable arXiv papers. Last updated 2022-11-04.")
-=======
 
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
@@ -218,4 +201,3 @@ print()
 print()
 
 goto_menu()
->>>>>>> Stashed changes
