@@ -1,12 +1,12 @@
-from typing import Optional
-from pydantic import BaseModel
 from enum import Enum
+from typing import Optional
+
+from pydantic import BaseModel
 
 
 class Format(str, Enum):
     BibTeX = "bibtex"
     Markdown = "markdown"
-
 
 class Paper(BaseModel):
     url: Optional[str]
