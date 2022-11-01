@@ -6,4 +6,8 @@ uvicorn
 redis-om
 # pandas
 sentence-transformers
+transformers
+torch
+Datasets
 python-dotenv
+fire

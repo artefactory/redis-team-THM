@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     index_name: str = "papers"
     index_type: str = "HNSW"
     api_v1_str: str = "/api/v1"
+    data_location: str = "../data"
+    year_pattern: str = "(19|20[0-9]{2})"
     embeddings_path: str = "../datascience/arxiv_embeddings_10000.pkl"
     redis_host: str
     redis_port: int
