@@ -14,7 +14,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-LINKS = (('Submission', 'https://sweet-piroshki-f2e396.netlify.app/'),)
+LINKS = (('Submission', 'https://google.fr/'),)
 
 SOCIAL = (('Artefact', 'https://www.artefact.com'),
           ('Redis Ventures', 'https://redisventures.com'),)
