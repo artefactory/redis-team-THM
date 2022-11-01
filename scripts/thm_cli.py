@@ -8,6 +8,7 @@ from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
 
 from helpers.models import Format, Paper
+from question_answering import get_answer_to_prompt
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
 from helpers.quotes import random_quote, Quote
@@ -113,6 +114,32 @@ def goto_configure():
     max_results_choice = ps.prompt("Max Results (eg. 3): ")
     settings.max_results = max_results_choice
     print()
+    
+def goto_find_answer():
+    print()
+    print("This is a beta feature! Ask question and we will look for the article that seems to answer it best.")
+    user_prompt = ps.prompt("Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory())
+    print("Loading model...")
+    
+    answers = get_answer_to_prompt(user_prompt, top_k=1)
+    
+    for answer, paper in answers:
+        # get similar papers to display
+        similar_papers, total = Engine.similar_to(paper.paper_id, settings.max_results)
+        print()
+        print("-"*80)
+        print(f"RESULT:", f"'{answer}'") 
+        print()
+        # TODO: render answers
+        render_paper(paper)
+        print("```bibtex")
+        print(_BibTeX(paper))
+        
+        print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
+        render_results(similar_papers, format=settings.format)
+        print(f"Total of {total:,d} searchable arXiv papers. Last updated 2022-11-04.")
+    print()
+    
 
 def goto_exit():
     print()
@@ -150,7 +177,7 @@ def goto_menu():
         goto_search_details()
         goto_menu()
     elif menu_choice == 'find answer':
-        print("  TODO Henrique")
+        goto_find_answer()
         goto_menu()
     elif menu_choice == 'find formula':
         goto_wolfram()
