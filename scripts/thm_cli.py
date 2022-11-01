@@ -1,25 +1,20 @@
 #!/usr/bin/python3
 
+import webbrowser
 from typing import List
 
 from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
+from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
 
 from helpers.models import Format, Paper
 from question_answering import get_answer_to_prompt
+from helpers.quotes import random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
-from helpers.quotes import random_quote, Quote
-from prompt_toolkit.history import InMemoryHistory
-from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-from prompt_toolkit.history import FileHistory
-import webbrowser
 
-from prompt_toolkit.styles import style_from_pygments_cls
-from pygments.styles.tango import TangoStyle
-tango_style = style_from_pygments_cls (TangoStyle)
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
@@ -61,18 +56,23 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
     print("```")
     print()
 
+
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
     clean_authors = paper.authors.replace("\n", "").replace("  ", " ")
-    print(HTML(f'{clean_title}'))
+    print(HTML(f"{clean_title}"))
     print(f"by {clean_authors}")
     print("=" * 80)
     print(paper.abstract)
     print()
 
+
 def goto_search_keywords():
     print("Enter a search query to discover scholarly papers.")
-    user_text = ps.prompt("Your keywords (eg. social networks): ", auto_suggest=AutoSuggestFromHistory(), style=tango_style)
+    user_text = ps.prompt(
+        "Your keywords (eg. social networks): ",
+        auto_suggest=AutoSuggestFromHistory(),
+    )
     # years = ps.prompt("What year: ")
     # categories = ps.prompt("What categories: ")
     search_papers, total = Engine.search(user_text, settings.max_results)
@@ -80,15 +80,21 @@ def goto_search_keywords():
     render_results(search_papers, format=settings.format)
     print(f"Total of {total:,d} searchable arXiv papers. Last updated 2022-11-04.")
 
+
 def goto_search_similar():
-    paper_id = ps.prompt("arXiv ID (eg. 2205.13980): ", auto_suggest=AutoSuggestFromHistory())
+    paper_id = ps.prompt(
+        "arXiv ID (eg. 2205.13980): ", auto_suggest=AutoSuggestFromHistory()
+    )
     similar_papers, total = Engine.similar_to(paper_id, settings.max_results)
     print(HTML(f"<seagreen>Papers similar to {paper_id}...</seagreen>"))
     render_results(similar_papers, format=settings.format)
     print(f"Total of {total:,d} searchable arXiv papers. Last updated 2022-11-04.")
 
+
 def goto_search_details():
-    paper_id = ps.prompt("arXiv ID (eg. 2205.13980): ", auto_suggest=AutoSuggestFromHistory())
+    paper_id = ps.prompt(
+        "arXiv ID (eg. 2205.13980): ", auto_suggest=AutoSuggestFromHistory()
+    )
     print(HTML(f"<seagreen>Retrieving details for {paper_id}...</seagreen>"))
     print()
     paper = Engine.paper(paper_id)
@@ -97,12 +103,16 @@ def goto_search_details():
     webbrowser.open(f"https://arxiv.org/pdf/{paper_id}.pdf")
     print()
 
+
 def goto_wolfram():
-    wolfram_query = ps.prompt("Find a formula (eg. cosine law): ", auto_suggest=AutoSuggestFromHistory())
+    wolfram_query = ps.prompt(
+        "Find a formula (eg. cosine law): ", auto_suggest=AutoSuggestFromHistory()
+    )
     print()
     print("Asking Wolfram Alpha...")
     webbrowser.open(Engine.ask_wolfram(wolfram_query))
     print()
+
 
 def goto_configure():
     format_choice = ps.prompt(
@@ -141,6 +151,7 @@ def goto_find_answer():
     print()
     
 
+
 def goto_exit():
     print()
     print()
@@ -149,43 +160,45 @@ def goto_exit():
     print()
 
 
+menu_completer = NestedCompleter.from_nested_dict(
+    {
+        "search": {
+            "keywords": None,
+            "similar": None,
+            "details": None,
+        },
+        "find": {
+            "answer": None,
+            "formula": None,
+        },
+        "configure": None,
+        "help": None,
+        "exit": None,
+    }
+)
 
-menu_completer = NestedCompleter.from_nested_dict({
-    'search': {
-        'keywords': None,
-        'similar': None,
-        'details': None,
-    },
-    'find': {
-        'answer': None,
-        'formula': None,
-    },
-    'configure': None,
-    'help': None,
-    'exit': None,
-})
 
 def goto_menu():
-    menu_choice = ps.prompt('THM # ', completer=menu_completer)
-    if menu_choice == 'search keywords':
+    menu_choice = ps.prompt("THM # ", completer=menu_completer)
+    if menu_choice == "search keywords":
         goto_search_keywords()
         goto_menu()
-    elif menu_choice == 'search similar':
+    elif menu_choice == "search similar":
         goto_search_similar()
         goto_menu()
-    elif menu_choice == 'search details':
+    elif menu_choice == "search details":
         goto_search_details()
         goto_menu()
     elif menu_choice == 'find answer':
         goto_find_answer()
         goto_menu()
-    elif menu_choice == 'find formula':
+    elif menu_choice == "find formula":
         goto_wolfram()
         goto_menu()
-    elif menu_choice == 'configure':
+    elif menu_choice == "configure":
         goto_configure()
         goto_menu()
-    elif menu_choice == 'help':
+    elif menu_choice == "help":
         print("THM Search CLI v1.0")
         print("https://artefactory.github.io/redis-team-THM")
         print()
@@ -196,7 +209,7 @@ def goto_menu():
         print("  help")
         print("  exit")
         goto_menu()
-    elif menu_choice == 'exit':
+    elif menu_choice == "exit":
         goto_exit()
     else:
         goto_menu()
@@ -207,7 +220,7 @@ print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
 Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-ps = PromptSession(history=FileHistory('.cli_history'))
+ps = PromptSession()
 settings = Settings()
 quote = random_quote()
 
@@ -219,4 +232,3 @@ print()
 print()
 
 goto_menu()
-

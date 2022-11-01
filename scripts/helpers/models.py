@@ -8,6 +8,7 @@ class Format(str, Enum):
     BibTeX = "bibtex"
     Markdown = "markdown"
 
+
 class Paper(BaseModel):
     url: Optional[str]
     paper_id: str
