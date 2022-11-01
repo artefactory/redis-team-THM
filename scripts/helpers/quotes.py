@@ -1,6 +1,7 @@
+import random
+
 from pydantic import BaseModel
 
-import random
 
 class Quote(BaseModel):
     sentence: str
