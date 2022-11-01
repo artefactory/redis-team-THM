@@ -155,6 +155,9 @@ def goto_menu():
     elif menu_choice == 'find formula':
         goto_wolfram()
         goto_menu()
+    elif menu_choice == 'configure':
+        goto_configure()
+        goto_menu()
     elif menu_choice == 'help':
         print("THM Search CLI v1.0")
         print("https://artefactory.github.io/redis-team-THM")
