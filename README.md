@@ -10,7 +10,7 @@
 
 This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
-The RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
+RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
 [![asciicast](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg)](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM)
 
@@ -167,6 +167,18 @@ We found the following models interesting NLP models from the [leaderboard](http
 - `sentence-transformers/all-mpnet-base-v2` has embeddings of size 768 and relative good performance
 - `sentence-transformers/all-MiniLM-L6-v2`
 - `sentence-transformers/all-MiniLM-L12-v2` has embedding of size 384 and interesting for development as performing inference is faster
+
+We also used [`transformers.AutoModelForSequenceClassification`](https://huggingface.co/transformers/v3.0.2/model_doc/auto.html#automodelforsequenceclassification) for the problem of multi-category classification.
+
+For the problem of Question Answering we used [`distilbert-base-cased-distilled-squad`](https://huggingface.co/distilbert-base-cased-distilled-squad) for the problem of Question Answering.
+
+```mermaid
+  graph TD;
+      sentence-transformers/all-MiniLM-L12-v2-->THM_API;
+      transformers.AutoModelForSequenceClassification-->THM_API;
+      THM_API-->THM_CLI;
+      distilbert-base-cased-distilled-squad-->THM_CLI;
+```
 
 ## Benchmarks
 
