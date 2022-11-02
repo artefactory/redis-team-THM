@@ -1,10 +1,11 @@
 from typing import Dict, List, Tuple
 
+from transformers import pipeline
+
 from helpers.models import Paper
 from helpers.paper_manager import PriorityPapersManager
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
-from transformers import pipeline
 
 settings = Settings()
 
@@ -34,16 +35,18 @@ def _validate_prompt(user_prompt: str):
     # TODO: implement checks
     return user_prompt
 
-def _build_answer(qa_output: List[Dict], priority_papers: PriorityPapersManager) -> List[Tuple[str, Paper]]:
+def _build_answer(qa_output: List[Dict], priority_papers: PriorityPapersManager) -> List[Tuple[str, float, Paper]]:
+    # builds the object that is exposed to the front
     answer = []
     
     for output in qa_output:
         start_answer = output["start"]
         end_answer = output["end"]
         text_answer = output["answer"]
+        confidence_score = output["score"]
         paper = priority_papers.find_paper(target_start=start_answer, target_end=end_answer)
         
-        answer.append((text_answer, paper))
+        answer.append((text_answer, confidence_score, paper))
     
     return answer
 

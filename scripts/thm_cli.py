@@ -133,24 +133,20 @@ def goto_find_answer():
     print()
     print("This is a beta feature! Ask question and we will look for the article that seems to answer it best.")
     user_prompt = ps.prompt("Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory())
-    print("Loading model...")
+    
+    print(HTML(f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"))
     
     answers = get_answer_to_prompt(user_prompt, top_k=1)
     
-    for answer, paper in answers:
+    for answer, confidence, paper in answers:
         # get similar papers to display
-        similar_papers, total = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
         print("-"*80)
-        print(f"RESULT:", f"'{answer}'") 
+        print(f"The Skynet is {confidence:.0%} sure it found what you wanted:")
+        print(HTML(f"Answer: <b>'{answer}'</b>")) 
         print()
-        # TODO: render answers
+        print("This answer came from here:")
         render_paper(paper)
-        print("```bibtex")
-        print(_BibTeX(paper))
-        print("```")
-        print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
-        render_results(similar_papers, format=settings.format)
     print()
     
 
