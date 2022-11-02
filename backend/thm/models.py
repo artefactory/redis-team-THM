@@ -1,8 +1,5 @@
 from aredis_om import Field, HashModel
 
-class Category(BaseModel):
-    name: str
-    weight: float
 
 class Paper(HashModel):
     paper_id: str
