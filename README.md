@@ -1,23 +1,34 @@
 # Team THM Submission
 
 <div align="center">
-    <img src="backend/thm/data/redis-logo.png" height="25" /> <br />
-    <img src="backend/thm/data/artefact-logo.png" height="20" /><br />
-    Tom, Henrique, Michel<br />
+    <img src="backend/thm/data/redis-logo.png" height="25"/> <br/>
+    <img src="backend/thm/data/artefact-logo.png" height="20"/><br/>
+    Tom, Henrique, Michel, Corentin<br/>
     Oct. - Nov. 2022
 </div>
-<br />
+<br/>
 
-This demo showcases the vector search similarity (VSS) capability within Redis Stack and Redis Enterprise.
+This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
-Through the RediSearch module, vector types and indexes can be added to Redis.
-This turns Redis into a highly performant vector database which can be used for all types of applications.
+The RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
-<details>
+[![asciicast](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg)](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM)
 
-![Screen Shot](https://user-images.githubusercontent.com/13009163/191346916-4b8f648f-7552-4910-ad4e-9cc117230f00.png)
+See [Architecture](#architecture) to see how it works, and [User Workflow](#user-workflow) to see how it can be used.
 
-</details>
+------------------------------
+
+## Table of Contents
+
+- [Documentation](#documentation)
+- [History of Changes](#history-of-changes)
+- [Machine Setup](#machine-setup)
+- [Architecture](#architecture)
+- [User Workflow](#user-workflow)
+- [Running The Application](#running-the-application)
+- [Benchmarks](#benchmarks)
+
+------------------------------
 
 ## Documentation
 
@@ -27,30 +38,36 @@ This turns Redis into a highly performant vector database which can be used for 
 - [Cornell University - arXiv dataset](https://www.kaggle.com/Cornell-University/arxiv), `arxiv-metadata-oai-snapshot.json` file is used
 - [`FastAPI`](https://fastapi.tiangolo.com/), [`pydantic`](https://pydantic-docs.helpmanual.io/), [`redis-om`](https://redis.io/docs/stack/get-started/tutorials/stack-python/)
 - [`redis`](https://redis.io/docs/stack/) see Vector database and JSON storage
-- [Docker Compose](https://docs.docker.com/compose/)
 
-## History
+## History of Changes
 
+- 1/11 - Added a multi-category classifier and a CLI HTTP client for the backend
+- 31/10 - Draft blog posts and CLI ETL tool
+- 30/10 - Refactored `RedisVentures/redis-arXiv-search` project
+- 27/10 - Setup Redis Cloud Enterprise and Saturn Cloud accounts and [organized](https://github.com/orgs/artefactory/projects/7) within the team
+- 15/10 - Added a blog based on [Pelican](https://getpelican.com)
 - 15/10 - Added CI/CD script
 - 15/10 - Forked from [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search)
-- 15/10 - Used Tyler Hutcherson's latest changes: [PR 3](https://github.com/RedisVentures/redis-arXiv-search/pull/3), [PR 9](https://github.com/RedisVentures/redis-arXiv-search/pull/9)
 
 ## Machine Setup
 
 ```sh
 brew install yarn redis docker
-pip install backend/requirements.txt
+pip install -r backend/requirements.txt
+pip install -r scripts/requirements.txt
 ```
 
 ## Architecture
 
-<details>
+The user will perform searches to the Redis database through a REST API HTTP Server.
+
+We wrote a small interactive CLI client tool that performs calls to the HTTP Server and returns papers matching the user queries.
 
 ```txt
                         writes pickle and loads index
 +-------------------+      +----------------+
 |                   |      |                |
-|  Redis            +<-----+  Jupyter       |
+|  Redis            +<-----+  ETL CLI       |
 |                   |      |                |
 +--------+----------+      +----------------+
          ^
@@ -62,22 +79,39 @@ pip install backend/requirements.txt
 +--------+----------+
          ^
          |  calls backend
-+--------+----------+      +----------------+
-|                   |      |                |
-|  THM CLI          +----->+  arXiv server  |
-|                   |      |                |
-+-------------------+      +----------------+
-            browser use app from here
++--------+----------+      +---------------------+
+|                   |      |                     |
+|  THM CLI          +----->+  arxiv.org          |
+|                   |      |  wolfram.alpha.com  |
++-------------------+      +---------------------+
+    researcher uses the THM CLI while writing research
 ```
 
-</details>
+## User Workflow
 
-### TODO
+This CLI tool is a quick assistant for a researcher daily activities and helps him improves his efficiency.
 
-- [x] Setup [Saturn Cloud](https://app.community.saturnenterprise.io/) account
-- [x] Setup [Redis Enterprise Cloud](https://redis.com/redis-enterprise-cloud/)
-- [x] Setup Blog page and documentation
-- [ ] Deploy Backend somewhere, Saturn Cloud ?
+It can be used with his text editor and browser and helps him in the process of:
+
+- building bibliography in Markdown or BibTeX formats,
+- checking the PDF papers using arXiv website,
+- checking scientific facts on Wolfram Alpha website.
+
+```mermaid
+  graph TD;
+      welcome_message-->choose_activity;
+      welcome_message-->configure_parameters;
+      choose_activity-->search_keywords;
+      search_keywords-->Search_API;
+      choose_activity-->search_similar_to;
+      search_similar_to-->Search_API;
+      choose_activity-->fetch_paper_details;
+      fetch_paper_details-->Search_API;
+      choose_activity-->ask_open_question;
+      ask_open_question-->OpenAI_API;
+      choose_activity-->find_formula;
+      find_formula-->Wolfram_Alpha_API;
+```
 
 ## Running The Application
 
@@ -124,40 +158,27 @@ pelican content && pelican --listen
 make publish_blog
 ```
 
-### Machine Learning Model
+### Machine Learning Models
 
-First, download the data and run the [`arxiv-embeddings.ipynb`](datascience/arxiv-embeddings.ipynb) notebook to generate some embeddings.
+The project uses the [`UKPLab/sentence-transformers`](https://github.com/UKPLab/sentence-transformers) library to compute dense vector representations for sentences found in [Cornell's arXiv corpus](https://www.kaggle.com/Cornell-University/arxiv).
 
-```sh
-cd datascience/
+We found the following models interesting NLP models from the [leaderboard](https://huggingface.co/spaces/mteb/leaderboard) that community built.
 
-pip install sentence_transformers
-jupyter run arxiv-embeddings.ipynb
+- `sentence-transformers/all-mpnet-base-v2` has embeddings of size 768 and relative good performance
+- `sentence-transformers/all-MiniLM-L6-v2`
+- `sentence-transformers/all-MiniLM-L12-v2` has embedding of size 384 and interesting for development as performing inference is faster
 
-# Uses local CPU and creates embeddings for ~10k machine learning papers.
-# input: arxiv-metadata-oai-snapshot.json
-# output: arxiv_embeddings_10000.pkl
+## Benchmarks
 
-jupyter run single-gpu-arxiv-embeddings.ipynb
+From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
 
-# Uses RAPIDS (CuDF) and GPU on Saturn Cloud to speed up embedding. Much larger subset (100k).
-# input: arxiv-metadata-oai-snapshot.json
-# output: arxiv_embeddings_100000.pkl
+- machine provisining needed,
+- how to update regularly from the arXiv snapshots,
+- volumetry of data.
 
-jupyter run multi-gpu-arxiv-embeddings.ipynb
+### Generating Embeddings
 
-# Uses RAPIDS and Dask (Dask CuDF) on Saturn Cloud to parallelize embedding creation. Much much larger subset (700k). Only output 300k to file.
-# input: arxiv-metadata-oai-snapshot.json
-# output: arxiv_embeddings_300000.pkl
-```
-
-### Benchmarks
-
-```txt
-arxiv-metadata-oai-snapshot.json ->
-```
-
-#### Generating Embeddings
+First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search/tree/main/data).
 
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
@@ -166,8 +187,12 @@ arxiv-metadata-oai-snapshot.json ->
 | `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
 |  `multi-gpu-arxiv-embeddings.ipynb` | Dask Cluster, 32 cores | ... |
 
-#### Loading Index on Redis Cloud
+### Loading Index on Redis Cloud
 
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
 | `arxiv_embeddings_10000.pkl` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 6min |
+
+### Load testing the HTTP Server
+
+TODO
