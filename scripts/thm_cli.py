@@ -144,7 +144,7 @@ def goto_find_answer():
         render_paper(paper)
         print("```bibtex")
         print(_BibTeX(paper))
-        
+        print("```")
         print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
         render_results(similar_papers, format=settings.format)
     print()
