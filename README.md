@@ -41,7 +41,7 @@ See [Architecture](#architecture) to see how it works, and [User Workflow](#user
 
 ## History of Changes
 
-- 1/11 - Added a multi-category classifier and a CLI HTTP client for the backend
+- 1/11 - Added a multi-category classifier, a Question Answering engine and a CLI HTTP client to the backend
 - 31/10 - Draft blog posts and CLI ETL tool
 - 30/10 - Refactored `RedisVentures/redis-arXiv-search` project
 - 27/10 - Setup Redis Cloud Enterprise and Saturn Cloud accounts and [organized](https://github.com/orgs/artefactory/projects/7) within the team
