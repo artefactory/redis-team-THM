@@ -147,7 +147,6 @@ def goto_find_answer():
         
         print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
         render_results(similar_papers, format=settings.format)
-        print(f"Total of {total:,d} searchable arXiv papers. Last updated 2022-11-04.")
     print()
     
 
