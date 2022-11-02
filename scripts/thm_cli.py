@@ -9,11 +9,12 @@ from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
 
+from helpers.category_parser import parse_categories_from_redis
 from helpers.models import Format, Paper
-from question_answering import get_answer_to_prompt
 from helpers.quotes import random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
+from question_answering import get_answer_to_prompt
 
 
 def _BibTeX(paper: Paper):
@@ -60,8 +61,11 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
     clean_authors = paper.authors.replace("\n", "").replace("  ", " ")
-    print(HTML(f"{clean_title}"))
+    print(HTML(f"<b>{clean_title}</b>"))
     print(f"by {clean_authors}")
+    print("=" * 80)
+    print("Categories:")
+    print("", *parse_categories_from_redis(paper.categories), sep="\n* ")
     print("=" * 80)
     print(paper.abstract)
     print()
