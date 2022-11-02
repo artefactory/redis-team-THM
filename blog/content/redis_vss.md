@@ -28,6 +28,30 @@ Few words about RedisSearch
 
 https://gist.github.com/mycaule/fcc307228b3b0bc80ee322949463435b
 
+:::python
+    if config.index_type == "HNSW":
+        await search_index.create_hnsw(
+            categories_field,
+            year_field,
+            redis_conn=redis_conn,
+            number_of_vectors=len(papers),
+            prefix="THM:Paper:",
+            distance_metric="IP",
+            vector_size=vector_size,
+        )
+    else:
+        await search_index.create_flat(
+            categories_field,
+            year_field,
+            redis_conn=redis_conn,
+            number_of_vectors=len(papers),
+            prefix="THM:Paper:",
+            distance_metric="IP",
+            vector_size=vector_size,
+        )
+
+> https://redis.io/docs/stack/search/reference/vectors/
+
 ## Getting started with Redis Cloud Enterprise
 
 ### Configure your Account
