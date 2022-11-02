@@ -55,6 +55,13 @@ It can be useful for the Pub/Sub patterns when Internet users have their browser
 
 Because of its single threaded nature, it has no lock, and can respond to the load of many requests.
 
+TODO
+> https://github.com/redis/redis-om-python
+> https://github.com/redis/redis-om-python/blob/main/docs/models.md#all-settings-supported-by-the-meta-object
+> https://github.com/artefactory/redis-team-THM/wiki/REDIS-Requests
+> https://redis.io/docs/stack/search/
+> https://github.com/brainix/pottery
+
 ## Use cases
 
 - Show the most recent items in your application

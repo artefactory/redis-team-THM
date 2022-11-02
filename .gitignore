@@ -58,6 +58,5 @@ coverage.xml
 .DS_Store
 
 data/*
-.netlify
 **/config/prod.env
 **/config/dev.env
