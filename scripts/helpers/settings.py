@@ -1,6 +1,5 @@
-from pydantic import BaseSettings
-
 from helpers.models import Format
+from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):

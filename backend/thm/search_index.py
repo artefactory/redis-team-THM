@@ -5,7 +5,6 @@ from redis.asyncio import Redis
 from redis.commands.search.field import VectorField
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType
 from redis.commands.search.query import Query
-
 from thm.config.settings import get_settings
 
 

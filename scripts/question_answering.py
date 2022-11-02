@@ -1,11 +1,10 @@
 from typing import Dict, List, Tuple
 
-from transformers import pipeline
-
 from helpers.models import Paper
 from helpers.paper_manager import PriorityPapersManager
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
+from transformers import pipeline
 
 settings = Settings()
 

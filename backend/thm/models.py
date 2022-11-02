@@ -1,3 +1,5 @@
+from typing import Optional
+
 from aredis_om import Field, HashModel
 
 
@@ -7,7 +9,7 @@ class Paper(HashModel):
     authors: str
     abstract: str = Field(index=True, full_text_search=True)
     categories: str = Field(index=True)
-    category_weights: str  # TODO: add Tom's category_weights (1, see below)
+    category_weights: Optional[str]  # TODO: add Tom's category_weights (1, see below)
     year: str = Field(index=True)
     # vector: bytes
 

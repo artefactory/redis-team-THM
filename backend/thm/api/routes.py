@@ -3,7 +3,6 @@ from typing import Dict
 
 import redis.asyncio as redis
 from fastapi import APIRouter
-
 from thm.config.settings import get_settings
 from thm.embeddings import Embeddings
 from thm.models import Paper
