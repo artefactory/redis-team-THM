@@ -20,10 +20,12 @@ env:
 	$(CONDA_ACTIVATE) arXiv
 	@cd backend/ && pip install -r requirements.txt
 
-publish_blog:
+build_blog:
 	pelican blog/content -o blog/output -s blog/pelicanconf.py
-	# ghp-import blog/output -b gh-pages
-	# git push origin gh-pages
+
+publish_blog: build_blog
+	ghp-import blog/output -b gh-pages
+	git push origin gh-pages
 
 generate_index:
 	python3 scripts/generate_index.py

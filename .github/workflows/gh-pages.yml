@@ -25,10 +25,10 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r blog/requirements.txt
-          make publish_blog
+          make build_blog
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: gh-pages
           folder: blog/output
