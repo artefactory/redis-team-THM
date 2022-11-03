@@ -5,7 +5,7 @@ Category: MLOps
 Tags: mlops
 Slug: mlops-methodology
 Authors: Michel Hua
-Summary: Day 1 - Using MLOps techniques in our project
+Summary: Day 1 - Using MLOps techniques in our project HELLO MICHEL
 
 _This article is the first of a series of post we do during the [Redis Venture hackathon](https://hackathon.redisventures.com). The goal is to keep a journal of our work._
 
