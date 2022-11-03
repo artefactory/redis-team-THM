@@ -1,0 +1,34 @@
+{
+  "name": "thm-backend",
+  "image": {
+    "name": "saturn-python",
+    "version": "2022.06.01",
+    "owner": "saturncloud"
+  },
+  "description": "THM Backend to be used with the CLI",
+  "environment_variables": {},
+  "working_directory": "/home/jovyan/workspace/redis-team-THM/backend",
+  "start_script": "./start.sh",
+  "git_repositories": [
+    {
+      "url": "git@github.com:artefactory-fr/redis-team-THM.git",
+      "path": "/home/jovyan/workspace/redis-team-THM",
+      "public": false,
+      "on_restart": "reclone",
+      "reference": null,
+      "reference_type": "branch"
+    }
+  ],
+  "secrets": [],
+  "deployment": {
+    "instance_type": "large",
+    "command": "uvicorn api:app --reload --host 0.0.0.0 --port 8000",
+    "instance_count": 1,
+    "public": true,
+    "start_ssh": true,
+    "subdomain": "thm-cli"
+  },
+  "owner": "michelhua",
+  "visibility": "org",
+  "schema_version": "2022.08.01"
+}
