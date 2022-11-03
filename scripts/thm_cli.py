@@ -25,6 +25,7 @@ def _BibTeX(paper: Paper):
     year = "{paper.year}",
     url = "{paper.url}",
     keywords = "..."
+    {paper.categories}
 }}"""
 
 
@@ -54,6 +55,10 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
         return
 
     print("```")
+    print()
+    paper_ids = list(map(lambda x: x.paper_id,papers))
+    print("To go further, use 'search similar', 'search details' commands...")
+    print(HTML(f"with these arXiv IDs as reference <b>{paper_ids}</b>"))
     print()
 
 
@@ -99,7 +104,7 @@ def goto_search_details():
     print()
     paper = Engine.paper(paper_id)
     render_paper(paper)
-    print("Opening on arXiv...")
+    print(f"Opening {paper_id} on arXiv...")
     webbrowser.open(f"https://arxiv.org/pdf/{paper_id}.pdf")
     print()
 
@@ -109,7 +114,7 @@ def goto_wolfram():
         "Find a formula (eg. cosine law): ", auto_suggest=AutoSuggestFromHistory()
     )
     print()
-    print("Asking Wolfram Alpha...")
+    print(f"Asking Wolfram Alpha about {wolfram_query}...")
     webbrowser.open(Engine.ask_wolfram(wolfram_query))
     print()
 
@@ -124,21 +129,21 @@ def goto_configure():
     max_results_choice = ps.prompt("Max Results (eg. 3): ")
     settings.max_results = max_results_choice
     print()
-    
+
 def goto_find_answer():
     print()
     print("This is a beta feature! Ask question and we will look for the article that seems to answer it best.")
     user_prompt = ps.prompt("Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory())
     print("Loading model...")
-    
+
     answers = get_answer_to_prompt(user_prompt, top_k=1)
-    
+
     for answer, paper in answers:
         # get similar papers to display
         similar_papers, total = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
         print("-"*80)
-        print(f"RESULT:", f"'{answer}'") 
+        print(f"RESULT:", f"'{answer}'")
         print()
         # TODO: render answers
         render_paper(paper)
@@ -148,7 +153,7 @@ def goto_find_answer():
         print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
         render_results(similar_papers, format=settings.format)
     print()
-    
+
 
 
 def goto_exit():
