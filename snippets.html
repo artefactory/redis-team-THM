@@ -46,6 +46,8 @@
 <p>In <a href="/category/thm-cli.html">THM CLI</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> </p>
 </footer><!-- /.post-info -->      <p><a href="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM"><img alt="asciicast" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg"></a></p>
+<script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
+
 <h1>Running THM CLI</h1>
 <p>Open the terminal and run the following command,</p>
 <div class="highlight"><pre><span></span><code>thm-cli
@@ -74,8 +76,37 @@
 <div class="highlight"><pre><span></span><code>THM # search keywords
 </code></pre></div>
 
-<h3>Searching similar papers</h3>
-<div class="highlight"><pre><span></span><code>THM # search similar
+<p>Enter a search query to discover scholarly papers.
+Your keywords (eg. social networks): category theory
+Papers matching "category theory"...</p>
+<p>'''bibtex
+@article{john20,
+    author = "John Baez, Bob Coecke",
+    title = "Proceedings Applied Category Theory 2019",
+    year = "2020",
+    url = "https://arxiv.org/pdf/2009.06334.pdf",
+    keywords = "..."
+}
+@article{david21,
+    author = "David I. Spivak (Massachusetts Institute of Technology), Jamie Vicary (University of Cambridge)",
+    title = "Proceedings of the 3rd Annual International Applied Category Theory Conference 2020",
+    year = "2021",
+    url = "https://arxiv.org/pdf/2101.07888.pdf",
+    keywords = "..."
+}
+@article{wille17,
+    author = "Willem Conradie, Sabine Frittella, Michele Piazzai, Apostolos Tzimoulis, Alessandra Palmigiano and Nachoem M. Wijnberg",
+    title = "Categories: How I Learned to Stop Worrying and Love Two Sorts",
+    year = "2017",
+    url = "https://arxiv.org/pdf/1604.00777.pdf",
+    keywords = "..."
+}
+'''</p>
+<p>Total of 309,164 searchable arXiv papers. Last updated 2022-11-04.</p>
+<div class="highlight"><pre><span></span><code>### Searching similar papers
+
+```txt
+THM # search similar
 </code></pre></div>
 
 <h3>Gettings details about a paper</h3>
