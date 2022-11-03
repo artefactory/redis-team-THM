@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - feat/more-writing
+      - feat/missing-articles
 
 jobs:
   deploy-gh:
