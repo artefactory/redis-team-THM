@@ -1,7 +1,7 @@
 Title: Day 6 - Benchmarking the stack
 Date: 2022-10-28 14:05
 Modified: 2022-10-28 14:05
-Category: MLOps
+Category: Benchmarks
 Tags: benchmark
 Slug: benchmark
 Authors: Michel Hua

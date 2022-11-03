@@ -1,7 +1,7 @@
 Title: Indexing Contents to Redis
 Date: 2022-11-04 11:25
 Modified: 2022-11-04 11:25
-Category: MLOps
+Category: THM CLI
 Tags: python, redis, mlops
 Slug: indexing-contents
 Authors: Michel Hua

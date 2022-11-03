@@ -1,10 +1,10 @@
 AUTHOR = 'THM'
 SITENAME = 'Team THM'
-SITEURL = 'https://artefactory.github.io/redis-team-THM'
+SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Rome'
+TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
 
