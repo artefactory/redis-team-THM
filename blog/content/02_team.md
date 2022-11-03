@@ -11,15 +11,15 @@ _Day 2 - When we built the team._
 
 # A multidisciplinary team
 
-## Our **Data Scientists** : Henrique Brito & Tom Darmon 
+## Our **Data Scientists**: Henrique Brito & Tom Darmon
 
-<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEYqUGvO_H1dQ/profile-displayphoto-shrink_800_800/0/1633011518464?e=1672876800&v=beta&t=JB9q5241I0qhYvjQtYRGU1lP6CIsx1VyeMYZUwuW4OE" alt="drawing" width="200"/>
-<img src="https://media-exp1.licdn.com/dms/image/C4E03AQEpgraBB2KTWg/profile-displayphoto-shrink_800_800/0/1646238416975?e=1672876800&v=beta&t=NM1ugivJDSkY9YTIfFb49mzOVjr6OlEosIRsbD8npJA" alt="drawing" width="200"/>
+<a href="https://www.linkedin.com/in/henrique-b-71240a12b/"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEYqUGvO_H1dQ/profile-displayphoto-shrink_800_800/0/1633011518464?e=1672876800&v=beta&t=JB9q5241I0qhYvjQtYRGU1lP6CIsx1VyeMYZUwuW4OE" alt="drawing" width="200"/></a>
+<a href="https://www.linkedin.com/in/tom-darmon/"><img src="https://media-exp1.licdn.com/dms/image/C4E03AQEpgraBB2KTWg/profile-displayphoto-shrink_800_800/0/1646238416975?e=1672876800&v=beta&t=NM1ugivJDSkY9YTIfFb49mzOVjr6OlEosIRsbD8npJA" alt="drawing" width="200"/></a>
 
-## Our **Data Engineers** : Michel Hua & Corentin Roineau
+## Our **Data Engineers**: Michel Hua & Corentin Roineau
 
-<img src="https://media-exp1.licdn.com/dms/image/C4E03AQERySNGDN1KQA/profile-displayphoto-shrink_800_800/0/1633522976972?e=1672876800&v=beta&t=tprmFLfdJV1f96EzdwDRaeHDkNUmnlQHASpFhh5YQEg" alt="drawing" width="200"/> 
-<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEJV3BgLmk8mw/profile-displayphoto-shrink_800_800/0/1600335840725?e=1672876800&v=beta&t=vG0KhdWQBn8wRbBTs8wlD5FpSvrZQMSmV6h_lxf8BHY" alt="drawing" width="200"/>
+<a href="https://www.linkedin.com/in/michelhua/"><img src="https://media-exp1.licdn.com/dms/image/C4E03AQERySNGDN1KQA/profile-displayphoto-shrink_800_800/0/1633522976972?e=1672876800&v=beta&t=tprmFLfdJV1f96EzdwDRaeHDkNUmnlQHASpFhh5YQEg" alt="drawing" width="200"/></a>
+<a href="https://www.linkedin.com/in/corentin-roineau/"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEJV3BgLmk8mw/profile-displayphoto-shrink_800_800/0/1600335840725?e=1672876800&v=beta&t=vG0KhdWQBn8wRbBTs8wlD5FpSvrZQMSmV6h_lxf8BHY" alt="drawing" width="200"/></a>
 
 ## About Artefact
 

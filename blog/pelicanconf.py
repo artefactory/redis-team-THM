@@ -14,7 +14,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-LINKS = (("Submission", "https://google.fr/"),)
+LINKS = (("GitHub", "https://github.com/artefactory/redis-team-THM/"),)
 
 SOCIAL = (
     ("Artefact", "https://www.artefact.com"),

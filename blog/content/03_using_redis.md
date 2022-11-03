@@ -79,6 +79,14 @@ This command can be used to retrieve fields from a specific key.
 "M. Kachouane (USTHB), S. Sahki, M. Lakrouf (CDTA, USTHB), N. Ouadah\n  (CDTA)"
 ```
 
+### [`HSET`](https://redis.io/commands/hset/)
+
+This command is used to set field in the hash stored at key to value.
+
+```txt
+> HSET THM:Paper:
+```
+
 ### [`FT.SEARCH`](https://redis.io/commands/ft.search/)
 
 This command can be used to search index with a textual query.
