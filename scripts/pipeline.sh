@@ -19,7 +19,7 @@ do
     then
         echo "$path already exists."
     else
-        python3 generate_index.py \
+        PYTHONPATH=../backend python3 generate_index.py \
         --year_month="$cutoff" \
         --input_path="arxiv-metadata-oai-snapshot.json" \
         --output_path="$path/$filename.pkl" \

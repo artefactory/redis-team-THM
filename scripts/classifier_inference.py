@@ -45,5 +45,6 @@ def get_paper_classification_predictions(raw_text_column: pd.Series, top_k: int)
             confidence_threshold=settings.classifier_confidence_threshold
         )
     )
+    logger.info("Done with predictions")
     
     return parsed_predictions

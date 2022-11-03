@@ -7,6 +7,7 @@ from loguru import logger
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
+from classifier_inference import get_paper_classification_predictions
 from helpers.processors import clean_description, process
 
 tqdm.pandas()
