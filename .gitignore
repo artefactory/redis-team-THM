@@ -60,3 +60,6 @@ coverage.xml
 data/*
 **/config/prod.env
 **/config/dev.env
+
+#ignore outputs
+model_outputs*/
