@@ -1,9 +1,9 @@
 Title: Day 10 - Services Endpoints
 Date: 2022-03-20 13:38
 Modified: 2022-03-20 13:38
-Category: Team
-Tags: team
-Slug: team-members
+Category: Technology
+Tags: hackathon
+Slug: services
 Authors: Corentin Roineau
 Summary: Day 10 - Services Endpoints
 ## Different Endpoints of the project
