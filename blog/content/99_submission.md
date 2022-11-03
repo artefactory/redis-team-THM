@@ -61,6 +61,8 @@ Max Results (eg. 3): 4
 
 ## Search the arXiv database
 
+<script id="asciicast-5e9QHIS62HZDL1VkSFtAVlvjF" src="https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF.js" async></script>
+
 ### Searching for keywords
 
 Just type in a few words like `category theory` and results will be fetched in [BibTeX article](https://www.bibtex.com/e/article-entry/) format ready you to copy paste bibliography of your research paper.
