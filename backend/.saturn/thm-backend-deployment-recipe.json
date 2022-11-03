@@ -8,6 +8,11 @@
   "description": "THM Backend to be used with the CLI",
   "environment_variables": {},
   "working_directory": "/home/jovyan/workspace/redis-team-THM/backend",
+  "extra_packages": {
+    "pip": {
+      "requirements_txt": "fastapi\nuvicorn\nredis-om\nsentence-transformers\ntransformers\ntorch\nDatasets\npython-dotenv"
+    }
+  },
   "start_script": "./start.sh",
   "git_repositories": [
     {
