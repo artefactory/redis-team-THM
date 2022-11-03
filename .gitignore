@@ -64,3 +64,6 @@ data/*
 # ignore outputs
 output/*
 model_outputs*/
+
+# ignore user history
+.cli_history
