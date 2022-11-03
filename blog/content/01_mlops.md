@@ -7,7 +7,7 @@ Slug: mlops-methodology
 Authors: Michel Hua
 Summary: Day 1 - Using MLOps techniques in our project
 
-_This article is the first of a series of post we do during the [Redis Venture hackathon](https://hackathon.redisventures.com). The goal is to keep a journal of our work._
+_This article is the first of a series of posts we will do during the [Redis Venture hackathon](https://hackathon.redisventures.com). The goal is to keep a journal of our work._
 
 # What is MLOps?
 
@@ -46,6 +46,22 @@ In Python you would serve a REST API with the [`tiangolo/fastapi`](https://githu
 REST APIs allows clients to ask for a service in realtime and get an answer quickly. That is how basically most websites nowadays run. You can think of transportation information systems where the information has to be updated every minute.
 
 We will see later how to leverage these concepts in the Redis Hackathon.
+
+# The Redis Hackathon
+
+The [Vector Search Engineering Lab](https://hackathon.redisventures.com) hackathon is happening from October 24 to November 4, we have decided to participate with 4 engineers from Artefact. It is a hackathon centered of Vector Search using Redis technologies and the arXiv papers dataset.
+
+The goal is to demonstrate through a small project how easy and powerful the following techniques are applicable to a web application problem:
+
+- [vector similarity search](https://en.m.wikipedia.org/wiki/Similarity_search)
+- [Natural Language Processing](https://en.m.wikipedia.org/wiki/Natural_language_processing)
+- [Text Mining](https://en.m.wikipedia.org/wiki/Text_mining)
+- [Knowledge Graphs](https://en.m.wikipedia.org/wiki/Knowledge_graph)
+- [Document Retrieval](https://en.m.wikipedia.org/wiki/Document_retrieval)
+- [Topic Identification](https://en.m.wikipedia.org/wiki/Topic_model)
+- [Question & Answering](https://en.m.wikipedia.org/wiki/Question_answering)
+- [Recommendation Systems](https://en.m.wikipedia.org/wiki/Recommender_system)
+- [Data Visualization](https://en.m.wikipedia.org/wiki/Data_and_information_visualization)
 
 # References
 
