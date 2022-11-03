@@ -38,3 +38,7 @@ To display line numbers, use a path-less shebang instead of colons:
 ## We are Recruiting
 
 - [Artefact](https://www.linkedin.com/company/artefact-global/mycompany/)
+
+# Setting Up the Services
+
+- deploying apps using only serverless managed services: Saturn, Redis Enterprise Cloud, Netlify
