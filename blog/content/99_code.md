@@ -1,10 +1,10 @@
-Title: Day 99 - Code snippets
+Title: The THM CLI
 Date: 2022-11-30 10:25
 Modified: 2022-11-30 10:25
-Category: Technology
+Category: THM CLI
 Tags: python
 Slug: snippets
 Authors: Tom Darmon, Henrique Brito, Michel Hua
-Summary: Day 99 - Code snippets
+Summary: The THM CLI
 
-...
+[![asciicast](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg)](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM)
