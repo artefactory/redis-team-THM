@@ -19,7 +19,7 @@ Don't forget that you can call each API with your application to get the data fr
 | /vectorsearch/text | POST | Get the data from paper id | `{"id"}` | `{"id": "123", "title": "THE TITLE", "abstract": "abstract", ...}` |
 | /vectorsearch/text/user| POST | Get a list of paper for the given text by the user | `{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}` | `{"papers": [{"id": "123", "title": "title", "abstract": "abstract"}, ...]}` |
 
-Example of Curl call :
+## Example of Curl call :
 
     curl 'localhost/api/v1/paper/vectorsearch/text/user' \  -H 'Content-Type: application/json' \             
     --data-raw '{"user_text":"people review","search_type":"KNN","number_of_results":15,"years":[],"categories":[]}'
