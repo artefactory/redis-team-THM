@@ -4,7 +4,7 @@ Modified: 2022-10-28 14:05
 Category: MLOps
 Tags: benchmark
 Slug: benchmark
-Authors: Tom Darmon, Henrique Brito, Michel Hua
+Authors: Michel Hua
 Summary: Day 6 - Benchmarking the stack
 
 https://mlops.community/vector-similarity-search-from-basics-to-production/

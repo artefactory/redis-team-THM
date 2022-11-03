@@ -1,6 +1,6 @@
 AUTHOR = 'THM'
 SITENAME = 'Team THM'
-SITEURL = ''
+SITEURL = 'https://artefactory.github.io/redis-team-THM'
 
 PATH = 'content'
 

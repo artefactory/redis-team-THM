@@ -1,10 +1,10 @@
 Title: The THM CLI
-Date: 2022-11-30 10:25
-Modified: 2022-11-30 10:25
+Date: 2022-11-04 10:25
+Modified: 2022-11-04 10:25
 Category: THM CLI
 Tags: python
 Slug: snippets
-Authors: Tom Darmon, Henrique Brito, Michel Hua
+Authors: Henrique Brito, Michel Hua
 Summary: The THM CLI
 
 <script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
@@ -14,7 +14,7 @@ Summary: The THM CLI
 Open the terminal and run the following command,
 
 ```sh
-thm-cli
+% thm-cli
 ```
 
 You will have access to a interactive prompt where you can type commands, with auto-completion and history capabilities.
