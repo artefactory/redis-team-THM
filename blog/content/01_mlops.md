@@ -63,7 +63,7 @@ The goal is to demonstrate through a small project how easy and powerful the fol
 - [Recommendation Systems](https://en.m.wikipedia.org/wiki/Recommender_system)
 - [Data Visualization](https://en.m.wikipedia.org/wiki/Data_and_information_visualization)
 
-Using the right MLOps tools and technologies we will try to build an interesting experiences for the
+Using the right MLOps tools and technologies we will try to build an interesting experiences for the people doing technical writing or research.
 
 # References
 
