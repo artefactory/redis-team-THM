@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - feat/missing-articles
+      - services-endpoint
 
 jobs:
   deploy-gh:
