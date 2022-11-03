@@ -1,11 +1,11 @@
-Title: Redis Vector Similarity Search
+Title: Day 5 - Redis Vector Similarity Search
 Date: 2022-10-28 11:00
 Modified: 2022-10-28 11:00
 Category: Technology
 Tags: redis
 Slug: redis-vss
 Authors: Tom Darmon, Henrique Brito, Michel Hua
-Summary: Redis Vector Similarity Search
+Summary: Day 5 - Redis Vector Similarity Search
 
 ## About Vector Similarity
 
