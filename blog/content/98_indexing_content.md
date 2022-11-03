@@ -80,7 +80,7 @@ FLAGS
 
 ## Using a basic pipeline
 
-`pipeline.sh` takes a list of cutoffs and a model name for embeddings encoding. You can track progress thanks to [`tqdm/tqdm`](https://github.com/tqdm/tqdm).
+[`pipeline.sh`](https://github.com/artefactory/redis-team-THM/blob/main/scripts/pipeline.sh) takes a list of cutoffs and a model name for embeddings encoding. You can track progress thanks to [`tqdm/tqdm`](https://github.com/tqdm/tqdm).
 
 ```sh
 % ./pipeline.sh
