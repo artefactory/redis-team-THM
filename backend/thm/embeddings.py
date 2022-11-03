@@ -45,5 +45,4 @@ class Embeddings:
         else:
             sentences = self.clean_description(sentences)
 
-        logger.info(sentences)
         return self.model.encode(sentences, normalize_embeddings=True)
