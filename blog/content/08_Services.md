@@ -26,8 +26,8 @@ Don't forget that you can call each API with your application to get the data fr
 
 | Endpoint | Method | Description | Request Body | Response Body |
 | --- | --- | --- | --- | --- |
-| / | GET | Get a list of papers | `{"limit": int, "skip": int, "years":str, "categories":str}` | `{"total": total, "papers": papers}`
-| /vectorsearch/text/user| POST | Get a list of paper for the given text by the user | `{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}` | `{"papers": [{"id": "123", "title": "title", "abstract": "abstract"}, ...]}` |
+| `/vectorsearch/text` | POST | Get a list of paper for the given text by the user | `{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}` | `{"papers": [{"id": "123", "title": "title", "abstract": "abstract"}, ...]}` |
+| `/vectorsearch/text/user` | POST | Get a list of paper for the given text by the user | `{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}` | `{"papers": [{"id": "123", "title": "title", "abstract": "abstract"}, ...]}` |
 
 ## Example of curl call
 

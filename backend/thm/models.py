@@ -2,13 +2,14 @@ from aredis_om import Field, HashModel
 
 
 class Paper(HashModel):
-    paper_id: str
+    paper_id: str = Field(primary_key=True)
     title: str = Field(index=True, full_text_search=True)
     authors: str
     abstract: str = Field(index=True, full_text_search=True)
     categories: str = Field(index=True)
     year: str = Field(index=True)
-    # vector: bytes
+    vector: str
+
 
 # FIXME Doesn't work with pydantic
 # File "pydantic/json.py", line 45, in pydantic.json.lambda
