@@ -9,6 +9,9 @@ jobs:
   deploy-gh:
     name: Deploying GitHub Pages
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
 
     steps:
       - name: Checkout
@@ -23,3 +26,9 @@ jobs:
         run: |
           pip install -r blog/requirements.txt
           make publish_blog
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: blog/output
