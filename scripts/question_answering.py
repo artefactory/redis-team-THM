@@ -9,8 +9,7 @@ from transformers import pipeline
 settings = Settings()
 
 
-def get_prioritized_articles(user_prompt: str) -> PriorityPapersManager:
-    engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+def get_prioritized_articles(user_prompt: str, engine: SearchEngine) -> PriorityPapersManager:
     search_papers, _ = engine.search(
         user_prompt, max_results=settings.question_answering_priority_papers
     )
@@ -57,9 +56,9 @@ def _build_answer(
     return answer
 
 
-def get_answer_to_prompt(question: str, top_k: int = 1):
+def get_answer_to_prompt(engine, question: str, top_k: int = 1):
     validated_question = _validate_prompt(question)
-    priority_papers = get_prioritized_articles(validated_question)
+    priority_papers = get_prioritized_articles(validated_question, engine)
 
     # instantiate model
     model = pipeline(

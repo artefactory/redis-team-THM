@@ -140,11 +140,11 @@ def goto_find_answer():
     )
     print("Loading model...")
 
-    answers = get_answer_to_prompt(user_prompt, top_k=1)
+    answers = get_answer_to_prompt(Engine, user_prompt, top_k=1)
 
     for answer, paper in answers:
         # get similar papers to display
-        similar_papers, total = Engine.similar_to(paper.paper_id, settings.max_results)
+        similar_papers, _ = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
         print("-" * 80)
         print(f"RESULT: {answer}")
@@ -226,8 +226,9 @@ print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
 print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
-# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-Engine = SearchEngine("http://localhost:8080/api/v1/paper")
+Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+# Engine = SearchEngine("http://localhost:8080/api/v1/paper")
+
 ps = PromptSession()
 settings = Settings()
 quote = random_quote()
