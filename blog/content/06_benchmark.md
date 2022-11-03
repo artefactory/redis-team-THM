@@ -1,8 +1,8 @@
 Title: Day 6 - Benchmarking the stack
-Date: 2022-10-29 14:05
-Modified: 2022-10-29 14:05
-Category: Technology
-Tags: redis
+Date: 2022-10-28 14:05
+Modified: 2022-10-28 14:05
+Category: MLOps
+Tags: benchmark
 Slug: benchmark
 Authors: Tom Darmon, Henrique Brito, Michel Hua
 Summary: Day 6 - Benchmarking the stack

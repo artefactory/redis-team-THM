@@ -149,10 +149,8 @@ vercel .
 ### Blog
 
 ```sh
-cd blog/
-
 # To preview files locally
-pelican content && pelican --listen
+pelican blog/content && pelican --listen
 
 # To publish on GitHub pages
 make publish_blog
