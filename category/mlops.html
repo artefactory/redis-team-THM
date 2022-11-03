@@ -13,6 +13,7 @@
                 <h1><a href="/">Team THM</a></h1>
                 <nav><ul>
                     <li class="active"><a href="/category/mlops.html">MLOps</a></li>
+                    <li><a href="/category/redis-and-more.html">Redis and more</a></li>
                     <li><a href="/category/team.html">Team</a></li>
                     <li><a href="/category/technology.html">Technology</a></li>
                 </ul></nav>
@@ -20,59 +21,25 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/mlops-methodology.html">Day 1 - Using MLOps in our project</a></h1>
+                    <h1 class="entry-title"><a href="/benchmark.html">Day 6 - Benchmarking the stack</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2022-10-15T01:15:00+02:00">
-                Published: Sat 15 October 2022
+        <abbr class="published" title="2022-10-28T14:05:00+02:00">
+                Published: Fri 28 October 2022
         </abbr>
 		<br />
-        <abbr class="modified" title="2022-10-15T01:15:00+02:00">
-                Updated: Sat 15 October 2022
+        <abbr class="modified" title="2022-10-28T14:05:00+02:00">
+                Updated: Fri 28 October 2022
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
+                By                         <a class="url fn" href="/author/tom-darmon.html">Tom Darmon</a>
+                        <a class="url fn" href="/author/henrique-brito.html">Henrique Brito</a>
+                        <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
         </address>
 <p>In <a href="/category/mlops.html">MLOps</a>.</p>
-<p>tags: <a href="/tag/mlops.html">mlops</a> </p>
-</footer><!-- /.post-info --><p><em>This article is the first of a series of posts we will do during the <a href="https://hackathon.redisventures.com">Redis Venture hackathon</a>. The goal is to keep a journal of our work.</em></p>
-<h1>What is MLOps?</h1>
-<p>MLOps is a term to describe general software engineering principles applied to the problems of serving machine learning models in production.</p>
-<h1>Code Best Practices</h1>
-<h2>Building Python</h2>
-<p>Using GitHub Actions, we <a href="https://github.com/artefactory/redis-team-THM/blob/main/.github/workflows/ci-python.yml">checked our code</a> against the <code>main</code> branch of the repo, ensuring not only style and but also variables linking remain safe during development.</p>
-<p>We used <a href="https://github.com/PyCQA/flake8"><code>flake8</code></a> for basic linting and <a href="https://github.com/psf/black"><code>black</code></a> for code formatting.</p>
-<p>Static analysis is essential in Python because the language uses duck typing and this can cause issues during runtime, problems that a compiler would have catched.</p>
-<p>Improving readability, ensuring formatting and style are consistent within the team of developers is essential.</p>
-<h1>Model Deployment</h1>
-<h2>Ways to deploy a model</h2>
-<p>In Python Machine Learning project, prototypes usually are written using Jupyter notebooks such as the ones in the <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>redis-arXiv-search/data</code></a> repository.</p>
-<p>The first step to make it more professional, is to turn it to a pipeline. Pipelines usually are decomposed in steps which are responsible for handling one input file and another file as output.</p>
-<p>The first step is to write a Python module component that enables us to produce a model, under certain conditions, and to be able to rerun it in a flexible way.</p>
-<p>In Python there are open source tools which help you in that process. For example <a href="https://github.com/mlflow/mlflow"><code>mlflow/mlflow</code></a> to deal with the lifecycle of training your models, measuring their performance and archiving models. In other situations, you might also want to run advanced pipelines with <a href="https://github.com/apache/airflow"><code>apache/airflow</code></a> which can take care of different steps such as data fetching, pre-processing and handling executions in different context with DAGs.</p>
-<p>After scheduling the execution of this training component and storing models somewhere what we usually do is serve models for users to be able to use it.</p>
-<p>Using it mean performing predictions or getting the results of large numerical computation. In the web era, nowadays models can be served through web servers and communicate with other applications through HTTP requests.</p>
-<p>In Python you would serve a REST API with the <a href="https://github.com/tiangolo/fastapi"><code>tiangolo/fastapi</code></a> framework, use a database such as <a href="https://github.com/redis/redis"><code>redis/redis</code></a> to store your predictions, and this is usually the case in systems like search engines or recommendation systems.</p>
-<p>REST APIs allows clients to ask for a service in realtime and get an answer quickly. That is how basically most websites nowadays run. You can think of transportation information systems where the information has to be updated every minute.</p>
-<p>We will see later how to leverage these concepts in the Redis Hackathon.</p>
-<h1>The Redis Hackathon</h1>
-<p>The <a href="https://hackathon.redisventures.com">Vector Search Engineering Lab</a> hackathon is happening from October 24 to November 4, we have decided to participate with 4 engineers from Artefact. It is a hackathon centered of Vector Search using Redis technologies and the arXiv papers dataset.</p>
-<p>The goal is to demonstrate through a small project how easy and powerful the following techniques are applicable to a web application problem:</p>
-<ul>
-<li><a href="https://en.m.wikipedia.org/wiki/Similarity_search">vector similarity search</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Natural_language_processing">Natural Language Processing</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Text_mining">Text Mining</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Knowledge_graph">Knowledge Graphs</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Document_retrieval">Document Retrieval</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Topic_model">Topic Identification</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Question_answering">Question &amp; Answering</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Recommender_system">Recommendation Systems</a></li>
-<li><a href="https://en.m.wikipedia.org/wiki/Data_and_information_visualization">Data Visualization</a></li>
-</ul>
-<h1>References</h1>
-<ul>
-<li><a href="https://github.com/DataTalksClub/mlops-zoomcamp/">MLOps Zoomcamp</a></li>
-</ul>                </article>
+<p>tags: <a href="/tag/benchmark.html">benchmark</a> </p>
+</footer><!-- /.post-info --><p>https://mlops.community/vector-similarity-search-from-basics-to-production/</p>
+<p>pricing of the stack</p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
