@@ -61,5 +61,6 @@ data/*
 **/config/prod.env
 **/config/dev.env
 
-#ignore outputs
+# ignore outputs
+output/*
 model_outputs*/
