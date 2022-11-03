@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - feat/more-writing
+      - services-endpoint
 
 jobs:
   deploy-gh:
