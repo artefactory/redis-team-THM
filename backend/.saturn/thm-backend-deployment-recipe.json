@@ -10,7 +10,7 @@
   "working_directory": "/home/jovyan/workspace/redis-team-THM/backend",
   "extra_packages": {
     "pip": {
-      "install": "fastapi uvicorn redis-om sentence-transformers transformers torch Datasets python-dotenv"
+      "install": "fastapi uvicorn redis-om sentence-transformers transformers torch Datasets python-dotenv loguru"
     }
   },
   "start_script": "",

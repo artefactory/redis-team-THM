@@ -118,6 +118,16 @@ def goto_wolfram():
     print()
 
 
+def goto_stackexchange():
+    so_query = ps.prompt(
+        "Write your question: ", auto_suggest=AutoSuggestFromHistory()
+    )
+    print()
+    print(f"Asking StackExchange about {so_query}...")
+    webbrowser.open(Engine.ask_stackexchange(so_query))
+    print()
+
+
 def goto_configure():
     format_choice = ps.prompt(
         "Choose file format (markdown, bibtex): ",
@@ -177,6 +187,7 @@ menu_completer = NestedCompleter.from_nested_dict(
         "find": {
             "answer": None,
             "formula": None,
+            "stackexchange": None,
         },
         "configure": None,
         "help": None,
@@ -202,6 +213,9 @@ def goto_menu():
     elif menu_choice == "find formula":
         goto_wolfram()
         goto_menu()
+    elif menu_choice == "find stackexchange":
+        goto_stackexchange()
+        goto_menu()
     elif menu_choice == "configure":
         goto_configure()
         goto_menu()
@@ -226,8 +240,8 @@ print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
 print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
-Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-# Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
 # Engine = SearchEngine("http://localhost:8080/api/v1/paper")
 
 ps = PromptSession()
