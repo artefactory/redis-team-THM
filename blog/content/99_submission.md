@@ -193,8 +193,24 @@ Opening 1705.04296 on arXiv...
 ```
 THM # find answer
 
-TODO Henrique
-```
+This is a beta feature! Ask question and we will look for the article that seems to answer it best.
+Ask what is on your mind: how big is the universe
+Loading model...
+
+--------------------------------------------------------------------------------
+RESULT: between 70 to $80 h^{-1}$Mpc
+
+The Size of the Longest Filaments in the Universe
+by Somnath Bharadwaj (1), Suketu Bhavsar (2), Jatush V.Sheth (3) ((1) Indian Institute of Technology, Kharagpur, India, (2) Department of Physics and Astronomy, University of Kentucky, USA, (3) I.U.C.A.A, Pune, India)
+================================================================================
+  We analyze the filamentarity in the Las Campanas redshift survey (LCRS) and
+determine the length scale at which filaments are statistically significant.
+The largest length-scale at which filaments are statistically significant, real
+...
+````
+
+(TODO Henrique)
+
 
 ### Asking about a formula
 
