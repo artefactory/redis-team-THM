@@ -1,6 +1,7 @@
 #!/bin/bash
 
-declare -a cutoffs=(200811 200812 200901 200902 200903 200904 200905 200906 200907)
+# 200811 200812 200901 200902 200903 200904 200905 200906
+declare -a cutoffs=(200907)
 # 1991 to 2022
 
 # Model names (see https://huggingface.co/spaces/mteb/leaderboard)

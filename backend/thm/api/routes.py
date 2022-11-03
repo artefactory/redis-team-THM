@@ -6,7 +6,6 @@ from fastapi import APIRouter
 
 from thm.config.settings import get_settings
 from thm.embeddings import Embeddings
-from thm.models import Paper
 from thm.schema.search import SimilarityRequest, UserTextSimilarityRequest
 from thm.search_index import SearchIndex
 
@@ -22,13 +21,11 @@ search_index = SearchIndex()
 
 
 async def process_paper(p) -> Dict:
-    logger.info(p.paper_id)
-
-    paper = await Paper.get(p.paper_id)
-    paper = paper.dict()
+    document = await redis_client.hgetall(f"THM:Paper:{p.paper_id}")
+    document.pop(b"vector")  # UnicodeDecodeError: 'utf-8' codec can't decode byte
     score = 1 - float(p.vector_score)
-    paper["similarity_score"] = score
-    return paper
+    document["similarity_score"] = score
+    return document
 
 
 async def papers_from_docs(total, docs) -> list:
@@ -40,7 +37,6 @@ async def papers_from_docs(total, docs) -> list:
 
 @r.post("/vectorsearch/text", response_model=Dict)
 async def find_papers_by_paper_id(request: SimilarityRequest) -> Dict:
-    # Create query
     query = search_index.vector_query(
         request.categories,
         request.years,
@@ -51,8 +47,8 @@ async def find_papers_by_paper_id(request: SimilarityRequest) -> Dict:
         years=request.years, categories=request.categories
     )
 
-    # find the vector of the Paper listed in the request
     paper_vector_key = "THM:Paper:" + str(request.paper_id)
+
     vector = await redis_client.hget(paper_vector_key, "vector")
 
     # obtain results of the queries
@@ -88,8 +84,5 @@ async def find_papers_by_user_text(
             query_params={"vec_param": embeddings.make(request.user_text).tobytes()},
         ),
     )
-
-    logger.info(total.total)
-    logger.info(results.docs)
 
     return await papers_from_docs(total.total, results.docs)

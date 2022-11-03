@@ -1,5 +1,6 @@
 import asyncio
 import pickle
+import numpy as np
 import struct
 from typing import List
 
@@ -13,7 +14,7 @@ from thm.config.settings import get_settings
 from thm.models import Paper
 from thm.search_index import SearchIndex
 
-# from tqdm import tqdm
+import tqdm
 
 
 def read_paper_df(embeddings_path) -> List:
@@ -28,6 +29,7 @@ async def gather_with_concurrency(redis_conn, n, separator, vector_size, *papers
     # TODO tqdm
     async def load_paper(paper):
         async with semaphore:
+            # vector = paper.pop('vector')
             await redis_conn.hset(
                 f"THM:Paper:{paper['id']}",
                 mapping={
@@ -37,11 +39,15 @@ async def gather_with_concurrency(redis_conn, n, separator, vector_size, *papers
                     "abstract": paper["abstract"],
                     "categories": paper["categories"].replace(",", separator),
                     "year": paper["year"],
+                    # "vector": np.array(vector, dtype=np.float32).tobytes(),
                     "vector": struct.pack("%sf" % vector_size, *paper["vector"]),
                 },
             )
 
-    await asyncio.gather(*[load_paper(p) for p in papers])
+    flist = [load_paper(p) for p in papers]
+
+    # https://stackoverflow.com/questions/61041214
+    [await f for f in tqdm.tqdm(asyncio.as_completed(flist), total=len(flist))]
 
 
 async def load_all_data(

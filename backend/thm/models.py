@@ -8,7 +8,7 @@ class Paper(HashModel):
     abstract: str = Field(index=True, full_text_search=True)
     categories: str = Field(index=True)
     year: str = Field(index=True)
-    vector: str
+    # vector: str
 
 
 # FIXME Doesn't work with pydantic
