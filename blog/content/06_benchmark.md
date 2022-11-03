@@ -3,7 +3,7 @@ Date: 2022-10-29 14:05
 Modified: 2022-10-29 14:05
 Category: Technology
 Tags: redis
-Slug: redis-vss
+Slug: benchmark
 Authors: Tom Darmon, Henrique Brito, Michel Hua
 Summary: Day 6 - Benchmarking the stack
 
