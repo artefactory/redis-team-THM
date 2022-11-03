@@ -11,7 +11,7 @@ Summary: Indexing Contents to Redis
 
 If you want to index your own private database of documents, you can reuse the scripts
 
-## Generate the index
+## Generating the index
 
 To generate index for a specific cutoff you can just run this script, choosing you JSON file containing your corpus, the output where to store index file in Pickle format, and the model name to encode your sentences.
 
@@ -44,7 +44,7 @@ FLAGS
 
 To cold start your database you can also run the [`single-gpu-arxiv-embedding`](https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb) Jupyter Notebook on Saturn Cloud. Using a `T4-XLarge 4-cores`, `saturn-python-rapids` image, the data from the historical 2 million papers was indexed in less than 5 minutes.
 
-## Load the index to Redis
+## Loading the index to Redis
 
 ```sh
 % ./load_data.py --help

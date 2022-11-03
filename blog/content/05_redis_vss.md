@@ -1,13 +1,13 @@
-Title: Day 5 - Redis Vector Similarity Search
+Title: Redis Vector Similarity Search
 Date: 2022-10-26 16:00
 Modified: 2022-10-26 16:00
 Category: Redis and more
 Tags: redis, search
 Slug: redis-vss
 Authors: Tom Darmon, Henrique Brito, Michel Hua
-Summary: Day 5 - Redis Vector Similarity Search
+Summary: Redis Vector Similarity Search
 
-_On Day 5 we investigated the problem of similarity search_
+_Day 5 - when we investigated the problem of similarity search_
 
 # State of the Art
 

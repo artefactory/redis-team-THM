@@ -1,13 +1,13 @@
-Title: Day 3 - Using Redis
+Title: Using Redis
 Date: 2022-10-23 10:20
 Modified: 2022-10-23 10:20
 Category: Redis and more
 Tags: redis
 Slug: using-redis
 Authors: Michel Hua
-Summary: Day 3 - The most common uses of Redis
+Summary: The most common uses of Redis
 
-_On day 3, just a few days before the start of the Hackathon, what we did is learn about Redis._
+_Day 3 - Just a few days before the start of the Hackathon, what we did is learn about Redis._
 
 # What can I do with Redis?
 

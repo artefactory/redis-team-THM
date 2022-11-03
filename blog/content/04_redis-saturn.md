@@ -1,11 +1,13 @@
-Title: Day 4 - Setting up the Services
+Title: Setting up the Services
 Date: 2022-10-25 14:30
 Modified: 2022-10-25 14:30
 Category: Technology
 Tags: technology
 Slug: saturn-redis-cloud
 Authors: Michel Hua, Tom Darmon, Corentin Roineau
-Summary: Day 4 - Setting up the Services
+Summary: Setting up the Services
+
+_Day 4 - When we have set up the services._
 
 # Setting Up the Services
 
