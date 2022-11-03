@@ -1,11 +1,13 @@
-Title: Day 6 - Benchmarking the stack
+Title: Benchmarking the stack
 Date: 2022-10-28 14:05
 Modified: 2022-10-28 14:05
-Category: MLOps
+Category: Benchmarks
 Tags: benchmark
 Slug: benchmark
-Authors: Tom Darmon, Henrique Brito, Michel Hua
-Summary: Day 6 - Benchmarking the stack
+Authors: Michel Hua
+Summary: Benchmarking the stack
+
+_Day 6 When we run some benchmark for the process of index creation._
 
 https://mlops.community/vector-similarity-search-from-basics-to-production/
 

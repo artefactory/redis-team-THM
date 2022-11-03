@@ -1,15 +1,17 @@
-Title: Day 4 - Setting up the Services
+Title: Setting up the Services
 Date: 2022-10-25 14:30
 Modified: 2022-10-25 14:30
 Category: Technology
 Tags: technology
 Slug: saturn-redis-cloud
 Authors: Michel Hua, Tom Darmon, Corentin Roineau
-Summary: Day 4 - Setting up the Services
+Summary: Setting up the Services
+
+_Day 4 - When we have set up the services._
 
 # Setting Up the Services
 
-- [MLOps Community - e-lab kickoff](www.youtube.com/watch?v=uS9ZGi8RyPM)
+- [MLOps Community - e-lab kickoff](https://www.youtube.com/watch?v=uS9ZGi8RyPM)
 - [Ed Sandoval LinkedIn page](https://www.linkedin.com/in/edsandovaluk/)
 
 ## Saturn Cloud

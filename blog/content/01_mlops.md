@@ -1,13 +1,13 @@
-Title: Day 1 - The Redis Hackathon
+Title: The Redis Hackathon
 Date: 2022-10-15 01:15
 Modified: 2022-10-15 1:15
 Category: Redis and more
 Tags: mlops, hackathon
 Slug: mlops-methodology
 Authors: Michel Hua
-Summary: Day 1 - The Redis Hackathon
+Summary: The Redis Hackathon
 
-_This article is the first of a series of posts we will do during the [Redis Venture hackathon](https://hackathon.redisventures.com). The goal is to keep a journal of our work._
+_Day 1 - This article is the first of a series of posts we will do during the [Redis Venture hackathon](https://hackathon.redisventures.com). The goal is to keep a journal of our work._
 
 # What is MLOps?
 
@@ -63,7 +63,7 @@ The goal is to demonstrate through a small project how easy and powerful the fol
 - [Recommendation Systems](https://en.m.wikipedia.org/wiki/Recommender_system)
 - [Data Visualization](https://en.m.wikipedia.org/wiki/Data_and_information_visualization)
 
-Using the right MLOps tools and technologies we will try to build an interesting experiences for the
+Using the right MLOps tools and technologies we will try to build an interesting experiences for the people doing technical writing or research.
 
 # References
 
