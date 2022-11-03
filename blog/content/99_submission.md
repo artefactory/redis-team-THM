@@ -1,7 +1,7 @@
 Title: The THM CLI
 Date: 2022-11-04 10:25
 Modified: 2022-11-04 10:25
-Category: @THM CLI
+Category: THM CLI
 Tags: python
 Slug: snippets
 Authors: Henrique Brito, Michel Hua
