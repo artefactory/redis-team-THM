@@ -12,7 +12,7 @@
         <header id="banner" class="body">
                 <h1><a href="/">Team THM</a></h1>
                 <nav><ul>
-                    <li><a href="/category/mlops.html">MLOps</a></li>
+                    <li><a href="/category/benchmarks.html">Benchmarks</a></li>
                     <li><a href="/category/redis-and-more.html">Redis and more</a></li>
                     <li><a href="/category/team.html">Team</a></li>
                     <li><a href="/category/technology.html">Technology</a></li>
@@ -24,55 +24,207 @@
                 <article>
                     <h1 class="entry-title"><a href="/snippets.html">The THM CLI</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2022-11-30T10:25:00+01:00">
-                Published: Wed 30 November 2022
+        <abbr class="published" title="2022-11-04T10:25:00+01:00">
+                Published: Fri 04 November 2022
         </abbr>
 		<br />
-        <abbr class="modified" title="2022-11-30T10:25:00+01:00">
-                Updated: Wed 30 November 2022
+        <abbr class="modified" title="2022-11-04T10:25:00+01:00">
+                Updated: Fri 04 November 2022
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/tom-darmon.html">Tom Darmon</a>
-                        <a class="url fn" href="/author/henrique-brito.html">Henrique Brito</a>
+                By                         <a class="url fn" href="/author/henrique-brito.html">Henrique Brito</a>
                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
         </address>
 <p>In <a href="/category/thm-cli.html">THM CLI</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><p><a href="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM"><img alt="asciicast" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg"></a></p>                </article>
+</footer><!-- /.post-info --><script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
+
+<h1>Running THM CLI</h1>
+<p>Open the terminal and run the following command,</p>
+<div class="highlight"><pre><span></span><code>% thm-cli
+</code></pre></div>
+
+<p>You will have access to a interactive prompt where you can type commands, with auto-completion and history capabilities.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">THM</span><span class="w"> </span><span class="nv">Search</span><span class="w"> </span><span class="nv">CLI</span><span class="w"></span>
+<span class="nv">Your</span><span class="w"> </span><span class="nv">arXiv</span><span class="o">-</span><span class="nv">BibTeX</span><span class="w"> </span><span class="nv">terminal</span><span class="w"> </span><span class="nv">assistant</span>.<span class="w"></span>
+
+<span class="o">---</span><span class="w"></span>
+<span class="nv">A</span><span class="w"> </span><span class="nv">mathematician</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">device</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">turning</span><span class="w"> </span><span class="nv">coffee</span><span class="w"> </span><span class="nv">into</span><span class="w"> </span><span class="nv">theorems</span>..<span class="w"></span>
+<span class="nv">Paul</span><span class="w"> </span><span class="nv">Erdos</span><span class="w"></span>
+<span class="o">---</span><span class="w"></span>
+
+
+<span class="nv">THM</span><span class="w"> </span>#<span class="w"></span>
+</code></pre></div>
+
+<h1>The THM prompt</h1>
+<h2>Gettting Help</h2>
+<div class="highlight"><pre><span></span><code><span class="nv">THM</span><span class="w"> </span>#<span class="w"> </span><span class="nv">help</span><span class="w"></span>
+<span class="nv">THM</span><span class="w"> </span><span class="nv">Search</span><span class="w"> </span><span class="nv">CLI</span><span class="w"> </span><span class="nv">v1</span>.<span class="mi">0</span><span class="w"></span>
+<span class="nv">https</span>:<span class="o">//</span><span class="nv">artefactory</span>.<span class="nv">github</span>.<span class="nv">io</span><span class="o">/</span><span class="nv">redis</span><span class="o">-</span><span class="nv">team</span><span class="o">-</span><span class="nv">THM</span><span class="w"></span>
+
+<span class="nv">Usage</span>:<span class="w"></span>
+<span class="w">  </span><span class="nv">search</span><span class="w"> </span>[<span class="nv">keywords</span><span class="o">|</span><span class="nv">similar</span><span class="o">|</span><span class="nv">details</span>]<span class="w"></span>
+<span class="w">  </span><span class="nv">find</span><span class="w"> </span>[<span class="nv">answer</span><span class="o">|</span><span class="nv">formula</span>]<span class="w"></span>
+<span class="w">  </span><span class="nv">configure</span><span class="w"></span>
+<span class="w">  </span><span class="nv">help</span><span class="w"></span>
+<span class="w">  </span><span class="k">exit</span><span class="w"></span>
+</code></pre></div>
+
+<h2>Configure the tool</h2>
+<p>You can configure some parameters such as output format, and the number of results to display by default.</p>
+<div class="highlight"><pre><span></span><code>THM # configure
+Choose file format (markdown, bibtex): bibtex
+Max Results (eg. 3): 4
+</code></pre></div>
+
+<h2>Search the arXiv database</h2>
+<h3>Searching for keywords</h3>
+<p>Just type in a few words like <code>category theory</code> and results will be fetched in <a href="https://www.bibtex.com/e/article-entry/">BibTeX article</a> format ready you to copy paste bibliography of your research paper.</p>
+<div class="highlight"><pre><span></span><code><span class="n">THM</span> <span class="c1"># search keywords</span>
+<span class="n">Your</span> <span class="n">keywords</span> (<span class="n">eg</span>. <span class="n">social</span> <span class="n">networks</span>): <span class="n">category</span> <span class="n">theory</span>
+<span class="n">Papers</span> <span class="n">matching</span> <span class="s">&quot;category theory&quot;</span>...
+
+<span class="cm">===bibtex</span>
+<span class="cm">@article{john20,</span>
+<span class="cm">    author = &quot;John Baez, Bob Coecke&quot;,</span>
+<span class="cm">    title = &quot;Proceedings Applied Category Theory 2019&quot;,</span>
+<span class="cm">    year = &quot;2020&quot;,</span>
+<span class="cm">    url = &quot;https://arxiv.org/pdf/2009.06334.pdf&quot;,</span>
+<span class="cm">    keywords = &quot;...&quot;</span>
+<span class="cm">}</span>
+<span class="cm">@article{david21,</span>
+<span class="cm">    author = &quot;David I. Spivak (Massachusetts Institute of Technology), Jamie Vicary (University of Cambridge)&quot;,</span>
+<span class="cm">    title = &quot;Proceedings of the 3rd Annual International Applied Category Theory Conference 2020&quot;,</span>
+<span class="cm">    year = &quot;2021&quot;,</span>
+<span class="cm">    url = &quot;https://arxiv.org/pdf/2101.07888.pdf&quot;,</span>
+<span class="cm">    keywords = &quot;...&quot;</span>
+<span class="cm">}</span>
+<span class="cm">@article{wille17,</span>
+<span class="cm">    author = &quot;Willem Conradie, Sabine Frittella, Michele Piazzai, Apostolos Tzimoulis, Alessandra Palmigiano and Nachoem M. Wijnberg&quot;,</span>
+<span class="cm">    title = &quot;Categories: How I Learned to Stop Worrying and Love Two Sorts&quot;,</span>
+<span class="cm">    year = &quot;2017&quot;,</span>
+<span class="cm">    url = &quot;https://arxiv.org/pdf/1604.00777.pdf&quot;,</span>
+<span class="cm">    keywords = &quot;...&quot;</span>
+<span class="cm">}</span>
+<span class="cm">===</span>
+
+<span class="n">To</span> <span class="n">go</span> <span class="n">further</span>, <span class="k">use</span> <span class="s">&#39;search similar&#39;</span>, <span class="s">&#39;search details&#39;</span> <span class="n">commands</span>...
+<span class="k">with</span> <span class="n">these</span> <span class="n">arXiv</span> <span class="n">IDs</span> <span class="n">as</span> <span class="n">reference</span> [<span class="s">&#39;2009.06334&#39;</span>, <span class="s">&#39;2101.07888&#39;</span>, <span class="s">&#39;1604.00777&#39;</span>]
+
+<span class="n">Total</span> <span class="nb">of</span> <span class="mi">309</span>,<span class="mi">164</span> <span class="n">searchable</span> <span class="n">arXiv</span> <span class="n">papers</span>. <span class="n">Last</span> <span class="n">updated</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">04</span>.
+</code></pre></div>
+
+<h3>Searching similar papers</h3>
+<div class="highlight"><pre><span></span><code><span class="n">THM</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="k">search</span><span class="w"> </span><span class="k">similar</span><span class="w"></span>
+<span class="n">arXiv</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="p">(</span><span class="n">eg</span><span class="p">.</span><span class="w"> </span><span class="mf">2205.13980</span><span class="p">)</span><span class="err">:</span><span class="w"> </span><span class="mf">2009.06334</span><span class="w"></span>
+<span class="n">Papers</span><span class="w"> </span><span class="k">similar</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mf">2009.06334</span><span class="p">...</span><span class="w"></span>
+
+<span class="o">===</span><span class="n">bibtex</span><span class="w"></span>
+<span class="nv">@article</span><span class="err">{</span><span class="n">john20</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;John Baez, Bob Coecke&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Proceedings Applied Category Theory 2019&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2020&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/2009.06334.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cs</span><span class="p">.</span><span class="n">LO</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+<span class="nv">@article</span><span class="err">{</span><span class="n">david21</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;David I. Spivak (Massachusetts Institute of Technology), Jamie Vicary (University of Cambridge)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Proceedings of the 3rd Annual International Applied Category Theory Conference 2020&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2021&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/2101.07888.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cs</span><span class="p">.</span><span class="n">DM</span><span class="p">,</span><span class="n">cs</span><span class="p">.</span><span class="n">PL</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+<span class="nv">@article</span><span class="err">{</span><span class="n">bened19</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Benedikt Ahrens and Peter LeFanu Lumsdaine&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Displayed Categories&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2019&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/1705.04296.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">math</span><span class="p">.</span><span class="n">CT</span><span class="p">,</span><span class="n">math</span><span class="p">.</span><span class="n">LO</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+<span class="o">===</span><span class="w"></span>
+
+<span class="k">To</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">further</span><span class="p">,</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="s1">&#39;search similar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;search details&#39;</span><span class="w"> </span><span class="n">commands</span><span class="p">...</span><span class="w"></span>
+<span class="k">with</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">arXiv</span><span class="w"> </span><span class="n">IDs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="o">[</span><span class="n">&#39;2009.06334&#39;, &#39;2101.07888&#39;, &#39;1705.04296&#39;</span><span class="o">]</span><span class="w"></span>
+
+<span class="n">Total</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mi">309</span><span class="p">,</span><span class="mi">164</span><span class="w"> </span><span class="n">searchable</span><span class="w"> </span><span class="n">arXiv</span><span class="w"> </span><span class="n">papers</span><span class="p">.</span><span class="w"> </span><span class="k">Last</span><span class="w"> </span><span class="n">updated</span><span class="w"> </span><span class="mi">2022</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mf">04.</span><span class="w"></span>
+</code></pre></div>
+
+<h3>Gettings details about a paper</h3>
+<div class="highlight"><pre><span></span><code><span class="n">THM</span><span class="w"> </span><span class="c1"># search details</span><span class="w"></span>
+<span class="n">arXiv</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="p">(</span><span class="n">eg</span><span class="o">.</span><span class="w"> </span><span class="mf">2205.13980</span><span class="p">):</span><span class="w"> </span><span class="mf">1705.04296</span><span class="w"></span>
+<span class="n">Retrieving</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mf">1705.04296</span><span class="o">...</span><span class="w"></span>
+
+<span class="n">Displayed</span><span class="w"> </span><span class="n">Categories</span><span class="w"></span>
+<span class="n">by</span><span class="w"> </span><span class="n">Benedikt</span><span class="w"> </span><span class="n">Ahrens</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Peter</span><span class="w"> </span><span class="n">LeFanu</span><span class="w"> </span><span class="n">Lumsdaine</span><span class="w"></span>
+<span class="o">================================================================================</span><span class="w"></span>
+<span class="w">  </span><span class="n">We</span><span class="w"> </span><span class="n">introduce</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">develop</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">notion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="o">*</span><span class="n">displayed</span><span class="w"> </span><span class="n">categories</span><span class="o">*.</span><span class="w"></span>
+<span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">equivalent</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s2">&quot;a category D and</span>
+<span class="n">functor</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="s2">&quot;, but instead of having a single collection of &quot;</span><span class="n">objects</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
+<span class="n">D</span><span class="s2">&quot; with a map to the objects of C, the objects are given as a family indexed by</span>
+<span class="n">objects</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">similarly</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">morphisms</span><span class="o">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">encapsulates</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">common</span><span class="w"> </span><span class="n">way</span><span class="w"></span>
+<span class="n">of</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">practice</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">starting</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">existing</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="ow">and</span><span class="w"></span>
+<span class="n">adding</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">properties</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">morphisms</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="n">interest</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">seemingly</span><span class="w"> </span><span class="n">trivial</span><span class="w"> </span><span class="n">reformulation</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">various</span><span class="w"></span>
+<span class="n">properties</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">functors</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">naturally</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">properties</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"></span>
+<span class="n">corresponding</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="n">categories</span><span class="o">.</span><span class="w"> </span><span class="n">Grothendieck</span><span class="w"> </span><span class="n">fibrations</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">example</span><span class="p">,</span><span class="w"> </span><span class="n">when</span><span class="w"></span>
+<span class="n">defined</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">certain</span><span class="w"> </span><span class="n">functors</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">equality</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">definition</span><span class="o">.</span><span class="w"> </span><span class="n">When</span><span class="w"></span>
+<span class="n">defined</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">certain</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="n">categories</span><span class="p">,</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">equality</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="n">objects</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">required</span><span class="o">.</span><span class="w"> </span><span class="n">Moreover</span><span class="p">,</span><span class="w"> </span><span class="n">almost</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">examples</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">fibrations</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">nature</span><span class="w"> </span><span class="n">are</span><span class="p">,</span><span class="w"></span>
+<span class="ow">in</span><span class="w"> </span><span class="n">fact</span><span class="p">,</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="n">whose</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">construction</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">seen</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">going</span><span class="w"> </span><span class="n">via</span><span class="w"></span>
+<span class="n">displayed</span><span class="w"> </span><span class="n">categories</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">We</span><span class="w"> </span><span class="n">therefore</span><span class="w"> </span><span class="n">propose</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">basis</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">development</span><span class="w"> </span><span class="n">of</span><span class="w"></span>
+<span class="n">fibrations</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">type</span><span class="o">-</span><span class="n">theoretic</span><span class="w"> </span><span class="n">setting</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">similarly</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">various</span><span class="w"> </span><span class="n">other</span><span class="w"></span>
+<span class="n">notions</span><span class="w"> </span><span class="n">whose</span><span class="w"> </span><span class="n">classical</span><span class="w"> </span><span class="n">definitions</span><span class="w"> </span><span class="n">involve</span><span class="w"> </span><span class="n">equality</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">objects</span><span class="o">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">Besides</span><span class="w"> </span><span class="n">giving</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">conceptual</span><span class="w"> </span><span class="n">clarification</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">issues</span><span class="p">,</span><span class="w"> </span><span class="n">displayed</span><span class="w"></span>
+<span class="n">categories</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">provide</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">powerful</span><span class="w"> </span><span class="k">tool</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">computer</span><span class="w"> </span><span class="n">formalisation</span><span class="p">,</span><span class="w"> </span><span class="n">unifying</span><span class="w"> </span><span class="ow">and</span><span class="w"></span>
+<span class="n">abstracting</span><span class="w"> </span><span class="n">common</span><span class="w"> </span><span class="n">constructions</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="n">techniques</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="n">theory</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"></span>
+<span class="n">enabling</span><span class="w"> </span><span class="n">modular</span><span class="w"> </span><span class="n">reasoning</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">multi</span><span class="o">-</span><span class="n">component</span><span class="w"> </span><span class="n">structures</span><span class="o">.</span><span class="w"> </span><span class="n">As</span><span class="w"></span>
+<span class="n">such</span><span class="p">,</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">article</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">formalised</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Coq</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">the</span><span class="w"></span>
+<span class="n">UniMath</span><span class="w"> </span><span class="n">library</span><span class="p">,</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">aim</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">providing</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">practical</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="ow">in</span><span class="w"></span>
+<span class="n">further</span><span class="w"> </span><span class="n">developments</span><span class="o">.</span><span class="w"></span>
+
+
+<span class="n">Opening</span><span class="w"> </span><span class="mf">1705.04296</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">arXiv</span><span class="o">...</span><span class="w"></span>
+</code></pre></div>
+
+<div align="center">
+    <img src="/images/arxiv.png" width=500>
+</div>
+
+<h2>Finding answers</h2>
+<h3>Asking an open question</h3>
+<div class="highlight"><pre><span></span><code>THM # find answer
+
+TODO Henrique
+</code></pre></div>
+
+<h3>Asking about a formula</h3>
+<p>If you have doubts about a theorem you can open a query on Wolfram Alpha from your web browser.</p>
+<p>Other sources of data are soon to be added: <a href="https://developers.google.com/knowledge-graph/">Google Knowledge Graph Search API</a>, <a href="https://duckduckgo.com">DuckDuck Go</a>, <a href="https://stackexchange.com">StackExchange</a>...</p>
+<div class="highlight"><pre><span></span><code>THM # find formula
+Find a formula (eg. cosine law): cauchy inequality
+
+Asking Wolfram Alpha about cauchy inequality...
+</code></pre></div>
+
+<div align="center">
+    <img src="/images/wolfram.png" width=500>
+</div>
+
+<h2>End the program</h2>
+<p>When you are finished, just type <code>exit</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">THM</span><span class="w"> </span>#<span class="w"> </span><span class="k">exit</span><span class="w"></span>
+</code></pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <hr />
                     <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/benchmark.html" rel="bookmark"
-                           title="Permalink to Day 6 - Benchmarking the stack">Day 6 - Benchmarking the stack</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-10-28T14:05:00+02:00">
-                Published: Fri 28 October 2022
-        </abbr>
-		<br />
-        <abbr class="modified" title="2022-10-28T14:05:00+02:00">
-                Updated: Fri 28 October 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/tom-darmon.html">Tom Darmon</a>
-                        <a class="url fn" href="/author/henrique-brito.html">Henrique Brito</a>
-                        <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
-        </address>
-<p>In <a href="/category/mlops.html">MLOps</a>.</p>
-<p>tags: <a href="/tag/benchmark.html">benchmark</a> </p>
-</footer><!-- /.post-info -->                <p>Day 6 - Benchmarking the stack</p>
-                <a class="readmore" href="/benchmark.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -96,7 +248,7 @@
                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
         </address>
 <p>In <a href="/category/redis-and-more.html">Redis and more</a>.</p>
-<p>tags: <a href="/tag/redis.html">redis</a> </p>
+<p>tags: <a href="/tag/redis.html">redis</a> <a href="/tag/search.html">search</a> </p>
 </footer><!-- /.post-info -->                <p>Day 5 - Redis Vector Similarity Search</p>
                 <a class="readmore" href="/redis-vss.html">read more</a>
                 </div><!-- /.entry-content -->
