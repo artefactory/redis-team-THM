@@ -2,7 +2,6 @@ from aredis_om import Migrator, get_redis_connection
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
-
 from thm.api import routes
 from thm.config.settings import get_settings
 from thm.models import Paper
@@ -32,6 +31,9 @@ async def startup():
     Paper.Meta.database = get_redis_connection(
         url=config.get_redis_url(), decode_responses=True
     )
+    Paper.Meta.global_key_prefix = "THM"
+    Paper.Meta.model_key_prefix = "Paper"
+
     await Migrator().run()
 
 

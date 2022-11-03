@@ -2,9 +2,8 @@ from typing import List, Tuple
 from urllib.parse import quote
 
 import httpx
-from loguru import logger
-
 from helpers.models import Paper
+from loguru import logger
 
 
 class SearchEngine:

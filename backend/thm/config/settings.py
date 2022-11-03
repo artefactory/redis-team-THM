@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     data_location: str = "../data"
     year_pattern: str = "(19|20[0-9]{2})"
     embeddings_path: str = "../datascience/arxiv_embeddings_10000.pkl"
+    model_name: str = "sentence-transformers/all-MiniLM-L12-v2"
     redis_host: str
     redis_port: int
     redis_db: str

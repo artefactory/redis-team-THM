@@ -1,12 +1,12 @@
-AUTHOR = 'THM'
-SITENAME = 'Team THM'
-SITEURL = 'https://artefactory.github.io/redis-team-THM/'
+AUTHOR = "THM"
+SITENAME = "Team THM"
+SITEURL = "https://artefactory.github.io/redis-team-THM/"
 
-PATH = 'content'
+PATH = "content"
 
-TIMEZONE = 'Europe/Rome'
+TIMEZONE = "Europe/Rome"
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = "en"
 
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -14,11 +14,13 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-LINKS = (('Submission', 'https://google.fr/'),)
+LINKS = (("Submission", "https://google.fr/"),)
 
-SOCIAL = (('Artefact', 'https://www.artefact.com'),
-          ('Redis Ventures', 'https://redisventures.com'),)
+SOCIAL = (
+    ("Artefact", "https://www.artefact.com"),
+    ("Redis Ventures", "https://redisventures.com"),
+)
 
 DEFAULT_PAGINATION = False
 
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
