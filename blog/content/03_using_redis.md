@@ -1,7 +1,7 @@
 Title: Day 3 - Using Redis
 Date: 2022-10-23 10:20
 Modified: 2022-10-23 10:20
-Category: Technology
+Category: Redis and more
 Tags: redis
 Slug: using-redis
 Authors: Michel Hua

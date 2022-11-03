@@ -60,3 +60,5 @@ coverage.xml
 data/*
 **/config/prod.env
 **/config/dev.env
+
+output/*
