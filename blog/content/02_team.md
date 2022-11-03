@@ -25,7 +25,7 @@ Artefact is a global data-driven services company specializing in consulting for
 
 Our approach is unique. We sit at the intersection of consulting, marketing and data science, and our data-driven solutions put consumers at the heart of companies’ digital transformation strategies.
 
-Artefact is an independent global network with 16 offices in 13 countries (across Europe, Asia, Latin America and Africa), and we work with some of the world's largest brands, such as Samsung, L'Oréal and Sanofi.
+Artefact is an independent global network with 16 offices in 13 countries (across Europe, Asia, Latin America and Africa), and we work with some of the world's largest brands.
 
 We use proprietary cutting-edge AI technologies and an agile MLOps methodology to deploy AI projects rapidly, scale efficiently, and guarantee success.
 
