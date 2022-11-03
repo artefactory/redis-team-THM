@@ -4,7 +4,7 @@ Modified: 2022-10-20 14:30
 Category: Team
 Tags: team
 Slug: team-members
-Authors: Michel Hua, Tom Darmon, Corentin Roineau
+Authors: Corentin Roineau
 Summary: Day 2 - Our team for the Hackathon
 
 # A multidisciplinary team
@@ -13,9 +13,15 @@ Summary: Day 2 - Our team for the Hackathon
 
 Data Scientists
 
+<img src="https://media.licdn.com/dms/image/C4D03AQEYqUGvO_H1dQ/profile-displayphoto-shrink_400_400/0/1633011518464?e=1672876800&v=beta&t=eKlEz0TBZIgv2SOAkM698rW7DmvlMXVXb-OkREdBpFQ" alt="Henrique" width="150"/> <img src="https://media.licdn.com/dms/image/C4E03AQEpgraBB2KTWg/profile-displayphoto-shrink_400_400/0/1646238416975?e=1672876800&v=beta&t=5cyf_RxkBaLvMO3tJIWtcpWIHXEx8miHKKO-nsBR5_M" alt="Tom" width="150"/>
+
+
 ## Michel Hua & Corentin Roineau
 
 Data Engineers
+
+<img src="https://media.licdn.com/dms/image/C4E03AQERySNGDN1KQA/profile-displayphoto-shrink_400_400/0/1633522976972?e=1672876800&v=beta&t=dR28V_t3on1crNPu6CPal_uxhA_DV-5K3Y2IwalkWDc" alt="Michel" width="150"/> <img src="https://media.licdn.com/dms/image/C4D03AQEJV3BgLmk8mw/profile-displayphoto-shrink_800_800/0/1600335840725?e=1672876800&v=beta&t=vG0KhdWQBn8wRbBTs8wlD5FpSvrZQMSmV6h_lxf8BHY" alt="Corentin" width="150"/>
+
 
 ## About Artefact
 
