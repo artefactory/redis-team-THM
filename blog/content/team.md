@@ -1,11 +1,11 @@
-Title: Team members
+Title: Day 3 - Team members
 Date: 2022-10-29 10:20
 Modified: 2022-10-29 10:20
 Category: Team
 Tags: team
 Slug: team-members
 Authors: Michel Hua, Tom Darmon
-Summary: Our team for the Hackathon
+Summary: Day 3 - Our team for the Hackathon
 
 # Presentation of the team
 
