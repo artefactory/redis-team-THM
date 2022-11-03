@@ -3,11 +3,10 @@ from typing import Optional
 
 import fire
 import pandas as pd
+from helpers.processors import clean_description, process
 from loguru import logger
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
-
-from helpers.processors import clean_description, process
 
 tqdm.pandas()
 
@@ -50,7 +49,7 @@ def run(
     )
     df = df.reset_index().drop("index", axis=1)
 
-    df = df.reset_index().drop('index', axis=1)
+    df = df.reset_index().drop("index", axis=1)
 
     logger.info("Exporting to pickle file...")
     with open(output_path, "wb") as f:

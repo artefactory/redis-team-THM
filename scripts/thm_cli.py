@@ -3,17 +3,16 @@
 import webbrowser
 from typing import List
 
+from helpers.models import Format, Paper
+from helpers.quotes import random_quote
+from helpers.search_engine import SearchEngine
+from helpers.settings import Settings
 from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
-
-from helpers.models import Format, Paper
 from question_answering import get_answer_to_prompt
-from helpers.quotes import random_quote
-from helpers.search_engine import SearchEngine
-from helpers.settings import Settings
 
 
 def _BibTeX(paper: Paper):
@@ -56,7 +55,7 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
 
     print("```")
     print()
-    paper_ids = list(map(lambda x: x.paper_id,papers))
+    paper_ids = list(map(lambda x: x.paper_id, papers))
     print("To go further, use 'search similar', 'search details' commands...")
     print(HTML(f"with these arXiv IDs as reference <b>{paper_ids}</b>"))
     print()
@@ -130,10 +129,15 @@ def goto_configure():
     settings.max_results = max_results_choice
     print()
 
+
 def goto_find_answer():
     print()
-    print("This is a beta feature! Ask question and we will look for the article that seems to answer it best.")
-    user_prompt = ps.prompt("Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory())
+    print(
+        "This is a beta feature! Ask question and we will look for the article that seems to answer it best."
+    )
+    user_prompt = ps.prompt(
+        "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
+    )
     print("Loading model...")
 
     answers = get_answer_to_prompt(user_prompt, top_k=1)
@@ -142,8 +146,8 @@ def goto_find_answer():
         # get similar papers to display
         similar_papers, total = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
-        print("-"*80)
-        print(f"RESULT:", f"'{answer}'")
+        print("-" * 80)
+        print(f"RESULT: {answer}")
         print()
         # TODO: render answers
         render_paper(paper)
@@ -153,7 +157,6 @@ def goto_find_answer():
         print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
         render_results(similar_papers, format=settings.format)
     print()
-
 
 
 def goto_exit():
@@ -193,7 +196,7 @@ def goto_menu():
     elif menu_choice == "search details":
         goto_search_details()
         goto_menu()
-    elif menu_choice == 'find answer':
+    elif menu_choice == "find answer":
         goto_find_answer()
         goto_menu()
     elif menu_choice == "find formula":

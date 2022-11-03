@@ -1,11 +1,11 @@
 import asyncio
 import pickle
-import numpy as np
 import struct
 from typing import List
 
 import fire
 import redis.asyncio as redis
+import tqdm
 from loguru import logger
 from redis.asyncio import Redis
 from redis.commands.search.field import TagField
@@ -13,8 +13,6 @@ from redis_om import get_redis_connection
 from thm.config.settings import get_settings
 from thm.models import Paper
 from thm.search_index import SearchIndex
-
-import tqdm
 
 
 def read_paper_df(embeddings_path) -> List:

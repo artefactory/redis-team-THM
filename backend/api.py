@@ -2,7 +2,6 @@ from aredis_om import Migrator, get_redis_connection
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
-
 from thm.api import routes
 from thm.config.settings import get_settings
 from thm.models import Paper

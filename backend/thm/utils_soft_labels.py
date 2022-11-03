@@ -7,9 +7,8 @@ import datasets
 import numpy as np
 import pandas as pd
 import torch
-from transformers import AutoTokenizer, Trainer
-
 from thm.config.settings import get_settings
+from transformers import AutoTokenizer, Trainer
 
 config = get_settings()
 

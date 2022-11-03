@@ -1,18 +1,8 @@
 import logging
 import pickle
 
-import numpy as np
 import pandas as pd
-import torch
 from datasets import Dataset
-from transformers import (
-    AutoModelForSequenceClassification,
-    AutoTokenizer,
-    Trainer,
-    TrainingArguments,
-)
-from transformers import logging as transformer_logging
-
 from thm.config.settings import get_settings
 from thm.utils_soft_labels import (
     apply_tokenenizer,
@@ -22,6 +12,13 @@ from thm.utils_soft_labels import (
     papers,
     prepare_labels,
 )
+from transformers import (
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+    Trainer,
+    TrainingArguments,
+)
+from transformers import logging as transformer_logging
 
 config = get_settings()
 

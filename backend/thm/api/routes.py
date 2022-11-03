@@ -3,13 +3,11 @@ from typing import Dict
 
 import redis.asyncio as redis
 from fastapi import APIRouter
-
+from loguru import logger
 from thm.config.settings import get_settings
 from thm.embeddings import Embeddings
 from thm.schema.search import SimilarityRequest, UserTextSimilarityRequest
 from thm.search_index import SearchIndex
-
-from loguru import logger
 
 config = get_settings()
 

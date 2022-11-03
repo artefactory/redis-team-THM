@@ -1,8 +1,8 @@
 import re
 import string
 
-from sentence_transformers import SentenceTransformer
 from loguru import logger
+from sentence_transformers import SentenceTransformer
 
 
 class Embeddings:
