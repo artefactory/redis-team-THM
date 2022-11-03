@@ -2,10 +2,11 @@ Title: Day 7 - TBD
 Date: 2022-10-29 12:05
 Modified: 2022-10-29 12:05
 Category: Technology
-Tags: redis
+Tags: search
 Slug: 07_tbd
 Authors: Michel Hua
 Summary: Day 7 - TBD
 
-...
-https://docarray.jina.ai/advanced/document-store/redis/
+# CLI tool
+
+[`prompt-toolkit/python-prompt-toolkit`](https://github.com/prompt-toolkit/python-prompt-toolkit).
