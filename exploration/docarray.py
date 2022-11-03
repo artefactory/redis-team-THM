@@ -1,4 +1,5 @@
 from docarray import Document, DocumentArray
+
 from backend.thm.config.settings import get_settings
 
 config = get_settings()

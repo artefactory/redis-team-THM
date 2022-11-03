@@ -1,9 +1,8 @@
 import pickle
 
 import cudf
-from sentence_transformers import SentenceTransformer
-
 from generate_index import get_papers
+from sentence_transformers import SentenceTransformer
 
 cdf = cudf.DataFrame(list(get_papers()))
 

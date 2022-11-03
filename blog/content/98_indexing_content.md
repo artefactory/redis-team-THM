@@ -76,3 +76,21 @@ FLAGS
         Type: int
         Default: 768
 ```
+
+
+## Using a basic pipeline
+
+`pipeline.sh` takes a list of cutoffs and a model name for embeddings encoding. You can track progress thanks to [`tqdm/tqdm`](https://github.com/tqdm/tqdm).
+
+```sh
+% ./pipeline.sh
+2022-11-03 19:36:13.555 | INFO     | __main__:run:39 - Reading papers for 200907...
+2022-11-03 19:36:30.045 | INFO     | __main__:run:45 - Creating embeddings from title and abstract...
+2022-11-03 19:36:30.045 | INFO     | __main__:run:46 - sentence-transformers/all-MiniLM-L12-v2
+100%|██████████████████████████████████████████████████████████████████████████████| 2306/2306 [01:14<00:00, 30.78it/s]
+2022-11-03 19:37:44.977 | INFO     | __main__:run:55 - Exporting to pickle file...
+2022-11-03 19:37:45.803 | INFO     | __main__:run:111 - TODO False
+2022-11-03 19:37:45.804 | INFO     | __main__:load_all_data:64 - Loading papers...
+2022-11-03 19:37:46.052 | INFO     | __main__:load_all_data:68 - Writing to Redis...
+ 87%|███████████████████████████████████████████████████████████████████▊          | 2003/2306 [01:28<00:13, 22.24it/s]
+```
