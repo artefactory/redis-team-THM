@@ -5,6 +5,7 @@
     <img src="backend/thm/data/artefact-logo.png" height="20"/><br/>
     Tom, Henrique, Michel, Corentin<br/>
     Oct. - Nov. 2022
+    https://artefactory.github.io/redis-team-THM/
 </div>
 <br/>
 
@@ -149,10 +150,8 @@ vercel .
 ### Blog
 
 ```sh
-cd blog/
-
 # To preview files locally
-pelican content && pelican --listen
+pelican blog/content && pelican --listen
 
 # To publish on GitHub pages
 make publish_blog
