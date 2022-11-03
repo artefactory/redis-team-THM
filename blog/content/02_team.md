@@ -13,7 +13,7 @@ _Day 2 - When we built the team._
 
 ## Our **Data Scientists**: Henrique Brito & Tom Darmon
 
-<a href="https://www.linkedin.com/in/henrique-b-71240a12b/><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEYqUGvO_H1dQ/profile-displayphoto-shrink_800_800/0/1633011518464?e=1672876800&v=beta&t=JB9q5241I0qhYvjQtYRGU1lP6CIsx1VyeMYZUwuW4OE" alt="drawing" width="200"/></a>
+<a href="https://www.linkedin.com/in/henrique-b-71240a12b/"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEYqUGvO_H1dQ/profile-displayphoto-shrink_800_800/0/1633011518464?e=1672876800&v=beta&t=JB9q5241I0qhYvjQtYRGU1lP6CIsx1VyeMYZUwuW4OE" alt="drawing" width="200"/></a>
 <a href="https://www.linkedin.com/in/tom-darmon/"><img src="https://media-exp1.licdn.com/dms/image/C4E03AQEpgraBB2KTWg/profile-displayphoto-shrink_800_800/0/1646238416975?e=1672876800&v=beta&t=NM1ugivJDSkY9YTIfFb49mzOVjr6OlEosIRsbD8npJA" alt="drawing" width="200"/></a>
 
 ## Our **Data Engineers**: Michel Hua & Corentin Roineau
