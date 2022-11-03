@@ -67,14 +67,14 @@ Concretely, when the <em>user</em> will make a request, the application will com
 </thead>
 <tbody>
 <tr>
-<td>/</td>
-<td>GET</td>
-<td>Get a list of papers</td>
-<td><code>{"limit": int, "skip": int, "years":str, "categories":str}</code></td>
-<td><code>{"total": total, "papers": papers}</code></td>
+<td><code>/vectorsearch/text</code></td>
+<td>POST</td>
+<td>Get a list of paper for the given text by the user</td>
+<td><code>{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}</code></td>
+<td><code>{"papers": [{"id": "123", "title": "title", "abstract": "abstract"}, ...]}</code></td>
 </tr>
 <tr>
-<td>/vectorsearch/text/user</td>
+<td><code>/vectorsearch/text/user</code></td>
 <td>POST</td>
 <td>Get a list of paper for the given text by the user</td>
 <td><code>{"user_text": "string", "categories": ["physics.space-ph"], "years": ["1969"], "number_of_results": 5,"search_type": "KNN"}</code></td>
