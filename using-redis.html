@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Using Redis</title>
+        <title>Day 3 - Using Redis</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="description" content="The most common uses of Redis" />
+        <meta name="description" content="Day 3 - The most common uses of Redis" />
 </head>
 
 <body id="index" class="home">
@@ -23,17 +23,17 @@
     <header>
       <h1 class="entry-title">
         <a href="/using-redis.html" rel="bookmark"
-           title="Permalink to Using Redis">Using Redis</a></h1>
+           title="Permalink to Day 3 - Using Redis">Day 3 - Using Redis</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-10-28T10:20:00+02:00">
-                Published: Fri 28 October 2022
+        <abbr class="published" title="2022-10-23T10:20:00+02:00">
+                Published: Sun 23 October 2022
         </abbr>
 		<br />
-        <abbr class="modified" title="2022-10-28T10:20:00+02:00">
-                Updated: Fri 28 October 2022
+        <abbr class="modified" title="2022-10-23T10:20:00+02:00">
+                Updated: Sun 23 October 2022
         </abbr>
 
         <address class="vcard author">
@@ -41,23 +41,23 @@
         </address>
 <p>In <a href="/category/technology.html">Technology</a>.</p>
 <p>tags: <a href="/tag/redis.html">redis</a> </p>
-</footer><!-- /.post-info -->      <h2>What can I do with Redis?</h2>
-<p>Redis is an open source in memory NoSQL database it was created in 2009.</p>
-<p>Redis primary use is when you have a database like MongoDB, SQL server, MySQL, and parts of your website or your application need to get data quicker than your database can.</p>
-<p>You can achieve this by hosting part of the data in memory as a cache in Redis.</p>
-<p>Redis can handle data structures such as <code>Strings</code>, <code>Lists</code>, <code>Sets</code>, <code>Sorted Sets</code> and <code>Hashes</code> and also more advanced one.</p>
-<p>Here are some of its use cases:</p>
+</footer><!-- /.post-info -->      <p><em>On day 3, just a few days before the start of the Hackathon, what we did is learn about Redis.</em></p>
+<h1>What can I do with Redis?</h1>
+<p>Redis is an open source in memory NoSQL database that was created in 2009.</p>
+<p>When you already have a database like MongoDB, SQL Server, MySQL, and parts of your website or your application need to get data quicker than your database can, Redis is usually the go for solution.</p>
+<p>This is achieved by hosting part of the data in memory as a cache, as opposite to traditional databases which would use disk.</p>
+<p>Some of its use cases are:</p>
 <ul>
-<li>storing your sessions in Redis,</li>
-<li>keeping a list of most recent visitors,</li>
-<li>describing your friends graph,</li>
+<li>storing sessions in Redis,</li>
+<li>keeping lists of most recent visitors,</li>
+<li>describing your contacts or friends graph,</li>
 <li>implementing real-time workflows with the pub/sub pattern.</li>
 </ul>
-<p>Redis enables web developers to build scalable interactive applications. It is used by large companies such as Twitter, Instagram, Pinterest, StackOverflow or GitHub.</p>
-<p>To get started with Redis,</p>
+<p>Redis enables web developers to build scalable interactive applications. It is used by large companies such as <em>Twitter</em>, <em>Instagram</em>, <em>Pinterest</em>, <em>StackOverflow</em> or <em>GitHub</em>.</p>
+<p>To get started with Redis, you can just visit,</p>
 <ul>
-<li>https://redis.io/</li>
-<li>https://github.com/redis/redis</li>
+<li><a href="https://redis.io/">Redis website</a></li>
+<li><a href="https://github.com/redis/redis"><code>redis/redis</code></a></li>
 </ul>
 <p>If you prefer managed services, these are some modern solutions for your production application:</p>
 <ul>
@@ -66,29 +66,48 @@
 <li><a href="https://azure.microsoft.com/en-us/products/cache/">Azure Cache for Redis</a></li>
 <li><a href="https://cloud.google.com/memorystore/">GCP Memorystore</a></li>
 </ul>
-<h2>Redis in Details</h2>
+<h1>Redis in Details</h1>
 <p>Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.</p>
 <p>Redis is very fast for both reads and writes because it runs in memory, while having disk persistence as a backup.
-It can run in clusters of servers with lots of memory available.</p>
-<h2>Using Redis</h2>
+It can run in clusters of servers where large amounts of memory are available.</p>
+<h1>Using Redis</h1>
 <p>Redis can be used a cache and as a second database. Redis helps you scale while keeping in memory the data retrieved from the database.</p>
 <p>On some cases, it can be used as a primary database, for example in use cases where only the fresh data matters and when it is only necessary to keep it small periods of time as in streaming.</p>
 <p>It can be useful for the Pub/Sub patterns when Internet users have their browsers open, and data is sent automatically without them to refresh the page.</p>
 <p>Because of its single threaded nature, it has no lock, and can respond to the load of many requests.</p>
-<h2>Use cases</h2>
-<ul>
-<li>Show the most recent items in your application</li>
-<li>Leaderboards that update in real-time</li>
-<li>Show votes and dates for posts</li>
-<li>Expiration dates for shopping carts</li>
-<li>Real-time analysis of online activity</li>
-<li>Job queues</li>
-</ul>
-<p>With high-speed data, where you're trying to keep your website responding for things that your database wasn't initially designed for.</p>
-<h2>References</h2>
+<p>With high-speed data, where you're trying to keep your website responding for things that traditional databases were not initially designed for.</p>
+<h2>Using with Python</h2>
+<p>The Python package <a href="https://github.com/redis/redis-om-python"><code>redis-om</code></a> is an ORM to interact with the Redis database, it uses <a href="https://github.com/pydantic/pydantic"><code>pydantic</code></a> to describe your data models and eases operations for modeling and querying data in Redis with modern Python applications.</p>
+<p>Another interesting library is <a href="https://github.com/brainix/pottery"><code>brainix/pottery</code></a> if you want to deal with remote data structures when your application need to implement locks, key value stores, maintain user lists such as e-commerce carts.</p>
+<h2>Using the REDIS prompt</h2>
+<p>Here are some command to manipulate Hashes in Redis,</p>
+<h3><a href="https://redis.io/commands/hget/"><code>HGET</code></a></h3>
+<p>This command can be used to retrieve fields from a specific key.</p>
+<div class="highlight"><pre><span></span><code>&gt; HGET THM:Paper:1609.05486 paper_id
+&quot;1609.05486&quot;
+
+&gt; HGET THM:Paper:1609.05486 authors
+&quot;M. Kachouane (USTHB), S. Sahki, M. Lakrouf (CDTA, USTHB), N. Ouadah\n  (CDTA)&quot;
+</code></pre></div>
+
+<h3><a href="https://redis.io/commands/ft.search/"><code>FT.SEARCH</code></a></h3>
+<p>This command can be used to search index with a textual query.</p>
+<div class="highlight"><pre><span></span><code>...
+</code></pre></div>
+
+<h3><a href="https://redis.io/commands/flushdb/"><code>FLUSHDB</code></a></h3>
+<p>This command can be used to delete all keys from a database.</p>
+<div class="highlight"><pre><span></span><code>&gt; FLUSHDB
+</code></pre></div>
+
+<h1>Redis Stack and RediSearch</h1>
+<p>Redis provides a modern extension that enables querying, indexing and full-text search.</p>
+<p>Among other features, RediSearch support multi-field queries, aggregation, exact phrase matching, numeric filtering, geo filtering and vector similarity semantic search on top of text queries.</p>
+<h1>References</h1>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/16033444-redis-in-action">Josiah L. Carlson - Redis in Action</a></li>
 <li><a href="https://www.youtube.com/watch?v=jTTlBc2-T9Q">PyData Seattle 2015 - Top 5 uses of Redis as a Database</a></li>
+<li><a href="https://redis.io/docs/stack/search/">Redis Stack - RediSearch</a></li>
 </ul>
     </div><!-- /.entry-content -->
 
@@ -98,7 +117,7 @@ It can run in clusters of servers with lots of memory available.</p>
                 <div class="blogroll">
                         <h2>links</h2>
                         <ul>
-                            <li><a href="https://sweet-piroshki-f2e396.netlify.app/">Submission</a></li>
+                            <li><a href="https://google.fr/">Submission</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

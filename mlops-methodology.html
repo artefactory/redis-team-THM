@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Using MLOps in our project</title>
+        <title>Day 1 - Using MLOps in our project</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="description" content="Using MLOps techniques in our project" />
+        <meta name="description" content="Day 1 - Using MLOps techniques in our project" />
 </head>
 
 <body id="index" class="home">
@@ -23,17 +23,17 @@
     <header>
       <h1 class="entry-title">
         <a href="/mlops-methodology.html" rel="bookmark"
-           title="Permalink to Using MLOps in our project">Using MLOps in our project</a></h1>
+           title="Permalink to Day 1 - Using MLOps in our project">Day 1 - Using MLOps in our project</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-10-30T09:00:00+01:00">
-                Published: Sun 30 October 2022
+        <abbr class="published" title="2022-10-15T01:15:00+02:00">
+                Published: Sat 15 October 2022
         </abbr>
 		<br />
-        <abbr class="modified" title="2022-10-30T09:00:00+01:00">
-                Updated: Sun 30 October 2022
+        <abbr class="modified" title="2022-10-15T01:15:00+02:00">
+                Updated: Sat 15 October 2022
         </abbr>
 
         <address class="vcard author">
@@ -41,26 +41,30 @@
         </address>
 <p>In <a href="/category/mlops.html">MLOps</a>.</p>
 <p>tags: <a href="/tag/mlops.html">mlops</a> </p>
-</footer><!-- /.post-info -->      <h2>What is MLOps</h2>
-<h2>Code Best Practices</h2>
-<h3>Building Python and Javascript</h3>
-<p>Using GitHub Actions:</p>
+</footer><!-- /.post-info -->      <p><em>This article is the first of a series of post we do during the <a href="https://hackathon.redisventures.com">Redis Venture hackathon</a>. The goal is to keep a journal of our work.</em></p>
+<h1>What is MLOps?</h1>
+<p>MLOps is a term to describe general software engineering principles applied to the problems of serving machine learning models in production.</p>
+<h1>Code Best Practices</h1>
+<h2>Building Python</h2>
+<p>Using GitHub Actions, we <a href="https://github.com/artefactory/redis-team-THM/blob/main/.github/workflows/ci-python.yml">checked our code</a> against the <code>main</code> branch of the repo, ensuring not only style and but also variables linking remain safe during development.</p>
+<p>We used <a href="https://github.com/PyCQA/flake8"><code>flake8</code></a> for basic linting and <a href="https://github.com/psf/black"><code>black</code></a> for code formatting.</p>
+<p>Static analysis is essential in Python because the language uses duck typing and this can cause issues during runtime, problems that a compiler would have catched.</p>
+<p>Improving readability, ensuring formatting and style are consistent within the team of developers is essential.</p>
+<h1>Model Deployment</h1>
+<h2>Ways to deploy a model</h2>
+<p>In Python Machine Learning project, prototypes usually are written using Jupyter notebooks such as the ones in the <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>redis-arXiv-search/data</code></a> repository.</p>
+<p>The first step to make it more professional, is to turn it to a pipeline. Pipelines usually are decomposed in steps which are responsible for handling one input file and another file as output.</p>
+<p>The first step is to write a Python module component that enables us to produce a model, under certain conditions, and to be able to rerun it in a flexible way.</p>
+<p>In Python there are open source tools which help you in that process. For example <a href="https://github.com/mlflow/mlflow"><code>mlflow/mlflow</code></a> to deal with the lifecycle of training your models, measuring their performance and archiving models. In other situations, you might also want to run advanced pipelines with <a href="https://github.com/apache/airflow"><code>apache/airflow</code></a> which can take care of different steps such as data fetching, pre-processing and handling executions in different context with DAGs.</p>
+<p>After scheduling the execution of this training component and storing models somewhere what we usually do is serve models for users to be able to use it.</p>
+<p>Using it mean performing predictions or getting the results of large numerical computation. In the web era, nowadays models can be served through web servers and communicate with other applications through HTTP requests.</p>
+<p>In Python you would serve a REST API with the <a href="https://github.com/tiangolo/fastapi"><code>tiangolo/fastapi</code></a> framework, use a database such as <a href="https://github.com/redis/redis"><code>redis/redis</code></a> to store your predictions, and this is usually the case in systems like search engines or recommendation systems.</p>
+<p>REST APIs allows clients to ask for a service in realtime and get an answer quickly. That is how basically most websites nowadays run. You can think of transportation information systems where the information has to be updated every minute.</p>
+<p>We will see later how to leverage these concepts in the Redis Hackathon.</p>
+<h1>References</h1>
 <ul>
-<li>Linting: https://www.youtube.com/watch?v=uImvWE-iSDQ</li>
-<li>Makefile: https://www.youtube.com/watch?v=F6DZdvbRZQQ</li>
+<li><a href="https://github.com/DataTalksClub/mlops-zoomcamp/">MLOps Zoomcamp</a></li>
 </ul>
-<h3>Integration tests with Docker</h3>
-<ul>
-<li>https://www.youtube.com/watch?v=lBX0Gl7Z1ck</li>
-</ul>
-<h2>Model Deployment</h2>
-<h3>Ways to deploy a model</h3>
-<ul>
-<li>https://gist.github.com/mycaule/8d87f1c72e25d7bbf7ef252e1b0309cc</li>
-<li>https://www.youtube.com/watch?v=JMGe4yIoBRA</li>
-</ul>
-<h2>References</h2>
-<p><a href="https://github.com/DataTalksClub/mlops-zoomcamp/">MLOps Zoomcamp</a></p>
     </div><!-- /.entry-content -->
 
   </article>
@@ -69,7 +73,7 @@
                 <div class="blogroll">
                         <h2>links</h2>
                         <ul>
-                            <li><a href="https://sweet-piroshki-f2e396.netlify.app/">Submission</a></li>
+                            <li><a href="https://google.fr/">Submission</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

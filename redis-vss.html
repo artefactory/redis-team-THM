@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Redis Vector Similarity Search</title>
+        <title>Day 5 - Redis Vector Similarity Search</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="description" content="Redis Vector Similarity Search" />
+        <meta name="description" content="Day 5 - Redis Vector Similarity Search" />
 </head>
 
 <body id="index" class="home">
@@ -23,7 +23,7 @@
     <header>
       <h1 class="entry-title">
         <a href="/redis-vss.html" rel="bookmark"
-           title="Permalink to Redis Vector Similarity Search">Redis Vector Similarity Search</a></h1>
+           title="Permalink to Day 5 - Redis Vector Similarity Search">Day 5 - Redis Vector Similarity Search</a></h1>
     </header>
 
     <div class="entry-content">
@@ -55,6 +55,30 @@ What are the achievements of Google Cloud Platform.
 <p>Few words about RedisSearch</p>
 <p><img alt="VSS" src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png?&amp;auto=webp&amp;quality=85,75&amp;width=1200"></p>
 <p>https://gist.github.com/mycaule/fcc307228b3b0bc80ee322949463435b</p>
+<p>:::python
+    if config.index_type == "HNSW":
+        await search_index.create_hnsw(
+            categories_field,
+            year_field,
+            redis_conn=redis_conn,
+            number_of_vectors=len(papers),
+            prefix="THM:Paper:",
+            distance_metric="IP",
+            vector_size=vector_size,
+        )
+    else:
+        await search_index.create_flat(
+            categories_field,
+            year_field,
+            redis_conn=redis_conn,
+            number_of_vectors=len(papers),
+            prefix="THM:Paper:",
+            distance_metric="IP",
+            vector_size=vector_size,
+        )</p>
+<blockquote>
+<p>https://redis.io/docs/stack/search/reference/vectors/</p>
+</blockquote>
 <h2>Getting started with Redis Cloud Enterprise</h2>
 <h3>Configure your Account</h3>
 <p>https://gist.github.com/mycaule/7bdb23dbaa63fd7223450332e30a7faa</p>
@@ -80,7 +104,7 @@ What are the achievements of Google Cloud Platform.
                 <div class="blogroll">
                         <h2>links</h2>
                         <ul>
-                            <li><a href="https://sweet-piroshki-f2e396.netlify.app/">Submission</a></li>
+                            <li><a href="https://google.fr/">Submission</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
