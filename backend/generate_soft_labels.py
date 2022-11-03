@@ -79,7 +79,7 @@ def run(data_location: str, output_location: str):
     trainer.save_model()
     
     with open(f"{output_location}/categories.pkl", "wb") as cat_file:
-        pickle.dump(ooe_df, cat_file)
+        pickle.dump(ooe_df.columns.to_list(), cat_file)
         
 if __name__ == "__main__":
     fire.Fire(run)
