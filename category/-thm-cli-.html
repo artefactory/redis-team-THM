@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Team THM - - THM CLI -</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Team THM</a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/-thm-cli-.html">- THM CLI -</a></li>
+                    <li><a href="/category/mlops.html">MLOps</a></li>
+                    <li><a href="/category/redis-and-more.html">Redis and more</a></li>
+                    <li><a href="/category/team.html">Team</a></li>
+                    <li><a href="/category/technology.html">Technology</a></li>
+                    <li><a href="/category/thm-cli-.html">THM CLI -</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/indexing-contents.html">Indexing Contents to Redis</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-11-04T11:25:00+01:00">
+                Published: Fri 04 November 2022
+        </abbr>
+		<br />
+        <abbr class="modified" title="2022-11-04T11:25:00+01:00">
+                Updated: Fri 04 November 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/michel-hua.html">Michel Hua</a>
+        </address>
+<p>In <a href="/category/-thm-cli-.html">- THM CLI -</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/redis.html">redis</a> <a href="/tag/mlops.html">mlops</a> </p>
+</footer><!-- /.post-info --><h1>Reindexing contents</h1>
+<p>If you want to index your own private database of documents, you can reuse the scripts</p>
+<h2>Generate the index</h2>
+<p>To generate index for a specific cutoff you can just run this script, choosing you JSON file containing your corpus, the output where to store index file in Pickle format, and the model name to encode your sentences.</p>
+<p>This task can be performed on one month of arXiv data on a regular desktop, but you might want to schedule it using tools like <a href="https://github.com/apache/airflow">Airflow</a>.</p>
+<div class="highlight"><pre><span></span><code>% ./generate-index.py --help
+
+
+NAME
+    generate_index.py - Generate Embeddings and Create a File Index.
+
+SYNOPSIS
+    generate_index.py YEAR_MONTH &lt;flags&gt;
+
+DESCRIPTION
+    Generate Embeddings and Create a File Index.
+
+POSITIONAL ARGUMENTS
+    YEAR_MONTH
+
+FLAGS
+    --input_path<span class="o">=</span>INPUT_PATH
+        Default: <span class="s1">&#39;arxiv-metadata-o...</span>
+<span class="s1">    --output_path=OUTPUT_PATH</span>
+<span class="s1">        Default: &#39;</span>arxiv_embeddings_10000...
+    --model_name<span class="o">=</span>MODEL_NAME
+        Default: <span class="err">&#39;</span>sentence-...
+</code></pre></div>
+
+<p>To cold start your database you can also run the <a href="https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb"><code>single-gpu-arxiv-embedding</code></a> Jupyter Notebook on Saturn Cloud. Using a <code>T4-XLarge 4-cores</code>, <code>saturn-python-rapids</code> image, the data from the historical 2 million papers was indexed in less than 5 minutes.</p>
+<h2>Load the index to Redis</h2>
+<div class="highlight"><pre><span></span><code>% ./load_data.py --help
+
+
+NAME
+    load_data.py - Load the Embedding Index to Redis.
+
+SYNOPSIS
+    load_data.py &lt;flags&gt;
+
+DESCRIPTION
+    Load the Embedding Index to Redis.
+
+FLAGS
+    --concurrency_level<span class="o">=</span>CONCURRENCY_LEVEL
+        Type: int
+        Default: <span class="m">2</span>
+    --separator<span class="o">=</span>SEPARATOR
+        Type: str
+        Default: <span class="s1">&#39;|&#39;</span>
+    --reset_db<span class="o">=</span>RESET_DB
+        Type: bool
+        Default: False
+    --embeddings_path<span class="o">=</span>EMBEDDINGS_PATH
+        Type: str
+        Default: <span class="s1">&#39;&#39;</span>
+    --vector_size<span class="o">=</span>VECTOR_SIZE
+        Type: int
+        Default: <span class="m">768</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://google.fr/">Submission</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://www.artefact.com">Artefact</a></li>
+                            <li><a href="https://redisventures.com">Redis Ventures</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
