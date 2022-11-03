@@ -207,7 +207,7 @@ by Somnath Bharadwaj (1), Suketu Bhavsar (2), Jatush V.Sheth (3) ((1) Indian Ins
 determine the length scale at which filaments are statistically significant.
 The largest length-scale at which filaments are statistically significant, real
 ...
-````
+```
 
 (TODO Henrique)
 
