@@ -38,7 +38,13 @@ def run(
 
     logger.info(f"Reading papers for {year_month}...")
     df = pd.DataFrame(get_papers(input_path, year_month))
-
+    
+    logger.info("Getting categories predictions")
+    df["predicted_categories"] = get_paper_classification_predictions(
+        df["title"] + " " + df["abstract"],
+        top_k=3
+    )
+    
     # https://www.sbert.net/docs/usage/semantic_textual_similarity.html
     model = SentenceTransformer(model_name)
 

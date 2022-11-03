@@ -16,5 +16,5 @@ class Paper(BaseModel):
     abstract: Optional[str]
     authors: str
     categories: str
-    category_weights: Optional[str]
+    predicted_categories: Optional[str]
     year: str

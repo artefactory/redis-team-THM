@@ -35,7 +35,8 @@ async def gather_with_concurrency(redis_conn, n, separator, vector_size, *papers
                     "title": paper["title"],
                     "authors": paper["authors"],
                     "abstract": paper["abstract"],
-                    "categories": paper["categories"].replace(",", separator),  # TODO: add Tom's category_weights
+                    "categories": paper["categories"].replace(",", separator),  
+                    "predicted_categories": paper["predicted_categories"],
                     "year": paper["year"],
                     "vector": struct.pack("%sf" % vector_size, *paper["vector"]),
                 },
