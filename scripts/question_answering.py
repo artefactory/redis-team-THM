@@ -9,7 +9,9 @@ from transformers import pipeline
 settings = Settings()
 
 
-def get_prioritized_articles(user_prompt: str, engine: SearchEngine) -> PriorityPapersManager:
+def get_prioritized_articles(
+    user_prompt: str, engine: SearchEngine
+) -> PriorityPapersManager:
     search_papers, _ = engine.search(
         user_prompt, max_results=settings.question_answering_priority_papers
     )

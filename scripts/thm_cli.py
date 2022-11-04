@@ -3,16 +3,15 @@
 import webbrowser
 from typing import List
 
-from prompt_toolkit import HTML, PromptSession
-from prompt_toolkit import print_formatted_text as print
-from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-from prompt_toolkit.completion import NestedCompleter, WordCompleter
-
 from helpers.category_parser import parse_categories_from_redis
 from helpers.models import Format, Paper
 from helpers.quotes import random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
+from prompt_toolkit import HTML, PromptSession
+from prompt_toolkit import print_formatted_text as print
+from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
+from prompt_toolkit.completion import NestedCompleter, WordCompleter
 from question_answering import get_answer_to_prompt
 
 
@@ -122,6 +121,14 @@ def goto_wolfram():
     print()
 
 
+def goto_stackexchange():
+    so_query = ps.prompt("Write your question: ", auto_suggest=AutoSuggestFromHistory())
+    print()
+    print(f"Asking StackExchange about {so_query}...")
+    webbrowser.open(Engine.ask_stackexchange(so_query))
+    print()
+
+
 def goto_configure():
     format_choice = ps.prompt(
         "Choose file format (markdown, bibtex): ",
@@ -142,21 +149,21 @@ def goto_find_answer():
     user_prompt = ps.prompt(
         "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
     )
-    
+
     print(
         HTML(
-            f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
+            "<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
         )
     )
-    
+
     answers = get_answer_to_prompt(user_prompt, top_k=1)
-    
+
     for answer, confidence, paper in answers:
         # get similar papers to display
         print()
-        print("-"*80)
+        print("-" * 80)
         print(f"The Skynet is {confidence:.0%} sure it found what you wanted:")
-        print(HTML(f"Answer: <b>'{answer}'</b>")) 
+        print(HTML(f"Answer: <b>'{answer}'</b>"))
         print()
         print("This answer came from here:")
         render_paper(paper)
@@ -181,6 +188,7 @@ menu_completer = NestedCompleter.from_nested_dict(
         "find": {
             "answer": None,
             "formula": None,
+            "stackexchange": None,
         },
         "configure": None,
         "help": None,
@@ -206,6 +214,9 @@ def goto_menu():
     elif menu_choice == "find formula":
         goto_wolfram()
         goto_menu()
+    elif menu_choice == "find stackexchange":
+        goto_stackexchange()
+        goto_menu()
     elif menu_choice == "configure":
         goto_configure()
         goto_menu()
@@ -230,8 +241,8 @@ print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
 print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
-Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-# Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
 # Engine = SearchEngine("http://localhost:8080/api/v1/paper")
 
 ps = PromptSession()

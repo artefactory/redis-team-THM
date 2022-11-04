@@ -169,7 +169,7 @@ def process(paper: dict) -> Dict:
 
 def papers(data_location: str):
     """Generator function that iterates through the file and yields papers"""
-    with open(data_location, 'r') as f:
+    with open(data_location, "r") as f:
         for paper in f:
             paper = process(paper)
             # Yield only papers that have a year I could process

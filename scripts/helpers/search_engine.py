@@ -66,3 +66,6 @@ class SearchEngine:
 
     def ask_wolfram(self, query: str) -> str:
         return f"https://www.wolframalpha.com/input?i={quote(query)}"
+
+    def ask_stackexchange(self, query: str) -> str:
+        return f"https://stackexchange.com/search?q={quote(query)}"
