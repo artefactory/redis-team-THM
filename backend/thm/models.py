@@ -9,7 +9,7 @@ class Paper(HashModel):
     authors: str
     abstract: str = Field(index=True, full_text_search=True)
     categories: str = Field(index=True)
-    predicted_categories: Optional[str]  
+    predicted_categories: Optional[str]
     year: str = Field(index=True)
     # vector: str
 

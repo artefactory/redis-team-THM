@@ -1,7 +1,8 @@
-from pydantic import BaseSettings
 from os import getenv
 
 from loguru import logger
+from pydantic import BaseSettings
+
 
 class Settings(BaseSettings):
     project_name: str = "THM API"
@@ -44,10 +45,10 @@ THM API helps you search arXiv using vector embeddings
 """
 
     def get_redis_url(self):
-        redis_host = getenv('REDIS_HOST', self.redis_host)
-        redis_port = getenv('REDIS_PORT', self.redis_port)
-        redis_db = getenv('REDIS_DB', self.redis_db)
-        redis_password = getenv('REDIS_PASSWORD', self.redis_password)
+        redis_host = getenv("REDIS_HOST", self.redis_host)
+        redis_port = getenv("REDIS_PORT", self.redis_port)
+        redis_db = getenv("REDIS_DB", self.redis_db)
+        redis_password = getenv("REDIS_PASSWORD", self.redis_password)
         return f"redis://default:{redis_password}@{redis_host}:{redis_port}/{redis_db}"
 
 

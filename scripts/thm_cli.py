@@ -3,16 +3,15 @@
 import webbrowser
 from typing import List
 
-from prompt_toolkit import HTML, PromptSession
-from prompt_toolkit import print_formatted_text as print
-from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-from prompt_toolkit.completion import NestedCompleter, WordCompleter
-
 from helpers.category_parser import parse_categories_from_redis
 from helpers.models import Format, Paper
 from helpers.quotes import random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
+from prompt_toolkit import HTML, PromptSession
+from prompt_toolkit import print_formatted_text as print
+from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
+from prompt_toolkit.completion import NestedCompleter, WordCompleter
 from question_answering import get_answer_to_prompt
 
 
@@ -123,9 +122,7 @@ def goto_wolfram():
 
 
 def goto_stackexchange():
-    so_query = ps.prompt(
-        "Write your question: ", auto_suggest=AutoSuggestFromHistory()
-    )
+    so_query = ps.prompt("Write your question: ", auto_suggest=AutoSuggestFromHistory())
     print()
     print(f"Asking StackExchange about {so_query}...")
     webbrowser.open(Engine.ask_stackexchange(so_query))
@@ -152,21 +149,21 @@ def goto_find_answer():
     user_prompt = ps.prompt(
         "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
     )
-    
+
     print(
         HTML(
-            f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
+            "<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
         )
     )
-    
+
     answers = get_answer_to_prompt(user_prompt, top_k=1)
-    
+
     for answer, confidence, paper in answers:
         # get similar papers to display
         print()
-        print("-"*80)
+        print("-" * 80)
         print(f"The Skynet is {confidence:.0%} sure it found what you wanted:")
-        print(HTML(f"Answer: <b>'{answer}'</b>")) 
+        print(HTML(f"Answer: <b>'{answer}'</b>"))
         print()
         print("This answer came from here:")
         render_paper(paper)

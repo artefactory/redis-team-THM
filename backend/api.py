@@ -9,8 +9,11 @@ from thm.models import Paper
 config = get_settings()
 
 app = FastAPI(
-    title=config.project_name, description=config.description, docs_url=config.api_docs, openapi_url=config.openapi_docs,
-    version=config.version
+    title=config.project_name,
+    description=config.description,
+    docs_url=config.api_docs,
+    openapi_url=config.openapi_docs,
+    version=config.version,
 )
 
 # TODO https://github.com/redis/redis-om-python/blob/main/docs/fastapi_integration.md
