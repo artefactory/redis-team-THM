@@ -61,4 +61,9 @@ data/*
 **/config/prod.env
 **/config/dev.env
 
+# ignore outputs
 output/*
+model_outputs*/
+
+# ignore user history
+.cli_history
