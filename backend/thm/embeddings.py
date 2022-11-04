@@ -1,13 +1,14 @@
 import re
 import string
 
+from loguru import logger
 from sentence_transformers import SentenceTransformer
 
 
 class Embeddings:
-    model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+    def __init__(self, model_name):
+        self.model = SentenceTransformer(model_name)
 
-    # String cleaner
     @staticmethod
     def clean_description(description: str) -> str:
         if not description:
@@ -43,4 +44,5 @@ class Embeddings:
             ]
         else:
             sentences = self.clean_description(sentences)
+
         return self.model.encode(sentences, normalize_embeddings=True)

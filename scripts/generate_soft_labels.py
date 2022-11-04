@@ -4,13 +4,10 @@ import pickle
 import fire
 import pandas as pd
 from datasets import Dataset
-from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
-                          Trainer, TrainingArguments)
-from transformers import logging as transformer_logging
-
 from thm.config.settings import get_settings
 from thm.utils_soft_labels import (apply_tokenenizer, clean_description,
                                    papers, prepare_labels)
+from transformers import logging as transformer_logging
 
 config = get_settings()
 
@@ -32,36 +29,38 @@ def run(data_location: str, output_location: str):
     df = pd.DataFrame(papers(data_location))
     # df_with_paper_data = df.copy()
 
-    logging.info('Cleaning data...')
-    df['text'] = df.apply(lambda r: clean_description(r['title'] + ' ' + r['abstract']), axis=1).tolist()
-    df = df[['text', 'categories']]
+    logging.info("Cleaning data...")
+    df["text"] = df.apply(
+        lambda r: clean_description(r["title"] + " " + r["abstract"]), axis=1
+    ).tolist()
+    df = df[["text", "categories"]]
 
     # concatenate df and dummies (ooe_df will be used to inverse the preds and get category names)
-    logging.info('Parsing and creating labels for categories...')
+    logging.info("Parsing and creating labels for categories...")
     df, ooe_df, num_classes = prepare_labels(df)
 
     # Create huggingface dataset object
-    logging.info('Converting data to Dataset format')
+    logging.info("Converting data to Dataset format")
     df_dataset = Dataset.from_pandas(df)
     # df_dataset = df_dataset.remove_columns('__index_level_0__')
 
     # Get and create tokenizer function
-    logging.info('Loading tokenizer...')
+    logging.info("Loading tokenizer...")
     tokenizer = AutoTokenizer.from_pretrained(
         "prajjwal1/bert-tiny",
         problem_type="multi_label_classification",
-        model_max_length=512
+        model_max_length=512,
     )
 
-    logging.info('Applying tokenizer...')
+    logging.info("Applying tokenizer...")
     df_dataset = apply_tokenenizer(df_dataset, tokenizer)
 
     # Modeling
-    logging.info('Loading model...')
+    logging.info("Loading model...")
     model = AutoModelForSequenceClassification.from_pretrained(
         "prajjwal1/bert-tiny",
         num_labels=num_classes,
-        problem_type="multi_label_classification"
+        problem_type="multi_label_classification",
     )
 
     args = TrainingArguments(
@@ -70,9 +69,11 @@ def run(data_location: str, output_location: str):
         output_dir=f'{output_location}/model_outputs',
         logging_steps=10000
     )
-    trainer = Trainer(model=model, args=args, train_dataset=df_dataset, tokenizer=tokenizer)
+    trainer = Trainer(
+        model=model, args=args, train_dataset=df_dataset, tokenizer=tokenizer
+    )
 
-    logging.info('Training model...')
+    logging.info("Training model...")
     trainer.train()
     
     logging.info('Saving artifacts...')

@@ -3,7 +3,6 @@
 import webbrowser
 from typing import List
 
-from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
@@ -26,6 +25,7 @@ def _BibTeX(paper: Paper):
     year = "{paper.year}",
     url = "{paper.url}",
     keywords = "..."
+    {paper.categories}
 }}"""
 
 
@@ -55,6 +55,10 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
         return
 
     print("```")
+    print()
+    paper_ids = list(map(lambda x: x.paper_id, papers))
+    print("To go further, use 'search similar', 'search details' commands...")
+    print(HTML(f"with these arXiv IDs as reference <b>{paper_ids}</b>"))
     print()
 
 
@@ -103,7 +107,7 @@ def goto_search_details():
     print()
     paper = Engine.paper(paper_id)
     render_paper(paper)
-    print("Opening on arXiv...")
+    print(f"Opening {paper_id} on arXiv...")
     webbrowser.open(f"https://arxiv.org/pdf/{paper_id}.pdf")
     print()
 
@@ -113,7 +117,7 @@ def goto_wolfram():
         "Find a formula (eg. cosine law): ", auto_suggest=AutoSuggestFromHistory()
     )
     print()
-    print("Asking Wolfram Alpha...")
+    print(f"Asking Wolfram Alpha about {wolfram_query}...")
     webbrowser.open(Engine.ask_wolfram(wolfram_query))
     print()
 
@@ -128,13 +132,22 @@ def goto_configure():
     max_results_choice = ps.prompt("Max Results (eg. 3): ")
     settings.max_results = max_results_choice
     print()
-    
+
+
 def goto_find_answer():
     print()
-    print("This is a beta feature! Ask question and we will look for the article that seems to answer it best.")
-    user_prompt = ps.prompt("Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory())
+    print(
+        "This is a beta feature! Ask question and we will look for the article that seems to answer it best."
+    )
+    user_prompt = ps.prompt(
+        "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
+    )
     
-    print(HTML(f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"))
+    print(
+        HTML(
+            f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
+        )
+    )
     
     answers = get_answer_to_prompt(user_prompt, top_k=1)
     
@@ -148,7 +161,6 @@ def goto_find_answer():
         print("This answer came from here:")
         render_paper(paper)
     print()
-    
 
 
 def goto_exit():
@@ -188,7 +200,7 @@ def goto_menu():
     elif menu_choice == "search details":
         goto_search_details()
         goto_menu()
-    elif menu_choice == 'find answer':
+    elif menu_choice == "find answer":
         goto_find_answer()
         goto_menu()
     elif menu_choice == "find formula":
@@ -219,6 +231,9 @@ print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
 Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+# Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+# Engine = SearchEngine("http://localhost:8080/api/v1/paper")
+
 ps = PromptSession()
 settings = Settings()
 quote = random_quote()

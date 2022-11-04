@@ -31,6 +31,9 @@ async def startup():
     Paper.Meta.database = get_redis_connection(
         url=config.get_redis_url(), decode_responses=True
     )
+    Paper.Meta.global_key_prefix = "THM"
+    Paper.Meta.model_key_prefix = "Paper"
+
     await Migrator().run()
 
 

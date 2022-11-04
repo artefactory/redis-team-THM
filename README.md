@@ -4,7 +4,8 @@
     <img src="backend/thm/data/redis-logo.png" height="25"/> <br/>
     <img src="backend/thm/data/artefact-logo.png" height="20"/><br/>
     Tom, Henrique, Michel, Corentin<br/>
-    Oct. - Nov. 2022
+    Oct. - Nov. 2022<br/>
+    https://artefactory.github.io/redis-team-THM/
 </div>
 <br/>
 
@@ -12,7 +13,7 @@ This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
 RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
-[![asciicast](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg)](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM)
+[![asciicast](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF.svg)](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF)
 
 See [Architecture](#architecture) to see how it works, and [User Workflow](#user-workflow) to see how it can be used.
 
@@ -149,10 +150,8 @@ vercel .
 ### Blog
 
 ```sh
-cd blog/
-
 # To preview files locally
-pelican content && pelican --listen
+pelican blog/content && pelican --listen
 
 # To publish on GitHub pages
 make publish_blog

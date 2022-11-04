@@ -1,5 +1,7 @@
 from pydantic import BaseSettings
+from os import getenv
 
+from loguru import logger
 
 class Settings(BaseSettings):
     project_name: str = "thm"
@@ -11,13 +13,18 @@ class Settings(BaseSettings):
     data_location: str = "../data"
     year_pattern: str = "(19|20[0-9]{2})"
     embeddings_path: str = "../datascience/arxiv_embeddings_10000.pkl"
+    model_name: str = "sentence-transformers/all-MiniLM-L12-v2"
     redis_host: str
     redis_port: int
     redis_db: str
     redis_password: str
 
     def get_redis_url(self):
-        return f"redis://default:{self.redis_password}@{self.redis_host}:{self.redis_port}/{self.redis_db}"
+        redis_host = getenv('REDIS_HOST', self.redis_host)
+        redis_port = getenv('REDIS_PORT', self.redis_port)
+        redis_db = getenv('REDIS_DB', self.redis_db)
+        redis_password = getenv('REDIS_PASSWORD', self.redis_password)
+        return f"redis://default:{redis_password}@{redis_host}:{redis_port}/{redis_db}"
 
 
 def get_settings():

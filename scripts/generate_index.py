@@ -3,6 +3,7 @@ from typing import Optional
 
 import fire
 import pandas as pd
+from helpers.processors import clean_description, process
 from loguru import logger
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
@@ -51,9 +52,12 @@ def run(
 
     logger.info("Creating embeddings from title and abstract...")
     logger.info(model_name)
+
     df["vector"] = df.progress_apply(
         lambda x: _featurize(model, x["title"], x["abstract"]), axis=1
     )
+    df = df.reset_index().drop("index", axis=1)
+
     df = df.reset_index().drop("index", axis=1)
 
     logger.info("Exporting to pickle file...")
