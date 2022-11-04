@@ -3,15 +3,16 @@
 import webbrowser
 from typing import List
 
-from helpers.models import Format, Paper
-from helpers.quotes import random_quote
-from helpers.search_engine import SearchEngine
-from helpers.settings import Settings
-from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
+
+from helpers.category_parser import parse_categories_from_redis
+from helpers.models import Format, Paper
+from helpers.quotes import random_quote
+from helpers.search_engine import SearchEngine
+from helpers.settings import Settings
 from question_answering import get_answer_to_prompt
 
 
@@ -64,8 +65,11 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
     clean_authors = paper.authors.replace("\n", "").replace("  ", " ")
-    print(HTML(f"{clean_title}"))
+    print(HTML(f"<b>{clean_title}</b>"))
     print(f"by {clean_authors}")
+    print("=" * 80)
+    print("Categories:")
+    print("", *parse_categories_from_redis(paper.categories), sep="\n* ")
     print("=" * 80)
     print(paper.abstract)
     print()
@@ -148,24 +152,24 @@ def goto_find_answer():
     user_prompt = ps.prompt(
         "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
     )
-    print("Loading model...")
-
-    answers = get_answer_to_prompt(Engine, user_prompt, top_k=1)
-
-    for answer, paper in answers:
+    
+    print(
+        HTML(
+            f"<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
+        )
+    )
+    
+    answers = get_answer_to_prompt(user_prompt, top_k=1)
+    
+    for answer, confidence, paper in answers:
         # get similar papers to display
-        similar_papers, _ = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
-        print("-" * 80)
-        print(f"RESULT: {answer}")
+        print("-"*80)
+        print(f"The Skynet is {confidence:.0%} sure it found what you wanted:")
+        print(HTML(f"Answer: <b>'{answer}'</b>")) 
         print()
-        # TODO: render answers
+        print("This answer came from here:")
         render_paper(paper)
-        print("```bibtex")
-        print(_BibTeX(paper))
-        print("```")
-        print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
-        render_results(similar_papers, format=settings.format)
     print()
 
 

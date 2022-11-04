@@ -1,23 +1,12 @@
 import logging
 import pickle
 
+import fire
 import pandas as pd
 from datasets import Dataset
 from thm.config.settings import get_settings
-from thm.utils_soft_labels import (
-    apply_tokenenizer,
-    clean_description,
-    compute_predictions,
-    integrate_soft_labels_back_in_df,
-    papers,
-    prepare_labels,
-)
-from transformers import (
-    AutoModelForSequenceClassification,
-    AutoTokenizer,
-    Trainer,
-    TrainingArguments,
-)
+from thm.utils_soft_labels import (apply_tokenenizer, clean_description,
+                                   papers, prepare_labels)
 from transformers import logging as transformer_logging
 
 config = get_settings()
@@ -26,7 +15,7 @@ transformer_logging.set_verbosity_error()
 logging.getLogger().setLevel(logging.INFO)
 
 
-def main():
+def run(data_location: str, output_location: str):
     """
     This file generates soft labels for all the papers in the dataset.
     The data is expetected to be at: {config.data_location}/arxiv-metadata-oai-snapshot.json'
@@ -36,9 +25,9 @@ def main():
     at the risk of overfitting the datatset.
     """
 
-    logging.info("Reading data...")
-    df = pd.DataFrame(papers())
-    df_with_paper_data = df.copy()
+    logging.info('Reading data...')
+    df = pd.DataFrame(papers(data_location))
+    # df_with_paper_data = df.copy()
 
     logging.info("Cleaning data...")
     df["text"] = df.apply(
@@ -53,7 +42,7 @@ def main():
     # Create huggingface dataset object
     logging.info("Converting data to Dataset format")
     df_dataset = Dataset.from_pandas(df)
-    df_dataset = df_dataset.remove_columns("__index_level_0__")
+    # df_dataset = df_dataset.remove_columns('__index_level_0__')
 
     # Get and create tokenizer function
     logging.info("Loading tokenizer...")
@@ -77,8 +66,8 @@ def main():
     args = TrainingArguments(
         save_strategy="epoch",
         num_train_epochs=1,
-        output_dir=f"{config.data_location}/model_outputs",
-        logging_steps=10000,
+        output_dir=f'{output_location}/model_outputs',
+        logging_steps=10000
     )
     trainer = Trainer(
         model=model, args=args, train_dataset=df_dataset, tokenizer=tokenizer
@@ -86,20 +75,12 @@ def main():
 
     logging.info("Training model...")
     trainer.train()
-
-    logging.info("Computing predictions...")
-    preds = compute_predictions(df_dataset, trainer)
-
-    logging.info("Preparing final output format...")
-    df_with_paper_data = integrate_soft_labels_back_in_df(
-        df_with_paper_data, preds, ooe_df
-    )
-
-    # Dump these to file with pickle or write them to Redis
-    logging.info(f"Saving final output to {config.data_location}")
-    with open(f"{config.data_location}/papers_with_soft_labels.pkl", "wb") as f:
-        pickle.dump(df_with_paper_data, f)
-
-
+    
+    logging.info('Saving artifacts...')
+    trainer.save_model()
+    
+    with open(f"{output_location}/categories.pkl", "wb") as cat_file:
+        pickle.dump(ooe_df.columns.to_list(), cat_file)
+        
 if __name__ == "__main__":
-    main()
+    fire.Fire(run)

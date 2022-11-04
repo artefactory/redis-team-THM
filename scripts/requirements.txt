@@ -3,8 +3,9 @@ pandas
 loguru
 redis_om
 sentence_transformers
+datasets
 tqdm
-
+pydantic[dotenv]
 pydantic
 prompt_toolkit
 httpx

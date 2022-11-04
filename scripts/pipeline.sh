@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -a cutoffs=(
-    # 200811 200812 200901 200902 200903 200904 200905 200906 200907
+    200811 200812 200901 200902 200903 200904 200905 200906 200907
     202110 202111 202112)
 # 1991 to 2022
 
@@ -21,7 +21,7 @@ do
     then
         echo "$path already exists."
     else
-        python3 generate_index.py \
+        PYTHONPATH=../backend python3 generate_index.py \
         --year_month="$cutoff" \
         --input_path="arxiv-metadata-oai-snapshot.json" \
         --output_path="$path/$filename.pkl" \
