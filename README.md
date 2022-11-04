@@ -6,7 +6,7 @@
     Tom, Henrique, Michel, Corentin<br/>
     Oct. - Nov. 2022<br/>
     https://artefactory.github.io/redis-team-THM/<br/>
-    https://thm-cli.community.saturnenterprise.io/api/docs<br/>
+    https://thm-cli.community.saturnenterprise.io/api/docs<br/><br/>
 </div>
 
 This demo showcases the _vector search similarity_ feature of Redis Enterprise.
