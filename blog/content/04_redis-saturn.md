@@ -15,7 +15,7 @@ The kickoff call gave us precious instructions on how we could use cloud resourc
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uS9ZGi8RyPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Blog posts were also helpful in understanding how RediSearch could be used, [Ed Sandoval's LinkedIn activity feed](https://www.linkedin.com/in/edsandovaluk/) had was a mine of information.
+Blog posts were also helpful in understanding how RediSearch could be used, [Ed Sandoval's LinkedIn activity feed](https://www.linkedin.com/in/edsandovaluk/) had was a mine of information and helped us find the most relevant blog posts.
 
 ## Saturn Cloud
 
