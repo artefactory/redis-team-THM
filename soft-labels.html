@@ -4,27 +4,32 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Team THM - Soft labels</title>
+        <title>Soft labels</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
+        <meta name="description" content="Creating soft labels for the users" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://artefactory.github.io/redis-team-THM/">Team THM</a></h1>
                 <nav><ul>
-                    <li><a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a></li>
+                    <li class="active"><a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/redis-and-more.html">Redis and more</a></li>
-                    <li class="active"><a href="https://artefactory.github.io/redis-team-THM/category/soft-labels.html">Soft labels</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/team.html">Team</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/technology.html">Technology</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/thm-cli.html">THM CLI</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/thm-indexing.html">THM Indexing</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://artefactory.github.io/redis-team-THM/soft-labels.html" rel="bookmark"
+           title="Permalink to Soft labels">Soft labels</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://artefactory.github.io/redis-team-THM/Soft labels.html">Soft labels</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-10-28T14:05:00+02:00">
                 Published: Fri 28 October 2022
@@ -37,41 +42,46 @@
         <address class="vcard author">
                 By                         <a class="url fn" href="https://artefactory.github.io/redis-team-THM/author/tom-darmon.html">Tom Darmon</a>
         </address>
-<p>In <a href="https://artefactory.github.io/redis-team-THM/category/soft-labels.html">Soft labels</a>.</p>
-<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/soft-labels.html">Soft labels</a> </p>
-</footer><!-- /.post-info --><p><em>Day 6 When we decided to quantify the categories of every article between 0 and 1.</em></p>
+<p>In <a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a>.</p>
+<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/soft-labels.html">soft-labels</a> <a href="https://artefactory.github.io/redis-team-THM/tag/categories.html">categories</a> <a href="https://artefactory.github.io/redis-team-THM/tag/bert.html">bert</a> </p>
+</footer><!-- /.post-info -->      <p><em>Day 6  - When we decided to quantify the categories of every article between 0 and 1.</em></p>
 <h2>Help users find the balance between categories</h2>
-<p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest me. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning. </p>
+<p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest me. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.</p>
 <p>How can we do this ?</p>
 <h2>Soft labels</h2>
-<p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the THM_CLI you will obtain a value that quantify each category.</p>
+<p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the <code>thm-cli</code> you will obtain a value that quantify each category.</p>
 <p>Remember that we are a Machine Learning expert looking for research paper discussing Computational Complexity, we've found 2 interesting papers:</p>
-<p>Paper 1:
-<code>@article{yuan09,
-    author = "Yuan Gao, Sheng Yu",
-    title = "State Complexity Approximation",
-    year = "2009",
-    url = "https://arxiv.org/pdf/0907.5124.pdf",
-    keywords = "..."
-    cs.CC (90%), stat.ML (10%)
-}</code></p>
-<p>Paper 2:
-<code>article{borja21,
+<p>Paper 1</p>
+<div class="highlight"><pre><span></span><code><span class="nv">@article</span><span class="err">{</span><span class="n">yuan09</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Yuan Gao, Sheng Yu&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;State Complexity Approximation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/0907.5124.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cs</span><span class="p">.</span><span class="n">CC</span><span class="w"> </span><span class="p">(</span><span class="mi">90</span><span class="o">%</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="p">.</span><span class="n">ML</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="o">%</span><span class="p">)</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>Paper 2</p>
+<p><code>article{borja21,
     author = "Borja Rodr\'iguez-G\'alvez, Germ\'an Bassi, and Mikael Skoglund",
     title = "Tractable Inference for Complex Stochastic Processes",
     year = "2021",
     url = "https://arxiv.org/pdf/2005.05889.pdf",
     keywords = "..."
     cs.CC (30%), stat.ML (70%)</code></p>
-<p>Both papers belong to the sames categories, but the paper n°1 is only 10% about Machine Learning. We can directly have a look at paper n°2, as it will focus on the subject we are interested in.</p>
+<p>Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.</p>
 <h2>How did we compute the score for the categories?</h2>
 <p>In order to obtain a fuzzy representation of categories, we decided to train <code>bert-tiny</code> on a multi label text classification problem. It was quite easy, as every article is already tagged with the article. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
 <p>The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.</p>
 <p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.</p>
 <h2>Possible improvements</h2>
 <p>The main problem here is that if we train the model too long we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.</p>
-<p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels. </p>                </article>
-            </aside><!-- /#featured -->
+<p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
