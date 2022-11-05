@@ -14,6 +14,7 @@ from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
 from question_answering import get_answer_to_prompt
 
+from loguru import logger
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
@@ -68,7 +69,7 @@ def render_paper(paper: Paper):
     print(f"by {clean_authors}")
     print("=" * 80)
     print("Categories:")
-    print("", *parse_categories_from_redis(paper.categories), sep="\n* ")
+    print("", *parse_categories_from_redis(paper.categories))
     print("=" * 80)
     print(paper.abstract)
     print()
@@ -156,18 +157,17 @@ def goto_find_answer():
         )
     )
 
-    answers = get_answer_to_prompt(user_prompt, top_k=1)
-
+    answers = get_answer_to_prompt(Engine, user_prompt, top_k=1)
+    logger.info(answers)
     for answer, confidence, paper in answers:
         # get similar papers to display
         print()
         print("-" * 80)
-        print(f"The Skynet is {confidence:.0%} sure it found what you wanted:")
+        print(f"I am {confidence:.0%} sure about my answer:")
         print(HTML(f"Answer: <b>'{answer}'</b>"))
         print()
         print("This answer came from here:")
         render_paper(paper)
-    print()
 
 
 def goto_exit():
