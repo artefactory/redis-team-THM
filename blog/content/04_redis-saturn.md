@@ -11,8 +11,9 @@ _Day 4 - When we have set up the services._
 
 # Setting Up the Services
 
-- [MLOps Community - e-lab kickoff](https://www.youtube.com/watch?v=uS9ZGi8RyPM)
-- [Ed Sandoval LinkedIn page](https://www.linkedin.com/in/edsandovaluk/)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uS9ZGi8RyPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[Ed Sandoval LinkedIn page](https://www.linkedin.com/in/edsandovaluk/)
 
 ## Saturn Cloud
 

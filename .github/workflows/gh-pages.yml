@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - blog/softlabels
+      - feat/writing-again
 
 jobs:
   deploy-gh:
