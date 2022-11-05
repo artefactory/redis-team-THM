@@ -14,9 +14,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-LINKS = (("GitHub", "https://github.com/artefactory/redis-team-THM/"),)
-
-SOCIAL = (
+LINKS = (
+    ("GitHub", "https://github.com/artefactory/redis-team-THM/"),
     ("Artefact", "https://www.artefact.com"),
     ("Redis Ventures", "https://redisventures.com"),
 )
