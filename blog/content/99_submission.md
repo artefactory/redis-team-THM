@@ -34,7 +34,7 @@ THM #
 
 # The THM prompt
 
-## Gettting Help
+## Getting Help
 
 ```
 THM # help
@@ -65,7 +65,7 @@ Max Results (eg. 3): 4
 
 ### Searching for keywords
 
-Just type in a few words like `category theory` and results will be fetched in [BibTeX article](https://www.bibtex.com/e/article-entry/) format ready you to copy paste bibliography of your research paper.
+Just type a few words like `category theory` and results will be fetched in [BibTeX article](https://www.bibtex.com/e/article-entry/) format ready for you to copy paste on the bibliography part of your research paper.
 
 ```
 THM # search keywords
@@ -142,7 +142,7 @@ with these arXiv IDs as reference ['2009.06334', '2101.07888', '1705.04296']
 Total of 309,164 searchable arXiv papers. Last updated 2022-11-04.
 ```
 
-### Gettings details about a paper
+### Getting details about a paper
 
 ```
 THM # search details
@@ -193,7 +193,7 @@ Opening 1705.04296 on arXiv...
 ```
 THM # find answer
 
-This is a beta feature! Ask question and we will look for the article that seems to answer it best.
+This is a beta feature! Ask a question and we will look for the article that seems to answer it best.
 Ask what is on your mind: how big is the universe
 Loading model...
 

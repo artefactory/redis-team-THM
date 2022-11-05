@@ -13,9 +13,9 @@ _Day 5 - when we investigated the problem of similarity search_
 
 In 2015, Spotify was one of the first large Internet company to use these algorithms in production and Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy) at that time.
 
-In 2017, Facebook then released [`facebookresearch/faiss`](https://github.com/facebookresearch/faiss) to enable searching multimedia documents that are similar to each other, indexing a record of billions of document using GPU
+In 2017, Facebook then released [`facebookresearch/faiss`](https://github.com/facebookresearch/faiss) to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU
 
-Other open source projects such as [`perone/euclidesdb`](https://github.com/perone/euclidesdb) then enabled developers to use the embeddings comparision concepts to be hosted on a database.
+Other open source projects such as [`perone/euclidesdb`](https://github.com/perone/euclidesdb) then enabled developers to use the embeddings comparison concepts to be hosted on a database.
 
 Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later got refactored to VertexAI.
 
