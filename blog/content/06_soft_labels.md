@@ -11,7 +11,7 @@ _Day 6  - When we decided to quantify the categories of every article between 0 
 
 ## Help users find the balance between categories
 
-Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest me. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.
+Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest us. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.
 
 How can we do this ?
 
@@ -43,7 +43,8 @@ article{borja21,
     year = "2021",
     url = "https://arxiv.org/pdf/2005.05889.pdf",
     keywords = "..."
-    cs.CC (30%), stat.ML (70%)```
+    cs.CC (30%), stat.ML (70%)
+```
 
 
 Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.
@@ -52,15 +53,14 @@ Both papers belong to the sames categories, but the first paper is only 10% abou
 ## How did we compute the score for the categories?
 
 
-In order to obtain a fuzzy representation of categories, we decided to train `bert-tiny` on a multi label text classification problem. It was quite easy, as every article is already tagged with the article. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.
+In order to obtain a fuzzy representation of categories, we decided to train `bert-tiny` on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.
 
 The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.
 
-
-After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.
+After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to you.
 
 ## Possible improvements
 
-The main problem here is that if we train the model too long we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.
+The main problem here is that if we train the model too long, we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.
 
 Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.
