@@ -39,10 +39,10 @@
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/thm-indexing.html">THM Indexing</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/python.html">python</a> <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> <a href="https://artefactory.github.io/redis-team-THM/tag/mlops.html">mlops</a> </p>
 </footer><!-- /.post-info --><h1>Reindexing contents</h1>
-<p>If you want to index your own private database of documents, you can reuse the scripts</p>
+<p>If you want to index your own private database of documents, you can reuse our <a href="https://github.com/artefactory/redis-team-THM/tree/main/scripts">scripts</a>.</p>
 <h2>Generating the index</h2>
-<p>To generate index for a specific cutoff you can run this script. You must specify a JSON file containing your corpus. the output where to store index file (in Pickle format), and the model name to encode your sentences.</p>
-<p>This task can be performed on one month of arXiv data on a regular desktop, you might want to schedule it using tools like <a href="https://github.com/apache/airflow">Airflow</a>.</p>
+<p>To generate index for papers updated on at specific month <code>YYYYMM</code>, you can run this script. You must specify a JSON file containing your corpus, the output where to store index file (in Pickle format), and the model name to encode your sentences.</p>
+<p>This task can be performed every month of lastly updated arXiv data on a regular desktop computer, you might want to schedule it using tools like <a href="https://github.com/apache/airflow">Airflow</a> to automate.</p>
 <div class="highlight"><pre><span></span><code>% ./generate-index.py --help
 
 
@@ -67,7 +67,8 @@ FLAGS
         Default: <span class="err">&#39;</span>sentence-...
 </code></pre></div>
 
-<p>To cold start your database you can also run the <a href="https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb"><code>single-gpu-arxiv-embedding</code></a> Jupyter Notebook on Saturn Cloud. Using a <code>T4-XLarge 4-cores</code>, <code>saturn-python-rapids</code> image, the data from the historical 2 million papers was indexed in less than 5 minutes.</p>
+<p>To cold start your database you can also run the <a href="https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb"><code>single-gpu-arxiv-embedding</code></a> Jupyter Notebook on Saturn Cloud.</p>
+<p>Using a <code>T4-XLarge 4-cores</code>, <code>saturn-python-rapids</code> image, the data from the historical 2 million papers can be indexed in less than 5 minutes.</p>
 <h2>Loading the index to Redis</h2>
 <div class="highlight"><pre><span></span><code>% ./load_data.py --help
 
@@ -100,7 +101,9 @@ FLAGS
 </code></pre></div>
 
 <h2>Using a basic pipeline</h2>
-<p><a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/pipeline.sh"><code>pipeline.sh</code></a> takes a list of cutoffs and a model name for embeddings encoding. You can track progress thanks to <a href="https://github.com/tqdm/tqdm"><code>tqdm/tqdm</code></a>.</p>
+<p><a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/pipeline.sh"><code>pipeline.sh</code></a> is a basic Bash script that takes a list of cutoffs and a model name for embeddings encoding, and chains both previous tasks.</p>
+<p>Progress of completition is tracked thanks to <a href="https://github.com/tqdm/tqdm"><code>tqdm/tqdm</code></a>.</p>
+<p>You might want to enhance that script depending on your workflow. Things you could do in this script: enrich data, perform checks, send email notifications...</p>
 <div class="highlight"><pre><span></span><code>% ./pipeline.sh
 <span class="m">2022</span>-11-03 <span class="m">19</span>:36:13.555 <span class="p">|</span> INFO     <span class="p">|</span> __main__:run:39 - Reading papers <span class="k">for</span> <span class="m">200907</span>...
 <span class="m">2022</span>-11-03 <span class="m">19</span>:36:30.045 <span class="p">|</span> INFO     <span class="p">|</span> __main__:run:45 - Creating embeddings from title and abstract...
