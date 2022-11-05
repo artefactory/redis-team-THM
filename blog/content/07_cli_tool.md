@@ -23,6 +23,4 @@ We were inspired by old project such as [`jarun/googler`](https://github.com/jar
 
 # Python frameworks
 
-https://github.com/vinta/awesome-python#command-line-interface-development
-
-[`prompt-toolkit/python-prompt-toolkit`](https://github.com/prompt-toolkit/python-prompt-toolkit).
+After briefly studying the list of available libraries, from [`awesome-python` / CLI Development](https://github.com/vinta/awesome-python#command-line-interface-development), we finally chose [`prompt-toolkit/python-prompt-toolkit`](https://github.com/prompt-toolkit/python-prompt-toolkit) and [`google/python-fire`](https://github.com/google/python-fire) to deliver a collection of CLI tools for our hackathon project.
