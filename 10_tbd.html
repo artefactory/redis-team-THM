@@ -46,12 +46,29 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 10 - Deploying the application</em></p>
 <h1>Running locally</h1>
+<p>After making sure a Redis database is available, we start the ASGI webserver using this command</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> backend/
-./start.sh
+uvicorn api:app --host <span class="m">0</span>.0.0.0 --port <span class="m">8080</span> --workers <span class="m">4</span>
 <span class="c1"># INFO: Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)</span>
 </code></pre></div>
 
-<h2></h2>
+<p>You can choose to install <code>redis</code> locally or connect to Redis Cloud Enterprise if you have good internet access and want very little setup.</p>
+<h1>Running from Saturn Cloud</h1>
+<p>There are plenty of platform as a service choices to deploy this simple FastAPI web server, Heroku, Deta, AWS Elastic Beanstalk. But for this project we chose to try Saturn Cloud Deployment, the process was very easy.</p>
+<div align="center">
+    <img src="https://artefactory.github.io/redis-team-THM/images/configure_deployment.png" width=500>
+</div>
+
+<p>After copying our database connection secrets, we can run our server, connecting to it using SSH just like for Jupyter Notebooks.</p>
+<div align="center">
+    <img src="https://artefactory.github.io/redis-team-THM/images/configure_secrets.png" width=500>
+</div>
+
+<p>and the domain name in the form of <code>*thm-cli*.community.saturnenterprise.io</code> can be chosen. We deployed, then finally configured the HTTP client, the CLI tool we built since day 7.</p>
+<div align="center">
+    <a href="https://thm-cli.community.saturnenterprise.io/api/docs">https://thm-cli.community.saturnenterprise.io</a>
+</div>
+
 <h1>References</h1>
 <ul>
 <li><a href="https://saturncloud.io/docs/using-saturn-cloud/gitrepo/">Saturn Cloud Git Repo</a></li>

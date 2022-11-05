@@ -47,8 +47,9 @@
 <h1>Other interesting things</h1>
 <p>Forking the <a href="https://github.com/RedisVentures/redis-arXiv-search">sample repository</a> was very easy and enabled us not to start from scratch, we made a few MLOps-related, improvements over the original project,</p>
 <ul>
-<li>generating index and loading data faster to make it production ready, <code>struct.pack</code>(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the <a href="https://stackoverflow.com/a/9941024/1360476">array of float of embeddings</a> an is critical in the workflow, and using smaller embeddings</li>
-<li>extract code from notebooks to make it modulable and enabling reusing code in a modern orchestration tool.</li>
+<li>generated index and loaded data faster to make it production ready, <code>struct.pack</code>(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the <a href="https://stackoverflow.com/a/9941024/1360476">array of float of embeddings</a> an is critical in the workflow, and using smaller embeddings</li>
+<li>extracted code from notebooks to make it modulable and enabling reusing code in a modern orchestration tool.</li>
+<li>managed credentials and project settings using Pydantic <a href="https://github.com/artefactory/redis-team-THM/blob/main/backend/thm/config/settings.py"><code>BaseSettings</code></a></li>
 </ul>
 <p>We didn't find time to look at these topics, but it will a great ideas to make the project move forward,</p>
 <ul>
@@ -148,8 +149,8 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://artefactory.github.io/redis-team-THM/09_tbd.html" rel="bookmark"
-                           title="Permalink to TBD">TBD</a></h1>
+                    <h1><a href="https://artefactory.github.io/redis-team-THM/redis-venture-update.html" rel="bookmark"
+                           title="Permalink to Redis Ventures update">Redis Ventures update</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -167,8 +168,8 @@
         </address>
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> </p>
-</footer><!-- /.post-info -->                <p>TBD</p>
-                <a class="readmore" href="https://artefactory.github.io/redis-team-THM/09_tbd.html">read more</a>
+</footer><!-- /.post-info -->                <p>Redis Ventures update</p>
+                <a class="readmore" href="https://artefactory.github.io/redis-team-THM/redis-venture-update.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
