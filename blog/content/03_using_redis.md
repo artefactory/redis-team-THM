@@ -40,7 +40,7 @@ If you prefer managed services, these are some modern solutions for your product
 
 # Redis in Details
 
-Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.
+Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it closer to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.
 
 Redis is very fast for both reads and writes because it runs in memory, while having disk persistence as a backup.
 It can run in clusters of servers where large amounts of memory are available.
@@ -55,13 +55,13 @@ It can be useful for the Pub/Sub patterns when Internet users have their browser
 
 Because of its single threaded nature, it has no lock, and can respond to the load of many requests.
 
-With high-speed data, where you're trying to keep your website responding for things that traditional databases were not initially designed for.
+With high-speed data, where your goal is to have a highly responsive website for processes that traditional databases were not initially designed for.
 
 ## Using with Python
 
 The Python package [`redis-om`](https://github.com/redis/redis-om-python) is an ORM to interact with the Redis database, it uses [`pydantic`](https://github.com/pydantic/pydantic) to describe your data models and eases operations for modeling and querying data in Redis with modern Python applications.
 
-Another interesting library is [`brainix/pottery`](https://github.com/brainix/pottery) if you want to deal with remote data structures when your application need to implement locks, key value stores, maintain user lists such as e-commerce carts.
+Another interesting library is [`brainix/pottery`](https://github.com/brainix/pottery) if you want to deal with remote data structures when your application needs to implement locks, key value stores, maintain user lists such as e-commerce carts.
 
 ## Using the REDIS prompt
 

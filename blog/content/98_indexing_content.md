@@ -13,9 +13,9 @@ If you want to index your own private database of documents, you can reuse the s
 
 ## Generating the index
 
-To generate index for a specific cutoff you can just run this script, choosing you JSON file containing your corpus, the output where to store index file in Pickle format, and the model name to encode your sentences.
+To generate index for a specific cutoff you can run this script. You must specify a JSON file containing your corpus. the output where to store index file (in Pickle format), and the model name to encode your sentences.
 
-This task can be performed on one month of arXiv data on a regular desktop, but you might want to schedule it using tools like [Airflow](https://github.com/apache/airflow).
+This task can be performed on one month of arXiv data on a regular desktop, you might want to schedule it using tools like [Airflow](https://github.com/apache/airflow).
 
 ```sh
 % ./generate-index.py --help
