@@ -23,8 +23,9 @@ Other teams at Artefact kept also a competitive but friendly mindset, that's why
 
 Forking the [sample repository](https://github.com/RedisVentures/redis-arXiv-search) was very easy and enabled us not to start from scratch, we made a few MLOps-related, improvements over the original project,
 
-- generating index and loading data faster to make it production ready, `struct.pack`(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the [array of float of embeddings](https://stackoverflow.com/a/9941024/1360476) an is critical in the workflow, and using smaller embeddings
-- extract code from notebooks to make it modulable and enabling reusing code in a modern orchestration tool.
+- generated index and loaded data faster to make it production ready, `struct.pack`(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the [array of float of embeddings](https://stackoverflow.com/a/9941024/1360476) an is critical in the workflow, and using smaller embeddings
+- extracted code from notebooks to make it modulable and enabling reusing code in a modern orchestration tool.
+- managed credentials and project settings using Pydantic [`BaseSettings`](https://github.com/artefactory/redis-team-THM/blob/main/backend/thm/config/settings.py)
 
 We didn't find time to look at these topics, but it will a great ideas to make the project move forward,
 
