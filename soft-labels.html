@@ -46,7 +46,7 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/soft-labels.html">soft-labels</a> <a href="https://artefactory.github.io/redis-team-THM/tag/categories.html">categories</a> <a href="https://artefactory.github.io/redis-team-THM/tag/bert.html">bert</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 6  - When we decided to quantify the categories of every article between 0 and 1.</em></p>
 <h2>Help users find the balance between categories</h2>
-<p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest me. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.</p>
+<p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest us. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.</p>
 <p>How can we do this ?</p>
 <h2>Soft labels</h2>
 <p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the <code>thm-cli</code> you will obtain a value that quantify each category.</p>
@@ -63,20 +63,22 @@
 </code></pre></div>
 
 <p>Paper 2</p>
-<p><code>article{borja21,
-    author = "Borja Rodr\'iguez-G\'alvez, Germ\'an Bassi, and Mikael Skoglund",
-    title = "Tractable Inference for Complex Stochastic Processes",
-    year = "2021",
-    url = "https://arxiv.org/pdf/2005.05889.pdf",
-    keywords = "..."
-    cs.CC (30%), stat.ML (70%)</code></p>
+<div class="highlight"><pre><span></span><code><span class="nv">article</span>{<span class="nv">borja21</span>,<span class="w"></span>
+<span class="w">    </span><span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Borja Rodr\&#39;iguez-G\&#39;alvez, Germ\&#39;an Bassi, and Mikael Skoglund&quot;</span>,<span class="w"></span>
+<span class="w">    </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tractable Inference for Complex Stochastic Processes&quot;</span>,<span class="w"></span>
+<span class="w">    </span><span class="nv">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2021&quot;</span>,<span class="w"></span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://arxiv.org/pdf/2005.05889.pdf&quot;</span>,<span class="w"></span>
+<span class="w">    </span><span class="nv">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nv">cs</span>.<span class="nv">CC</span><span class="w"> </span><span class="ss">(</span><span class="mi">30</span><span class="o">%</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">stat</span>.<span class="nv">ML</span><span class="w"> </span><span class="ss">(</span><span class="mi">70</span><span class="o">%</span><span class="ss">)</span><span class="w"></span>
+</code></pre></div>
+
 <p>Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.</p>
 <h2>How did we compute the score for the categories?</h2>
-<p>In order to obtain a fuzzy representation of categories, we decided to train <code>bert-tiny</code> on a multi label text classification problem. It was quite easy, as every article is already tagged with the article. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
+<p>In order to obtain a fuzzy representation of categories, we decided to train <code>bert-tiny</code> on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
 <p>The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.</p>
-<p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.</p>
+<p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to you.</p>
 <h2>Possible improvements</h2>
-<p>The main problem here is that if we train the model too long we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.</p>
+<p>The main problem here is that if we train the model too long, we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.</p>
 <p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.</p>
     </div><!-- /.entry-content -->
 

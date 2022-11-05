@@ -70,7 +70,7 @@
 <li><a href="https://cloud.google.com/memorystore/">GCP Memorystore</a></li>
 </ul>
 <h1>Redis in Details</h1>
-<p>Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it relate more to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.</p>
+<p>Traditional key/value store only handle string type values. Redis is what we call a key/data structures store. This makes it closer to a database. The different data types it can handle are: strings, lists, sets, sorted sets, hash, Bitmaps, HyperLogLogs.</p>
 <p>Redis is very fast for both reads and writes because it runs in memory, while having disk persistence as a backup.
 It can run in clusters of servers where large amounts of memory are available.</p>
 <h1>Using Redis</h1>
@@ -78,10 +78,10 @@ It can run in clusters of servers where large amounts of memory are available.</
 <p>On some cases, it can be used as a primary database, for example in use cases where only the fresh data matters and when it is only necessary to keep it small periods of time as in streaming.</p>
 <p>It can be useful for the Pub/Sub patterns when Internet users have their browsers open, and data is sent automatically without them to refresh the page.</p>
 <p>Because of its single threaded nature, it has no lock, and can respond to the load of many requests.</p>
-<p>With high-speed data, where you're trying to keep your website responding for things that traditional databases were not initially designed for.</p>
+<p>With high-speed data, where your goal is to have a highly responsive website for processes that traditional databases were not initially designed for.</p>
 <h2>Using with Python</h2>
 <p>The Python package <a href="https://github.com/redis/redis-om-python"><code>redis-om</code></a> is an ORM to interact with the Redis database, it uses <a href="https://github.com/pydantic/pydantic"><code>pydantic</code></a> to describe your data models and eases operations for modeling and querying data in Redis with modern Python applications.</p>
-<p>Another interesting library is <a href="https://github.com/brainix/pottery"><code>brainix/pottery</code></a> if you want to deal with remote data structures when your application need to implement locks, key value stores, maintain user lists such as e-commerce carts.</p>
+<p>Another interesting library is <a href="https://github.com/brainix/pottery"><code>brainix/pottery</code></a> if you want to deal with remote data structures when your application needs to implement locks, key value stores, maintain user lists such as e-commerce carts.</p>
 <h2>Using the REDIS prompt</h2>
 <p>Here are some command to manipulate Hashes in Redis,</p>
 <h3><a href="https://redis.io/commands/hget/"><code>HGET</code></a></h3>
