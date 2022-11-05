@@ -31,8 +31,6 @@ Artefact is an independent global network with 16 offices in 13 countries (acros
 
 We use proprietary cutting-edge AI technologies and an agile MLOps methodology to deploy AI projects rapidly, scale efficiently, and guarantee success.
 
-[Visit Artefact](https://www.artefact.com/about-us/)
-
----
-
-We are [Recruiting](https://www.linkedin.com/company/artefact-global/mycompany/)
+<center>
+[Visit artefact.com](https://www.artefact.com/about-us/) and the [recruiting](https://www.linkedin.com/company/artefact-global/mycompany/) section.
+</center>

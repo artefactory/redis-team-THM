@@ -1,7 +1,7 @@
 Title: Deploying the application
 Date: 2022-11-03 12:12
 Modified: 2022-11-03 12:12
-Category: Technology
+Category: MLOps
 Tags: redis
 Slug: 10_tbd
 Authors: Michel Hua

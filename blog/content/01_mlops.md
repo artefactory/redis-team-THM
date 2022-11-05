@@ -1,7 +1,7 @@
 Title: The Redis Hackathon
 Date: 2022-10-15 01:15
 Modified: 2022-10-15 1:15
-Category: Redis and more
+Category: RediSearch
 Tags: mlops, hackathon
 Slug: mlops-methodology
 Authors: Michel Hua

@@ -1,7 +1,7 @@
 Title: Using Redis
 Date: 2022-10-23 10:20
 Modified: 2022-10-23 10:20
-Category: Redis and more
+Category: RediSearch
 Tags: redis
 Slug: using-redis
 Authors: Michel Hua

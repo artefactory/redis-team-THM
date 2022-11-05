@@ -1,7 +1,7 @@
 Title: Day 10 - Services Endpoints
 Date: 2022-10-30 12:05
 Modified: 2022-10-30 12:05
-Category: Technology
+Category: MLOps
 Tags: hackathon
 Slug: services
 Authors: Corentin Roineau
