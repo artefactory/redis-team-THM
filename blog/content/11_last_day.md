@@ -34,5 +34,6 @@ We didn't find time to look at these topics, but it will a great ideas to make t
 - Instant suggestion after a few keystrokes like in [this AlgoliaSearch demo](https://algoliacom-search-demo.netlify.app)
 - Using fuzzy matching techniques to improve quality of results
 - "I am feeling lucky" button like in Google
+- scheduling using Saturn Cloud Jobs
 
 If you want to contribute don't hesitate, changes and improvements are welcome! Feel free to fork and open a pull request into `main`.

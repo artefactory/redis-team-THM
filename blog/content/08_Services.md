@@ -1,4 +1,4 @@
-Title: Day 10 - Services Endpoints
+Title: Services Endpoints
 Date: 2022-10-30 12:05
 Modified: 2022-10-30 12:05
 Category: MLOps
@@ -7,7 +7,7 @@ Slug: services
 Authors: Corentin Roineau
 Summary: Services Endpoints
 
-_Day 10 - When we studied the routes of our API_
+_Day 8 - When we studied the routes of our API_
 
 # Endpoints of the project
 

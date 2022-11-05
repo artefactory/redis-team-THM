@@ -11,23 +11,27 @@ _Day 5 - when we investigated the problem of similarity search_
 
 # State of the Art
 
-In 2015, Spotify was one of the first large Internet company to use these algorithms in production and Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy) at that time.
+Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found it brought great user experiences.
+
+In 2015, Spotify was one of the first large Internet company to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy) at that time.
 
 In 2017, Facebook then released [`facebookresearch/faiss`](https://github.com/facebookresearch/faiss) to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU
 
 Other open source projects such as [`perone/euclidesdb`](https://github.com/perone/euclidesdb) then enabled developers to use the embeddings comparison concepts to be hosted on a database.
 
-Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later got refactored to VertexAI.
+Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later moved to VertexAI.
 
 HuggingFace and OpenAI then largely disrupted access to deep learning models and made it easier to use.
 
 # Redis Vector Similarity Search
 
-Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous backend software technologies, allowing users already familiar with Redis to perform vector similarity queries using `FT.SEARCH` command.
+Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous backend software technologies, it allows users already familiar with Redis to perform vector similarity queries using `FT.SEARCH` command.
 
 Developers car easily load, index, and query vectors.
 
-![VSS](https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png?&auto=webp&quality=85,75&width=1200)
+<div align="center">
+    <img src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png" width=500>
+</div>
 
 HNSW vs FLAT vectors
 > https://redis.io/docs/stack/search/reference/vectors/
