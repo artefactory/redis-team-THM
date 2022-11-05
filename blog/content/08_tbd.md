@@ -7,5 +7,8 @@ Slug: 08_tbd
 Authors: Michel Hua
 Summary: TBD
 
-_Day 8 - to be defined_
+_Day 8 - When we ran some benchmark for the process of index creation._
 
+https://mlops.community/vector-similarity-search-from-basics-to-production/
+
+pricing of the stack
