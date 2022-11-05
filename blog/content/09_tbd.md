@@ -1,7 +1,7 @@
 Title: TBD
 Date: 2022-11-01 12:12
 Modified: 2022-11-01 12:12
-Category: Technology
+Category: MLOps
 Tags: redis
 Slug: 09_tbd
 Authors: Michel Hua

@@ -1,7 +1,7 @@
 Title: Setting up the Services
 Date: 2022-10-25 14:30
 Modified: 2022-10-25 14:30
-Category: Technology
+Category: MLOps
 Tags: technology
 Slug: saturn-redis-cloud
 Authors: Michel Hua, Tom Darmon, Corentin Roineau

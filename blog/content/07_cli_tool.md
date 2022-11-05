@@ -1,7 +1,7 @@
 Title: TBD
 Date: 2022-10-29 12:05
 Modified: 2022-10-29 12:05
-Category: Technology
+Category: MLOps
 Tags: search
 Slug: 07_tbd
 Authors: Michel Hua
