@@ -46,14 +46,14 @@
 <p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the <code>thm-cli</code> you will obtain a value that quantify each category.</p>
 <p>Remember that we are a Machine Learning expert looking for research paper discussing Computational Complexity, we've found 2 interesting papers:</p>
 <p>Paper 1</p>
-<div class="highlight"><pre><span></span><code><span class="nv">@article</span><span class="err">{</span><span class="n">yuan09</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Yuan Gao, Sheng Yu&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;State Complexity Approximation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2009&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/0907.5124.pdf&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;...&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="n">cs</span><span class="p">.</span><span class="n">CC</span><span class="w"> </span><span class="p">(</span><span class="mi">90</span><span class="o">%</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="p">.</span><span class="n">ML</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="o">%</span><span class="p">)</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code>article{yuan09,
+    author = &quot;Yuan Gao, Sheng Yu&quot;,
+    title = &quot;State Complexity Approximation&quot;,
+    year = &quot;2009&quot;,
+    url = &quot;https://arxiv.org/pdf/0907.5124.pdf&quot;,
+    keywords = &quot;...&quot;
+    cs.CC (90%), stat.ML (10%)
+}
 </code></pre></div>
 
 <p>Paper 2</p>
@@ -64,6 +64,7 @@
 <span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://arxiv.org/pdf/2005.05889.pdf&quot;</span>,<span class="w"></span>
 <span class="w">    </span><span class="nv">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nv">cs</span>.<span class="nv">CC</span><span class="w"> </span><span class="ss">(</span><span class="mi">30</span><span class="o">%</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">stat</span>.<span class="nv">ML</span><span class="w"> </span><span class="ss">(</span><span class="mi">70</span><span class="o">%</span><span class="ss">)</span><span class="w"></span>
+}<span class="w"></span>
 </code></pre></div>
 
 <p>Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.</p>
