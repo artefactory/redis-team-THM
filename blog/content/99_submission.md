@@ -7,11 +7,13 @@ Slug: snippets
 Authors: Henrique Brito, Michel Hua
 Summary: The THM CLI
 
+The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in every day tasks such as building bibilography and finding answers to their questions.
+
 <script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
 
 # Running THM CLI
 
-Open the terminal and run the following command,
+To use **THM CLI**, just open the terminal and run the following command,
 
 ```sh
 % thm-cli
@@ -43,13 +45,13 @@ https://artefactory.github.io/redis-team-THM
 
 Usage:
   search [keywords|similar|details]
-  find [answer|formula]
+  find [answer|formula|stackexchange]
   configure
   help
   exit
 ```
 
-## Configure the tool
+## Configuring the tool
 
 You can configure some parameters such as output format, and the number of results to display by default.
 
@@ -59,13 +61,13 @@ Choose file format (markdown, bibtex): bibtex
 Max Results (eg. 3): 4
 ```
 
-## Search the arXiv database
+## Searching the arXiv database
 
 <script id="asciicast-5e9QHIS62HZDL1VkSFtAVlvjF" src="https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF.js" async></script>
 
 ### Searching for keywords
 
-Just type a few words like `category theory` and results will be fetched in [BibTeX article](https://www.bibtex.com/e/article-entry/) format ready for you to copy paste on the bibliography part of your research paper.
+Just type a few words like `category theory` and results will be fetched in [BibTeX article](https://www.bibtex.com/e/article-entry/) format, ready for the bibliography part of your research paper.
 
 ```
 THM # search keywords
@@ -213,7 +215,7 @@ The largest length-scale at which filaments are statistically significant, real
 
 If you have doubts about a theorem you can open a query on Wolfram Alpha from your web browser.
 
-Other sources of data are soon to be added: [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/), [DuckDuck Go](https://duckduckgo.com), [StackExchange](https://stackexchange.com)...
+Other sources of data are soon to be added: [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/), [DuckDuck Go](https://duckduckgo.com)...
 
 ```
 THM # find formula
@@ -226,10 +228,14 @@ Asking Wolfram Alpha about cauchy inequality...
     <img src="{static}/images/wolfram.png" width=500>
 </div>
 
-## End the program
+## Ending the program
 
 When you are finished, just type `exit`.
 
 ```
 THM # exit
+
+
+Thank you for using the service!
+Have a good day!
 ```
