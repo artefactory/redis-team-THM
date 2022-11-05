@@ -19,13 +19,11 @@ from loguru import logger
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
     # https://www.bibtex.com/e/article-entry/
-    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]},
+    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]}, \t % {", ".join(f"{x[0]} {x[1]}".strip() for x in paper.categories)}
     author = "{paper.authors}",
     title = "{paper.title}",
     year = "{paper.year}",
     url = "{paper.url}",
-    keywords = "..."
-    {paper.categories}
 }}"""
 
 
@@ -158,7 +156,6 @@ def goto_find_answer():
     )
 
     answers = get_answer_to_prompt(Engine, user_prompt, top_k=1)
-    logger.info(answers)
     for answer, confidence, paper in answers:
         # get similar papers to display
         print()

@@ -73,33 +73,30 @@ Your keywords (eg. social networks): category theory
 Papers matching "category theory"...
 
 ===bibtex
-@article{john20,
-    author = "John Baez, Bob Coecke",
-    title = "Proceedings Applied Category Theory 2019",
-    year = "2020",
-    url = "https://arxiv.org/pdf/2009.06334.pdf",
-    keywords = "..."
+@article{bobc06,         % ph ⭐️⭐️⭐️⭐️, math.MP ⭐️⭐️⭐️⭐️, th ⭐️⭐️⭐️⭐️
+    author = "Bob Coecke",
+    title = "Introducing categories to the practicing physicist",
+    year = "2006",
+    url = "https://arxiv.org/pdf/0808.1032.pdf",
 }
-@article{david21,
-    author = "David I. Spivak (Massachusetts Institute of Technology), Jamie Vicary (University of Cambridge)",
-    title = "Proceedings of the 3rd Annual International Applied Category Theory Conference 2020",
+@article{charl01,        % math.AG ⭐️⭐️, math.GT ⭐️, math.DG ⭐️
+    author = "Charles Rezk",
+    title = "A model for the homotopy theory of homotopy theory",
+    year = "2001",
+    url = "https://arxiv.org/pdf/math/9811037.pdf",
+}
+@article{niles21,        % math.CO ⭐️, math.NT ⭐️, math.AG ⭐️
+    author = "Niles Johnson, Donald Yau",
+    title = "A bicategorical pasting theorem",
     year = "2021",
-    url = "https://arxiv.org/pdf/2101.07888.pdf",
-    keywords = "..."
-}
-@article{wille17,
-    author = "Willem Conradie, Sabine Frittella, Michele Piazzai, Apostolos Tzimoulis, Alessandra Palmigiano and Nachoem M. Wijnberg",
-    title = "Categories: How I Learned to Stop Worrying and Love Two Sorts",
-    year = "2017",
-    url = "https://arxiv.org/pdf/1604.00777.pdf",
-    keywords = "..."
+    url = "https://arxiv.org/pdf/1910.01220.pdf",
 }
 ===
 
 To go further, use 'search similar', 'search details' commands...
-with these arXiv IDs as reference ['2009.06334', '2101.07888', '1604.00777']
+with these arXiv IDs as reference ['0808.1032', 'math/9811037', '1910.01220']
 
-Total of 309,164 searchable arXiv papers. Last updated 2022-11-04.
+Total of 59,114 searchable arXiv papers. Last updated 2022-11-04.
 ```
 
 ### Searching similar papers
