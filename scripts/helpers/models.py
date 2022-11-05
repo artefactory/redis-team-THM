@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Optional
+from typing import Optional, List, Tuple, Union
 
 from pydantic import BaseModel
 
@@ -15,6 +15,5 @@ class Paper(BaseModel):
     title: str
     abstract: Optional[str]
     authors: str
-    categories: str
-    predicted_categories: Optional[str]
+    categories: Union[str, List[Tuple[str, str]]]
     year: str

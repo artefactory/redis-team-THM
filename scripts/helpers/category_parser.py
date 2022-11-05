@@ -1,11 +1,11 @@
 import json
 from typing import Dict, List, Union
 
-with open("helpers/arxiv_taxonomy.json", "r") as taxonomy_file:
-    taxonomy = json.load(taxonomy_file)
+with open("helpers/categories.json", "r") as categories:
+    taxonomy = json.load(categories)
 
 
-def parse_categories_from_redis(categories: str, sep: str = ",") -> List[str]:
+def parse_categories_from_redis(categories: str, sep: str = "|") -> List[str]:
     categories_list = categories.split(sep)
     categories_labels = [taxonomy[category] for category in categories_list]
 

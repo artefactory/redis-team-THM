@@ -138,14 +138,9 @@ cd backend/
 ./start.sh
 
 open http://0.0.0.0:8080/api/docs
-
-# Deployment
-vercel .
 ```
 
-### Exploration
-
-- Trying out [Docarray](https://docarray.jina.ai)
+[Deploy on Saturn Cloud](https://app.community.saturnenterprise.io/dash/resources?recipeUrl=https://github.com/artefactory/redis-team-THM/blob/main/backend/.saturn/thm-backend-deployment-recipe.json)
 
 ### Blog
 
@@ -196,7 +191,6 @@ First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/r
 |            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
 |            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
 | `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
-|  `multi-gpu-arxiv-embeddings.ipynb` | Dask Cluster, 32 cores | ... |
 
 ### Loading Index on Redis Cloud
 
@@ -206,4 +200,22 @@ First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/r
 
 ### Load testing the HTTP Server
 
-TODO
+Using [`wg/wrk`](https://github.com/wg/wrk)
+
+```sh
+$ wrk -t4 -c20 -d30s https://thm-cli.community.saturnenterprise.io/api/docs
+
+Running 30s test @ https://thm-cli.community.saturnenterprise.io/api/docs
+  4 threads and 20 connections
+
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   105.53ms   21.50ms 461.06ms   88.24%
+    Req/Sec    47.63      7.97    80.00     79.85%
+  5629 requests in 30.11s, 5.74MB read
+Requests/sec:    186.98
+Transfer/sec:    195.19KB
+```
+
+## Contributions
+
+Changes and improvements are welcome! Feel free to fork and open a pull request into `main`.

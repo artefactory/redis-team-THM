@@ -24,7 +24,7 @@ Remember that we are a Machine Learning expert looking for research paper discus
 Paper 1
 
 ```
-@article{yuan09,
+article{yuan09,
     author = "Yuan Gao, Sheng Yu",
     title = "State Complexity Approximation",
     year = "2009",
@@ -44,6 +44,7 @@ article{borja21,
     url = "https://arxiv.org/pdf/2005.05889.pdf",
     keywords = "..."
     cs.CC (30%), stat.ML (70%)
+}
 ```
 
 

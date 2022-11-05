@@ -7,7 +7,7 @@ from helpers.settings import Settings
 from transformers import pipeline
 
 settings = Settings()
-
+from loguru import logger
 
 def get_prioritized_articles(
     user_prompt: str, engine: SearchEngine
@@ -42,7 +42,7 @@ def _validate_prompt(user_prompt: str):
 
 def _build_answer(
     qa_output: List[Dict], priority_papers: PriorityPapersManager
-) -> List[Tuple[str, Paper]]:
+) -> List[Tuple[str, float, Paper]]:
     answer = []
 
     for output in qa_output:
@@ -52,8 +52,9 @@ def _build_answer(
         paper = priority_papers.find_paper(
             target_start=start_answer, target_end=end_answer
         )
+        confidence = 0.5  # FIXME
 
-        answer.append((text_answer, paper))
+        answer.append((text_answer, confidence, paper))
 
     return answer
 
