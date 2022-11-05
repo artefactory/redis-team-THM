@@ -48,15 +48,19 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> <a href="https://artefactory.github.io/redis-team-THM/tag/search.html">search</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 5 - when we investigated the problem of similarity search</em></p>
 <h1>State of the Art</h1>
-<p>In 2015, Spotify was one of the first large Internet company to use these algorithms in production and Erik Bernhardsson open sourced <a href="https://github.com/spotify/annoy"><code>spotify/annoy</code></a> at that time.</p>
+<p>Search engines already existed in the 2010 with technology such as Lucene and <a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a>, for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found it brought great user experiences.</p>
+<p>In 2015, Spotify was one of the first large Internet company to use these algorithms in production, when Erik Bernhardsson open sourced <a href="https://github.com/spotify/annoy"><code>spotify/annoy</code></a> at that time.</p>
 <p>In 2017, Facebook then released <a href="https://github.com/facebookresearch/faiss"><code>facebookresearch/faiss</code></a> to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU</p>
 <p>Other open source projects such as <a href="https://github.com/perone/euclidesdb"><code>perone/euclidesdb</code></a> then enabled developers to use the embeddings comparison concepts to be hosted on a database.</p>
-<p>Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later got refactored to VertexAI.</p>
+<p>Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later moved to VertexAI.</p>
 <p>HuggingFace and OpenAI then largely disrupted access to deep learning models and made it easier to use.</p>
 <h1>Redis Vector Similarity Search</h1>
-<p>Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous backend software technologies, allowing users already familiar with Redis to perform vector similarity queries using <code>FT.SEARCH</code> command.</p>
+<p>Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous backend software technologies, it allows users already familiar with Redis to perform vector similarity queries using <code>FT.SEARCH</code> command.</p>
 <p>Developers car easily load, index, and query vectors.</p>
-<p><img alt="VSS" src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png?&amp;auto=webp&amp;quality=85,75&amp;width=1200"></p>
+<div align="center">
+    <img src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png" width=500>
+</div>
+
 <p>HNSW vs FLAT vectors</p>
 <blockquote>
 <p>https://redis.io/docs/stack/search/reference/vectors/</p>
