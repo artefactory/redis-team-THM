@@ -1,7 +1,7 @@
 Title: Answering user's questions
 Date: 2022-10-28 11:00
 Modified: 2022-10-31 11:00
-Category: Data Science
+Category: Machine Learning
 Tags: question-answering, huggingface, transformers
 Slug: find-answer
 Authors: Henrique Brito
@@ -15,4 +15,4 @@ Summary: Our data science approach to answer users' questions
 
 ## The technical challenge
 
-- How can we use the information contained 
+- How can we use the information contained

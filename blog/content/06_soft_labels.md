@@ -1,7 +1,7 @@
 Title: Soft labels
 Date: 2022-10-28 14:05
 Modified: 2022-10-28 14:05
-Category: Data Science
+Category: Machine Learning
 Tags: soft-labels, categories, bert
 Slug: soft-labels
 Authors: Tom Darmon
