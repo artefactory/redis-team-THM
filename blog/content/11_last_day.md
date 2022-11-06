@@ -17,7 +17,7 @@ But overall, the project was very exciting and allowed us to discover how easy i
 
 We would like to thank "Redis Ventures" for providing the opportunity to show our project and our skills, but also for the quality of information and resources they provided for every team to do their best.
 
-Other teams at Artefact kept also a competitive but friendly mindset, that's why we like our company [so much](https://artefactory.github.io/redis-team-THM/category/team.html).
+Other teams at Artefact kept also a competitive but friendly mindset, that's why we like our company [so much]({filename}02_team.md).
 
 # Other interesting things
 

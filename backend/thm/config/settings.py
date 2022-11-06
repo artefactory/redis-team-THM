@@ -54,4 +54,3 @@ THM API helps you search arXiv using vector embeddings
 
 def get_settings():
     return Settings(_env_file="../backend/thm/config/prod.env")
-    # contact Michel for the gitignored file

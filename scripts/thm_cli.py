@@ -16,6 +16,7 @@ from question_answering import get_answer_to_prompt
 
 from loguru import logger
 
+
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
     # https://www.bibtex.com/e/article-entry/
@@ -219,7 +220,7 @@ def goto_menu():
         goto_menu()
     elif menu_choice == "help":
         print("THM Search CLI v1.0")
-        print("https://artefactory.github.io/redis-team-THM")
+        print("https://artefactory.github.io/redis-team-THM/")
         print()
         print("Usage:")
         print("  search [keywords|similar|details]")
