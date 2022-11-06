@@ -45,7 +45,7 @@
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 8 - When we ran some benchmark for the process of index creation and hosting.</em></p>
-<h1>Benchmarking the loading scrips</h1>
+<h1>Benchmarking the loading scripts</h1>
 <p>From a file named <code>arxiv-metadata-oai-snapshot.json</code> containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:</p>
 <ul>
 <li>machine provisining needed,</li>
@@ -80,7 +80,7 @@
 </tr>
 </tbody>
 </table>
-<h2>Loading Index on Redis Cloud</h2>
+<p>To then load the Pickle index to Redis is easy from a normal desktop machine.</p>
 <table>
 <thead>
 <tr>
@@ -150,7 +150,7 @@ Line <span class="c1">#    Mem usage    Increment  Occurrences   Line Contents</
     <span class="m">68</span>  <span class="m">152</span>.219 MiB    <span class="m">0</span>.000 MiB           <span class="m">2</span>           redis_conn, concurrency_level, separator, vector_size, *papers
 </code></pre></div>
 
-<h2>Load testing the HTTP Server</h2>
+<h1>Load testing the HTTP Server</h1>
 <p>Using <a href="https://github.com/wg/wrk"><code>wg/wrk</code></a> we have made a few tests to see how much HTTP server and Redis could handle if many clients connected to it.</p>
 <div class="highlight"><pre><span></span><code>$ wrk -t4 -c20 -d30s https://thm-cli.community.saturnenterprise.io/api/docs
 
@@ -187,13 +187,13 @@ Requests/sec:     <span class="m">13</span>.57
 Transfer/sec:    <span class="m">292</span>.92KB
 </code></pre></div>
 
-<h1>Cost of Hosting the Solution</h1>
+<h1>Discussing the Cost of Hosting</h1>
 <p>Pricing of the stack</p>
 <ul>
-<li>Redis Cloud Enterprise: $0.881/hr = 600 USD / month</li>
-<li>Saturn Cloud Deployment: $0.21/hour = 150 USD / month</li>
-<li>Loading the index: FREE</li>
+<li>Redis Cloud Enterprise: $0.881/hr = USD 600/month</li>
+<li>Saturn Cloud Notebooks and Deployment: $0.21/hour = USD 150/month</li>
 </ul>
+<p>The total is about 750 USD/month. You might be able to decrease costs a bit using infrastructure as a service instead of platform as a service, but more DevOps skills would be needed to configure cloud accounts on GCP or AWS for example.</p>
     </div><!-- /.entry-content -->
 
   </article>
