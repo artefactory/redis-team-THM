@@ -105,6 +105,43 @@
   --input_path<span class="o">=</span><span class="s2">&quot;arxiv-metadata-oai-snapshot.json&quot;</span> <span class="se">\</span>
   --output_path<span class="o">=</span><span class="s2">&quot;arxiv/cutoff=200811/output.pkl&quot;</span> <span class="se">\</span>
   --model_name<span class="o">=</span><span class="s2">&quot;sentence-transformers/all-MiniLM-L12-v2&quot;</span>
+
+Line <span class="c1">#    Mem usage    Increment  Occurrences   Line Contents</span>
+<span class="o">=============================================================</span>
+    <span class="m">33</span>    <span class="m">292</span>.0 MiB    <span class="m">292</span>.0 MiB           <span class="m">1</span>   @profile
+    <span class="m">34</span>                                         def run<span class="o">(</span>
+    <span class="m">35</span>                                             year_month,
+    <span class="m">36</span>                                             <span class="nv">input_path</span><span class="o">=</span><span class="s2">&quot;arxiv-metadata-oai-snapshot.json&quot;</span>,
+    <span class="m">37</span>                                             <span class="nv">output_path</span><span class="o">=</span><span class="s2">&quot;arxiv_embeddings_10000.pkl&quot;</span>,
+    <span class="m">38</span>                                             <span class="nv">model_name</span><span class="o">=</span><span class="s2">&quot;sentence-transformers/all-mpnet-base-v2&quot;</span>,
+    <span class="m">39</span>                                         <span class="o">)</span>:
+    <span class="m">40</span>                                             <span class="s2">&quot;&quot;&quot;Generate Embeddings and Create a File Index.&quot;&quot;&quot;</span>
+    <span class="m">41</span>
+    <span class="m">42</span>    <span class="m">292</span>.0 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       logger.info<span class="o">(</span>f<span class="s2">&quot;Reading papers for {year_month}...&quot;</span><span class="o">)</span>
+    <span class="m">43</span>    <span class="m">315</span>.4 MiB     <span class="m">23</span>.4 MiB           <span class="m">1</span>       <span class="nv">df</span> <span class="o">=</span> pd.DataFrame<span class="o">(</span>get_papers<span class="o">(</span>input_path, year_month<span class="o">))</span>
+    <span class="m">44</span>
+    <span class="m">45</span>    <span class="m">315</span>.9 MiB      <span class="m">0</span>.4 MiB           <span class="m">1</span>       logger.info<span class="o">(</span><span class="s2">&quot;Getting categories predictions&quot;</span><span class="o">)</span>
+    <span class="m">46</span>                                             <span class="c1"># df[&quot;predicted_categories&quot;] = get_paper_classification_predictions(</span>
+    <span class="m">47</span>                                             <span class="c1">#     df[&quot;title&quot;] + &quot; &quot; + df[&quot;abstract&quot;], top_k=3</span>
+    <span class="m">48</span>                                             <span class="c1"># )</span>
+    <span class="m">49</span>
+    <span class="m">50</span>                                             <span class="c1"># https://www.sbert.net/docs/usage/semantic_textual_similarity.html</span>
+    <span class="m">51</span>    <span class="m">447</span>.0 MiB    <span class="m">131</span>.1 MiB           <span class="m">1</span>       <span class="nv">model</span> <span class="o">=</span> SentenceTransformer<span class="o">(</span>model_name<span class="o">)</span>
+    <span class="m">52</span>
+    <span class="m">53</span>    <span class="m">447</span>.0 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       logger.info<span class="o">(</span><span class="s2">&quot;Creating embeddings from title and abstract...&quot;</span><span class="o">)</span>
+    <span class="m">54</span>    <span class="m">447</span>.0 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       logger.info<span class="o">(</span>model_name<span class="o">)</span>
+    <span class="m">55</span>
+    <span class="m">56</span>    <span class="m">724</span>.2 MiB    <span class="m">103</span>.8 MiB           <span class="m">2</span>       df<span class="o">[</span><span class="s2">&quot;vector&quot;</span><span class="o">]</span> <span class="o">=</span> df.progress_apply<span class="o">(</span>
+    <span class="m">57</span>    <span class="m">620</span>.4 MiB -3613776.1 MiB       <span class="m">59149</span>           lambda x: _featurize<span class="o">(</span>model, x<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>, x<span class="o">[</span><span class="s2">&quot;abstract&quot;</span><span class="o">])</span>, <span class="nv">axis</span><span class="o">=</span><span class="m">1</span>
+    <span class="m">58</span>                                             <span class="o">)</span>
+    <span class="m">59</span>    <span class="m">729</span>.7 MiB      <span class="m">5</span>.5 MiB           <span class="m">1</span>       <span class="nv">df</span> <span class="o">=</span> df.reset_index<span class="o">()</span>.drop<span class="o">(</span><span class="s2">&quot;index&quot;</span>, <span class="nv">axis</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>
+    <span class="m">60</span>
+    <span class="m">61</span>    <span class="m">730</span>.0 MiB      <span class="m">0</span>.3 MiB           <span class="m">1</span>       <span class="nv">df</span> <span class="o">=</span> df.reset_index<span class="o">()</span>.drop<span class="o">(</span><span class="s2">&quot;index&quot;</span>, <span class="nv">axis</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>
+    <span class="m">62</span>
+    <span class="m">63</span>    <span class="m">731</span>.5 MiB      <span class="m">1</span>.5 MiB           <span class="m">1</span>       logger.info<span class="o">(</span><span class="s2">&quot;Exporting to pickle file...&quot;</span><span class="o">)</span>
+    <span class="m">64</span>    <span class="m">731</span>.5 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       with open<span class="o">(</span>output_path, <span class="s2">&quot;wb&quot;</span><span class="o">)</span> as f:
+    <span class="m">65</span>    <span class="m">917</span>.0 MiB    <span class="m">185</span>.5 MiB           <span class="m">1</span>           <span class="nv">data</span> <span class="o">=</span> pickle.dumps<span class="o">(</span>df<span class="o">)</span>
+    <span class="m">66</span>    <span class="m">919</span>.8 MiB      <span class="m">2</span>.7 MiB           <span class="m">1</span>           f.write<span class="o">(</span>data<span class="o">)</span>
 </code></pre></div>
 
 <p>As we can see using <code>pandas</code> to load and store data wasn't optimal because of its memory overhead.</p>
