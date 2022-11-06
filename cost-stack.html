@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>TODO</title>
+        <title>Benchmarks</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
-        <meta name="description" content="TODO" />
+        <meta name="description" content="Benchmarks" />
 </head>
 
 <body id="index" class="home">
@@ -26,7 +26,7 @@
     <header>
       <h1 class="entry-title">
         <a href="https://artefactory.github.io/redis-team-THM/cost-stack.html" rel="bookmark"
-           title="Permalink to TODO">TODO</a></h1>
+           title="Permalink to Benchmarks">Benchmarks</a></h1>
     </header>
 
     <div class="entry-content">
@@ -45,16 +45,14 @@
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 8 - When we ran some benchmark for the process of index creation and hosting.</em></p>
-<h1>The Cost of the Stack</h1>
-<p>https://mlops.community/vector-similarity-search-from-basics-to-production/</p>
-<p>pricing of the stack</p>
+<h1>Benchmarking the loading scrips</h1>
 <p>From a file named <code>arxiv-metadata-oai-snapshot.json</code> containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:</p>
 <ul>
 <li>machine provisining needed,</li>
 <li>how to update regularly from the arXiv snapshots,</li>
 <li>volumetry of data.</li>
 </ul>
-<h3>Generating Embeddings</h3>
+<h2>Generating Embeddings</h2>
 <p>First, we evaluated the Jupyter notebooks from Redis demo code <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>RedisVentures/redis-arXiv-search</code></a>.</p>
 <table>
 <thead>
@@ -82,7 +80,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Loading Index on Redis Cloud</h3>
+<h2>Loading Index on Redis Cloud</h2>
 <table>
 <thead>
 <tr>
@@ -99,10 +97,61 @@
 </tr>
 </tbody>
 </table>
-<h1>Profiling the code</h1>
-<p>Using <a href="https://github.com/pythonprofilers/memory_profiler"><code>pythonprofilers/memory_profiler</code></a> we measured that,</p>
-<h3>Load testing the HTTP Server</h3>
-<p>Using <a href="https://github.com/wg/wrk"><code>wg/wrk</code></a></p>
+<h2>Profiling the code</h2>
+<p>After refactoring to Python scripts, we used <a href="https://github.com/Delgan/loguru"><code>Delgan/loguru</code></a> to add logs, <a href="https://github.com/tqdm/tqdm"><code>tqdm/tqdm</code></a> to track troughput and <a href="https://github.com/pythonprofilers/memory_profiler"><code>pythonprofilers/memory_profiler</code></a> to find pain points and we measured that,</p>
+<div class="highlight"><pre><span></span><code>$ python3 -m memory_profiler generate_index.py <span class="se">\</span>
+  --year_month<span class="o">=</span><span class="m">200811</span> <span class="se">\</span>
+  --input_path<span class="o">=</span><span class="s2">&quot;arxiv-metadata-oai-snapshot.json&quot;</span> <span class="se">\</span>
+  --output_path<span class="o">=</span><span class="s2">&quot;arxiv/cutoff=200811/output.pkl&quot;</span> <span class="se">\</span>
+  --model_name<span class="o">=</span><span class="s2">&quot;sentence-transformers/all-MiniLM-L12-v2&quot;</span>
+</code></pre></div>
+
+<p>As we can see using <code>pandas</code> to load and store data wasn't optimal because of its memory overhead.</p>
+<div class="highlight"><pre><span></span><code>$ python3 -m memory_profiler load_data.py <span class="se">\</span>
+  --concurrency_level<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
+  --separator<span class="o">=</span><span class="s2">&quot;|&quot;</span>  <span class="se">\</span>
+  --vector_size<span class="o">=</span><span class="m">384</span> <span class="se">\</span>
+  --reset_db<span class="o">=</span>False <span class="se">\</span>
+  --embeddings_path<span class="o">=</span><span class="s2">&quot;arxiv/cutoff=200811/output.pkl&quot;</span>
+
+Line <span class="c1">#    Mem usage    Increment  Occurrences   Line Contents</span>
+<span class="o">=============================================================</span>
+    <span class="m">98</span>     <span class="m">67</span>.0 MiB     <span class="m">67</span>.0 MiB           <span class="m">1</span>   @profile
+    <span class="m">99</span>                                         def run<span class="o">(</span>
+   ...
+   <span class="m">107</span>
+   <span class="m">108</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.2 MiB           <span class="m">1</span>       <span class="nv">config</span> <span class="o">=</span> get_settings<span class="o">()</span>
+   <span class="m">109</span>
+   <span class="m">110</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       <span class="k">if</span> reset_db:
+   <span class="m">111</span>                                                 logger.info<span class="o">(</span>f<span class="s2">&quot;TODO {reset_db}&quot;</span><span class="o">)</span>
+   <span class="m">112</span>
+   <span class="m">113</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">2</span>       Paper.Meta.database <span class="o">=</span> get_redis_connection<span class="o">(</span>
+   <span class="m">114</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>           <span class="nv">url</span><span class="o">=</span>config.get_redis_url<span class="o">()</span>, <span class="nv">decode_responses</span><span class="o">=</span>True
+   <span class="m">115</span>                                             <span class="o">)</span>
+   <span class="m">116</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       Paper.Meta.global_key_prefix <span class="o">=</span> <span class="s2">&quot;THM&quot;</span>
+   <span class="m">117</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       Paper.Meta.model_key_prefix <span class="o">=</span> <span class="s2">&quot;Paper&quot;</span>
+   <span class="m">118</span>
+   <span class="m">119</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">1</span>       <span class="nv">redis_conn</span> <span class="o">=</span> redis.from_url<span class="o">(</span>config.get_redis_url<span class="o">())</span>
+   <span class="m">120</span>
+   <span class="m">121</span>    <span class="m">165</span>.1 MiB     <span class="m">97</span>.8 MiB           <span class="m">2</span>       asyncio.run<span class="o">(</span>
+   <span class="m">122</span>     <span class="m">67</span>.2 MiB      <span class="m">0</span>.0 MiB           <span class="m">2</span>           load_all_data<span class="o">(</span>
+   ...
+
+
+    <span class="m">51</span>   <span class="m">67</span>.969 MiB   <span class="m">67</span>.969 MiB           <span class="m">1</span>   @profile
+    <span class="m">52</span>                                         async def load_all_data<span class="o">(</span>
+   ...
+    <span class="m">62</span>   <span class="m">67</span>.984 MiB    <span class="m">0</span>.016 MiB           <span class="m">1</span>       logger.info<span class="o">(</span><span class="s2">&quot;Loading papers...&quot;</span><span class="o">)</span>
+    <span class="m">63</span>  <span class="m">607</span>.562 MiB  <span class="m">539</span>.578 MiB           <span class="m">1</span>       <span class="nv">papers</span> <span class="o">=</span> read_paper_df<span class="o">(</span>embeddings_path<span class="o">)</span>.head<span class="o">(</span><span class="m">1</span><span class="o">)</span>
+    <span class="m">64</span>  <span class="m">152</span>.219 MiB -455.344 MiB           <span class="m">1</span>       <span class="nv">papers</span> <span class="o">=</span> papers.to_dict<span class="o">(</span><span class="s2">&quot;records&quot;</span><span class="o">)</span>
+    <span class="m">65</span>
+    <span class="m">66</span>  <span class="m">152</span>.219 MiB    <span class="m">0</span>.000 MiB           <span class="m">1</span>       logger.info<span class="o">(</span><span class="s2">&quot;Writing to Redis...&quot;</span><span class="o">)</span>
+    <span class="m">67</span>  <span class="m">152</span>.578 MiB  <span class="m">304</span>.844 MiB           <span class="m">4</span>       await gather_with_concurrency<span class="o">(</span>
+    <span class="m">68</span>  <span class="m">152</span>.219 MiB    <span class="m">0</span>.000 MiB           <span class="m">2</span>           redis_conn, concurrency_level, separator, vector_size, *papers
+</code></pre></div>
+
+<h2>Load testing the HTTP Server</h2>
+<p>Using <a href="https://github.com/wg/wrk"><code>wg/wrk</code></a> we have made a few tests to see how much HTTP server and Redis could handle if many clients connected to it.</p>
 <div class="highlight"><pre><span></span><code>$ wrk -t4 -c20 -d30s https://thm-cli.community.saturnenterprise.io/api/docs
 
 Running 30s <span class="nb">test</span> @ https://thm-cli.community.saturnenterprise.io/api/docs
@@ -115,6 +164,36 @@ Running 30s <span class="nb">test</span> @ https://thm-cli.community.saturnenter
 Requests/sec:    <span class="m">186</span>.98
 Transfer/sec:    <span class="m">195</span>.19KB
 </code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ wrk -t4 -c10 -d30s --script benchmark/post_similar.lua https://thm-cli.community.saturnenterprise.io/api/v1/paper/vectorsearch/text
+Running 30s <span class="nb">test</span> @ https://thm-cli.community.saturnenterprise.io/api/v1/paper/vectorsearch/text
+  <span class="m">4</span> threads and <span class="m">10</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   <span class="m">352</span>.05ms   <span class="m">52</span>.12ms <span class="m">697</span>.77ms   <span class="m">89</span>.43%
+    Req/Sec     <span class="m">5</span>.96      <span class="m">2</span>.66    <span class="m">10</span>.00     <span class="m">50</span>.36%
+  <span class="m">672</span> requests <span class="k">in</span> <span class="m">30</span>.04s, <span class="m">12</span>.83MB <span class="nb">read</span>
+Requests/sec:     <span class="m">22</span>.37
+Transfer/sec:    <span class="m">437</span>.32KB
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ wrk -t4 -c10 -d30s --script benchmark/post_text.lua https://thm-cli.community.saturnenterprise.io/api/v1/paper/vectorsearch/text/user
+Running 30s <span class="nb">test</span> @ https://thm-cli.community.saturnenterprise.io/api/v1/paper/vectorsearch/text/user
+  <span class="m">4</span> threads and <span class="m">10</span> connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   <span class="m">575</span>.41ms  <span class="m">171</span>.71ms   <span class="m">1</span>.48s    <span class="m">89</span>.46%
+    Req/Sec     <span class="m">4</span>.16      <span class="m">3</span>.14    <span class="m">10</span>.00     <span class="m">58</span>.23%
+  <span class="m">408</span> requests <span class="k">in</span> <span class="m">30</span>.06s, <span class="m">8</span>.60MB <span class="nb">read</span>
+Requests/sec:     <span class="m">13</span>.57
+Transfer/sec:    <span class="m">292</span>.92KB
+</code></pre></div>
+
+<h1>Cost of Hosting the Solution</h1>
+<p>Pricing of the stack</p>
+<ul>
+<li>Redis Cloud Enterprise: $0.881/hr = 600 USD / month</li>
+<li>Saturn Cloud Deployment: $0.21/hour = 150 USD / month</li>
+<li>Loading the index: FREE</li>
+</ul>
     </div><!-- /.entry-content -->
 
   </article>
