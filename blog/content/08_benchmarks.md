@@ -45,6 +45,43 @@ $ python3 -m memory_profiler generate_index.py \
   --input_path="arxiv-metadata-oai-snapshot.json" \
   --output_path="arxiv/cutoff=200811/output.pkl" \
   --model_name="sentence-transformers/all-MiniLM-L12-v2"
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    33    292.0 MiB    292.0 MiB           1   @profile
+    34                                         def run(
+    35                                             year_month,
+    36                                             input_path="arxiv-metadata-oai-snapshot.json",
+    37                                             output_path="arxiv_embeddings_10000.pkl",
+    38                                             model_name="sentence-transformers/all-mpnet-base-v2",
+    39                                         ):
+    40                                             """Generate Embeddings and Create a File Index."""
+    41
+    42    292.0 MiB      0.0 MiB           1       logger.info(f"Reading papers for {year_month}...")
+    43    315.4 MiB     23.4 MiB           1       df = pd.DataFrame(get_papers(input_path, year_month))
+    44
+    45    315.9 MiB      0.4 MiB           1       logger.info("Getting categories predictions")
+    46                                             # df["predicted_categories"] = get_paper_classification_predictions(
+    47                                             #     df["title"] + " " + df["abstract"], top_k=3
+    48                                             # )
+    49
+    50                                             # https://www.sbert.net/docs/usage/semantic_textual_similarity.html
+    51    447.0 MiB    131.1 MiB           1       model = SentenceTransformer(model_name)
+    52
+    53    447.0 MiB      0.0 MiB           1       logger.info("Creating embeddings from title and abstract...")
+    54    447.0 MiB      0.0 MiB           1       logger.info(model_name)
+    55
+    56    724.2 MiB    103.8 MiB           2       df["vector"] = df.progress_apply(
+    57    620.4 MiB -3613776.1 MiB       59149           lambda x: _featurize(model, x["title"], x["abstract"]), axis=1
+    58                                             )
+    59    729.7 MiB      5.5 MiB           1       df = df.reset_index().drop("index", axis=1)
+    60
+    61    730.0 MiB      0.3 MiB           1       df = df.reset_index().drop("index", axis=1)
+    62
+    63    731.5 MiB      1.5 MiB           1       logger.info("Exporting to pickle file...")
+    64    731.5 MiB      0.0 MiB           1       with open(output_path, "wb") as f:
+    65    917.0 MiB    185.5 MiB           1           data = pickle.dumps(df)
+    66    919.8 MiB      2.7 MiB           1           f.write(data)
 ```
 
 As we can see using `pandas` to load and store data wasn't optimal because of its memory overhead.
