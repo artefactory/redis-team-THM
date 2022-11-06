@@ -176,45 +176,7 @@ For the problem of Question Answering we used [`distilbert-base-cased-distilled-
 
 ## Benchmarks
 
-From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
-
-- machine provisining needed,
-- how to update regularly from the arXiv snapshots,
-- volumetry of data.
-
-### Generating Embeddings
-
-First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search/tree/main/data).
-
-| Model                    | Machine                      | Time   |
-|-------------------------:|------------------------------|-------:|
-|            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
-|            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
-| `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
-
-### Loading Index on Redis Cloud
-
-| Model                    | Machine                      | Time   |
-|-------------------------:|------------------------------|-------:|
-| `arxiv_embeddings_10000.pkl` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 6min |
-
-### Load testing the HTTP Server
-
-Using [`wg/wrk`](https://github.com/wg/wrk)
-
-```sh
-$ wrk -t4 -c20 -d30s https://thm-cli.community.saturnenterprise.io/api/docs
-
-Running 30s test @ https://thm-cli.community.saturnenterprise.io/api/docs
-  4 threads and 20 connections
-
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   105.53ms   21.50ms 461.06ms   88.24%
-    Req/Sec    47.63      7.97    80.00     79.85%
-  5629 requests in 30.11s, 5.74MB read
-Requests/sec:    186.98
-Transfer/sec:    195.19KB
-```
+See on our blog for the [benchmarks we did](https://artefactory.github.io/redis-team-THM/cost-stack.html) to evaluate the full solution.
 
 ## Contributions
 
