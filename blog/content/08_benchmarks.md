@@ -9,7 +9,7 @@ Summary: Benchmarks
 
 _Day 8 - When we ran some benchmark for the process of index creation and hosting._
 
-# Benchmarking the loading scrips
+# Benchmarking the loading scripts
 
 From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
 
@@ -27,7 +27,7 @@ First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/r
 |            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
 | `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
 
-## Loading Index on Redis Cloud
+To then load the Pickle index to Redis is easy from a normal desktop machine.
 
 | Model                    | Machine                      | Time   |
 |-------------------------:|------------------------------|-------:|
@@ -91,7 +91,7 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
     68  152.219 MiB    0.000 MiB           2           redis_conn, concurrency_level, separator, vector_size, *papers
 ```
 
-## Load testing the HTTP Server
+# Load testing the HTTP Server
 
 Using [`wg/wrk`](https://github.com/wg/wrk) we have made a few tests to see how much HTTP server and Redis could handle if many clients connected to it.
 
@@ -133,10 +133,11 @@ Requests/sec:     13.57
 Transfer/sec:    292.92KB
 ```
 
-# Cost of Hosting the Solution
+# Discussing the Cost of Hosting
 
 Pricing of the stack
 
-- Redis Cloud Enterprise: $0.881/hr = 600 USD / month
-- Saturn Cloud Deployment: $0.21/hour = 150 USD / month
-- Loading the index: FREE
+- Redis Cloud Enterprise: $0.881/hr = USD 600/month
+- Saturn Cloud Notebooks and Deployment: $0.21/hour = USD 150/month
+
+The total is about 750 USD/month. You might be able to decrease costs a bit using infrastructure as a service instead of platform as a service, but more DevOps skills would be needed to configure cloud accounts on GCP or AWS for example.

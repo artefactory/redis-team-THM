@@ -5,9 +5,10 @@ from helpers.paper_manager import PriorityPapersManager
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
 from transformers import pipeline
+from loguru import logger
 
 settings = Settings()
-from loguru import logger
+
 
 def get_prioritized_articles(
     user_prompt: str, engine: SearchEngine

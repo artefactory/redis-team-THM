@@ -16,6 +16,7 @@ from question_answering import get_answer_to_prompt
 
 from loguru import logger
 
+
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
     # https://www.bibtex.com/e/article-entry/
