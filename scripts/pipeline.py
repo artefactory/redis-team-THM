@@ -14,6 +14,8 @@ class GenerateIndexFlow(FlowSpec):
 
         """
 
+        self.next(self.end)
+
     @step
     def end(self):
         "Ends the flow."
