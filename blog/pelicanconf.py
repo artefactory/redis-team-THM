@@ -23,3 +23,4 @@ LINKS = (
 DEFAULT_PAGINATION = False
 
 # RELATIVE_URLS = True
+GOOGLE_ANALYTICS = "G-#########"
