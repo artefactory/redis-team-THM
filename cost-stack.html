@@ -48,6 +48,73 @@
 <h1>The Cost of the Stack</h1>
 <p>https://mlops.community/vector-similarity-search-from-basics-to-production/</p>
 <p>pricing of the stack</p>
+<p>From a file named <code>arxiv-metadata-oai-snapshot.json</code> containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:</p>
+<ul>
+<li>machine provisining needed,</li>
+<li>how to update regularly from the arXiv snapshots,</li>
+<li>volumetry of data.</li>
+</ul>
+<h3>Generating Embeddings</h3>
+<p>First, we evaluated the Jupyter notebooks from Redis demo code <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>RedisVentures/redis-arXiv-search</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Model</th>
+<th>Machine</th>
+<th style="text-align: right;">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>arxiv-embeddings.ipynb</code></td>
+<td><a href="https://www.apple.com/macbook-pro-14-and-16/specs/">Apple M1 Pro 8-core</a></td>
+<td style="text-align: right;">17min</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>arxiv-embeddings.ipynb</code></td>
+<td><a href="https://saturncloud.io/plans/hosted/">Saturn Cloud T4-XLarge 4-cores</a></td>
+<td style="text-align: right;">4min</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>single-gpu-arxiv-embeddings.ipynb</code></td>
+<td>T4-XLarge 4-cores, <code>saturn-python-rapids</code> image</td>
+<td style="text-align: right;">30min</td>
+</tr>
+</tbody>
+</table>
+<h3>Loading Index on Redis Cloud</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Model</th>
+<th>Machine</th>
+<th style="text-align: right;">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>arxiv_embeddings_10000.pkl</code></td>
+<td><a href="https://www.apple.com/macbook-pro-14-and-16/specs/">Apple M1 Pro 8-core</a></td>
+<td style="text-align: right;">6min</td>
+</tr>
+</tbody>
+</table>
+<h1>Profiling the code</h1>
+<p>Using <a href="https://github.com/pythonprofilers/memory_profiler"><code>pythonprofilers/memory_profiler</code></a> we measured that,</p>
+<h3>Load testing the HTTP Server</h3>
+<p>Using <a href="https://github.com/wg/wrk"><code>wg/wrk</code></a></p>
+<div class="highlight"><pre><span></span><code>$ wrk -t4 -c20 -d30s https://thm-cli.community.saturnenterprise.io/api/docs
+
+Running 30s <span class="nb">test</span> @ https://thm-cli.community.saturnenterprise.io/api/docs
+  <span class="m">4</span> threads and <span class="m">20</span> connections
+
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   <span class="m">105</span>.53ms   <span class="m">21</span>.50ms <span class="m">461</span>.06ms   <span class="m">88</span>.24%
+    Req/Sec    <span class="m">47</span>.63      <span class="m">7</span>.97    <span class="m">80</span>.00     <span class="m">79</span>.85%
+  <span class="m">5629</span> requests <span class="k">in</span> <span class="m">30</span>.11s, <span class="m">5</span>.74MB <span class="nb">read</span>
+Requests/sec:    <span class="m">186</span>.98
+Transfer/sec:    <span class="m">195</span>.19KB
+</code></pre></div>
     </div><!-- /.entry-content -->
 
   </article>
