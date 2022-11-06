@@ -9,7 +9,7 @@ Summary: Indexing Contents to Redis
 
 # Reindexing contents
 
-If you want to index your own private database of documents, you can reuse our [scripts](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
+If you want to index your own private database of documents, you can reuse our [scripts/](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
 
 ## Generating the index
 
