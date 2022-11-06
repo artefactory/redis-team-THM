@@ -75,7 +75,7 @@ def render_paper(paper: Paper):
     print(f"by {clean_authors}")
     print("=" * 80)
     print("Categories:")
-    print("", *parse_categories_from_redis(paper.categories), sep="* ")
+    print("", *parse_categories_from_redis(paper.categories), sep="\n* ")
     if "predicted_categories" in paper.dict(exclude_unset=True).keys():
         print(
             HTML(f"<DarkBlue>Categories(extracted using machine learning):</DarkBlue>")
@@ -83,7 +83,7 @@ def render_paper(paper: Paper):
         print(
             "",
             *[HTML(f"<DarkBlue>{label} ({conf:.1f})</DarkBlue>") for label, conf in parsed_predicitons],
-            sep=HTML("<DarkBlue>* </DarkBlue>")
+            sep=HTML("<DarkBlue>\n* </DarkBlue>")
         )
     print("=" * 80)
     print(paper.abstract)
