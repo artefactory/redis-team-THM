@@ -1,10 +1,11 @@
+import re
 from typing import List, Tuple
 from urllib.parse import quote
 
 import httpx
-from helpers.models import Paper
 from loguru import logger
-import re
+
+from helpers.models import Paper
 
 
 class SearchEngine:
@@ -18,14 +19,20 @@ class SearchEngine:
             for key in ["paper_id", "title", "authors", "year"]
         }
 
-        if "predicted_categories" in paper:
-            arr = paper["predicted_categories"].split("|")
-            arr = list(map(lambda x: re.findall(r'([\w.]+)\(([\w.]+)\)', x)[0], arr))
-            resp["categories"] = list(map(lambda x: (x[0], "⭐️"*int(float(x[1])*10)), arr))
-        else:
-            arr = paper["categories"].split(",")
-            resp["categories"] = list(map(lambda x: (x, ""), arr))
-
+        # if "predicted_categories" in paper and paper["predicted_categories"]:
+        #     arr = paper["predicted_categories"].split("|")
+        #     arr = list(map(lambda x: re.findall(r'([\w.]+)\(([\w.]+)\)', x)[0], arr))
+        #     resp["categories"] = list(map(lambda x: (x[0], "⭐️"*int(float(x[1])*10)), arr))
+        # else:
+        #     arr = paper["categories"].split(",")
+        #     resp["categories"] = list(map(lambda x: (x, ""), arr))
+        
+        if "predicted_categories" in paper and paper["predicted_categories"]:
+            resp["predicted_categories"] = paper["predicted_categories"]
+        
+        resp["categories"] = list(
+            map(lambda x: (x, ""), paper["categories"].split(","))
+        )
         resp["authors"] = resp["authors"].replace("\n", "").replace("  ", " ")
         resp["title"] = resp["title"].replace("\n", "").replace("  ", " ")
         resp["url"] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"

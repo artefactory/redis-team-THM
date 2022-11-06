@@ -3,24 +3,25 @@
 import webbrowser
 from typing import List
 
-from helpers.category_parser import parse_categories_from_redis
-from helpers.models import Format, Paper
-from helpers.quotes import random_quote
-from helpers.search_engine import SearchEngine
-from helpers.settings import Settings
+from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
-from question_answering import get_answer_to_prompt
 
-from loguru import logger
+from helpers.category_parser import (parse_categories_from_redis,
+                                     parse_predicted_categories_from_redis)
+from helpers.models import Format, Paper
+from helpers.quotes import random_quote
+from helpers.search_engine import SearchEngine
+from helpers.settings import Settings
+from question_answering import get_answer_to_prompt
 
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
     # https://www.bibtex.com/e/article-entry/
-    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]}, \t % {", ".join(f"{x[0]} {x[1]}".strip() for x in paper.categories)}
+    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]}
     author = "{paper.authors}",
     title = "{paper.title}",
     year = "{paper.year}",
@@ -64,11 +65,26 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
     clean_authors = paper.authors.replace("\n", "").replace("  ", " ")
+    # parse predicted categories
+    if "predicted_categories" in paper.dict(exclude_unset=True).keys():
+        parsed_predicitons = parse_predicted_categories_from_redis(
+            paper.predicted_categories
+        )
+    
     print(HTML(f"<b>{clean_title}</b>"))
     print(f"by {clean_authors}")
     print("=" * 80)
     print("Categories:")
-    print("", *parse_categories_from_redis(paper.categories))
+    print("", *parse_categories_from_redis(paper.categories), sep="* ")
+    if "predicted_categories" in paper.dict(exclude_unset=True).keys():
+        print(
+            HTML(f"<DarkBlue>Categories(extracted using machine learning):</DarkBlue>")
+        )
+        print(
+            "",
+            *[HTML(f"<DarkBlue>{label} ({conf:.1f})</DarkBlue>") for label, conf in parsed_predicitons],
+            sep=HTML("<DarkBlue>* </DarkBlue>")
+        )
     print("=" * 80)
     print(paper.abstract)
     print()
