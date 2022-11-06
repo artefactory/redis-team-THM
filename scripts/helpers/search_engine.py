@@ -6,6 +6,7 @@ from helpers.models import Paper
 from loguru import logger
 import re
 
+
 class SearchEngine:
     def __init__(self, base_uri: str):
         self.base_uri = base_uri

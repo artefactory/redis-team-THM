@@ -24,10 +24,8 @@ def read_paper_df(embeddings_path) -> List:
 async def gather_with_concurrency(redis_conn, n, separator, vector_size, *papers):
     semaphore = asyncio.Semaphore(n)
 
-    # TODO tqdm
     async def load_paper(paper):
         async with semaphore:
-            # vector = paper.pop('vector')
             await redis_conn.hset(
                 f"THM:Paper:{paper['id']}",
                 mapping={
@@ -106,7 +104,9 @@ def run(
     """Load the Embedding Index to Redis."""
 
     config = get_settings()
-    logger.info(f"TODO {reset_db}")
+
+    if reset_db:
+        logger.info(f"TODO {reset_db}")
 
     Paper.Meta.database = get_redis_connection(
         url=config.get_redis_url(), decode_responses=True

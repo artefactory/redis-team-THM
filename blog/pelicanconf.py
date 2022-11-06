@@ -17,9 +17,10 @@ AUTHOR_FEED_RSS = None
 LINKS = (
     ("GitHub", "https://github.com/artefactory/redis-team-THM/"),
     ("Artefact", "https://www.artefact.com"),
-    ("Redis Ventures", "https://redisventures.com"),
+    ("Redis Ventures", "https://redis.io/docs/stack"),
 )
 
 DEFAULT_PAGINATION = False
 
 # RELATIVE_URLS = True
+GOOGLE_ANALYTICS = "G-H5TDMDHN41"

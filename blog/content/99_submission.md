@@ -9,6 +9,8 @@ Summary: The THM CLI
 
 The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in every day tasks such as building bibilography and finding answers to their questions.
 
+See here why the [CLI is still the way to go]({filename}07_cli_tool.md). To install the tool go to [`scripts/`](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
+
 <script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
 
 # Running THM CLI
@@ -41,7 +43,7 @@ THM #
 ```
 THM # help
 THM Search CLI v1.0
-https://artefactory.github.io/redis-team-THM
+https://artefactory.github.io/redis-team-THM/
 
 Usage:
   search [keywords|similar|details]

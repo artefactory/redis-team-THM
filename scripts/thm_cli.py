@@ -226,7 +226,7 @@ def goto_menu():
         goto_menu()
     elif menu_choice == "help":
         print("THM Search CLI v1.0")
-        print("https://artefactory.github.io/redis-team-THM")
+        print("https://artefactory.github.io/redis-team-THM/")
         print()
         print("Usage:")
         print("  search [keywords|similar|details]")
