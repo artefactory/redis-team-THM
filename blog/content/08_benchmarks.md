@@ -37,6 +37,8 @@ To then load the Pickle index to Redis is easy from a normal desktop machine.
 
 After refactoring to Python scripts, we used [`Delgan/loguru`](https://github.com/Delgan/loguru) to add logs, [`tqdm/tqdm`](https://github.com/tqdm/tqdm) to track troughput and [`pythonprofilers/memory_profiler`](https://github.com/pythonprofilers/memory_profiler) to find pain points and we measured that,
 
+For `generate_index.py` script the `model.encode(sentence)` was the largest pain point, and finding optimal way to do it was important.
+
 ```sh
 $ python3 -m memory_profiler generate_index.py \
   --year_month=200811 \
