@@ -19,7 +19,7 @@ Blog posts were also helpful in understanding how RediSearch could be used, [Ed 
 
 ## Saturn Cloud
 
-The first resource that was available was [Saturn Cloud](https://saturncloud.io). Saturn Cloud provide environment where data science teams can contribute on managed Jupyter Notebook, and also use powerful servers with lots of RAM, CPUs and GPUs to perform their compute workfloads. It has services to run notebooks, jobs and APIs with very little setup.
+The first resource that was available was [Saturn Cloud](https://saturncloud.io). Saturn Cloud provides an environment where data science teams can contribute on managed Jupyter Notebook, and also use powerful servers with lots of RAM, CPUs, and GPUs to perform their compute workfloads. It has services to run notebooks, jobs, and APIs with very little setup.
 
 You can sign up and [try it for free](https://app.community.saturnenterprise.io/auth/hosted-registration). Once this is done you, can create resources and user [recipes](https://saturncloud.io/docs/using-saturn-cloud/recipes/) which are infrastructure as code-like templates to quickstart your configuration.
 
@@ -33,7 +33,7 @@ You just hit Create New Python Server to get a Jupyter server with GPU and CUDA 
     <img src="{static}/images/configure_saturn2.png" width=500>
 </div>
 
-Configuring our IDE's with a [SSH connection to Saturn Cloud](https://saturncloud.io/docs/using-saturn-cloud/ide_ssh/) was also an easy process, and enabled data scientists to work directly within VSCode with the classical terminal and file explorer.
+Configuring our IDE's with a [SSH connection to Saturn Cloud](https://saturncloud.io/docs/using-saturn-cloud/ide_ssh/) was also an easy process, and enabled our data scientists to work directly within VSCode with the classical terminal and file explorer.
 
 The process of configuring this took about 30 minutes overall.
 
@@ -47,7 +47,12 @@ The second resource we used is [Redis Enterprise Cloud](https://redis.com/redis-
 
 But during the Hackathon, Redis Ventures provided us credits to use both products with the full developer experience.
 
-We created a new subscription, using a flexible plan. Redis Cloud Enterprise can support AWS, GCP and Azure. After setting up the cloud provider, we chose AWS, and region were to deploy, we configured advanced settings such as database replication, we did't need it and lastly the size of 26 GB for the database, and high availability.
+We created a new subscription, using a flexible plan. Redis Cloud Enterprise can support AWS, GCP and Azure. As part of the set-up we had to define:
+- cloud provider: we chose AWS
+- region where to deploy
+- database replication: we did't need it
+- database size: 26 GB
+- high availability.
 
 Redis Cloud Enterprise really has a lot of configuration settings if you want to fine tune your production workloads.
 
