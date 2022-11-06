@@ -99,6 +99,7 @@
 </table>
 <h2>Profiling the code</h2>
 <p>After refactoring to Python scripts, we used <a href="https://github.com/Delgan/loguru"><code>Delgan/loguru</code></a> to add logs, <a href="https://github.com/tqdm/tqdm"><code>tqdm/tqdm</code></a> to track troughput and <a href="https://github.com/pythonprofilers/memory_profiler"><code>pythonprofilers/memory_profiler</code></a> to find pain points and we measured that,</p>
+<p>For <code>generate_index.py</code> script the <code>model.encode(sentence)</code> was the largest pain point, and finding optimal way to do it was important.</p>
 <div class="highlight"><pre><span></span><code>$ python3 -m memory_profiler generate_index.py <span class="se">\</span>
   --year_month<span class="o">=</span><span class="m">200811</span> <span class="se">\</span>
   --input_path<span class="o">=</span><span class="s2">&quot;arxiv-metadata-oai-snapshot.json&quot;</span> <span class="se">\</span>
