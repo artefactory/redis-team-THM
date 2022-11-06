@@ -4,6 +4,7 @@ from urllib.parse import quote
 import httpx
 from helpers.models import Paper
 from loguru import logger
+import re
 
 
 class SearchEngine:
@@ -14,8 +15,17 @@ class SearchEngine:
     def __format_response(paper) -> Paper:
         resp = {
             key: paper[key]
-            for key in ["paper_id", "title", "authors", "categories", "year"]
+            for key in ["paper_id", "title", "authors", "year"]
         }
+
+        if "predicted_categories" in paper:
+            arr = paper["predicted_categories"].split("|")
+            arr = list(map(lambda x: re.findall(r'([\w.]+)\(([\w.]+)\)', x)[0], arr))
+            resp["categories"] = list(map(lambda x: (x[0], "⭐️"*int(float(x[1])*10)), arr))
+        else:
+            arr = paper["categories"].split(",")
+            resp["categories"] = list(map(lambda x: (x, ""), arr))
+
         resp["authors"] = resp["authors"].replace("\n", "").replace("  ", " ")
         resp["title"] = resp["title"].replace("\n", "").replace("  ", " ")
         resp["url"] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"
@@ -66,3 +76,6 @@ class SearchEngine:
 
     def ask_wolfram(self, query: str) -> str:
         return f"https://www.wolframalpha.com/input?i={quote(query)}"
+
+    def ask_stackexchange(self, query: str) -> str:
+        return f"https://stackexchange.com/search?q={quote(query)}"

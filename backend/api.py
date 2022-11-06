@@ -9,7 +9,11 @@ from thm.models import Paper
 config = get_settings()
 
 app = FastAPI(
-    title=config.project_name, docs_url=config.api_docs, openapi_url=config.openapi_docs
+    title=config.project_name,
+    description=config.description,
+    docs_url=config.api_docs,
+    openapi_url=config.openapi_docs,
+    version=config.version,
 )
 
 # TODO https://github.com/redis/redis-om-python/blob/main/docs/fastapi_integration.md
@@ -22,7 +26,7 @@ app.add_middleware(
 )
 
 app.include_router(
-    routes.paper_router, prefix=f"{config.api_v1_str}/paper", tags=["papers"]
+    routes.paper_router, prefix=f"{config.api_v1_str}/paper", tags=["Papers"]
 )
 
 

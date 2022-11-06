@@ -1,7 +1,7 @@
 import json
 import re
 import string
-from typing import Tuple
+from typing import Dict, Tuple
 
 import datasets
 import numpy as np
@@ -114,7 +114,7 @@ def prepare_labels(df: pd.DataFrame) -> Tuple[pd.DataFrame, np.array, int]:
     return df, ooe_df, num_classes
 
 
-def clean_description(description: str):
+def clean_description(description: str) -> str:
     """Clean the description"""
     if not description:
         return ""
@@ -127,14 +127,8 @@ def clean_description(description: str):
     # clean up the spacing
     description = re.sub("\s{2,}", " ", description)
 
-    # remove urls
-    # description = re.sub("https*\S+", " ", description)
-
     # remove newlines
     description = description.replace("\n", " ")
-
-    # remove all numbers
-    # description = re.sub('\w*\d+\w*', '', description)
 
     # split on capitalized words
     description = " ".join(re.split("(?=[A-Z])", description))
@@ -151,7 +145,7 @@ def clean_description(description: str):
 # Generator functions that iterate through the file and process/load papers
 
 
-def process(paper: dict):
+def process(paper: dict) -> Dict:
     """Process the paper"""
     paper = json.loads(paper)
     if paper["journal-ref"]:
@@ -173,9 +167,9 @@ def process(paper: dict):
     }
 
 
-def papers():
+def papers(data_location: str):
     """Generator function that iterates through the file and yields papers"""
-    with open(f"{config.data_location}/arxiv-metadata-oai-snapshot.json", "r") as f:
+    with open(data_location, "r") as f:
         for paper in f:
             paper = process(paper)
             # Yield only papers that have a year I could process

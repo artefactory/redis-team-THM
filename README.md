@@ -4,16 +4,16 @@
     <img src="backend/thm/data/redis-logo.png" height="25"/> <br/>
     <img src="backend/thm/data/artefact-logo.png" height="20"/><br/>
     Tom, Henrique, Michel, Corentin<br/>
-    Oct. - Nov. 2022
-    https://artefactory.github.io/redis-team-THM/
+    Oct. - Nov. 2022<br/>
+    https://artefactory.github.io/redis-team-THM/<br/>
+    https://thm-cli.community.saturnenterprise.io/api/docs<br/><br/>
 </div>
-<br/>
 
 This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
 RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
-[![asciicast](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.svg)](https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM)
+[![asciicast](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF.svg)](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF)
 
 See [Architecture](#architecture) to see how it works, and [User Workflow](#user-workflow) to see how it can be used.
 
@@ -138,14 +138,9 @@ cd backend/
 ./start.sh
 
 open http://0.0.0.0:8080/api/docs
-
-# Deployment
-vercel .
 ```
 
-### Exploration
-
-- Trying out [Docarray](https://docarray.jina.ai)
+[Deploy on Saturn Cloud](https://app.community.saturnenterprise.io/dash/resources?recipeUrl=https://github.com/artefactory/redis-team-THM/blob/main/backend/.saturn/thm-backend-deployment-recipe.json)
 
 ### Blog
 
@@ -181,29 +176,8 @@ For the problem of Question Answering we used [`distilbert-base-cased-distilled-
 
 ## Benchmarks
 
-From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
+See on our blog for the [benchmarks we did](https://artefactory.github.io/redis-team-THM/cost-stack.html) to evaluate the full solution.
 
-- machine provisining needed,
-- how to update regularly from the arXiv snapshots,
-- volumetry of data.
+## Contributions
 
-### Generating Embeddings
-
-First, we evaluated the Jupyter notebooks from Redis demo code [`RedisVentures/redis-arXiv-search`](https://github.com/RedisVentures/redis-arXiv-search/tree/main/data).
-
-| Model                    | Machine                      | Time   |
-|-------------------------:|------------------------------|-------:|
-|            `arxiv-embeddings.ipynb` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 17min |
-|            `arxiv-embeddings.ipynb` | [Saturn Cloud T4-XLarge 4-cores](https://saturncloud.io/plans/hosted/) | 4min |
-| `single-gpu-arxiv-embeddings.ipynb` | T4-XLarge 4-cores, `saturn-python-rapids` image | 30min |
-|  `multi-gpu-arxiv-embeddings.ipynb` | Dask Cluster, 32 cores | ... |
-
-### Loading Index on Redis Cloud
-
-| Model                    | Machine                      | Time   |
-|-------------------------:|------------------------------|-------:|
-| `arxiv_embeddings_10000.pkl` | [Apple M1 Pro 8-core](https://www.apple.com/macbook-pro-14-and-16/specs/) | 6min |
-
-### Load testing the HTTP Server
-
-TODO
+Changes and improvements are welcome! Feel free to fork and open a pull request into `main`.

@@ -1,8 +1,12 @@
+from os import getenv
+
+from loguru import logger
 from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    project_name: str = "thm"
+    project_name: str = "THM API"
+    version: str = "1.0.0"
     api_docs: str = "/api/docs"
     openapi_docs: str = "/api/openapi.json"
     index_name: str = "papers"
@@ -16,11 +20,37 @@ class Settings(BaseSettings):
     redis_port: int
     redis_db: str
     redis_password: str
+    description: str = """
+THM API helps you search arXiv using vector embeddings
+```
++-------------------+      +----------------+
+|                   |      |                |
+|  Redis            +<-----+  ETL CLI       |
+|                   |      |                |
++--------+----------+      +----------------+
+         ^
+         |  reads search index
++--------+----------+
+|                   |
+|  FastAPI          |
+|                   |
++--------+----------+
+         ^
+         |  calls backend
++--------+----------+      +---------------------+
+|                   |      |                     |
+|  THM CLI          +----->+  arxiv.org          |
+|                   |      |  wolfram.alpha.com  |
++-------------------+      +---------------------+
+"""
 
     def get_redis_url(self):
-        return f"redis://default:{self.redis_password}@{self.redis_host}:{self.redis_port}/{self.redis_db}"
+        redis_host = getenv("REDIS_HOST", self.redis_host)
+        redis_port = getenv("REDIS_PORT", self.redis_port)
+        redis_db = getenv("REDIS_DB", self.redis_db)
+        redis_password = getenv("REDIS_PASSWORD", self.redis_password)
+        return f"redis://default:{redis_password}@{redis_host}:{redis_port}/{redis_db}"
 
 
 def get_settings():
     return Settings(_env_file="../backend/thm/config/prod.env")
-    # contact Michel for the gitignored file

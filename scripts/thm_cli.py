@@ -3,28 +3,28 @@
 import webbrowser
 from typing import List
 
+from helpers.category_parser import parse_categories_from_redis
 from helpers.models import Format, Paper
 from helpers.quotes import random_quote
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
-from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter, WordCompleter
 from question_answering import get_answer_to_prompt
 
+from loguru import logger
+
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
     # https://www.bibtex.com/e/article-entry/
-    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]},
+    return f"""@article{{{paper.authors[:5].replace(" ", "").lower()}{paper.year[2:]}, \t % {", ".join(f"{x[0]} {x[1]}".strip() for x in paper.categories)}
     author = "{paper.authors}",
     title = "{paper.title}",
     year = "{paper.year}",
     url = "{paper.url}",
-    keywords = "..."
-    {paper.categories}
 }}"""
 
 
@@ -64,8 +64,11 @@ def render_results(papers: List[Paper], format: Format = Format.BibTeX):
 def render_paper(paper: Paper):
     clean_title = paper.title.replace("\n", "").replace("  ", " ")
     clean_authors = paper.authors.replace("\n", "").replace("  ", " ")
-    print(HTML(f"{clean_title}"))
+    print(HTML(f"<b>{clean_title}</b>"))
     print(f"by {clean_authors}")
+    print("=" * 80)
+    print("Categories:")
+    print("", *parse_categories_from_redis(paper.categories))
     print("=" * 80)
     print(paper.abstract)
     print()
@@ -118,6 +121,14 @@ def goto_wolfram():
     print()
 
 
+def goto_stackexchange():
+    so_query = ps.prompt("Write your question: ", auto_suggest=AutoSuggestFromHistory())
+    print()
+    print(f"Asking StackExchange about {so_query}...")
+    webbrowser.open(Engine.ask_stackexchange(so_query))
+    print()
+
+
 def goto_configure():
     format_choice = ps.prompt(
         "Choose file format (markdown, bibtex): ",
@@ -138,25 +149,23 @@ def goto_find_answer():
     user_prompt = ps.prompt(
         "Ask what is on your mind: ", auto_suggest=AutoSuggestFromHistory()
     )
-    print("Loading model...")
+
+    print(
+        HTML(
+            "<seagreen>We're looking for your answer. This can take a minute...</seagreen>"
+        )
+    )
 
     answers = get_answer_to_prompt(Engine, user_prompt, top_k=1)
-
-    for answer, paper in answers:
+    for answer, confidence, paper in answers:
         # get similar papers to display
-        similar_papers, _ = Engine.similar_to(paper.paper_id, settings.max_results)
         print()
         print("-" * 80)
-        print(f"RESULT: {answer}")
+        print(f"I am {confidence:.0%} sure about my answer:")
+        print(HTML(f"Answer: <b>'{answer}'</b>"))
         print()
-        # TODO: render answers
+        print("This answer came from here:")
         render_paper(paper)
-        print("```bibtex")
-        print(_BibTeX(paper))
-        print("```")
-        print(HTML(f"<seagreen>Papers similar to {paper.paper_id}...</seagreen>"))
-        render_results(similar_papers, format=settings.format)
-    print()
 
 
 def goto_exit():
@@ -177,6 +186,7 @@ menu_completer = NestedCompleter.from_nested_dict(
         "find": {
             "answer": None,
             "formula": None,
+            "stackexchange": None,
         },
         "configure": None,
         "help": None,
@@ -202,12 +212,15 @@ def goto_menu():
     elif menu_choice == "find formula":
         goto_wolfram()
         goto_menu()
+    elif menu_choice == "find stackexchange":
+        goto_stackexchange()
+        goto_menu()
     elif menu_choice == "configure":
         goto_configure()
         goto_menu()
     elif menu_choice == "help":
         print("THM Search CLI v1.0")
-        print("https://artefactory.github.io/redis-team-THM")
+        print("https://artefactory.github.io/redis-team-THM/")
         print()
         print("Usage:")
         print("  search [keywords|similar|details]")
@@ -226,7 +239,8 @@ print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
 print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
-Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
 # Engine = SearchEngine("http://localhost:8080/api/v1/paper")
 
 ps = PromptSession()
