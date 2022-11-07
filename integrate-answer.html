@@ -4,15 +4,16 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Team THM - question-answering</title>
+        <title>Question Answering Integration</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
+        <meta name="description" content="Integrating a question answering pipeline into our workflow" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://artefactory.github.io/redis-team-THM/">Team THM</a></h1>
                 <nav><ul>
-                    <li><a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a></li>
+                    <li class="active"><a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/redisearch.html">RediSearch</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/team.html">Team</a></li>
@@ -20,10 +21,15 @@
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/thm-indexing.html">THM Indexing</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://artefactory.github.io/redis-team-THM/integrate-answer.html" rel="bookmark"
+           title="Permalink to Question Answering Integration">Question Answering Integration</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://artefactory.github.io/redis-team-THM/integrate-answer.html">Question Answering Integration</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-11-03T15:28:00+01:00">
                 Published: Thu 03 November 2022
@@ -38,7 +44,7 @@
         </address>
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info --><p><em>Day 10 - Integrating the question answering approach into our workflow</em></p>
+</footer><!-- /.post-info -->      <p><em>Day 10 - Integrating the question answering approach into our workflow</em></p>
 <h1>Hugging Face pipeline</h1>
 <p>In the <a href="https://artefactory.github.io/redis-team-THM/find-answer.html">last post</a> we had decided to implement a Question Answering <a href="https://huggingface.co/docs/transformers/main_classes/pipelines#transformers.QuestionAnsweringPipeline:~:text=passed%20as%20inputs.-,QuestionAnsweringPipeline,-class%20transformers.">pipeline</a> from Huggingface to handle open-ended questions from users. After an experimentation phase performed on a notebook, we had to industrialize our code. Since the <strong>question</strong> input by the user has to be embedded with the <strong>context</strong> (in this case the papers titles and abstracts), we could not preemptively store the embeddings on Redis. This means that the embeddings have to be done in real-time when the user makes a question using the CLI. We implemented this logic in our <a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/question_answering.py">code</a> using a function that we integrated in the CLI.</p>
 <h1>Leveraging Redis to speed up inference</h1>
@@ -91,40 +97,11 @@ by Agnieszka B. Malinowska, Delfim F. M. Torres
 <p>But most importantly, the results provided by this feature are seldom contained in the results of the vector search. This is encouraging as it increases the potential for serendipity of our global solution.</p>
 <h1>Future improvements</h1>
 <p>For this hackathon we used a pre-trained question answering model from Huggingface. The model we employed has been trained on a data from a large range of domains. This make so that scientific terms, which are not very common outside of the scientific community end up having a vector representation that is not nuanced enough to guarantee great performances. This problem could be mitigated by fine-tuning a question answering model with scientific questions. The biggest challenge in doing so is that these models require training sets with pre-annotated questions ans answer, which is very hard to achieve programmatically and would most likely have to done manually.</p>
-<p>Another problem with this approach is that, despite the optimizations brought by using Redis to choose priority papers, the inference time is still relatively long. The model currently takes about 45s to output answer. In the future, it would probably be best to migrate our technical stack to a framework such as <a href="https://haystack.deepset.ai/overview/intro">haystack</a> instead of Huggingface. In addition to that, we could envisage deploying our model and making it available via an endpoint, instead of performing the calculations locally. This type of deployment come with significant security considerations, however, as the serving is usually done with the use of GPUs.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Another problem with this approach is that, despite the optimizations brought by using Redis to choose priority papers, the inference time is still relatively long. The model currently takes about 45s to output answer. In the future, it would probably be best to migrate our technical stack to a framework such as <a href="https://haystack.deepset.ai/overview/intro">haystack</a> instead of Huggingface. In addition to that, we could envisage deploying our model and making it available via an endpoint, instead of performing the calculations locally. This type of deployment come with significant security considerations, however, as the serving is usually done with the use of GPUs.</p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://artefactory.github.io/redis-team-THM/find-answer.html" rel="bookmark"
-                           title="Permalink to Day 8 -Answering user's questions">Day 8 -Answering user's questions</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-10-30T11:23:00+01:00">
-                Published: Sun 30 October 2022
-        </abbr>
-		<br />
-        <abbr class="modified" title="2022-10-30T11:56:00+01:00">
-                Updated: Sun 30 October 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://artefactory.github.io/redis-team-THM/author/henrique-brito.html">Henrique Brito</a>
-        </address>
-<p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
-<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info -->                <p>Our data science approach to answer users' questions</p>
-                <a class="readmore" href="https://artefactory.github.io/redis-team-THM/find-answer.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

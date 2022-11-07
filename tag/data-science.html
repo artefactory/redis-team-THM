@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Team THM - bert</title>
+        <title>Team THM - data science</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
 </head>
 
@@ -37,44 +37,51 @@
                 By                         <a class="url fn" href="https://artefactory.github.io/redis-team-THM/author/tom-darmon.html">Tom Darmon</a>
         </address>
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
-<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/soft-labels.html">soft-labels</a> <a href="https://artefactory.github.io/redis-team-THM/tag/categories.html">categories</a> <a href="https://artefactory.github.io/redis-team-THM/tag/bert.html">bert</a> </p>
+<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/data-science.html">data science</a> <a href="https://artefactory.github.io/redis-team-THM/tag/categories.html">categories</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
 </footer><!-- /.post-info --><p><em>Day 6  - When we decided to quantify the categories of every article between 0 and 1.</em></p>
 <h2>Help users find the balance between categories</h2>
 <p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest us. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.</p>
 <p>How can we do this ?</p>
 <h2>Soft labels</h2>
 <p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the <code>thm-cli</code> you will obtain a value that quantify each category.</p>
-<p>Remember that we are a Machine Learning expert looking for research paper discussing Computational Complexity, we've found 2 interesting papers:</p>
+<p>Suppose you are a Machine Learning expert looking for research paper discussing Computational Complexity, we've found 2 interesting papers:</p>
 <p>Paper 1</p>
-<div class="highlight"><pre><span></span><code>article{yuan09,
-    author = &quot;Yuan Gao, Sheng Yu&quot;,
-    title = &quot;State Complexity Approximation&quot;,
-    year = &quot;2009&quot;,
-    url = &quot;https://arxiv.org/pdf/0907.5124.pdf&quot;,
-    keywords = &quot;...&quot;
-    cs.CC (90%), stat.ML (10%)
-}
+<div class="highlight"><pre><span></span><code><span class="nv">@article</span><span class="err">{</span><span class="n">alexa21</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Alexandre d&#39;Aspremont, Damien Scieur and Adrien Taylor&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Acceleration Methods&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2021&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/2101.09545.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>Paper 2</p>
-<div class="highlight"><pre><span></span><code><span class="nv">article</span>{<span class="nv">borja21</span>,<span class="w"></span>
-<span class="w">    </span><span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Borja Rodr\&#39;iguez-G\&#39;alvez, Germ\&#39;an Bassi, and Mikael Skoglund&quot;</span>,<span class="w"></span>
-<span class="w">    </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tractable Inference for Complex Stochastic Processes&quot;</span>,<span class="w"></span>
-<span class="w">    </span><span class="nv">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2021&quot;</span>,<span class="w"></span>
-<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://arxiv.org/pdf/2005.05889.pdf&quot;</span>,<span class="w"></span>
-<span class="w">    </span><span class="nv">keywords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nv">cs</span>.<span class="nv">CC</span><span class="w"> </span><span class="ss">(</span><span class="mi">30</span><span class="o">%</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">stat</span>.<span class="nv">ML</span><span class="w"> </span><span class="ss">(</span><span class="mi">70</span><span class="o">%</span><span class="ss">)</span><span class="w"></span>
-}<span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nv">@article</span><span class="err">{</span><span class="n">tanm20</span><span class="w"></span>
+<span class="w">    </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Tan M. Nguyen, Richard G. Baraniuk, Andrea L. Bertozzi, Stanley J. Osher, Bao Wang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;MomentumRNN: Integrating Momentum into Recurrent Neural Networks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nf">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;2020&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;https://arxiv.org/pdf/2006.06919.pdf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
 </code></pre></div>
 
-<p>Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.</p>
+<p>Paper 1 is associated with the categories:
+* Optimization and Control
+* Machine Learning
+* Numerical Analysis
+* Numerical Analysis</p>
+<p>While Paper 2 is categorised into:
+* Optimization and Control
+* Machine Learning
+* Dynamical Systems</p>
+<p>Both papers belong to the overlapping categories, so we want to be able to assign a weight to each category in order to be able to make a more informed decision.</p>
 <h2>How did we compute the score for the categories?</h2>
-<p>In order to obtain a fuzzy representation of categories, we decided to train <a href="https://huggingface.co/prajjwal1/bert-tiny"><code>bert-tiny</code></a> on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
+<p>In order to obtain a fuzzy representation of categories, we decided to use a pre-trained language model (<a href="https://huggingface.co/prajjwal1/bert-tiny">bert-tiny</a>) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories.</p>
 <p>The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.</p>
-<p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to you.</p>
+<p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.</p>
 <h2>Possible improvements</h2>
-<p>The main problem here is that if we train the model too long, we overfit the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as he will not have time to converge.</p>
-<p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.</p>                </article>
+<p>The main problem here is that if we train the model too long, we risk overfitting the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as it will not have time to converge.</p>
+<p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.</p>
+<h2>Next Steps</h2>
+<p>In the next steps we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.</p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">

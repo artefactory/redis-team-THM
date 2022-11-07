@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Answering user's questions</title>
+        <title>Day 8 -Answering user's questions</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
         <meta name="description" content="Our data science approach to answer users' questions" />
 </head>
@@ -26,17 +26,17 @@
     <header>
       <h1 class="entry-title">
         <a href="https://artefactory.github.io/redis-team-THM/find-answer.html" rel="bookmark"
-           title="Permalink to Answering user's questions">Answering user's questions</a></h1>
+           title="Permalink to Day 8 -Answering user's questions">Day 8 -Answering user's questions</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-10-28T11:00:00+02:00">
-                Published: Fri 28 October 2022
+        <abbr class="published" title="2022-10-30T11:23:00+01:00">
+                Published: Sun 30 October 2022
         </abbr>
 		<br />
-        <abbr class="modified" title="2022-10-31T11:00:00+01:00">
-                Updated: Mon 31 October 2022
+        <abbr class="modified" title="2022-10-30T11:56:00+01:00">
+                Updated: Sun 30 October 2022
         </abbr>
 
         <address class="vcard author">
@@ -44,15 +44,22 @@
         </address>
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info -->      <h2>Going back to fundamentals</h2>
+</footer><!-- /.post-info -->      <p><em>Day 8 - When we decided to explore a different way of researching information</em></p>
+<h1>Going back to fundamentals</h1>
+<p>Looking for information online has almost become a second nature to most people nowadays. After decades of being used to tools that can offer relevant answers to our queries, each one of us has developed techniques to get the best results. Most of the time, these techniques involve looking for keywords, filtering results, among others. During this project we wanted to propose a simpler way of looking for scientific information leveraging the data of arXiv. The core idea is to go back to the fundamentals of information retrieval: <strong>answering a question</strong>.</p>
+<p>At the heart of every query there is a question that a user wants to answer. Differently from queries, questions are more natural to most people and reflect a precise need formulated by the user. Trying to answer them, while simple in a conversation, becomes remarkably difficult once we decide to do it programmatically.</p>
+<h1>The technical challenge</h1>
+<p>When trying to answer a question from an user, we need to deal with two problems simultaneously: understanding the question and finding the answer. The goal for this project is to map a scientific question to an answer extracted from the arXiv dataset.</p>
+<h2>Large language models</h2>
+<p>We decided to employ large pre-trained language models to help us achieve our goal. These models have been pre-trained on large corpora ranging a myriad of topics. Their large size and architecture have consolidated their place as state of the art models in almost all tasks of natural language processing. In this feature we will use models that have been trained for the Question Answering task. In general, these models expect a <strong>context</strong> and a <strong>question</strong> as inputs. They encode the information contained in both texts together and aim to extract the answer to the <strong>question</strong> using the information of the <strong>context</strong>. Because of this feature, they are called <em>extractive</em> question answering models and are, therefore, limited to the information contained in the <strong>context</strong>.</p>
+<h1>Next steps</h1>
+<p>In the next steps, we will be:
+- Implementing a QA pipeline using Huggingface
+- Using Redis to speedup the inference time
+- Develop an interface to show results to the user</p>
+<h1>Extra resources:</h1>
 <ul>
-<li>Users sometimes just want to ask a question</li>
-<li>Easier to formulate and closer to the real need of the user</li>
-<li>Core of information retrieval: goal is to answer a need</li>
-</ul>
-<h2>The technical challenge</h2>
-<ul>
-<li>How can we use the information contained</li>
+<li>More on question answering: <a href="https://huggingface.co/tasks/question-answering">Hugginface</a>, <a href="https://en.wikipedia.org/wiki/Question_answering">Wikepedia</a></li>
 </ul>
     </div><!-- /.entry-content -->
 
