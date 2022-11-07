@@ -1,8 +1,8 @@
 Title: Soft labels
 Date: 2022-10-28 14:05
 Modified: 2022-10-28 14:05
-Category: Data Science
-Tags: Data Science, categories, huggingface, transformers
+Category: Machine Learning
+Tags: data science, categories, huggingface, transformers
 Slug: soft-labels
 Authors: Tom Darmon
 Summary: Creating soft labels for the users
@@ -49,18 +49,18 @@ Paper 1 is associated with the categories:
 * Numerical Analysis
 * Numerical Analysis
 
-While Paper 2 is categorised into: 
+While Paper 2 is categorised into:
 * Optimization and Control
 * Machine Learning
 * Dynamical Systems
 
-Both papers belong to the overlapping categories, so we want to be able to assign a weight to each category in order to be able to make a more informed decision. 
+Both papers belong to the overlapping categories, so we want to be able to assign a weight to each category in order to be able to make a more informed decision.
 
 
 ## How did we compute the score for the categories?
 
 
-In order to obtain a fuzzy representation of categories, we decided to use a pre-trained language model ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. 
+In order to obtain a fuzzy representation of categories, we decided to use a pre-trained language model ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories.
 
 The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.
 
@@ -74,4 +74,4 @@ Currently stopping the training after only one epoch is experimental, we can pro
 
 ## Next Steps
 
-In the next steps we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model. 
+In the next steps we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.
