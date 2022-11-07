@@ -11,15 +11,15 @@ _Day 5 - when we investigated the problem of similarity search_
 
 # State of the Art
 
-Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found it brought great user experiences.
+Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text based search. Large companies found that using numerical vector-based search could greatly improve the user experience.
 
-In 2015, Spotify was one of the first large Internet company to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy) at that time.
+In 2015, Spotify was one of the first large Internet companies to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy).
 
 In 2017, Facebook then released [`facebookresearch/faiss`](https://github.com/facebookresearch/faiss) to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU
 
 Other open source projects such as [`perone/euclidesdb`](https://github.com/perone/euclidesdb) then enabled developers to use the embeddings comparison concepts to be hosted on a database.
 
-Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later moved to VertexAI.
+Then BERT models began to outperform most of these models, introducing a new era for NLP. In 2020, GCP also proposed a similarity using Apache Beam and Annoy, which later moved to VertexAI.
 
 HuggingFace and OpenAI then largely disrupted access to deep learning models and made it easier to use.
 

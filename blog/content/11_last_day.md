@@ -11,20 +11,20 @@ _Day 11 - The day we had to submit our project._
 
 # Final thoughts
 
-The project went very quickly as we were busy with our normal jobs, and it was challenging to find time committing is the hackathon.
+The project went very quickly as we were busy with our normal jobs and it was challenging to find time to commit to the hackathon.
 
-But overall, the project was very exciting and allowed us to discover how easy it was to use RediSearch and Saturn Cloud. Doing things in very limited time made us thought about was to prioritize, we had many ideas but had to make things as simple as possible.
+But overall, the project was very exciting and allowed us to discover how easy it was to use RediSearch and Saturn Cloud. Doing things in very limited time made us think about what to prioritize and compromise between the many ideas we had.
 
 We would like to thank "Redis Ventures" for providing the opportunity to show our project and our skills, but also for the quality of information and resources they provided for every team to do their best.
 
-Other teams at Artefact kept also a competitive but friendly mindset, that's why we like our company [so much]({filename}02_team.md).
+Other teams at Artefact also kept a competitive but friendly mindset, that's why we like our company [so much]({filename}02_team.md).
 
 # Other interesting things
 
-Forking the [sample repository](https://github.com/RedisVentures/redis-arXiv-search) was very easy and enabled us not to start from scratch, we made a few MLOps-related, improvements over the original project,
+Forking the [sample repository](https://github.com/RedisVentures/redis-arXiv-search) was very easy and saved us from starting from scratch. We made a few MLOps-related improvements from the original project,
 
 - generated index and loaded data faster to make it production ready, `struct.pack`(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the [array of float of embeddings](https://stackoverflow.com/a/9941024/1360476) an is critical in the workflow, and using smaller embeddings
-- extracted code from notebooks to make it modulable and enabling reusing code in a modern orchestration tool.
+- extracted code from notebooks to make the code modular and enable reusing code in a modern orchestration tool.
 - managed credentials and project settings using Pydantic [`BaseSettings`](https://github.com/artefactory/redis-team-THM/blob/main/backend/thm/config/settings.py)
 
 We didn't find time to look at these topics, but it will a great ideas to make the project move forward,
