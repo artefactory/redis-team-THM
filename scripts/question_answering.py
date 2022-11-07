@@ -5,7 +5,6 @@ from helpers.paper_manager import PriorityPapersManager
 from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
 from transformers import pipeline
-from loguru import logger
 
 settings = Settings()
 
@@ -20,8 +19,10 @@ def get_prioritized_articles(
     # parse list of papers
     papers = []
     papers_text = []
-    for paper in search_papers:
-        paper = engine.paper(paper.paper_id)
+    for paper_ in search_papers:
+        paper = engine.paper(paper_.paper_id)
+        if not paper: # sometimes the research does not yield a result
+            continue
         papers.append(paper)
 
         if paper.abstract and paper.title:
@@ -50,10 +51,10 @@ def _build_answer(
         start_answer = output["start"]
         end_answer = output["end"]
         text_answer = output["answer"]
+        confidence = output["score"]
         paper = priority_papers.find_paper(
             target_start=start_answer, target_end=end_answer
         )
-        confidence = 0.5  # FIXME
 
         answer.append((text_answer, confidence, paper))
 

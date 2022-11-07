@@ -1,10 +1,11 @@
+import re
 from typing import List, Tuple
 from urllib.parse import quote
 
 import httpx
-from helpers.models import Paper
 from loguru import logger
-import re
+
+from helpers.models import Paper
 
 
 class SearchEngine:
@@ -18,14 +19,20 @@ class SearchEngine:
             for key in ["paper_id", "title", "authors", "year"]
         }
 
-        if "predicted_categories" in paper:
-            arr = paper["predicted_categories"].split("|")
-            arr = list(map(lambda x: re.findall(r'([\w.]+)\(([\w.]+)\)', x)[0], arr))
-            resp["categories"] = list(map(lambda x: (x[0], "⭐️"*int(float(x[1])*10)), arr))
-        else:
-            arr = paper["categories"].split(",")
-            resp["categories"] = list(map(lambda x: (x, ""), arr))
+        # if "predicted_categories" in paper and paper["predicted_categories"]:
+        #     arr = paper["predicted_categories"].split("|")
+        #     arr = list(map(lambda x: re.findall(r'([\w.]+)\(([\w.]+)\)', x)[0], arr))
+        #     resp["categories"] = list(map(lambda x: (x[0], "⭐️"*int(float(x[1])*10)), arr))
+        # else:
+        #     arr = paper["categories"].split(",")
+        #     resp["categories"] = list(map(lambda x: (x, ""), arr))
 
+        if "predicted_categories" in paper and paper["predicted_categories"]:
+            resp["predicted_categories"] = paper["predicted_categories"]
+
+        resp["categories"] = list(
+            map(lambda x: (x, ""), paper["categories"].split(","))
+        )
         resp["authors"] = resp["authors"].replace("\n", "").replace("  ", " ")
         resp["title"] = resp["title"].replace("\n", "").replace("  ", " ")
         resp["url"] = f"https://arxiv.org/pdf/{paper['paper_id']}.pdf"
@@ -65,14 +72,18 @@ class SearchEngine:
         data = {
             "paper_id": paper_id,
             "search_type": "KNN",
-            "number_of_results": 1,
+            "number_of_results": 15,
             "years": [],
             "categories": [],
         }
-        resp = httpx.post(f"{self.base_uri}/vectorsearch/text", json=data).json()
 
-        if "papers" in resp and resp["papers"][0]["paper_id"] == paper_id:
-            return Paper.parse_obj(resp["papers"][0])
+        r = httpx.post(f"{self.base_uri}/vectorsearch/text", json=data)
+
+        if r.status_code == 200:
+            resp = r.json()
+
+            if "papers" in resp:
+                return Paper.parse_obj(resp["papers"][0])
 
     def ask_wolfram(self, query: str) -> str:
         return f"https://www.wolframalpha.com/input?i={quote(query)}"
