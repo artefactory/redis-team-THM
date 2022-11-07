@@ -72,7 +72,7 @@ class SearchEngine:
         data = {
             "paper_id": paper_id,
             "search_type": "KNN",
-            "number_of_results": 1,
+            "number_of_results": 15,
             "years": [],
             "categories": [],
         }

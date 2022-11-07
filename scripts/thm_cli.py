@@ -121,7 +121,6 @@ def goto_search_details():
     print(HTML(f"<seagreen>Retrieving details for {paper_id}...</seagreen>"))
     print()
     paper = Engine.paper(paper_id)
-    logger.info(paper)
     render_paper(paper)
     print(f"Opening {paper_id} on arXiv...")
     webbrowser.open(f"https://arxiv.org/pdf/{paper_id}.pdf")
