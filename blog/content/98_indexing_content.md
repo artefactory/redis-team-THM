@@ -13,7 +13,7 @@ If you want to index your own private database of documents, you can reuse our [
 
 ## Generating the index
 
-To generate index for papers updated on at specific month `YYYYMM`, you can run this script. You must specify a JSON file containing your corpus, the output where to store index file (in Pickle format), and the model name to encode your sentences.
+To generate index for papers updated on at specific month `YYYYMM`, you can run this script. You must specify a JSON file containing your corpus, the output where to store the index file (in Pickle format), and the model name to encode your sentences.
 
 This task can be performed every month of lastly updated arXiv data on a regular desktop computer, you might want to schedule it using tools like [Airflow](https://github.com/apache/airflow) to automate.
 
@@ -42,7 +42,7 @@ FLAGS
         Default: 'sentence-...
 ```
 
-To cold start your database you can also run the [`single-gpu-arxiv-embedding`](https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb) Jupyter Notebook on Saturn Cloud.
+To cold start your database, you can also run the [`single-gpu-arxiv-embedding`](https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb) Jupyter Notebook on Saturn Cloud.
 
 Using a `T4-XLarge 4-cores`, `saturn-python-rapids` image, the data from the historical 2 million papers can be indexed in less than 5 minutes.
 

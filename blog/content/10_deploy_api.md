@@ -23,7 +23,7 @@ You can choose to install `redis` locally or connect to Redis Cloud Enterprise i
 
 # Running from Saturn Cloud
 
-There are plenty of platform as a service choices to deploy this simple FastAPI web server, Heroku, Deta, AWS Elastic Beanstalk. But for this project we chose to try Saturn Cloud Deployment, the process was very easy.
+There are plenty of platform as a service choices to deploy this simple FastAPI web server, Heroku, Deta, AWS Elastic Beanstalk. But for this project we choose to try Saturn Cloud Deployment, the process was straightforward.
 
 <div align="center">
     <img src="{static}/images/configure_deployment.png" width=500>
@@ -35,7 +35,7 @@ After copying our database connection secrets, we can run our server, connecting
     <img src="{static}/images/configure_secrets.png" width=500>
 </div>
 
-and the domain name in the form of `*thm-cli*.community.saturnenterprise.io` can be chosen. We deployed, then finally configured the HTTP client, the CLI tool we built since day 7.
+The domain name in the form of `*.community.saturnenterprise.io` can be chosen. We deployed, then finally configured the HTTP client, the CLI tool we built since day 7.
 
 <div align="center">
     <a href="https://thm-cli.community.saturnenterprise.io/api/docs">https://thm-cli.community.saturnenterprise.io</a>

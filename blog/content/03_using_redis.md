@@ -65,7 +65,7 @@ Another interesting library is [`brainix/pottery`](https://github.com/brainix/po
 
 ## Using the REDIS prompt
 
-Here are some command to manipulate Hashes in Redis,
+Here are some commands to manipulate Hashes in Redis,
 
 ### [`HGET`](https://redis.io/commands/hget/)
 
@@ -81,7 +81,7 @@ This command can be used to retrieve fields from a specific key.
 
 ### [`HSET`](https://redis.io/commands/hset/)
 
-This command is used to set field in the hash stored at key to value.
+This command is used to set a field in the hash stored at key to value.
 
 ```txt
 > HSET THM:Paper:
@@ -89,7 +89,7 @@ This command is used to set field in the hash stored at key to value.
 
 ### [`FT.SEARCH`](https://redis.io/commands/ft.search/)
 
-This command can be used to search index with a textual query.
+This command can be used to search the index with a textual query.
 
 ```txt
 > FT.SEARCH papers

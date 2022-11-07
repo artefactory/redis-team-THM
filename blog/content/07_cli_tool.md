@@ -11,19 +11,19 @@ _Day 7 - When we decided the old CLI was still the best interface in 2022._
 
 # What interface to choose?
 
-Today most interfaces are browser-based because applications run in the cloud with little setup needed. But this was not the case not so long ago, when interfaces were terminal-based and later on desktop-GUI-based.
+Today, most interfaces are browser-based because applications run in the cloud with little setup needed. But this was not the case not so long ago, when interfaces were terminal-based and later on desktop-GUI-based.
 
 In 2015, chatbots made their comeback on popular messaging platforms such as Facebook Messenger, Google Home, Siri, and WeChat. The idea was that you could just write a free sentence or an improved textual command, and the server could answer your requests by triggering APIs and by using NLP techniques.
 
-During these years, I have asked myself how to put that in the perspective of Linux command line tools. You can, in fact, ask anything to a computer using a simple text prompt and the lack of a graphical interface doesn't necessarily mean you are less productive. In fact, I believe it is possible to create an powerful application that relies on user prompts and commands and that is also fully documented by manpages. 
+During these years, I have asked myself how to put that in the perspective of Linux command line tools. You can, in fact, ask anything to a computer using a simple text prompt, and the lack of a graphical interface doesn't necessarily mean you are less productive. In fact, I believe it is possible to create a powerful application that relies on user prompts and commands and that is also fully documented by man pages.
 
 In fact, developers often find themselves more productive with just an IDE and a Terminal.
 
-From the user experience when writing technical and scientific documents people use [Leslie Lamport](https://en.wikipedia.org/wiki/Leslie_Lamport)'s LaTeX or Markdown in text editors to produce high quality documents were formulas, sections and fonts are perfectly rendered. We thought that the terminal was the best way to help them due to the focus it provides compared to the average web-browser, that is crowded with distractions. 
+From the user experience when writing technical and scientific documents people use [Leslie Lamport](https://en.wikipedia.org/wiki/Leslie_Lamport)'s LaTeX or Markdown in text editors to produce high quality documents where formulas, sections and fonts are perfectly rendered. We thought that the terminal was the best way to help them due to the focus it provides compared to the average web-browser, that is crowded with distractions.
 
 In the last few years, NLP research has also improved, enabling experiences such as those provided by the _Open AI GPT-3_ based tasks, where you can ask tasks to the computer by just writing or saying a sentence.
 
-To be honest, writing a good frontend web page was also challenging for the short duration of the hackathon, so the CLI appeared to be a good compromise. We were also inspired by old projects such as [`ncurses`](https://www.gnu.org/software/ncurses/), [`jarun/googler`](https://github.com/jarun/googler) and [`gautamkrishnar/socli`](https://github.com/gautamkrishnar/socli) which provide clean command line interfaces to Google and Stackoverflow since knew users were still getting interested in this old-fashioned technologies.
+To be honest, writing a good frontend web page was also challenging for the short duration of the hackathon, so the CLI appeared to be a good compromise. We were also inspired by old projects such as [`ncurses`](https://www.gnu.org/software/ncurses/), [`jarun/googler`](https://github.com/jarun/googler) and [`gautamkrishnar/socli`](https://github.com/gautamkrishnar/socli) which provide clean command line interfaces to Google and Stack Overflow since new users were still getting interested in this old-fashioned technologies.
 
 # Python frameworks
 

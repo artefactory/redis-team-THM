@@ -13,7 +13,7 @@ _Day 6  - When we decided to quantify the categories of every article between 0 
 
 Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest us. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.
 
-How can we do this ?
+How can we do this?
 
 ## Soft labels
 
@@ -44,12 +44,14 @@ Paper 2
 ```
 
 Paper 1 is associated with the categories:
+
 * Optimization and Control
 * Machine Learning
 * Numerical Analysis
 * Numerical Analysis
 
-While Paper 2 is categorised into:
+While Paper 2 is categorized into:
+
 * Optimization and Control
 * Machine Learning
 * Dynamical Systems
@@ -62,9 +64,9 @@ Both papers belong to the overlapping categories, so we want to be able to assig
 
 In order to obtain a fuzzy representation of categories, we decided to use a pre-trained language model ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories.
 
-The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.
+The dataset is quite big, but the number of categories is relatively small. Therefore, we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to, but at the same the model didn't have time to learn the data by heart and produce a score close to 1.
 
-After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.
+After computing the scores for each category offline, we only need to add the static data to our Redis database and retrieve it to show it to the user.
 
 ## Possible improvements
 
@@ -74,4 +76,4 @@ Currently stopping the training after only one epoch is experimental, we can pro
 
 ## Next Steps
 
-In the next steps we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.
+In the next steps, we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.

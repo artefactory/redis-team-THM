@@ -11,7 +11,7 @@ _Day 8 - When we studied the routes of our API_
 
 # Endpoints of the project
 
-In the project, we have two main *services* with which HTTP clients can interact with. When users make a requests, the backend connects to the Redis database and answers to requests.
+In the project, we have two main *services* with which HTTP clients can interact with. When users make requests, the backend connects to the Redis database and answers to requests.
 
 You can find the Swagger documentation here,
 

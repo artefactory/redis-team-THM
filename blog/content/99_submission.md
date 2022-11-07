@@ -7,9 +7,9 @@ Slug: snippets
 Authors: Henrique Brito, Michel Hua
 Summary: The THM CLI
 
-The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in every day tasks such as building bibliography and finding answers to their questions.
+The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in everyday tasks such as building a bibliography and finding answers to their questions.
 
-See here why the [CLI is still the way to go]({filename}07_cli_tool.md). To install the tool go to [`scripts/`](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
+See here why the [CLI is still the way to go]({filename}07_cli_tool.md). To install the tool, go to [`scripts/`](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
 
 <script id="asciicast-CGtMSoSe0Fp8dn9nbLpzzbdbM" src="https://asciinema.org/a/CGtMSoSe0Fp8dn9nbLpzzbdbM.js" async></script>
 
@@ -21,7 +21,7 @@ To use **THM CLI**, just open the terminal and run the following command,
 % thm-cli
 ```
 
-You will have access to a interactive prompt where you can type commands, with auto-completion and history capabilities.
+You will have access to an interactive prompt where you can type commands, with auto-completion and history capabilities.
 
 ```
 THM Search CLI
@@ -189,7 +189,7 @@ Opening 0809.0632 on arXiv...
 
 ### Asking an open question
 
-This features allows the user to ask an open-ended scientific question leveraging the capabilities of out [Question Answering pipeline]({filename}08_question_answering.md)
+This feature allows the user to ask an open-ended scientific question leveraging the capabilities of our [Question Answering pipeline]({filename}08_question_answering.md)
 
 ```
 THM # find answer
@@ -226,7 +226,7 @@ time, same as the Hubble parameter. We then revise the universal constants and,
 
 ### Asking about a formula
 
-If you have doubts about a theorem you can open a query on Wolfram Alpha from your web browser.
+If you have doubts about a theorem, you can open a query on Wolfram Alpha from your web browser.
 
 Other sources of data are soon to be added: [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/), [DuckDuck Go](https://duckduckgo.com)...
 

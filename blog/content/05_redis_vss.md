@@ -11,7 +11,7 @@ _Day 5 - when we investigated the problem of similarity search_
 
 # State of the Art
 
-Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found out it brought great user experiences. This new technique in fact, allowed spotting similar patterns and revealing connections between the contents.
+Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text-based search. The problem of similarity search, for numerical vector-based search, then came up, and large companies found out it brought great user experiences. This new technique, in fact, allowed spotting similar patterns and revealing connections between the contents.
 
 In 2015, Spotify was one of the first large Internet companies to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy).
 
@@ -23,9 +23,9 @@ Other open source projects such as [`perone/euclidesdb`](https://github.com/pero
     <img src="https://euclidesdb.readthedocs.io/en/latest/_images/arch.png" width=500>
 </div>
 
-Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity search experience using Apache Beam and Annoy, which later moved to VertexAI.
+Then, BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity search experience using Apache Beam and Annoy, which later moved to VertexAI.
 
-HuggingFace and OpenAI then largely disrupted access to deep learning models and made embeddings easier to use then ever. Having a good machine learning model that turns sentences into a vector representation is indeed essential in the process.
+HuggingFace and OpenAI then largely disrupted access to deep learning models and made embeddings easier to use than ever. Having a good machine learning model that turns sentences into a vector representation is indeed essential in the process.
 
 # Redis Vector Similarity Search
 
@@ -41,11 +41,11 @@ Using Hashes, RediSearch is capable of maintaining two types of indexing `FLAT`,
 
 All this process can append in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.
 
-To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text and this might be more convenient.
+To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text, and this might be more convenient.
 
-The space of embeddings can be searched using two methods, `KNN` (k Nearest neighbours) and `VECTOR_RANGE`. The demo was about using KNN but studying the [difference between the two](https://redis.io/docs/stack/search/reference/vectors/#querying-vector-fields) can help. The Redis documentation could provide more examples for this as it is hard to find what to choose in which situations.
+The space of embeddings can be searched using two methods, `KNN` (k Nearest neighbours) and `VECTOR_RANGE`. The demo was about using KNN, but studying the [difference between the two](https://redis.io/docs/stack/search/reference/vectors/#querying-vector-fields) can help. The Redis documentation could provide more examples for this, as it is hard to find what to choose in which situations.
 
-Using these different algorithms, Redis can then return the top 100 most semantically similar sentences accross millions of documents, ordered by increasing vector distance.
+Using these different algorithms, Redis can then return the top 100 most semantically similar sentences across millions of documents, ordered by increasing vector distance.
 
 RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and integration to production environments and allow data science and data engineering teams to work together on the same platform.
 

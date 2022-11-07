@@ -15,13 +15,13 @@ The kickoff call gave us precious instructions on how we could use cloud resourc
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uS9ZGi8RyPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Blog posts were also helpful in understanding how RediSearch could be used, [Ed Sandoval's LinkedIn activity feed](https://www.linkedin.com/in/edsandovaluk/) had was a mine of information and helped us find the most relevant blog posts.
+Blog posts were also helpful in understanding how RediSearch could be used, [Ed Sandoval's LinkedIn activity feed](https://www.linkedin.com/in/edsandovaluk/) had been a mine of information and helped us find the most relevant blog posts.
 
 ## Saturn Cloud
 
-The first resource that was available was [Saturn Cloud](https://saturncloud.io). Saturn Cloud provides an environment where data science teams can contribute on managed Jupyter Notebook, and also use powerful servers with lots of RAM, CPUs, and GPUs to perform their compute workfloads. It has services to run notebooks, jobs, and APIs with very little setup.
+The first resource that was available was [Saturn Cloud](https://saturncloud.io). Saturn Cloud provides an environment where data science teams can contribute on managed Jupyter Notebook, and also use powerful servers with lots of RAM, CPUs, and GPUs to perform their compute workloads. It has services to run notebooks, jobs, and APIs with very little setup.
 
-You can sign up and [try it for free](https://app.community.saturnenterprise.io/auth/hosted-registration). Once this is done you, can create resources and user [recipes](https://saturncloud.io/docs/using-saturn-cloud/recipes/) which are infrastructure as code-like templates to quickstart your configuration.
+You can sign up and [try it for free](https://app.community.saturnenterprise.io/auth/hosted-registration). Once this is done you, can create resources and user [recipes](https://saturncloud.io/docs/using-saturn-cloud/recipes/) which are infrastructure as code-like templates to quick start your configuration.
 
 <div align="center">
     <img src="{static}/images/configure_saturn.png" width=500>
@@ -33,7 +33,7 @@ You just hit Create New Python Server to get a Jupyter server with GPU and CUDA 
     <img src="{static}/images/configure_saturn2.png" width=500>
 </div>
 
-Configuring our IDE's with a [SSH connection to Saturn Cloud](https://saturncloud.io/docs/using-saturn-cloud/ide_ssh/) was also an easy process, and enabled our data scientists to work directly within VSCode with the classical terminal and file explorer.
+Configuring our IDE's with an [SSH connection to Saturn Cloud](https://saturncloud.io/docs/using-saturn-cloud/ide_ssh/) was also an easy process, and enabled our data scientists to work directly within VSCode with the classical terminal and file explorer.
 
 The process of configuring this took about 30 minutes overall.
 
@@ -47,10 +47,10 @@ The second resource we used is [Redis Enterprise Cloud](https://redis.com/redis-
 
 But during the Hackathon, Redis Ventures provided us credits to use both products with the full developer experience.
 
-We created a new subscription, using a flexible plan. Redis Cloud Enterprise can support AWS, GCP and Azure. As part of the set-up we had to define:
+We created a new subscription, using a flexible plan. Redis Cloud Enterprise can support AWS, GCP and Azure. As part of the set-up, we had to define:
 - cloud provider: we chose AWS
 - region where to deploy
-- database replication: we did't need it
+- database replication: we didn't need it
 - database size: 26 GB
 - high availability.
 
@@ -58,7 +58,7 @@ Redis Cloud Enterprise really has a lot of configuration settings if you want to
 
 ## Install Redis Insights
 
-After gettings our Redis credentials from Redis Cloud, we configured a desktop graphical user interface called [Redis Insights](https://redis.com/redis-enterprise/redis-insight/)
+After getting our Redis credentials from Redis Cloud, we configured a desktop graphical user interface called [Redis Insights](https://redis.com/redis-enterprise/redis-insight/)
 
 <div align="center">
     <img src="{static}/images/redis_insights.png" width=500>
