@@ -70,7 +70,7 @@ def render_paper(paper: Paper):
         parsed_predicitons = parse_predicted_categories_from_redis(
             paper.predicted_categories
         )
-    
+
     print(HTML(f"<b>{clean_title}</b>"))
     print(f"by {clean_authors}")
     print("=" * 80)
@@ -121,6 +121,7 @@ def goto_search_details():
     print(HTML(f"<seagreen>Retrieving details for {paper_id}...</seagreen>"))
     print()
     paper = Engine.paper(paper_id)
+    logger.info(paper)
     render_paper(paper)
     print(f"Opening {paper_id} on arXiv...")
     webbrowser.open(f"https://arxiv.org/pdf/{paper_id}.pdf")

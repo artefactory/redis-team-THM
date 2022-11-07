@@ -26,10 +26,10 @@ class SearchEngine:
         # else:
         #     arr = paper["categories"].split(",")
         #     resp["categories"] = list(map(lambda x: (x, ""), arr))
-        
+
         if "predicted_categories" in paper and paper["predicted_categories"]:
             resp["predicted_categories"] = paper["predicted_categories"]
-        
+
         resp["categories"] = list(
             map(lambda x: (x, ""), paper["categories"].split(","))
         )
@@ -76,10 +76,15 @@ class SearchEngine:
             "years": [],
             "categories": [],
         }
-        resp = httpx.post(f"{self.base_uri}/vectorsearch/text", json=data).json()
 
-        if "papers" in resp and resp["papers"][0]["paper_id"] == paper_id:
-            return Paper.parse_obj(resp["papers"][0])
+        r = httpx.post(f"{self.base_uri}/vectorsearch/text", json=data)
+
+        if r.status_code == 200:
+            resp = r.json()
+            logger.info(resp)
+
+            if "papers" in resp:
+                return Paper.parse_obj(resp["papers"][0])
 
     def ask_wolfram(self, query: str) -> str:
         return f"https://www.wolframalpha.com/input?i={quote(query)}"
