@@ -1,4 +1,4 @@
-Title: Day 8 -Answering user's questions
+Title: Answering user's questions
 Date: 2022-10-30 11:23
 Modified: 2022-10-30 11:56
 Category: Machine Learning
