@@ -92,7 +92,10 @@ This command is used to set field in the hash stored at key to value.
 This command can be used to search index with a textual query.
 
 ```txt
-...
+> FT.SEARCH papers
+    "@year:[2021 2022] => [KNN 20 @vector $vec_param AS vector_score]
+    K 20
+    "query_vector" <BLOB>
 ```
 
 ### [`FLUSHDB`](https://redis.io/commands/flushdb/)

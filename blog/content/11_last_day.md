@@ -15,7 +15,9 @@ The project went very quickly as we were busy with our normal jobs, and it was c
 
 But overall, the project was very exciting and allowed us to discover how easy it was to use RediSearch and Saturn Cloud. Doing things in very limited time made us thought about was to prioritize, we had many ideas but had to make things as simple as possible.
 
-We would like to thank "Redis Ventures" for providing the opportunity to show our project and our skills, but also for the quality of information and resources they provided for every team to do their best.
+The end-to-end perspective was satisfactory, with data engineers working and data parsing and extraction on one side and data scientists working on models. Redis and FastAPI allowed us to connect both and to expose models to the real world.
+
+We would like to thank _Redis Ventures_ for providing the opportunity to show our project and our skills, but also for the quality of information and resources they provided for every team to do their best.
 
 Other teams at Artefact kept also a competitive but friendly mindset, that's why we like our company [so much]({filename}02_team.md).
 
