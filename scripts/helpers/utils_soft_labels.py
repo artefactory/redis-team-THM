@@ -7,10 +7,10 @@ import datasets
 import numpy as np
 import pandas as pd
 import torch
-from thm.config.settings import get_settings
+from helpers.settings import Settings
 from transformers import AutoTokenizer, Trainer
 
-config = get_settings()
+config = Settings()
 
 
 def _get_category_names(args: np.array, ooe_df: pd.DataFrame):

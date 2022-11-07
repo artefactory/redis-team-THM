@@ -5,7 +5,7 @@ import pandas as pd
 from helpers.category_parser import parse_classifier_prediction
 from helpers.settings import Settings
 from loguru import logger
-from thm.utils_soft_labels import clean_description  # need to add to pythonpath
+from helpers.utils_soft_labels import clean_description  # need to add to pythonpath
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,

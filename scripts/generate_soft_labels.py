@@ -4,8 +4,7 @@ import pickle
 import fire
 import pandas as pd
 from datasets import Dataset
-from thm.config.settings import get_settings
-from thm.utils_soft_labels import (
+from helpers.utils_soft_labels import (
     apply_tokenenizer,
     clean_description,
     papers,
@@ -18,8 +17,6 @@ from transformers import (
     TrainingArguments,
 )
 from transformers import logging as transformer_logging
-
-config = get_settings()
 
 transformer_logging.set_verbosity_error()
 logging.getLogger().setLevel(logging.INFO)

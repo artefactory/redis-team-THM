@@ -6,6 +6,6 @@ data_location="./data/arxiv-metadata-oai-snapshot.json" # user config
 
 mkdir -p "$output_folder/model_outputs"
 
-PYTHONPATH=../backend python3 ../backend/generate_soft_labels.py \
+python3 generate_soft_labels.py \
 --data_location="$data_location" \
 --output_location="$output_folder"
