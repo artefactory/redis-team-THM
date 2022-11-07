@@ -101,7 +101,10 @@ It can run in clusters of servers where large amounts of memory are available.</
 
 <h3><a href="https://redis.io/commands/ft.search/"><code>FT.SEARCH</code></a></h3>
 <p>This command can be used to search index with a textual query.</p>
-<div class="highlight"><pre><span></span><code>...
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">FT</span><span class="p">.</span><span class="k">SEARCH</span><span class="w"> </span><span class="n">papers</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;@year:[2021 2022] =&gt; [KNN 20 @vector $vec_param AS vector_score]</span>
+<span class="ss">    K 20</span>
+<span class="ss">    &quot;</span><span class="n">query_vector</span><span class="err">&quot;</span><span class="w"> </span><span class="o">&lt;</span><span class="k">BLOB</span><span class="o">&gt;</span><span class="w"></span>
 </code></pre></div>
 
 <h3><a href="https://redis.io/commands/flushdb/"><code>FLUSHDB</code></a></h3>
