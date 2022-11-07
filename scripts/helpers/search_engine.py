@@ -81,7 +81,6 @@ class SearchEngine:
 
         if r.status_code == 200:
             resp = r.json()
-            logger.info(resp)
 
             if "papers" in resp:
                 return Paper.parse_obj(resp["papers"][0])
