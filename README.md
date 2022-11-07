@@ -53,7 +53,7 @@ See [Architecture](#architecture) to see how it works, and [User Workflow](#user
 ## Machine Setup
 
 ```sh
-brew install yarn redis docker
+brew install yarn redis
 pip install -r backend/requirements.txt
 pip install -r scripts/requirements.txt
 ```
@@ -116,20 +116,7 @@ It can be used with his text editor and browser and helps him in the process of:
 
 ## Running The Application
 
-### Run With Docker
-
-```sh
-docker compose up
-open http://localhost:8888
-
-# To force a new build
-docker compose up --build
-
-# To clear Docker cache
-docker system prune
-```
-
-### Backend Application Only
+### Backend Application
 
 Setup your Redis Enterprise Cloud then,
 
@@ -141,6 +128,14 @@ open http://0.0.0.0:8080/api/docs
 ```
 
 [Deploy on Saturn Cloud](https://app.community.saturnenterprise.io/dash/resources?recipeUrl=https://github.com/artefactory/redis-team-THM/blob/main/backend/.saturn/thm-backend-deployment-recipe.json)
+
+### CLI
+
+```sh
+cd scripts/
+pip install -r requirements.txt
+./thm-cli.py
+```
 
 ### Blog
 
