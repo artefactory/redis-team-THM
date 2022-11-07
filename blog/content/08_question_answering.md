@@ -8,6 +8,7 @@ Authors: Henrique Brito
 Summary: Our data science approach to answer users' questions
 
 _Day 8 - When we decided to explore a different way of researching information_
+
 # Going back to fundamentals
 
 Looking for information online has almost become a second nature to most people nowadays. After decades of being used to tools that can offer relevant answers to our queries, each one of us has developed techniques to get the best results. Most of the time, these techniques involve looking for keywords, filtering results, among others. During this project we wanted to propose a simpler way of looking for scientific information leveraging the data of arXiv. The core idea is to go back to the fundamentals of information retrieval: **answering a question**.
