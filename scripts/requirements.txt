@@ -1,4 +1,4 @@
-fire
+# fire
 pandas
 loguru
 redis_om
@@ -9,3 +9,7 @@ pydantic[dotenv]
 pydantic
 prompt_toolkit
 httpx
+
+setuptools
+twine
+wheel

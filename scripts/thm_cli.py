@@ -17,6 +17,12 @@ from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
 from question_answering import get_answer_to_prompt
 
+Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+# Engine = SearchEngine("http://localhost:8080/api/v1/paper")
+
+ps = PromptSession()
+settings = Settings()
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
@@ -250,24 +256,18 @@ def goto_menu():
     else:
         goto_menu()
 
+def start():
+    print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
+    print(HTML("Your arXiv-BibTeX terminal assistant."))
+    print()
 
-print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
-print(HTML("Your arXiv-BibTeX terminal assistant."))
-print()
+    quote = random_quote()
 
-Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
-# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
-# Engine = SearchEngine("http://localhost:8080/api/v1/paper")
+    print("---")
+    print(HTML(f"<i>{quote.sentence}</i>"))
+    print(quote.author)
+    print("---")
+    print()
+    print()
 
-ps = PromptSession()
-settings = Settings()
-quote = random_quote()
-
-print("---")
-print(HTML(f"<i>{quote.sentence}</i>"))
-print(quote.author)
-print("---")
-print()
-print()
-
-goto_menu()
+    goto_menu()
