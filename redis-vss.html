@@ -66,11 +66,11 @@
 </div>
 
 <p>Using Hashes, RediSearch is capable of maintaining two types of indexing <code>FLAT</code>, which is a naive indexing method, and <code>HNSW</code> (<em>Hierarchical Navigable Small World</em>) which is derived from earlier Facebook's work. Distance metrics include Euclidean distance <code>L2</code>, Internal product <code>IP</code> and Cosine distance <code>COSINE</code>, which are common ways to evaluate how close vectors are to each other.</p>
-<p>All this process can append in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.</p>
+<p>All this process can happen in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.</p>
 <p>To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text, and this might be more convenient.</p>
 <p>The space of embeddings can be searched using two methods, <code>KNN</code> (k Nearest neighbours) and <code>VECTOR_RANGE</code>. The demo was about using KNN, but studying the <a href="https://redis.io/docs/stack/search/reference/vectors/#querying-vector-fields">difference between the two</a> can help. The Redis documentation could provide more examples for this, as it is hard to find what to choose in which situations.</p>
 <p>Using these different algorithms, Redis can then return the top 100 most semantically similar sentences across millions of documents, ordered by increasing vector distance.</p>
-<p>RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and integration to production environments and allow data science and data engineering teams to work together on the same platform.</p>
+<p>RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and production environments thus allowing data science and data engineering teams to work together on the same platform.</p>
 <p>It also provides a real-time endpoint where users can formulate live queries and retrieve the most relevant documents.</p>
 <h1>References</h1>
 <h2>State of the Art of Similarity Search</h2>
