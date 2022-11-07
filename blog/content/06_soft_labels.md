@@ -54,7 +54,7 @@ Both papers belong to the sames categories, but the first paper is only 10% abou
 ## How did we compute the score for the categories?
 
 
-In order to obtain a fuzzy representation of categories, we decided to train `bert-tiny` on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.
+In order to obtain a fuzzy representation of categories, we decided to train [`bert-tiny`](https://huggingface.co/prajjwal1/bert-tiny) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.
 
 The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.
 
