@@ -1,7 +1,7 @@
 Title: Paper Classification Integration
 Date: 2022-11-03 17:49
 Modified: 2022-11-03 17:49
-Category: Data Science
+Category: Machine Learning
 Tags: categories, huggingface, transformers
 Slug: integrate-labels
 Authors: Tom Darmon, Henrique Brito
