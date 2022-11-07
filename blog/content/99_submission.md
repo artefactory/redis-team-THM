@@ -77,19 +77,19 @@ Your keywords (eg. social networks): category theory
 Papers matching "category theory"...
 
 ===bibtex
-@article{bobc06,         
+@article{bobc06,
     author = "Bob Coecke",
     title = "Introducing categories to the practicing physicist",
     year = "2006",
     url = "https://arxiv.org/pdf/0808.1032.pdf",
 }
-@article{charl01,        
+@article{charl01,
     author = "Charles Rezk",
     title = "A model for the homotopy theory of homotopy theory",
     year = "2001",
     url = "https://arxiv.org/pdf/math/9811037.pdf",
 }
-@article{niles21,        
+@article{niles21,
     author = "Niles Johnson, Donald Yau",
     title = "A bicategorical pasting theorem",
     year = "2021",
@@ -142,7 +142,7 @@ Total of 309,164 searchable arXiv papers. Last updated 2022-11-04.
 
 ### Getting details about a paper
 
-This feature displays the main information about a paper. It also shows the categories our [model]({filename}06_soft_labels.md) predicted. 
+This feature displays the main information about a paper. It also shows the categories our [model]({filename}06_soft_labels.md) predicted.
 
 ```
 THM # search details
@@ -223,9 +223,6 @@ consequence is that the speed of light decreases inversely proportional to
 time, same as the Hubble parameter. We then revise the universal constants and,
 ...
 ```
-
-(TODO Henrique)
-
 
 ### Asking about a formula
 
