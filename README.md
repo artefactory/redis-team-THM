@@ -129,12 +129,20 @@ open http://0.0.0.0:8080/api/docs
 
 [Deploy on Saturn Cloud](https://app.community.saturnenterprise.io/dash/resources?recipeUrl=https://github.com/artefactory/redis-team-THM/blob/main/backend/.saturn/thm-backend-deployment-recipe.json)
 
-### CLI
+### THM CLI
 
 ```sh
 cd scripts/
 pip install -r requirements.txt
 ./thm-cli.py
+```
+
+### ETL CLI
+
+```sh
+cd scripts/
+pip install -r requirements.txt
+./pipeline.sh
 ```
 
 ### Blog
