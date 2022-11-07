@@ -12,6 +12,7 @@
         <header id="banner" class="body">
                 <h1><a href="https://artefactory.github.io/redis-team-THM/">Team THM</a></h1>
                 <nav><ul>
+                    <li><a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a></li>
                     <li class="active"><a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/redisearch.html">RediSearch</a></li>
@@ -69,7 +70,7 @@
 
 <p>Both papers belong to the sames categories, but the first paper is only 10% about Machine Learning. We can directly have a look at the second paper, as it will focus on the subject we are interested in.</p>
 <h2>How did we compute the score for the categories?</h2>
-<p>In order to obtain a fuzzy representation of categories, we decided to train <code>bert-tiny</code> on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
+<p>In order to obtain a fuzzy representation of categories, we decided to train <a href="https://huggingface.co/prajjwal1/bert-tiny"><code>bert-tiny</code></a> on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories. Our goal is not to correctly classify every category, we only want to model to quantify the degree of membership to each category.</p>
 <p>The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.</p>
 <p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to you.</p>
 <h2>Possible improvements</h2>

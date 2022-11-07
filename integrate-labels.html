@@ -4,15 +4,16 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Team THM - huggingface</title>
+        <title>Paper Classification Integration</title>
         <link rel="stylesheet" href="https://artefactory.github.io/redis-team-THM/theme/css/main.css" />
+        <meta name="description" content="pipelines, training, inferance" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://artefactory.github.io/redis-team-THM/">Team THM</a></h1>
                 <nav><ul>
-                    <li><a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a></li>
+                    <li class="active"><a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/mlops.html">MLOps</a></li>
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/redisearch.html">RediSearch</a></li>
@@ -21,10 +22,15 @@
                     <li><a href="https://artefactory.github.io/redis-team-THM/category/thm-indexing.html">THM Indexing</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://artefactory.github.io/redis-team-THM/integrate-labels.html" rel="bookmark"
+           title="Permalink to Paper Classification Integration">Paper Classification Integration</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://artefactory.github.io/redis-team-THM/integrate-labels.html">Paper Classification Integration</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-11-03T17:49:00+01:00">
                 Published: Thu 03 November 2022
@@ -40,7 +46,7 @@
         </address>
 <p>In <a href="https://artefactory.github.io/redis-team-THM/category/data-science.html">Data Science</a>.</p>
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/categories.html">categories</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info --><p>_Day 10 - Integrating the soft labels model to the pipeline</p>
+</footer><!-- /.post-info -->      <p>_Day 10 - Integrating the soft labels model to the pipeline</p>
 <h1>Industrializing the soft labels model</h1>
 <p>We have created a classification model to quantify the categories of each item between 0 and 1. It is now important to industrialize our code by integrating this model and this code into our workflow.</p>
 <p>The model we decided to use for the classification is <a href="https://huggingface.co/prajjwal1/bert-tiny"><code>bert-tiny</code></a> from the <a href="https://huggingface.co/models">huggingface hub</a>. Our goal is to make data retriaval fast, in order to avoid making predictions on the category every time a user is sending a query, we decided to make the inference offline and leverage redis speed to serve the metadata to the user.</p>
@@ -68,40 +74,11 @@
 <p>If we are looking directly inside the redis database we can see our soft labels stored as a string:</p>
 <div align="center">
     <img src="images/soft_labels_redis.png" width=500>
-</div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</div>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://artefactory.github.io/redis-team-THM/find-answer.html" rel="bookmark"
-                           title="Permalink to Answering user's questions">Answering user's questions</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-10-28T11:00:00+02:00">
-                Published: Fri 28 October 2022
-        </abbr>
-		<br />
-        <abbr class="modified" title="2022-10-31T11:00:00+01:00">
-                Updated: Mon 31 October 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://artefactory.github.io/redis-team-THM/author/henrique-brito.html">Henrique Brito</a>
-        </address>
-<p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
-<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info -->                <p>Our data science approach to answer users' questions</p>
-                <a class="readmore" href="https://artefactory.github.io/redis-team-THM/find-answer.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
