@@ -39,7 +39,7 @@ Developers car easily load, index, and query vectors, and these vectors come fro
 
 Using Hashes, RediSearch is capable of maintaining two types of indexing `FLAT`, which is a naive indexing method, and `HNSW` (_Hierarchical Navigable Small World_) which is derived from earlier Facebook's work. Distance metrics include Euclidean distance `L2`, Internal product `IP` and Cosine distance `COSINE`, which are common ways to evaluate how close vectors are to each other.
 
-All this process can append in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.
+All this process can happen in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.
 
 To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text, and this might be more convenient.
 
@@ -47,7 +47,7 @@ The space of embeddings can be searched using two methods, `KNN` (k Nearest neig
 
 Using these different algorithms, Redis can then return the top 100 most semantically similar sentences across millions of documents, ordered by increasing vector distance.
 
-RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and integration to production environments and allow data science and data engineering teams to work together on the same platform.
+RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and production environments thus allowing data science and data engineering teams to work together on the same platform.
 
 It also provides a real-time endpoint where users can formulate live queries and retrieve the most relevant documents.
 
