@@ -7,7 +7,7 @@ Slug: snippets
 Authors: Henrique Brito, Michel Hua
 Summary: The THM CLI
 
-The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in every day tasks such as building bibilography and finding answers to their questions.
+The **THM CLI** is the ultimate CLI tool to help researchers and technical writers. It can help them in every day tasks such as building bibliography and finding answers to their questions.
 
 See here why the [CLI is still the way to go]({filename}07_cli_tool.md). To install the tool go to [`scripts/`](https://github.com/artefactory/redis-team-THM/tree/main/scripts).
 
@@ -77,19 +77,19 @@ Your keywords (eg. social networks): category theory
 Papers matching "category theory"...
 
 ===bibtex
-@article{bobc06,         % ph ⭐️⭐️⭐️⭐️, math.MP ⭐️⭐️⭐️⭐️, th ⭐️⭐️⭐️⭐️
+@article{bobc06,         
     author = "Bob Coecke",
     title = "Introducing categories to the practicing physicist",
     year = "2006",
     url = "https://arxiv.org/pdf/0808.1032.pdf",
 }
-@article{charl01,        % math.AG ⭐️⭐️, math.GT ⭐️, math.DG ⭐️
+@article{charl01,        
     author = "Charles Rezk",
     title = "A model for the homotopy theory of homotopy theory",
     year = "2001",
     url = "https://arxiv.org/pdf/math/9811037.pdf",
 }
-@article{niles21,        % math.CO ⭐️, math.NT ⭐️, math.AG ⭐️
+@article{niles21,        
     author = "Niles Johnson, Donald Yau",
     title = "A bicategorical pasting theorem",
     year = "2021",
@@ -117,7 +117,6 @@ Papers similar to 2009.06334...
     year = "2020",
     url = "https://arxiv.org/pdf/2009.06334.pdf",
     keywords = "..."
-    cs.LO
 }
 @article{david21,
     author = "David I. Spivak (Massachusetts Institute of Technology), Jamie Vicary (University of Cambridge)",
@@ -125,7 +124,6 @@ Papers similar to 2009.06334...
     year = "2021",
     url = "https://arxiv.org/pdf/2101.07888.pdf",
     keywords = "..."
-    cs.DM,cs.PL
 }
 @article{bened19,
     author = "Benedikt Ahrens and Peter LeFanu Lumsdaine",
@@ -133,7 +131,6 @@ Papers similar to 2009.06334...
     year = "2019",
     url = "https://arxiv.org/pdf/1705.04296.pdf",
     keywords = "..."
-    math.CT,math.LO
 }
 ===
 
@@ -145,42 +142,43 @@ Total of 309,164 searchable arXiv papers. Last updated 2022-11-04.
 
 ### Getting details about a paper
 
+This feature displays the main information about a paper. It also shows the categories our [model]({filename}06_soft_labels.md) predicted. 
+
 ```
 THM # search details
-arXiv ID (eg. 2205.13980): 1705.04296
-Retrieving details for 1705.04296...
+arXiv ID (eg. 2205.13980): 0809.0632
+Retrieving details for 0809.0632...
 
-Displayed Categories
-by Benedikt Ahrens and Peter LeFanu Lumsdaine
+How to cope with climate's complexity
+by Michel Crucifix
 ================================================================================
-  We introduce and develop the notion of *displayed categories*.
-  A displayed category over a category C is equivalent to "a category D and
-functor F : D --> C", but instead of having a single collection of "objects of
-D" with a map to the objects of C, the objects are given as a family indexed by
-objects of C, and similarly for the morphisms. This encapsulates a common way
-of building categories in practice, by starting with an existing category and
-adding extra data/properties to the objects and morphisms.
-  The interest of this seemingly trivial reformulation is that various
-properties of functors are more naturally defined as properties of the
-corresponding displayed categories. Grothendieck fibrations, for example, when
-defined as certain functors, use equality on objects in their definition. When
-defined instead as certain displayed categories, no reference to equality on
-objects is required. Moreover, almost all examples of fibrations in nature are,
-in fact, categories whose standard construction can be seen as going via
-displayed categories.
-  We therefore propose displayed categories as a basis for the development of
-fibrations in the type-theoretic setting, and similarly for various other
-notions whose classical definitions involve equality on objects.
-  Besides giving a conceptual clarification of such issues, displayed
-categories also provide a powerful tool in computer formalisation, unifying and
-abstracting common constructions and proof techniques of category theory, and
-enabling modular reasoning about categories of multi-component structures. As
-such, most of the material of this article has been formalised in Coq over the
-UniMath library, with the aim of providing a practical library for use in
-further developments.
+Categories:
+
+* Atmospheric and Oceanic Physics
+Categories(extracted using machine learning):
+
+* Earth and Planetary Astrophysics (0.1)
+* Physics and Society (0.1)
+================================================================================
+  Climate exhibits a vast range of dissipative structures. Some have
+characteristic times of a few days; others evolve on thousands of years. All
+these structures are interdependent; in other words, they communicate. It is
+often considered that the only way to cope with climate complexity is to
+integrate the equations of atmospheric and oceanic motion with the finer
+possible mesh. Is this the sole strategy? Aren't we missing another
+characteristic of the climate system: its ability to destroy and generate
+information at the macroscopic scale? Paleoclimatologists consider that much of
+this information is present in palaeoclimate archives. It is therefore natural
+to build climate models such as to get the most of these archives. The strategy
+proposed here is based on Bayesian statistics and low-order non-linear
+dynamical systems, in a modelling approach that explicitly includes the effects
+of uncertainties. Its practical interest is illustrated through the problem of
+the timing of the next great glaciation. Is glacial inception overdue, or do we
+need to wait for another 50,000 years before ice caps grow again? Our results
+indicate a glaciation inception in 50,000 years.
 
 
-Opening 1705.04296 on arXiv...
+Opening 0809.0632 on arXiv...
 ```
 
 <div align="center">
@@ -191,22 +189,38 @@ Opening 1705.04296 on arXiv...
 
 ### Asking an open question
 
+This features allows the user to ask an open-ended scientific question leveraging the capabilities of out [Question Answering pipeline]({filename}08_question_answering.md)
+
 ```
 THM # find answer
 
-This is a beta feature! Ask a question and we will look for the article that seems to answer it best.
-Ask what is on your mind: how big is the universe
-Loading model...
+This is a beta feature! Ask question and we will look for the article that seems to answer it best.
+Ask what is on your mind: how big is the universe?
+We're looking for your answer. This can take a minute...
 
 --------------------------------------------------------------------------------
-RESULT: between 70 to $80 h^{-1}$Mpc
+I am 12% sure about my answer:
+Answer: '5x10^60'
 
-The Size of the Longest Filaments in the Universe
-by Somnath Bharadwaj (1), Suketu Bhavsar (2), Jatush V.Sheth (3) ((1) Indian Institute of Technology, Kharagpur, India, (2) Department of Physics and Astronomy, University of Kentucky, USA, (3) I.U.C.A.A, Pune, India)
+This answer came from here:
+Fractal universe and the speed of light: Revision of the universal constants
+by Antonio Alfonso-Faus
 ================================================================================
-  We analyze the filamentarity in the Las Campanas redshift survey (LCRS) and
-determine the length scale at which filaments are statistically significant.
-The largest length-scale at which filaments are statistically significant, real
+Categories:
+
+* General Physics
+Categories(extracted using machine learning):
+
+* General Relativity and Quantum Cosmology (0.8)
+* Cosmology and Nongalactic Astrophysics (0.3)
+* High Energy Physics - Theory (0.2)
+================================================================================
+  We apply the property of selfsimilarity that corresponds to the concept of a
+fractal universe, to the dimension of time. It follows that any interval of
+time, given by any tick of any clock, is proportional to the age of the
+universe. The fractality of time gives the fractality of space and mass. First
+consequence is that the speed of light decreases inversely proportional to
+time, same as the Hubble parameter. We then revise the universal constants and,
 ...
 ```
 

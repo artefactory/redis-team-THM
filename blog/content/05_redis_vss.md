@@ -13,7 +13,7 @@ _Day 5 - when we investigated the problem of similarity search_
 
 Search engines already existed in the 2010 with technology such as Lucene and [Elasticsearch](https://www.elastic.co/elasticsearch/), for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found out it brought great user experiences. This new technique in fact, allowed spotting similar patterns and revealing connections between the contents.
 
-In 2015, Spotify was one of the first large Internet company to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy) at that time.
+In 2015, Spotify was one of the first large Internet companies to use these algorithms in production, when Erik Bernhardsson open sourced [`spotify/annoy`](https://github.com/spotify/annoy).
 
 In 2017, Facebook then released [`facebookresearch/faiss`](https://github.com/facebookresearch/faiss) to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU
 

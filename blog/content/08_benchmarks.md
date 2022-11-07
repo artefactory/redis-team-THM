@@ -11,11 +11,11 @@ _Day 8 - When we ran some benchmark for the process of index creation and hostin
 
 # Benchmarking the loading scripts
 
-From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of aout 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
+From a file named `arxiv-metadata-oai-snapshot.json` containing metadata and abstracts of about 2M papers in 153 different scientific categories, we generated partial indexes and evaluated how it can run in production considering:
 
-- machine provisining needed,
+- machine provisioning needed,
 - how to update regularly from the arXiv snapshots,
-- volumetry of data.
+- volume of data.
 
 ## Generating Embeddings
 
