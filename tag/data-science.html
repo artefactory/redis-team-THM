@@ -41,7 +41,7 @@
 </footer><!-- /.post-info --><p><em>Day 6  - When we decided to quantify the categories of every article between 0 and 1.</em></p>
 <h2>Help users find the balance between categories</h2>
 <p>Many research papers fall on the borderline between several categories. Let's suppose we are looking for a technical research paper in Computational Complexity using Machine Learning. We will probably find several papers with similar names that belong to both categories that interest us. But we are Machine Learning experts, we want the paper to talk mostly about Machine Learning.</p>
-<p>How can we do this ?</p>
+<p>How can we do this?</p>
 <h2>Soft labels</h2>
 <p>We decided to solve this issue by assigning a value between 0 and 1 for each category of every paper. It means that if you are using the <code>thm-cli</code> you will obtain a value that quantify each category.</p>
 <p>Suppose you are a Machine Learning expert looking for research paper discussing Computational Complexity, we've found 2 interesting papers:</p>
@@ -63,25 +63,29 @@
 <span class="err">}</span><span class="w"></span>
 </code></pre></div>
 
-<p>Paper 1 is associated with the categories:
-* Optimization and Control
-* Machine Learning
-* Numerical Analysis
-* Numerical Analysis</p>
-<p>While Paper 2 is categorised into:
-* Optimization and Control
-* Machine Learning
-* Dynamical Systems</p>
+<p>Paper 1 is associated with the categories:</p>
+<ul>
+<li>Optimization and Control</li>
+<li>Machine Learning</li>
+<li>Numerical Analysis</li>
+<li>Numerical Analysis</li>
+</ul>
+<p>While Paper 2 is categorized into:</p>
+<ul>
+<li>Optimization and Control</li>
+<li>Machine Learning</li>
+<li>Dynamical Systems</li>
+</ul>
 <p>Both papers belong to the overlapping categories, so we want to be able to assign a weight to each category in order to be able to make a more informed decision.</p>
 <h2>How did we compute the score for the categories?</h2>
 <p>In order to obtain a fuzzy representation of categories, we decided to use a pre-trained language model (<a href="https://huggingface.co/prajjwal1/bert-tiny">bert-tiny</a>) on a multi label text classification problem. It was quite easy, as every article is already tagged with the categories.</p>
-<p>The dataset is quite big, but the number of categories is relatively small, therefore we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to but at the same the model didn't have time to learn the data by heart and produce score close to 1.</p>
-<p>After computing the scores for each category offline, we only need to add the static data to our redis database and retrieve it to show it to the user.</p>
+<p>The dataset is quite big, but the number of categories is relatively small. Therefore, we decided to train the model on only one epoch to avoid overfitting. One epoch gives our model a balance between correctly classifying the articles to the category they belong to, but at the same the model didn't have time to learn the data by heart and produce a score close to 1.</p>
+<p>After computing the scores for each category offline, we only need to add the static data to our Redis database and retrieve it to show it to the user.</p>
 <h2>Possible improvements</h2>
 <p>The main problem here is that if we train the model too long, we risk overfitting the data and the predictions are equal to 1 for the real categories and 0 for the false categories (which is useless). But if we train the model too little we will obtain a model with mostly false predictions as it will not have time to converge.</p>
 <p>Currently stopping the training after only one epoch is experimental, we can probably define a more rigorous protocol to select the best training parameters to compute the soft labels.</p>
 <h2>Next Steps</h2>
-<p>In the next steps we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.</p>                </article>
+<p>In the next steps, we will have to integrate this approach to our solution. This will involve creating separate training and serving pipelines for our model.</p>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">

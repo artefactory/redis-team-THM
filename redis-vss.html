@@ -48,7 +48,7 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> <a href="https://artefactory.github.io/redis-team-THM/tag/search.html">search</a> </p>
 </footer><!-- /.post-info -->      <p><em>Day 5 - when we investigated the problem of similarity search</em></p>
 <h1>State of the Art</h1>
-<p>Search engines already existed in the 2010 with technology such as Lucene and <a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a>, for text based search. The problem of similarity search, for numerical vector based search then came up and large companies found out it brought great user experiences. This new technique in fact, allowed spotting similar patterns and revealing connections between the contents.</p>
+<p>Search engines already existed in the 2010 with technology such as Lucene and <a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a>, for text-based search. The problem of similarity search, for numerical vector-based search, then came up, and large companies found out it brought great user experiences. This new technique, in fact, allowed spotting similar patterns and revealing connections between the contents.</p>
 <p>In 2015, Spotify was one of the first large Internet companies to use these algorithms in production, when Erik Bernhardsson open sourced <a href="https://github.com/spotify/annoy"><code>spotify/annoy</code></a>.</p>
 <p>In 2017, Facebook then released <a href="https://github.com/facebookresearch/faiss"><code>facebookresearch/faiss</code></a> to enable searching multimedia documents that are similar to each other, indexing a record of billions of documents using GPU</p>
 <p>Other open source projects such as <a href="https://github.com/perone/euclidesdb"><code>perone/euclidesdb</code></a> then enabled developers to use the embeddings comparison concepts to be hosted on a database.</p>
@@ -56,8 +56,8 @@
     <img src="https://euclidesdb.readthedocs.io/en/latest/_images/arch.png" width=500>
 </div>
 
-<p>Then BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity search experience using Apache Beam and Annoy, which later moved to VertexAI.</p>
-<p>HuggingFace and OpenAI then largely disrupted access to deep learning models and made embeddings easier to use then ever. Having a good machine learning model that turns sentences into a vector representation is indeed essential in the process.</p>
+<p>Then, BERT models began to outperform most of the models, introducing a new era for NLP. In 2020, GCP also proposed a similarity search experience using Apache Beam and Annoy, which later moved to VertexAI.</p>
+<p>HuggingFace and OpenAI then largely disrupted access to deep learning models and made embeddings easier to use than ever. Having a good machine learning model that turns sentences into a vector representation is indeed essential in the process.</p>
 <h1>Redis Vector Similarity Search</h1>
 <p>Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous works, it allows users already familiar with Redis to perform vector similarity queries using the <a href="https://redis.io/commands/ft.search/"><code>FT.SEARCH</code></a> command.</p>
 <p>Developers car easily load, index, and query vectors, and these vectors come from a variety of unstructured data.</p>
@@ -67,9 +67,9 @@
 
 <p>Using Hashes, RediSearch is capable of maintaining two types of indexing <code>FLAT</code>, which is a naive indexing method, and <code>HNSW</code> (<em>Hierarchical Navigable Small World</em>) which is derived from earlier Facebook's work. Distance metrics include Euclidean distance <code>L2</code>, Internal product <code>IP</code> and Cosine distance <code>COSINE</code>, which are common ways to evaluate how close vectors are to each other.</p>
 <p>All this process can append in real time, meaning you can write or update indexes to RediSearch anytime you want while serving requests to your users.</p>
-<p>To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text and this might be more convenient.</p>
-<p>The space of embeddings can be searched using two methods, <code>KNN</code> (k Nearest neighbours) and <code>VECTOR_RANGE</code>. The demo was about using KNN but studying the <a href="https://redis.io/docs/stack/search/reference/vectors/#querying-vector-fields">difference between the two</a> can help. The Redis documentation could provide more examples for this as it is hard to find what to choose in which situations.</p>
-<p>Using these different algorithms, Redis can then return the top 100 most semantically similar sentences accross millions of documents, ordered by increasing vector distance.</p>
+<p>To store embeddings in Redis Hashes, you have to encode the vector data in binary mode, like that was the case in the demo code. Another alternative is to store it in clear text, and this might be more convenient.</p>
+<p>The space of embeddings can be searched using two methods, <code>KNN</code> (k Nearest neighbours) and <code>VECTOR_RANGE</code>. The demo was about using KNN, but studying the <a href="https://redis.io/docs/stack/search/reference/vectors/#querying-vector-fields">difference between the two</a> can help. The Redis documentation could provide more examples for this, as it is hard to find what to choose in which situations.</p>
+<p>Using these different algorithms, Redis can then return the top 100 most semantically similar sentences across millions of documents, ordered by increasing vector distance.</p>
 <p>RediSearch is a piece of technology that bridges the gap between data science teams who know how to build models, and integration to production environments and allow data science and data engineering teams to work together on the same platform.</p>
 <p>It also provides a real-time endpoint where users can formulate live queries and retrieve the most relevant documents.</p>
 <h1>References</h1>

@@ -41,7 +41,7 @@
 </footer><!-- /.post-info --><h1>Reindexing contents</h1>
 <p>If you want to index your own private database of documents, you can reuse our <a href="https://github.com/artefactory/redis-team-THM/tree/main/scripts">scripts/</a>.</p>
 <h2>Generating the index</h2>
-<p>To generate index for papers updated on at specific month <code>YYYYMM</code>, you can run this script. You must specify a JSON file containing your corpus, the output where to store index file (in Pickle format), and the model name to encode your sentences.</p>
+<p>To generate index for papers updated on at specific month <code>YYYYMM</code>, you can run this script. You must specify a JSON file containing your corpus, the output where to store the index file (in Pickle format), and the model name to encode your sentences.</p>
 <p>This task can be performed every month of lastly updated arXiv data on a regular desktop computer, you might want to schedule it using tools like <a href="https://github.com/apache/airflow">Airflow</a> to automate.</p>
 <div class="highlight"><pre><span></span><code>% ./generate-index.py --help
 
@@ -67,7 +67,7 @@ FLAGS
         Default: <span class="err">&#39;</span>sentence-...
 </code></pre></div>
 
-<p>To cold start your database you can also run the <a href="https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb"><code>single-gpu-arxiv-embedding</code></a> Jupyter Notebook on Saturn Cloud.</p>
+<p>To cold start your database, you can also run the <a href="https://github.com/artefactory/redis-team-THM/blob/main/datascience/single-gpu-arxiv-embeddings.ipynb"><code>single-gpu-arxiv-embedding</code></a> Jupyter Notebook on Saturn Cloud.</p>
 <p>Using a <code>T4-XLarge 4-cores</code>, <code>saturn-python-rapids</code> image, the data from the historical 2 million papers can be indexed in less than 5 minutes.</p>
 <h2>Loading the index to Redis</h2>
 <div class="highlight"><pre><span></span><code>% ./load_data.py --help

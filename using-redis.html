@@ -83,7 +83,7 @@ It can run in clusters of servers where large amounts of memory are available.</
 <p>The Python package <a href="https://github.com/redis/redis-om-python"><code>redis-om</code></a> is an ORM to interact with the Redis database, it uses <a href="https://github.com/pydantic/pydantic"><code>pydantic</code></a> to describe your data models and eases operations for modeling and querying data in Redis with modern Python applications.</p>
 <p>Another interesting library is <a href="https://github.com/brainix/pottery"><code>brainix/pottery</code></a> if you want to deal with remote data structures when your application needs to implement locks, key value stores, maintain user lists such as e-commerce carts.</p>
 <h2>Using the REDIS prompt</h2>
-<p>Here are some command to manipulate Hashes in Redis,</p>
+<p>Here are some commands to manipulate Hashes in Redis,</p>
 <h3><a href="https://redis.io/commands/hget/"><code>HGET</code></a></h3>
 <p>This command can be used to retrieve fields from a specific key.</p>
 <div class="highlight"><pre><span></span><code>&gt; HGET THM:Paper:1609.05486 paper_id
@@ -94,12 +94,12 @@ It can run in clusters of servers where large amounts of memory are available.</
 </code></pre></div>
 
 <h3><a href="https://redis.io/commands/hset/"><code>HSET</code></a></h3>
-<p>This command is used to set field in the hash stored at key to value.</p>
+<p>This command is used to set a field in the hash stored at key to value.</p>
 <div class="highlight"><pre><span></span><code>&gt; HSET THM:Paper:
 </code></pre></div>
 
 <h3><a href="https://redis.io/commands/ft.search/"><code>FT.SEARCH</code></a></h3>
-<p>This command can be used to search index with a textual query.</p>
+<p>This command can be used to search the index with a textual query.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">FT</span><span class="p">.</span><span class="k">SEARCH</span><span class="w"> </span><span class="n">papers</span><span class="w"></span>
 <span class="w">    </span><span class="ss">&quot;@year:[2021 2022] =&gt; [KNN 20 @vector $vec_param AS vector_score]</span>
 <span class="ss">    K 20</span>

@@ -40,29 +40,29 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/redis.html">redis</a> </p>
 </footer><!-- /.post-info --><p><em>Day 11 - The day we had to submit our project.</em></p>
 <h1>Final thoughts</h1>
-<p>The project went very quickly as we were busy with our normal jobs and it was challenging to find time to commit to the hackathon.</p>
+<p>The project went very quickly as we were busy with our normal jobs, and it was challenging to find time to commit to the hackathon.</p>
 <p>But overall, the project was very exciting and allowed us to discover how easy it was to use RediSearch and Saturn Cloud. Doing things in very limited time made us think about what to prioritize and compromise between the many ideas we had.</p>
 <p>The end-to-end perspective was satisfactory, with data engineers working and data parsing and extraction on one side and data scientists working on models. Redis and FastAPI allowed us to connect both and to expose models to the real world.</p>
 <p>We would like to thank <em>Redis Ventures</em> for providing the opportunity to show our project and our skills, but also for the quality of information and resources they provided for every team to do their best.</p>
 <p>Other teams at Artefact also kept a competitive but friendly mindset, that's why we like our company <a href="https://artefactory.github.io/redis-team-THM/team-members.html">so much</a>.</p>
 <h1>Other interesting things</h1>
-<p>Forking the <a href="https://github.com/RedisVentures/redis-arXiv-search">sample repository</a> was very easy and saved us from starting from scratch. We made a few MLOps-related improvements from the original project,</p>
+<p>Forking the <a href="https://github.com/RedisVentures/redis-arXiv-search">sample repository</a> was easy and saved us from starting from scratch. We made a few MLOps-related improvements from the original project,</p>
 <ul>
 <li>generated index and loaded data faster to make it production ready, <code>struct.pack</code>(https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py#L42) is a faster way to pack the <a href="https://stackoverflow.com/a/9941024/1360476">array of float of embeddings</a> an is critical in the workflow, and using smaller embeddings</li>
 <li>extracted code from notebooks to make the code modular and enable reusing code in a modern orchestration tool.</li>
 <li>managed credentials and project settings using Pydantic <a href="https://github.com/artefactory/redis-team-THM/blob/main/backend/thm/config/settings.py"><code>BaseSettings</code></a></li>
 </ul>
-<p>We didn't find time to look at these topics, but it will a great ideas to make the project move forward,</p>
+<p>We didn't find time to look at these topics, but it will a great idea to make the project move forward,</p>
 <ul>
 <li><a href="https://docarray.jina.ai/advanced/document-store/redis/"><code>docarray</code> has a binding to Redis</a></li>
 <li>Publishing the CLI to PyPI</li>
 <li>Evaluate other sources of data</li>
-<li>Instant suggestion after a few keystrokes like in <a href="https://algoliacom-search-demo.netlify.app">this AlgoliaSearch demo</a></li>
+<li>Instant suggestion after a few keystrokes, like in <a href="https://algoliacom-search-demo.netlify.app">this AlgoliaSearch demo</a></li>
 <li>Using fuzzy matching techniques to improve quality of results</li>
 <li>"I am feeling lucky" button like in Google</li>
 <li>scheduling using Saturn Cloud Jobs</li>
 </ul>
-<p>If you want to contribute don't hesitate, changes and improvements are welcome! Feel free to fork and open a pull request into <code>main</code>.</p>                </article>
+<p>If you want to contribute, don't hesitate, changes and improvements are welcome! Feel free to fork and open a pull request into <code>main</code>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>

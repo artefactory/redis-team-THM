@@ -52,15 +52,15 @@
 <p>Using GitHub Actions, we <a href="https://github.com/artefactory/redis-team-THM/blob/main/.github/workflows/ci-python.yml">checked our code</a> against the <code>main</code> branch of the repo, ensuring not only style but also variables linking remain safe during development.</p>
 <p>We used <a href="https://github.com/PyCQA/flake8"><code>flake8</code></a> for basic linting and <a href="https://github.com/psf/black"><code>black</code></a> for code formatting.</p>
 <p>Static analysis is essential in Python because the language uses duck typing and this can cause issues during runtime, problems that a compiler would have caught.</p>
-<p>Improving readability, ensuring formatting and style is essential to the team of developers.</p>
+<p>Improving readability, ensuring formatting and style, is essential to the team of developers.</p>
 <h1>Model Deployment</h1>
 <h2>Ways to deploy a model</h2>
-<p>In a Python Machine Learning project, prototypes usually are written using Jupyter notebooks such as the ones in the <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>redis-arXiv-search/data</code></a> repository.</p>
+<p>In a Python Machine Learning project, prototypes usually are written using Jupyter notebooks, such as the ones in the <a href="https://github.com/RedisVentures/redis-arXiv-search/tree/main/data"><code>redis-arXiv-search/data</code></a> repository.</p>
 <p>The first step to make it more professional, is to turn it to a pipeline. Pipelines usually are decomposed in steps which are responsible for handling one input file and another file as output.</p>
 <p>The first step is to write a Python module component that enables us to produce a model, under certain conditions, and to be able to rerun it in a flexible way.</p>
-<p>In Python there are open source tools which help you in that process. For example, <a href="https://github.com/mlflow/mlflow"><code>mlflow/mlflow</code></a> to deal with the lifecycle of training your models, measuring their performance and archiving models. In other situations, you might also want to run advanced pipelines with <a href="https://github.com/apache/airflow"><code>apache/airflow</code></a> which can take care of different steps such as data fetching, pre-processing and handling executions in different context with DAGs.</p>
+<p>In Python, there are open source tools which help you in that process. For example, <a href="https://github.com/mlflow/mlflow"><code>mlflow/mlflow</code></a> to deal with the lifecycle of training your models, measuring their performance and archiving models. In other situations, you might also want to run advanced pipelines with <a href="https://github.com/apache/airflow"><code>apache/airflow</code></a> which can take care of different steps such as data fetching, pre-processing and handling executions in different context with DAGs.</p>
 <p>After scheduling the execution of this training component and storing the models, we usually need to serve the models to the end user.</p>
-<p>Serving a model means performing predictions or getting the results of large numerical computations. Todau, models are usually served through web servers and communicate with other applications through HTTP requests.</p>
+<p>Serving a model means performing predictions or getting the results of large numerical computations. Today, models are usually served through web servers and communicate with other applications through HTTP requests.</p>
 <p>In Python, you would serve a REST API with the <a href="https://github.com/tiangolo/fastapi"><code>tiangolo/fastapi</code></a> framework, use a database such as <a href="https://github.com/redis/redis"><code>redis/redis</code></a> to store your predictions. This is usually the case in systems like search engines or recommendation systems.</p>
 <p>REST APIs allows clients to ask for a service in real time and get an answer quickly. Most website modern websites are designed this way. You can think of transportation information systems where the information has to be updated every minute.</p>
 <p>We will see later how to leverage these concepts in the Redis Hackathon.</p>
@@ -78,7 +78,7 @@
 <li><a href="https://en.m.wikipedia.org/wiki/Recommender_system">Recommendation Systems</a></li>
 <li><a href="https://en.m.wikipedia.org/wiki/Data_and_information_visualization">Data Visualization</a></li>
 </ul>
-<p>Using the right MLOps tools and technologies, we will try to build an interesting experiences for all the users that want to search for scientific papers !</p>
+<p>Using the right MLOps tools and technologies, we will build interesting experiences for all the users who want to search for scientific papers!</p>
 <h1>References</h1>
 <ul>
 <li><a href="https://github.com/DataTalksClub/mlops-zoomcamp/">MLOps Zoomcamp</a></li>

@@ -42,16 +42,16 @@
 </footer><!-- /.post-info --><p><em>Day 10 - Integrating the soft labels model to the pipeline</em></p>
 <h1>Industrializing the soft labels model</h1>
 <p>We have created a classification model to quantify the categories of each item between 0 and 1. It is now important to industrialize our code by integrating this model and this code into our workflow.</p>
-<p>The model we decided to use for the classification is <a href="https://huggingface.co/prajjwal1/bert-tiny"><code>bert-tiny</code></a> from the <a href="https://huggingface.co/models">huggingface hub</a>. Our goal is to make data retrieval fast, in order to avoid making predictions on the category every time a user sends a query. We decided to make the inference offline and leverage redis speed to serve the metadata to the user.</p>
+<p>The model we decided to use for the classification is <a href="https://huggingface.co/prajjwal1/bert-tiny"><code>bert-tiny</code></a> from the <a href="https://huggingface.co/models">huggingface hub</a>. Our goal is to make data retrieval fast, in order to avoid making predictions on the category every time a user sends a query. We decided to make the inference offline and leverage Redis speed to serve the metadata to the user.</p>
 <h1>The step of the workflow</h1>
 <p>We decided to split our classification pipeline in 3 steps:</p>
 <ul>
-<li><code>training</code>: We train our model and store the resulting weights locally. As a next step it would be good to save the weights to a service such as <a href="https://wandb.ai/site?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Conversions%3A+Marketing+Site+-+Non-Branded+-+Dynamic+Search&amp;utm_content=Baseline+-+1st+Ad&amp;gclid=CjwKCAiA9qKbBhAzEiwAS4yeDfKlvTSoj2at5CSOCEidthehh-Bv85cS5XDQnLTi98v38YCOdhEFTBoCEc0QAvD_BwE">W&amp;B</a> or <a href="https://cloud.google.com/artifact-registry">Artifact Registry</a>.</li>
+<li><code>training</code>: We train our model and store the resulting weights locally. As a next step, it would be good to save the weights to a service such as <a href="https://wandb.ai/site?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Conversions%3A+Marketing+Site+-+Non-Branded+-+Dynamic+Search&amp;utm_content=Baseline+-+1st+Ad&amp;gclid=CjwKCAiA9qKbBhAzEiwAS4yeDfKlvTSoj2at5CSOCEidthehh-Bv85cS5XDQnLTi98v38YCOdhEFTBoCEc0QAvD_BwE">W&amp;B</a> or <a href="https://cloud.google.com/artifact-registry">Artifact Registry</a>.</li>
 <li><code>inference</code>: We use the weights of our trained model to do the inference on the dataset, this is the step where we obtain the soft labels between 0 and 1.</li>
 <li><code>re-training</code>: This script <a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/retrain_model.sh"><code>scripts/retrain_model.sh</code></a>  retrains the model, it needs to be run if new papers are added to the dataset. As a next step, it would be good to create a <a href="https://cloud.google.com/functions">Cloud Function</a> in order to automate the retraining of our model if new data is detected.</li>
 </ul>
-<h1>Including the soft labels and the text encoding in redis</h1>
-<p>We decided to have only one <a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/generate_index.py">entry point</a> to generate the meta data of every paper:</p>
+<h1>Including the soft labels and the text encoding in Redis</h1>
+<p>We decided to have only one <a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/generate_index.py">entry point</a> to generate the metadata of every paper:</p>
 <ul>
 <li><code>generate_index.py</code>:<ul>
 <li>run the encoding for the text of every paper</li>
@@ -61,10 +61,10 @@
 </li>
 </ul>
 <p>The final pickle file is then pushed to <code>redis</code> using <a href="https://github.com/artefactory/redis-team-THM/blob/main/scripts/load_data.py"><code>load_data.py</code></a>.</p>
-<p>One challenge we faced when pushing the categories to Redis was to chose a format to store the predicted categories and there associated score. We decided to store them in a string. In order to store and retrieve the categories/values we had to <a href="scripts/helpers/category_parser.py">parse the string</a>.</p>
-<p>As a next step it would be possible to chose a better <a href="https://redis.io/docs/data-types/tutorial/">redis data type</a> than strings.</p>
+<p>One challenge we faced when pushing the categories to Redis was to choose a format to store the predicted categories and there associated score. We decided to store them in a string. In order to store and retrieve the categories/values we had to <a href="scripts/helpers/category_parser.py">parse the string</a>.</p>
+<p>As a next step, it would be possible to choose a better <a href="https://redis.io/docs/data-types/tutorial/">Redis data type</a> than strings.</p>
 <h1>Final result</h1>
-<p>If we are looking directly inside the redis database we can see our soft labels stored as a string:</p>
+<p>If we are looking directly inside the Redis database we can see our soft labels stored as a string:</p>
 <div align="center">
     <img src="https://artefactory.github.io/redis-team-THM/images/soft_labels_redis.png" width=500>
 </div>                </article>
@@ -97,32 +97,6 @@
 <p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
 </footer><!-- /.post-info -->                <p>Integrating a question answering pipeline into our workflow</p>
                 <a class="readmore" href="https://artefactory.github.io/redis-team-THM/integrate-answer.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://artefactory.github.io/redis-team-THM/find-answer.html" rel="bookmark"
-                           title="Permalink to Day 8 -Answering user's questions">Day 8 -Answering user's questions</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-10-30T11:23:00+01:00">
-                Published: Sun 30 October 2022
-        </abbr>
-		<br />
-        <abbr class="modified" title="2022-10-30T11:56:00+01:00">
-                Updated: Sun 30 October 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://artefactory.github.io/redis-team-THM/author/henrique-brito.html">Henrique Brito</a>
-        </address>
-<p>In <a href="https://artefactory.github.io/redis-team-THM/category/machine-learning.html">Machine Learning</a>.</p>
-<p>tags: <a href="https://artefactory.github.io/redis-team-THM/tag/question-answering.html">question-answering</a> <a href="https://artefactory.github.io/redis-team-THM/tag/huggingface.html">huggingface</a> <a href="https://artefactory.github.io/redis-team-THM/tag/transformers.html">transformers</a> </p>
-</footer><!-- /.post-info -->                <p>Our data science approach to answer users' questions</p>
-                <a class="readmore" href="https://artefactory.github.io/redis-team-THM/find-answer.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
