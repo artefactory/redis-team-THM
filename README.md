@@ -13,7 +13,9 @@ This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
 RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
-[![asciicast](https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR.svg)](https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR)
+<div align="center">
+    <a href="https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR" target="_blank"><img src="https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR.svg" height=500/></a>
+</div>
 
 See [Architecture](#architecture) to see how it works, and [User Workflow](#user-workflow) to see how it can be used.
 
