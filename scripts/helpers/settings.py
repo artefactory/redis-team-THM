@@ -1,5 +1,6 @@
-from helpers.models import Format
 from pydantic import BaseSettings
+
+from helpers.models import Format
 
 
 class Settings(BaseSettings):
@@ -11,3 +12,4 @@ class Settings(BaseSettings):
     classifier_model_location: str = "../backend/model_outputs_20221103181333"
     classifier_tokenizer: str = "prajjwal1/bert-tiny"
     classifier_confidence_threshold: float = 0.1
+    year_pattern: str = "(19|20[0-9]{2})"

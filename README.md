@@ -13,7 +13,7 @@ This demo showcases the _vector search similarity_ feature of Redis Enterprise.
 
 RediSearch enables developers to add documents and their embeddings indexes to the database, turning Redis into a vector database that can be used for modern data web applications.
 
-[![asciicast](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF.svg)](https://asciinema.org/a/5e9QHIS62HZDL1VkSFtAVlvjF)
+[![asciicast](https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR)](https://asciinema.org/a/3CMfA6anck7oqgw0ZShznDVhR)
 
 See [Architecture](#architecture) to see how it works, and [User Workflow](#user-workflow) to see how it can be used.
 
@@ -109,7 +109,7 @@ It can be used with his text editor and browser and helps him in the process of:
       choose_activity-->fetch_paper_details;
       fetch_paper_details-->Search_API;
       choose_activity-->ask_open_question;
-      ask_open_question-->OpenAI_API;
+      ask_open_question-->HugginFacePipeline;
       choose_activity-->find_formula;
       find_formula-->Wolfram_Alpha_API;
 ```
@@ -128,6 +128,14 @@ open http://0.0.0.0:8080/api/docs
 ```
 
 [Deploy on Saturn Cloud](https://app.community.saturnenterprise.io/dash/resources?recipeUrl=https://github.com/artefactory/redis-team-THM/blob/main/backend/.saturn/thm-backend-deployment-recipe.json)
+
+### Train model
+
+```sh
+cd scripts/
+pip install -r requirements.txt
+bash retrain_model.sh
+```
 
 ### THM CLI
 

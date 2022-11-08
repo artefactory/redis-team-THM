@@ -3,6 +3,7 @@
 import webbrowser
 from typing import List
 
+import transformers
 from loguru import logger
 from prompt_toolkit import HTML, PromptSession
 from prompt_toolkit import print_formatted_text as print
@@ -17,6 +18,7 @@ from helpers.search_engine import SearchEngine
 from helpers.settings import Settings
 from question_answering import get_answer_to_prompt
 
+transformers.logging.set_verbosity_error()
 
 def _BibTeX(paper: Paper):
     """Renders to BibTeX format"""
