@@ -9,3 +9,5 @@ pydantic[dotenv]
 pydantic
 prompt_toolkit
 httpx
+
+metaflow
