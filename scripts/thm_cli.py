@@ -80,12 +80,12 @@ def render_paper(paper: Paper):
     print("", *parse_categories_from_redis(paper.categories), sep="\n* ")
     if "predicted_categories" in paper.dict(exclude_unset=True).keys():
         print(
-            HTML(f"<DarkBlue>Categories(extracted using machine learning):</DarkBlue>")
+            HTML(f"<seagreen>Categories(extracted using machine learning):</seagreen>")
         )
         print(
             "",
-            *[HTML(f"<DarkBlue>{label} ({conf:.1f})</DarkBlue>") for label, conf in parsed_predicitons],
-            sep=HTML("<DarkBlue>\n* </DarkBlue>")
+            *[HTML(f"<seagreen>{label} ({conf:.1f})</seagreen>") for label, conf in parsed_predicitons],
+            sep=HTML("<seagreen>\n* </seagreen>")
         )
     print("=" * 80)
     print(paper.abstract)
