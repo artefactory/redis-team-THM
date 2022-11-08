@@ -177,7 +177,7 @@ We found the following models interesting NLP models from the [leaderboard](http
 
 We also used [`transformers.AutoModelForSequenceClassification`](https://huggingface.co/transformers/v3.0.2/model_doc/auto.html#automodelforsequenceclassification) for the problem of multi-category classification.
 
-For the problem of Question Answering we used [`distilbert-base-cased-distilled-squad`](https://huggingface.co/distilbert-base-cased-distilled-squad) for the problem of Question Answering.
+For the problem of Question Answering we used [`distilbert-base-cased-distilled-squad`](https://huggingface.co/distilbert-base-cased-distilled-squad).
 
 ```mermaid
   graph TD;
