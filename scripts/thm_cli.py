@@ -257,8 +257,8 @@ print(HTML("<b><skyblue>THM Search CLI</skyblue></b>"))
 print(HTML("Your arXiv-BibTeX terminal assistant."))
 print()
 
-Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
-# Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
+# Engine = SearchEngine("https://thm-cli.community.saturnenterprise.io/api/v1/paper")
+Engine = SearchEngine("https://docsearch.redisventures.com/api/v1/paper")
 # Engine = SearchEngine("http://localhost:8080/api/v1/paper")
 
 ps = PromptSession()
