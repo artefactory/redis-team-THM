@@ -31,7 +31,7 @@ HuggingFace and OpenAI then largely disrupted access to deep learning models and
 
 Redis Vector Similarity Search (VSS) is an extension in the continuity of the previous works, it allows users already familiar with Redis to perform vector similarity queries using the [`FT.SEARCH`](https://redis.io/commands/ft.search/) command.
 
-Developers car easily load, index, and query vectors, and these vectors come from a variety of unstructured data.
+Developers can easily load, index, and query vectors, and these vectors come from a variety of unstructured data.
 
 <div align="center">
     <img src="https://redis.com/wp-content/uploads/2022/05/rediscover-redis-for-vector-similarity-search-similarity-searches-1024x580.png" width=500>
